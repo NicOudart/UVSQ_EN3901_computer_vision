@@ -1,0 +1,20 @@
+site_name: "UVSQ_EN3901_computer_vision"
+site_url: "https://nicoudart.github.io/UVSQ_EN3901_computer_vision"
+site_author: "Nicolas OUDART"
+
+theme:
+  name: readthedocs
+nav:
+  - Accueil: index.md
+  - I. Introduction aux images: Chap1_Introduction_images.md
+  - II. Filtrage et transformations: Chap2_Filtrage_transformation.md
+  - III. Réseaux convolutionnels: Chap3_Reseaux_convolutionnels.md
+  - IV. Deep Learning: Chap4_Deep_Learning.md
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+  - attr_list
+  
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
