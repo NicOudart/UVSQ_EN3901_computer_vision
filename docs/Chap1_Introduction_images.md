@@ -47,6 +47,8 @@ L’image des objets s’y trouve représentée avec une netteté, une fidé
 
 ## Retouche d'images : améliorer le réel
 
+### Pillow : manipuler des images avec Python
+
 ### Contraste
 
 ### Colorimétrie
@@ -66,7 +68,5 @@ L’image des objets s’y trouve représentée avec une netteté, une fidé
 ### Segmentation d'images
 
 ### Reconstruction 3D / suivi
-
-## Pillow : manipuler des images avec Python
 
 ## La suite du cours
