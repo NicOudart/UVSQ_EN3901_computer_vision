@@ -13,11 +13,17 @@ L’image des objets s’y trouve représentée avec une netteté, une fidé
 
 ---
 
-## La vision humaine
-
-## La caméra : une machine à faire du 2D
+## La vision
 
 ### Intéraction lumière-surface
+
+### L'oeil, organe de la vision
+
+### Le cerveau, grand illusioniste
+
+### C'est quoi la vision ?
+
+## La caméra : une machine à faire du 2D
 
 ### Sténopé et chambre noire
 
@@ -26,10 +32,6 @@ L’image des objets s’y trouve représentée avec une netteté, une fidé
 ### La photographie argentique
 
 ### La photographie numérique
-
-#### CCD
-
-#### CMOS
 
 ### Réglages d'une caméra 
 
@@ -65,6 +67,6 @@ L’image des objets s’y trouve représentée avec une netteté, une fidé
 
 ### Reconstruction 3D / suivi
 
-## Boite à outils Python
+## Pillow : manipuler des images avec Python
 
 ## La suite du cours
