@@ -69,4 +69,4 @@ L’image des objets s’y trouve représentée avec une netteté, une fidé
 
 ### Reconstruction 3D / suivi
 
-## La suite du cours
+## Conclusion
