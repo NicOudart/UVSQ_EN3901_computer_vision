@@ -59,7 +59,7 @@ L’image des objets s’y trouve représentée avec une netteté, une fidé
 
 ## Les histogrammes : la distribution des pixels
 
-### Les différents types d'histogrammes
+### Analyse des histogrammes
 
 ### Histogram matching
 
