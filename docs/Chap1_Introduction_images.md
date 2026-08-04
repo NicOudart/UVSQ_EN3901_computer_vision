@@ -49,9 +49,21 @@ L’image des objets s’y trouve représentée avec une netteté, une fidé
 
 ### Pillow : manipuler des images avec Python
 
+### Luminosité
+
 ### Contraste
 
 ### Colorimétrie
+
+### Netteté
+
+## Les histogrammes : la distribution des pixels
+
+### Les différents types d'histogrammes
+
+### Histogram matching
+
+### Histogram equalization
 
 ## A la recherche des dimensions perdues
 
