@@ -57,13 +57,13 @@ L’image des objets s’y trouve représentée avec une netteté, une fidé
 
 ### Netteté
 
-## Les histogrammes : la distribution des pixels
+## Les histogrammes : jouer la distribution des pixels
 
 ### Analyse des histogrammes
 
-### Histogram matching
-
 ### Histogram equalization
+
+### Histogram matching
 
 ## A la recherche des dimensions perdues
 
