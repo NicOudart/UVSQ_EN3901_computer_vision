@@ -51,13 +51,17 @@ L’image des objets s’y trouve représentée avec une netteté, une fidé
 
 ### Luminosité
 
+![Exemple de retouche de luminosité](img/Chap1_exemple_luminosite.png)
+
 ### Contraste
 
-### Colorimétrie
+![Exemple de retouche de contraste](img/Chap1_exemple_contraste.png)
 
-### Netteté
+### Saturation
 
-## Les histogrammes : jouer la distribution des pixels
+
+
+## Les histogrammes : étalonner des images
 
 ### Analyse des histogrammes
 
