@@ -13,6 +13,18 @@ L’image des objets s’y trouve représentée avec une netteté, une fidé
 
 ---
 
+## Image exemple
+
+Lors de ce chapitre, nous utiliserons une image exemple, que vous pourrez trouver [ici](https://github.com/NicOudart/UVSQ_EN3901_computer_vision/blob/master/images/Ghost_crab.jpg).
+
+Il s'agit d'une photographie d'un _Ocypode quadrata_, aussi connu sous le nom de "Atlantic Ghost Crab", prise en 2023 à Padre Island National Seashore (Texas, USA).
+
+![Image exemple du Chapitre 1](img/Chap1_exemple_image.png)
+
+N'hésitez pas à aller regarder les détails de la prise de vue dans les métadonnées de l'image !
+
+---
+
 ## La vision
 
 ### Intéraction lumière-surface
@@ -59,7 +71,7 @@ L’image des objets s’y trouve représentée avec une netteté, une fidé
 
 ### Saturation
 
-
+![Exemple de retouche de saturation](img/Chap1_exemple_saturation.png)
 
 ## Les histogrammes : étalonner des images
 
