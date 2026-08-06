@@ -19,7 +19,7 @@ Lors de ce chapitre, nous utiliserons une image exemple, que vous pourrez trouve
 
 Il s'agit d'une photographie d'un _Ocypode quadrata_, aussi connu sous le nom de "Atlantic Ghost Crab", prise en 2023 à Padre Island National Seashore (Texas, USA).
 
-![Image exemple du Chapitre 1](img/Chap1_exemple_image.png){width="500"}
+![Image exemple du Chapitre 1](img/Chap1_exemple_image.png){width="300"}
 
 N'hésitez pas à aller regarder les détails de la prise de vue dans les métadonnées de l'image !
 
