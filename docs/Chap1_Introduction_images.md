@@ -57,9 +57,15 @@ N'hésitez pas à aller regarder les détails de la prise de vue dans les métad
 
 ## L'écran : reproduire le réel
 
-## Retouche d'images : améliorer le réel
+## Manipuler des images avec Python
 
-### Pillow : manipuler des images avec Python
+### Pillow
+
+### Scikit-image
+
+### Open-CV
+
+## Retouche d'images : améliorer le réel
 
 ### Luminosité
 
