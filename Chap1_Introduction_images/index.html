@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Nicolas OUDART" /><link rel="canonical" href="https://nicoudart.github.io/UVSQ_EN3901_computer_vision/Chap1_Introduction_images/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>I. Introduction aux images - UVSQ_EN3901_computer_vision</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "I. Introduction aux images";
+        var mkdocs_page_input_path = "Chap1_Introduction_images.md";
+        var mkdocs_page_url = "/UVSQ_EN3901_computer_vision/Chap1_Introduction_images/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> UVSQ_EN3901_computer_vision
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Accueil</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">I. Introduction aux images</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#image-exemple">Image exemple</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#la-vision">La vision</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#interaction-lumiere-surface">Intéraction lumière-surface</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#loeil-organe-de-la-vision">L'oeil, organe de la vision</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#le-cerveau-grand-illusioniste">Le cerveau, grand illusioniste</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#cest-quoi-la-vision">C'est quoi la vision ?</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#la-camera-une-machine-a-faire-du-2d">La caméra : une machine à faire du 2D</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#stenope-et-chambre-noire">Sténopé et chambre noire</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#lobjectif-photographique">L'objectif photographique</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#la-photographie-argentique">La photographie argentique</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#la-photographie-numerique">La photographie numérique</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#reglages-dune-camera">Réglages d'une caméra</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#numerisation-dune-image-passer-du-monde-continu-au-monde-discret">Numérisation d'une image : passer du monde continu au monde discret</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#discretisation-de-limage">Discrétisation de l'image</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#encodage-des-couleurs">Encodage des couleurs</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#formats-et-compression">Formats et compression</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#lecran-reproduire-le-reel">L'écran : reproduire le réel</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#manipuler-des-images-avec-python">Manipuler des images avec Python</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#pillow">Pillow</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#scikit-image">Scikit-image</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#open-cv">Open-CV</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#retouche-dimages-ameliorer-le-reel">Retouche d'images : améliorer le réel</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#luminosite">Luminosité</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#contraste">Contraste</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#saturation">Saturation</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#les-histogrammes-etalonner-des-images">Les histogrammes : étalonner des images</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#analyse-des-histogrammes">Analyse des histogrammes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#histogram-equalization">Histogram equalization</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#histogram-matching">Histogram matching</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#a-la-recherche-des-dimensions-perdues">A la recherche des dimensions perdues</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#la-stereoscopie">La stéréoscopie</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#le-flux-optique">Le flux optique</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#la-vision-par-ordinateur">La vision par ordinateur</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#classification-dimages">Classification d'images</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#localisation-dobjets">Localisation d'objets</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#segmentation-dimages">Segmentation d'images</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#reconstruction-3d-suivi">Reconstruction 3D / suivi</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#conclusion">Conclusion</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Chap2_Filtrage_transformation/">II. Filtrage et transformations</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Chap3_Reseaux_convolutionnels/">III. Réseaux convolutionnels</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Chap4_Deep_Learning/">IV. Deep Learning</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">UVSQ_EN3901_computer_vision</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">I. Introduction aux images</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="chapitre-i-introduction-a-la-vision-par-ordinateur">Chapitre I : Introduction à la vision par ordinateur</h1>
+<p>Ce chapitre introduit des notions essentielles pour ce cours telles que la capture, la numérisation, l'affichage et la retouche d'images.
+Il amènera ainsi petit à petit le concept de "vision", et la discipline de la "vision par ordinateur".</p>
+<p><img alt="En-tête chapitre I" src="../img/Chap1_header.png" /></p>
+<p><em>"J’ai la satisfaction de pouvoir t’annoncer enfin, qu’à l’aide du perfectionnement de mes procédés je suis parvenu à obtenir un point de vue tel que je pouvais le désirer, et que je n’osais guère pourtant m’en flatter, parce que jusqu’ici, je n’avais eu que des résultats forts incomplets.
+Ce point de vue a été pris de ta chambre du côté du Gras; et je me suis servi à cet effet de ma plus grande chambre obscure et de ma plus grande pierre.
+L’image des objets s’y trouve représentée avec une netteté, une fidélité étonnante, jusque dans ses moindres détails, et avec leurs nuances les plus délicates."</em></p>
+<p><strong>Nicéphore Niépce, lettre du 16 septembre 1824, à destination de son frère Claude.</strong></p>
+<hr />
+<h2 id="image-exemple">Image exemple</h2>
+<p>Lors de ce chapitre, nous utiliserons une image exemple, que vous pourrez trouver <a href="https://github.com/NicOudart/UVSQ_EN3901_computer_vision/blob/master/images/Ghost_crab.jpg">ici</a>.</p>
+<p>Il s'agit d'une photographie d'un <em>Ocypode quadrata</em>, aussi connu sous le nom de "Atlantic Ghost Crab", prise en 2023 à Padre Island National Seashore (Texas, USA).</p>
+<p><img alt="Image exemple du Chapitre 1" src="../img/Chap1_exemple_image.png" width="300" /></p>
+<p>N'hésitez pas à aller regarder les détails de la prise de vue dans les métadonnées de l'image !</p>
+<hr />
+<h2 id="la-vision">La vision</h2>
+<h3 id="interaction-lumiere-surface">Intéraction lumière-surface</h3>
+<h3 id="loeil-organe-de-la-vision">L'oeil, organe de la vision</h3>
+<h3 id="le-cerveau-grand-illusioniste">Le cerveau, grand illusioniste</h3>
+<h3 id="cest-quoi-la-vision">C'est quoi la vision ?</h3>
+<h2 id="la-camera-une-machine-a-faire-du-2d">La caméra : une machine à faire du 2D</h2>
+<h3 id="stenope-et-chambre-noire">Sténopé et chambre noire</h3>
+<h3 id="lobjectif-photographique">L'objectif photographique</h3>
+<h3 id="la-photographie-argentique">La photographie argentique</h3>
+<h3 id="la-photographie-numerique">La photographie numérique</h3>
+<h3 id="reglages-dune-camera">Réglages d'une caméra</h3>
+<h2 id="numerisation-dune-image-passer-du-monde-continu-au-monde-discret">Numérisation d'une image : passer du monde continu au monde discret</h2>
+<h3 id="discretisation-de-limage">Discrétisation de l'image</h3>
+<h3 id="encodage-des-couleurs">Encodage des couleurs</h3>
+<h3 id="formats-et-compression">Formats et compression</h3>
+<h2 id="lecran-reproduire-le-reel">L'écran : reproduire le réel</h2>
+<h2 id="manipuler-des-images-avec-python">Manipuler des images avec Python</h2>
+<h3 id="pillow">Pillow</h3>
+<h3 id="scikit-image">Scikit-image</h3>
+<h3 id="open-cv">Open-CV</h3>
+<h2 id="retouche-dimages-ameliorer-le-reel">Retouche d'images : améliorer le réel</h2>
+<h3 id="luminosite">Luminosité</h3>
+<p><img alt="Exemple de retouche de luminosité" src="../img/Chap1_exemple_luminosite.png" /></p>
+<h3 id="contraste">Contraste</h3>
+<p><img alt="Exemple de retouche de contraste" src="../img/Chap1_exemple_contraste.png" /></p>
+<h3 id="saturation">Saturation</h3>
+<p><img alt="Exemple de retouche de saturation" src="../img/Chap1_exemple_saturation.png" /></p>
+<h2 id="les-histogrammes-etalonner-des-images">Les histogrammes : étalonner des images</h2>
+<h3 id="analyse-des-histogrammes">Analyse des histogrammes</h3>
+<h3 id="histogram-equalization">Histogram equalization</h3>
+<h3 id="histogram-matching">Histogram matching</h3>
+<h2 id="a-la-recherche-des-dimensions-perdues">A la recherche des dimensions perdues</h2>
+<h3 id="la-stereoscopie">La stéréoscopie</h3>
+<h3 id="le-flux-optique">Le flux optique</h3>
+<h2 id="la-vision-par-ordinateur">La vision par ordinateur</h2>
+<h3 id="classification-dimages">Classification d'images</h3>
+<h3 id="localisation-dobjets">Localisation d'objets</h3>
+<h3 id="segmentation-dimages">Segmentation d'images</h3>
+<h3 id="reconstruction-3d-suivi">Reconstruction 3D / suivi</h3>
+<h2 id="conclusion">Conclusion</h2>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="Accueil"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Chap2_Filtrage_transformation/" class="btn btn-neutral float-right" title="II. Filtrage et transformations">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Chap2_Filtrage_transformation/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../javascripts/mathjax.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
