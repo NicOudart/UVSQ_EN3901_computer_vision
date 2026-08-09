@@ -13,15 +13,27 @@ L’image des objets s’y trouve représentée avec une netteté, une fidé
 
 ---
 
-## Image exemple
+## Images exemples
 
-Lors de ce chapitre, nous utiliserons une image exemple, que vous pourrez trouver [ici](https://github.com/NicOudart/UVSQ_EN3901_computer_vision/blob/master/images/Ghost_crab.jpg).
+Ce chapitre sera illustré par quelques images exemples.
+
+Vous trouverez la première [ici](https://github.com/NicOudart/UVSQ_EN3901_computer_vision/blob/master/images/Ghost_crab.jpg).
 
 Il s'agit d'une photographie d'un _Ocypode quadrata_, aussi connu sous le nom de "Atlantic Ghost Crab", prise en 2023 à Padre Island National Seashore (Texas, USA).
 
-![Image exemple du Chapitre 1](img/Chap1_exemple_image.png){width="300"}
+![Image exemple du Chapitre 1](img/Chap1_exemple_image_ghost_crab.png)
 
-N'hésitez pas à aller regarder les détails de la prise de vue dans les métadonnées de l'image !
+Nous utiliserons cette image dans les cas où un seul exemple est suffisant.
+
+Vous trouverez [ici](https://github.com/NicOudart/UVSQ_EN3901_computer_vision/blob/master/images/Land_crab_1.jpg) et [ici](https://github.com/NicOudart/UVSQ_EN3901_computer_vision/blob/master/images/Land_crab_2.jpg) deux autres images.
+
+Il s'agit de photographies d'un _Cardisoma guanhumi_, ou "Crabe de terre blue", prises en 2012 en Guadeloupe (Antilles françaises), avec des paramètres et un angle de vue différents.
+
+![Image exemple du Chapitre 1](img/Chap1_exemple_image_land_crab.png)
+
+Nous utiliserons ces images dans les cas où une image de référence est nécessaire en plus d'une image exemple.
+
+N'hésitez pas à aller regarder les détails de la prise de vue des différentes photographies dans les métadonnées des images !
 
 ---
 
@@ -85,7 +97,17 @@ N'hésitez pas à aller regarder les détails de la prise de vue dans les métad
 
 ### Histogram equalization
 
+![Exemple d'application noir et blanc de l'histogram equalization](img/Chap1_exemple_grayscale_histogram_equalization.png)
+
+![Exemple d'application HSV de l'histogram equalization](img/Chap1_exemple_histogram_equalization.png)
+
+![Exemple d'application noir et blanc de CLAHE](img/Chap1_exemple_grayscale_CLAHE.png)
+
+![Exemple d'application HSV de CLAHE](img/Chap1_exemple_CLAHE.png)
+
 ### Histogram matching
+
+![Exemple d'application de l'histogram matching](img/Chap1_exemple_histogram_matching.png)
 
 ## A la recherche des dimensions perdues
 
