@@ -63,6 +63,8 @@ N'hésitez pas à aller regarder les détails de la prise de vue des différente
 
 ### Discrétisation de l'image
 
+![Aliasing par décimation d'une image](img/Chap1_aliasing.png)
+
 ### Encodage des couleurs
 
 ### Formats et compression
