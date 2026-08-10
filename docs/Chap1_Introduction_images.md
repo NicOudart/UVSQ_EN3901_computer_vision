@@ -95,9 +95,15 @@ N'hésitez pas à aller regarder les détails de la prise de vue des différente
 
 ### Analyse des histogrammes
 
+![Exemple d'histogramme pour une image en noir et blanc](img/Chap1_exemple_histogrammes_grayscale.png)
+
+![Exemple d'histogramme pour une image en couleurs](img/Chap1_exemple_histogrammes_couleurs.png)
+
 ### Histogram equalization
 
 ![Exemple d'application noir et blanc de l'histogram equalization](img/Chap1_exemple_grayscale_histogram_equalization.png)
+
+![Histogrammes avant et après l'histogram equalization](img/Chap1_exemple_grayscale_histogram_equalization_histogrammes.png)
 
 ![Exemple d'application HSV de l'histogram equalization](img/Chap1_exemple_histogram_equalization.png)
 
@@ -108,6 +114,8 @@ N'hésitez pas à aller regarder les détails de la prise de vue des différente
 ### Histogram matching
 
 ![Exemple d'application de l'histogram matching](img/Chap1_exemple_histogram_matching.png)
+
+![Histogrammes avant et après matching](img/Chap1_exemple_histogram_matching_histogrammes.png)
 
 ## A la recherche des dimensions perdues
 
