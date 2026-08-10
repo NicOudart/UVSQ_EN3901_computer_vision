@@ -23,7 +23,7 @@ Il s'agit d'une photographie d'un _Ocypode quadrata_, aussi connu sous le nom de
 
 ![Image exemple du Chapitre 1](img/Chap1_exemple_image_ghost_crab.png)
 
-Nous utiliserons cette image dans les cas où un seul exemple est suffisant.
+Sauf cas spécifique, nous utiliserons cette image dans les cas où un seul exemple est suffisant.
 
 Vous trouverez [ici](https://github.com/NicOudart/UVSQ_EN3901_computer_vision/blob/master/images/Land_crab_1.jpg) et [ici](https://github.com/NicOudart/UVSQ_EN3901_computer_vision/blob/master/images/Land_crab_2.jpg) deux autres images.
 
@@ -31,7 +31,7 @@ Il s'agit de photographies d'un _Cardisoma guanhumi_, ou "Crabe de terre blue", 
 
 ![Image exemple du Chapitre 1](img/Chap1_exemple_image_land_crab.png)
 
-Nous utiliserons ces images dans les cas où une image de référence est nécessaire en plus d'une image exemple.
+Sauf cas spécifique, nous utiliserons ces images dans les cas où une image de référence est nécessaire en plus d'une image exemple.
 
 N'hésitez pas à aller regarder les détails de la prise de vue des différentes photographies dans les métadonnées des images !
 
