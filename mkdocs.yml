@@ -8,7 +8,7 @@ nav:
   - Accueil: index.md
   - I. Introduction aux images: Chap1_Introduction_images.md
   - II. Filtrage et transformations: Chap2_Filtrage_transformation.md
-  - III. Réseaux convolutionnels: Chap3_Reseaux_convolutionnels.md
+  - III. Réseaux convolutifs: Chap3_Reseaux_convolutifs.md
   - IV. Deep Learning: Chap4_Deep_Learning.md
 markdown_extensions:
   - pymdownx.arithmatex:

@@ -47,6 +47,8 @@ N'hésitez pas à aller regarder les détails de la prise de vue des différente
 
 ### C'est quoi la vision ?
 
+![Image exemple du Chapitre 1](img/Chap1_exemple_image_ghost_crab.png)
+
 ## La caméra : une machine à faire du 2D
 
 ### Sténopé et chambre noire
