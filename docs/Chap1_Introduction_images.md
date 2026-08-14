@@ -39,15 +39,46 @@ N'hésitez pas à aller regarder les détails de la prise de vue des différente
 
 ## La vision
 
+### C'est quoi la vision ?
+
+_C'est quoi voir ?_
+
+**La question est plus difficile qu'il n'y parait.**
+
+Une définition pourrait être : **la vue est un sens**, commun à de nombreux animaux, qui permet de **comprendre à distance le monde qui nous entoure** à partir de la **lumière émise par des sources externes** et **réfléchie par différentes surfaces**.
+
+On sait aussi que ce sens implique un organe sensoriel, l'**oeil**, et un organe de traitement de l'information, le **cerveau**.
+
+_Mais comment sommes-nous capables de comprendre le monde qui nous entoure à partir de la lumière réfléchie par des surfaces ?_
+
+Imaginez que vous assistiez à la scène suivante :
+
+![Vision d'un crabe](img/Chap1_exemple_image_ghost_crab.png)
+
+_Que voyez-vous ?_
+
+Vous répondrez probablement : un crabe, sur la plage, avec en fond la mer et le ciel.
+
+Vous ajouterez peut-être que le crabe est jaune et blanc, que sa pince droite est plus grande que la gauche, et qu'il a l'air de vous regarder.
+
+Vous vous représentez probablement mentalement la plage, avec la mer au loin, et le crabe presque à vos pieds. 
+Il y a de fortes chances que vous vous imaginiez proche du sol.
+
+_Mais comment savez-vous tout ceci ?_
+
+La vue est avant tout une **expérience sensorielle**, et comme toute expérience sensorielle, elle nous parait à la fois évidente et difficile à décrire.
+
+Ce que l'on nomme "**vision**" n'est donc pas que la perception de la lumière provenant de notre environnement, c'est aussi un **processus cognitif complexe**, qui passe par la formation d'une **représentation 2D** de la lumière reçue appelée **image**, et son **interprétation en 3D** par l'identification de différentes zones et de leurs distances respectives.
+
+Voyons rapidement comment ce processus fonctionne chez l'animal avant d'essayer de la reproduire avec une machine.
+
 ### Intéraction lumière-surface
 
 ### L'oeil, organe de la vision
 
 ### Le cerveau, grand illusioniste
 
-### C'est quoi la vision ?
-
-![Image exemple du Chapitre 1](img/Chap1_exemple_image_ghost_crab.png)
+### Computer vision
 
 ## La caméra : une machine à faire du 2D
 

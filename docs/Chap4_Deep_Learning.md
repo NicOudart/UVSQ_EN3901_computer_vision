@@ -6,9 +6,9 @@
 
 ### Principe de l'apprentissage supervisé
 
-### Le problème de la généralisation
-
 ### Optimisation des paramètres
+
+### Le problème de la généralisation
 
 ### Optimisation des hyperparamètres
 
@@ -18,6 +18,12 @@
 
 ### Data augmentation
 
-### Attention aux biais de données !
+## Benchmarks
+
+### 
+
+### Biais des données
 
 ## Transfer Learning
+
+## Pour aller plus loin
