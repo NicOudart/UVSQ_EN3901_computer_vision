@@ -114,7 +114,7 @@ Voyons rapidement comment ce processus fonctionne chez l'animal avant d'essayer 
 
 ### Open-CV
 
-## Retouche d'images : améliorer le réel
+## Retouche d'images : améliorer la lisibilité
 
 ### Luminosité
 
