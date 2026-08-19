@@ -70,11 +70,13 @@ La vue est avant tout une **expérience sensorielle**, et comme toute expérienc
 
 Ce que l'on nomme "**vision**" n'est donc pas que la perception de la lumière provenant de notre environnement, c'est aussi un **processus cognitif complexe**, qui passe par la formation d'une **représentation 2D** de la lumière reçue appelée **image**, et son **interprétation en 3D** par l'identification de différentes zones et de leurs distances respectives.
 
-Voyons rapidement comment ce processus fonctionne chez l'animal avant d'essayer de la reproduire avec une machine.
+Voyons rapidement comment ce processus fonctionne chez l'animal avant d'essayer de le reproduire avec une machine.
 
 ### Intéraction lumière-surface
 
 ### L'oeil, organe de la vision
+
+![Les différents types d'oeil](img/Chap1_eye_types.png)
 
 ### Le cerveau, grand illusioniste
 
