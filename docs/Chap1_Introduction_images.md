@@ -74,9 +74,54 @@ Voyons rapidement comment ce processus fonctionne chez l'animal avant d'essayer 
 
 ### Intéraction lumière-surface
 
+
+
 ### L'oeil, organe de la vision
 
+Dans les systèmes de vision animale, l'**oeil** est le **capteur**.
+
+Il s'agit d'un organe capable de **détecter la lumière** provenant d'une ou plusieurs **directions**, et de convertir cette information en **flux nerveux**.
+Il est parfois capable de transmettre des **informations complémentaires** sur la lumière reçue (intensité, longueur d'onde, polarisation).
+
+Au cours de l'évolution, différents types d'oeil sont apparus dans le monde animal, avec **différentes méthodes** et **différents niveaux de complexité** suivant les contraintes environnementales auxquels les animaux sont soumis.
+Certains types d'oeil sont même apparus plusieurs fois par convergence évolutive, pour des animaux très différents mais soumis aux mêmes contraintes.
+
+Voici un résumé très succinct des différents types d'oeil que l'on rencontre actuellement dans la nature :
+
 ![Les différents types d'oeil](img/Chap1_eye_types.png)
+
+On sépare ici les yeux en 3 grandes catégories :
+
+* Les **photorécepteurs** ou "ocelles" :
+Il s'agit d'un oeil très rudimentaire, ne permettant pas de construire une "image" de l'environnement de l'animal.
+Les ocelles sont au mieux capables de percevoir une variation de luminosité et une direction d'origine de la lumière.
+Chez certains animaux, ils sont présents en complément d'yeux plus complexes.
+
+* Les **yeux composés** :
+Il s'agit d'un **ensemble de photorécepteurs** appellés "ommatidies", chacun capable de **percevoir une portion du champ visuel** de l'animal.
+Une "image" sera composée plus tard par traitement cognitif.
+On les distingue en 2 sous-catégories, suivant si les photorécepteurs sont utilisés **indépendamment** (par "apposition") ou en **combinaison** (par "superposition").
+Il s'agit d'un compromis entre **résolution** et **sensibilité** : un oeil composé vera mieux dans l'obscurité par superposition, mais avec une résolution moindre que par apposition.
+De manière générale, les yeux composés permettent un **grand champ de vision** et une **bonne détection des mouvements**.
+
+* Les **yeux imageurs** :
+Il s'agit d'un système optique **focalisant la lumière** au fond d'une **cavité recouverte de photorécepteurs** appellée "rétine".
+Une "image" est donc physiquement formée sur la rétine, à la manière d'une **chambre noire**.
+Il existe plusieurs méthodes pour focaliser la lumière : un "**sténopé**" (un trou suffisamment petit), un **miroir concave**, ou une **lentille**.
+Certains animaux peuvent **modifier l'orientation** de leurs yeux, **ajuster la quantité de lumière** entrant dans l'oeil, et **ajuster la distance focale** de la lentille.
+De manière générale, les yeux imageurs permettent une **fine résolution** et une **grande sensibilité à la lumière**.
+
+De nombreux animaux possèdent **plusieurs yeux**, ce qui leur permet d'**agrandir leur champ de vision**, et d'**estimer la distance des objets** par "stéréoscopie".
+
+**Les humains possèdent 2 yeux imageurs à lentilles**.
+Il n'est donc pas étonnant que la plupart des systèmes de vision par ordinateur utilisent également ce principe.
+
+Un point commun aux 3 catégories d'oeil que nous avons présentées est la présence de "**photorécépteurs*".
+Il s'agit de **cellules réagissant à la lumière** en générant un **flux nerveux**, à la manière d'un **transducteur**.
+
+Chez les animaux, il existe 2 grands types de photorécepteurs :
+
+
 
 ### Le cerveau, grand illusioniste
 
