@@ -111,7 +111,7 @@ De manière générale, les yeux composés permettent un **grand champ de vision
 Il s'agit d'un système optique **focalisant la lumière** au fond d'une **cavité recouverte de photorécepteurs** appellée "rétine".
 Une "image" est donc physiquement formée sur la rétine, à la manière d'une **chambre noire**.
 Il existe plusieurs méthodes pour focaliser la lumière : un "**sténopé**" (un trou suffisamment petit), un **miroir concave**, ou une **lentille**.
-Certains animaux peuvent **modifier l'orientation** de leurs yeux, **ajuster la quantité de lumière** entrant dans l'oeil, et **ajuster la distance focale** de la lentille.
+Certains animaux peuvent **modifier l'orientation** de leurs yeux avec des muscles, **ajuster la quantité de lumière** entrant dans l'oeil avec un diaphragme, et **ajuster la distance focale** de la lentille en la déplaçant ou en la déformant.
 De manière générale, les yeux imageurs permettent une **fine résolution** et une **grande sensibilité à la lumière**.
 
 De nombreux animaux possèdent **plusieurs yeux**, ce qui leur permet d'**agrandir leur champ de vision**, et d'**estimer la distance des objets** par "stéréoscopie".
@@ -119,7 +119,7 @@ De nombreux animaux possèdent **plusieurs yeux**, ce qui leur permet d'**agrand
 **Les humains possèdent 2 yeux imageurs à lentilles**.
 Il n'est donc pas étonnant que la plupart des systèmes de vision par ordinateur utilisent également ce principe.
 
-Voici le structure de l'oeil humain schématisée :
+Voici la structure de l'oeil humain schématisée :
 
 
 
@@ -144,6 +144,8 @@ Chez les humains, ces cellules sont de **3 types**, Bleu / Vert / Rouge (ou Shor
 Elles nous permettent ainsi de **distinguer les couleurs**, mais elles sont beaucoup moins sensibles et permettent un champ de vision beaucoup plus réduit que les cônes.
 Leur répartition sur la rétine n'est pas égalitaire, avec environ 10 / 30 / 60 %.
 
+
+
 La vision humaine est donc **trichromatique**, ce qui aura des conséquences en vision par ordinateurs.
 Cependant, ce n'est pas la norme dans le règne animal.
 Par exemple, les cétacés sont monochromates, la plupart des mammifères terrestres sont dichromates, la plupart des réptiles et des oiseaux sont tetrachromates.
@@ -151,6 +153,8 @@ Par exemple, les cétacés sont monochromates, la plupart des mammifères terres
 Nous reparlerons plus loin de la notion de "couleur".
 
 Il est important de noter que les bâtonnets et les cônes ne sont **pas répartis uniformément sur la rétine** : 
+
+
 
 * **La densité des cônes explose** entre -10 et 10° autour du centre de la rétine, alors que **la densité des bâtonnets diminue**.
 On appelle cette zone la "fovéa".
@@ -163,6 +167,14 @@ On appelle cette zone "tâche aveugle".
 Cette répartition impacte directement le **champ de vision** humain, avec différentes types de vision suivant la direction d'où vient la lumière par rapport à l'oeil :
 
 
+
+* Le champ visuel de la lecture n'est qu'entre -10 et 10°.
+
+* Le champ visuel de la discrimination des couleurs n'est qu'entre -30 et 30°.
+
+* Le champ visuel stéréoscopique n'est qu'entre -60 et 60°.
+
+Alors que le champ visuel total humain peut s'étendre de -110 à 110° !
 
 ### Le cerveau, grand illusioniste
 
