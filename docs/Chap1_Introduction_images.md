@@ -93,11 +93,13 @@ Voici un résumé très succinct des différents types d'oeil que l'on rencontre
 On sépare ici les yeux en 3 grandes catégories :
 
 * Les **photorécepteurs** ou "ocelles" :
+
 Il s'agit d'un oeil très rudimentaire, ne permettant pas de construire une "image" de l'environnement de l'animal.
 Les ocelles sont au mieux capables de percevoir une variation de luminosité et une direction d'origine de la lumière.
 Chez certains animaux, ils sont présents en complément d'yeux plus complexes.
 
 * Les **yeux composés** :
+
 Il s'agit d'un **ensemble de photorécepteurs** appellés "ommatidies", chacun capable de **percevoir une portion du champ visuel** de l'animal.
 Une "image" sera composée plus tard par traitement cognitif.
 On les distingue en 2 sous-catégories, suivant si les photorécepteurs sont utilisés **indépendamment** (par "apposition") ou en **combinaison** (par "superposition").
@@ -105,6 +107,7 @@ Il s'agit d'un compromis entre **résolution** et **sensibilité** : un oeil com
 De manière générale, les yeux composés permettent un **grand champ de vision** et une **bonne détection des mouvements**.
 
 * Les **yeux imageurs** :
+
 Il s'agit d'un système optique **focalisant la lumière** au fond d'une **cavité recouverte de photorécepteurs** appellée "rétine".
 Une "image" est donc physiquement formée sur la rétine, à la manière d'une **chambre noire**.
 Il existe plusieurs méthodes pour focaliser la lumière : un "**sténopé**" (un trou suffisamment petit), un **miroir concave**, ou une **lentille**.
@@ -130,15 +133,50 @@ Il s'agit plus précisément de neurones spécialisés, utilisant des protéines
 Chez les humains, il existe 2 grands types de photorécepteurs :
 
 * Les **bâtonnets** (95% des photorécepteurs de la rétine) :
+
 Ces cellules sont **très sensibles**, avec un pic d'absorption aux alentours de 498 nm.
 Elles ne permettent pas de distinguer des couleurs, et sont en général saturées de jour.
 Par contre, elle nous permettent de voir dans des **environnements faiblement éclairés**, et de détecter des **mouvements en périphérie** de notre vision.
 
 * Les **cônes** (5% des photorécepteurs de la rétine) :
 
-Les bâtonnets et les cônes ne sont pas répartis uniformément sur la rétine.
+Chez les humains, ces cellules sont de **3 types**, Bleu / Vert / Rouge (ou Short / Medium / Long en anglais), avec des pics d'absorption différents aux alentours de 437 / 533 / 564 nm.
+Elles nous permettent ainsi de **distinguer les couleurs**, mais elles sont beaucoup moins sensibles et permettent un champ de vision beaucoup plus réduit que les cônes.
+Leur répartition sur la rétine n'est pas égalitaire, avec environ 10 / 30 / 60 %.
+
+La vision humaine est donc **trichromatique**, ce qui aura des conséquences en vision par ordinateurs.
+Cependant, ce n'est pas la norme dans le règne animal.
+Par exemple, les cétacés sont monochromates, la plupart des mammifères terrestres sont dichromates, la plupart des réptiles et des oiseaux sont tetrachromates.
+
+Nous reparlerons plus loin de la notion de "couleur".
+
+Il est important de noter que les bâtonnets et les cônes ne sont **pas répartis uniformément sur la rétine** : 
+
+* **La densité des cônes explose** entre -10 et 10° autour du centre de la rétine, alors que **la densité des bâtonnets diminue**.
+On appelle cette zone la "fovéa".
+
+* Il y a une **tâche dépourvue de photorécepteurs** entre 15 et 20° du centre de la rétine, correspondant à l'emplacement du **nerf optique**, dont nous reparlerons plus loin.
+On appelle cette zone "tâche aveugle".
+
+* La densité des bâtonnets diminue avec l'angle par rapport au centre de la rétine, mais ils restent **beaucoup plus denses que les cônes**.
+
+Cette répartition impacte directement le **champ de vision** humain, avec différentes types de vision suivant la direction d'où vient la lumière par rapport à l'oeil :
+
+
 
 ### Le cerveau, grand illusioniste
+
+
+
+Lors de sa lecture de notre environnement, le cerveau fait disparaitre différents éléments gênants sans que l'on s'en aperçoive :
+
+* Le nez
+
+* La tâche aveugle
+
+* Les vaisseaux sanguins de la rétine
+
+
 
 ### Computer vision
 
