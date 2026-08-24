@@ -80,7 +80,7 @@ Voyons rapidement comment ce processus fonctionne chez l'animal avant d'essayer 
 
 Dans les systèmes de vision animale, l'**oeil** est le **capteur**.
 
-Il s'agit d'un organe capable de **détecter la lumière** provenant d'une ou plusieurs **directions**, et de convertir cette information en **flux nerveux**.
+Il s'agit d'un organe capable de **détecter la lumière** provenant d'une ou plusieurs **directions**, et de convertir cette information en **influx nerveux**.
 Il est parfois capable de transmettre des **informations complémentaires** sur la lumière reçue (intensité, longueur d'onde, polarisation).
 
 Au cours de l'évolution, différents types d'oeil sont apparus dans le monde animal, avec **différentes méthodes** et **différents niveaux de complexité** suivant les contraintes environnementales auxquels les animaux sont soumis.
@@ -116,12 +116,27 @@ De nombreux animaux possèdent **plusieurs yeux**, ce qui leur permet d'**agrand
 **Les humains possèdent 2 yeux imageurs à lentilles**.
 Il n'est donc pas étonnant que la plupart des systèmes de vision par ordinateur utilisent également ce principe.
 
+Voici le structure de l'oeil humain schématisée :
+
+
+
+Nous verrons plus en détails son fonctionnement quand nous introduirons le concept de "caméra".
+
 Un point commun aux 3 catégories d'oeil que nous avons présentées est la présence de "**photorécépteurs*".
-Il s'agit de **cellules réagissant à la lumière** en générant un **flux nerveux**, à la manière d'un **transducteur**.
 
-Chez les animaux, il existe 2 grands types de photorécepteurs :
+Les photorécepteurs sont des **cellules réagissant à la lumière** en générant un **influx nerveux**, à la manière d'un **transducteur**.
+Il s'agit plus précisément de neurones spécialisés, utilisant des protéines photosensibles de la famille des "opsines" pour détecter les photons.
 
+Chez les humains, il existe 2 grands types de photorécepteurs :
 
+* Les **bâtonnets** (95% des photorécepteurs de la rétine) :
+Ces cellules sont **très sensibles**, avec un pic d'absorption aux alentours de 498 nm.
+Elles ne permettent pas de distinguer des couleurs, et sont en général saturées de jour.
+Par contre, elle nous permettent de voir dans des **environnements faiblement éclairés**, et de détecter des **mouvements en périphérie** de notre vision.
+
+* Les **cônes** (5% des photorécepteurs de la rétine) :
+
+Les bâtonnets et les cônes ne sont pas répartis uniformément sur la rétine.
 
 ### Le cerveau, grand illusioniste
 
@@ -203,7 +218,7 @@ Chez les animaux, il existe 2 grands types de photorécepteurs :
 
 ### La stéréoscopie
 
-### Le flux optique
+### Le influx optique
 
 ## La vision par ordinateur
 
