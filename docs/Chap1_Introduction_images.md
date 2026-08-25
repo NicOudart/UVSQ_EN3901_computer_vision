@@ -72,9 +72,66 @@ Ce que l'on nomme "**vision**" n'est donc pas que la perception de la lumière p
 
 Voyons rapidement comment ce processus fonctionne chez l'animal avant d'essayer de le reproduire avec une machine.
 
-### Intéraction lumière-surface
+### Intéractions lumière-matière
+
+La vision repose sur la perception de la **lumière** provenant de notre environnement.
+
+On rappelle que l'on nomme "lumière" un **rayonnement électromagnétiques** dont la longueur d'onde est située **entre 380 et 780 nm**, les rendant détectables par la vision humaine.
+Par extension, on parle parfois de "lumière visible" et de "lumière invisible" pour désigner des ondes électromagnétiques de longueur d'onde plus faible (infrarouge) ou plus élevée (ultraviolet).
+
+On divise les **sources de lumières** en 2 grandes catégories :
+
+* Les **sources primaires**, qui produisent leur propre lumière.
+Dans notre environnement, c'est par exemple le cas du soleil, des étoiles, des lampes allumées, du feu, ou des vers luisants.
+
+* Les **sources secondaires**, qui ne font que réfléchir la lumière générée par une source primaire.
+C'est le cas de la plupart des objets dans notre environnement.
+
+Lorsqu'une onde éléctromagnétique rencontre une interface entre 2 milieux d'indice de réfraction différents, elle est en partie **transmise**, en partie **absorbée**, et en partie **réfléchie**.
+
+Notre environnement est composé de nombreux objets dont la surface représente des **interfaces avec l'air**, dont l'indice de réfraction est plus faible.
+D'où le fait qu'une part de la lumière soit **réfléchie** à la surface de ces objets, en faisant des **sources de secondaires** de lumière.
+
+Il existe 2 grands types de réflexion de la lumière sur une surface :
+
+*
+
+*
 
 
+
+Il n'existe pas de source primaire capable d'émettre avec la même énergie pour toutes les longueurs d'ondes, comment il n'existe pas de surface réfléchissant avec la même énergie pour toutes les longueurs d'onde.
+
+* Une **source primaire** est caractérisée par son **spectre d'émission**, qui représente son irradiance en fonction de la longueur d'onde.
+
+* Une **source secondaire** est caractérisée par son **spectre de réflexion**, qui représente sa réflectance en fonction de la longueur d'onde.
+
+Il est clair que le **spectre de la lumière réfléchie** par une source secondaire dépendra à la fois du spectre de réfléxion de la source secondaire, **et** du spectre d'émission de la source primaire.
+
+Voici le spectre d'émission de notre source primaire la plus commune, le **soleil** :
+
+
+
+* Le spectre solaire étant proche de celui d'un **corps noir à 5777 K**, on ne s'attend pas à ce qu'un objet éclairé par celui-ci reçoive la même intensité lumineuse pour toutes les longueurs d'ondes.
+
+* De plus, le soleil n'étant **pas parfaitement homogène**, et sa lumière étant en partie **absorbée par son atmosphère**, le spectre solaire présente des pics et des creux l'éloignant encore plus d'un spectre uniforme.
+
+* Enfin, l'**atmosphère terrestre absorbe** aussi en partie le spectre solaire, modifiant encore le spectre qui nous éclaire à la surface de la Terre.
+
+On remarque néanmoins que la plage de la **lumière visible** est au niveau du **pic d'irradiance**. 
+On peut aussi noter que cette portion du spectre est **quasi-uniforme**. 
+
+Ce n'est donc pas un hasard si notre vision a évolué pour être sensible à ces longueurs d'ondes !
+
+Il faut néanmoins garder en tête que si le spectre d'émission solaire est presque uniforme à la surface de la Terre, cela reste **une approximation**.
+
+Quand on utilise une autre source primaire pour la vision, le spectre d'émission sera différence, et donc **le spectre de la lumière réfléchie par un objet sera différent**.
+
+Voici par exemple à quoi ressemble le spectre d'une LED blanche :
+
+
+
+Maintenant que nous avons vu les mécanismes à l'origine de la lumière issue de notre environnement, voyons comment cette lumière est captée par notre vision.
 
 ### L'oeil, organe de la vision
 
@@ -224,7 +281,15 @@ Lors de sa lecture de notre environnement, le cerveau fait disparaitre différen
 
 ### La photographie numérique
 
-### Réglages d'une caméra 
+### Réglages d'une caméra
+
+Le triangle d'exposition :
+
+* Ouverture
+
+* Vitesse d'obturation
+
+* Sensibilité ISO
 
 ## Numérisation d'une image : passer du monde continu au monde discret
 
