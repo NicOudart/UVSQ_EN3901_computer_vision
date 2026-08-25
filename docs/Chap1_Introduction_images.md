@@ -121,11 +121,20 @@ Il n'est donc pas étonnant que la plupart des systèmes de vision par ordinateu
 
 Voici la structure de l'oeil humain schématisée :
 
+![Anatomie de l'oeil humain](img/Chap1_human_eye_anatomy.png)
 
+* L' "iris" est un **diaphragme** qui permet d'ajuster la quantité de lumière entrant dans l'oeil.
+
+* Le "cristallin" est la **lentille** de l'oeil, qui lui permet de focaliser la lumière.
+Les muscles ciliaires permettent l'ajustement de la distance focale de la lentille.
+
+* La "rétine" est la couche de **photorécepteurs** tapissant le fond de l'oeil.
+
+* Le "nerf optique" permet de transmettre l'influx nerveux au **système cognitif**, dont nous parlerons dans la suite.
 
 Nous verrons plus en détails son fonctionnement quand nous introduirons le concept de "caméra".
 
-Un point commun aux 3 catégories d'oeil que nous avons présentées est la présence de "**photorécépteurs*".
+Un point commun aux 3 catégories d'oeil que nous avons présentées est la présence de "**photorécépteurs**".
 
 Les photorécepteurs sont des **cellules réagissant à la lumière** en générant un **influx nerveux**, à la manière d'un **transducteur**.
 Il s'agit plus précisément de neurones spécialisés, utilisant des protéines photosensibles de la famille des "opsines" pour détecter les photons.
@@ -140,21 +149,27 @@ Par contre, elle nous permettent de voir dans des **environnements faiblement é
 
 * Les **cônes** (5% des photorécepteurs de la rétine) :
 
-Chez les humains, ces cellules sont de **3 types**, Bleu / Vert / Rouge (ou Short / Medium / Long en anglais), avec des pics d'absorption différents aux alentours de 437 / 533 / 564 nm.
+Chez les humains, ces cellules sont de **3 types**, "Bleu" / "Vert" / "Rouge" (ou Short / Medium / Long en anglais), avec des pics d'absorption différents aux alentours de 437 / 533 / 564 nm.
 Elles nous permettent ainsi de **distinguer les couleurs**, mais elles sont beaucoup moins sensibles et permettent un champ de vision beaucoup plus réduit que les cônes.
 Leur répartition sur la rétine n'est pas égalitaire, avec environ 10 / 30 / 60 %.
 
+Voici des images de la rétine prises avec un microscope et des colorants :
 
+![Images de la rétine au microscope](img/Chap1_retina_microscope_image.png)
 
 La vision humaine est donc **trichromatique**, ce qui aura des conséquences en vision par ordinateurs.
 Cependant, ce n'est pas la norme dans le règne animal.
 Par exemple, les cétacés sont monochromates, la plupart des mammifères terrestres sont dichromates, la plupart des réptiles et des oiseaux sont tetrachromates.
 
-Nous reparlerons plus loin de la notion de "couleur".
+Voici le spectre d'absorption approximatif des photorécépteurs humains :
+
+![Spectre d'absorption des photorécepteurs humains](img/Chap1_photoreceptors_absorbance.png)
+
+Nous reparlerons plus loin de la notion de "couleur", qui peut être ambiguë.
 
 Il est important de noter que les bâtonnets et les cônes ne sont **pas répartis uniformément sur la rétine** : 
 
-
+![Répartition des photorécepteurs sur la rétine humaine](img/Chap1_photoreceptors_density.png)
 
 * **La densité des cônes explose** entre -10 et 10° autour du centre de la rétine, alors que **la densité des bâtonnets diminue**.
 On appelle cette zone la "fovéa".
@@ -166,7 +181,7 @@ On appelle cette zone "tâche aveugle".
 
 Cette répartition impacte directement le **champ de vision** humain, avec différentes types de vision suivant la direction d'où vient la lumière par rapport à l'oeil :
 
-
+![Champ visuel humain](img/Chap1_visual_field.png)
 
 * Le champ visuel de la lecture n'est qu'entre -10 et 10°.
 
@@ -176,9 +191,16 @@ Cette répartition impacte directement le **champ de vision** humain, avec diff�
 
 Alors que le champ visuel total humain peut s'étendre de -110 à 110° !
 
+Il est important d'avoir ces éléments de fonctionnement de l'oeil en tête pour comprendre les problématiques liées à la vision humaine, et à la vision par ordinateur qu'elle a inspiré.
+Mais comme nous l'avons évoqué plus tôt, la vision est plus compliquée que la simple acquisition d'une image, c'est aussi un **traitement cognitif** complexe !
+
 ### Le cerveau, grand illusioniste
 
+La perspective,
 
+La couleur,
+
+Le mouvement,
 
 Lors de sa lecture de notre environnement, le cerveau fait disparaitre différents éléments gênants sans que l'on s'en aperçoive :
 
