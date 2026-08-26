@@ -87,18 +87,29 @@ Dans notre environnement, c'est par exemple le cas du soleil, des étoiles, des 
 * Les **sources secondaires**, qui ne font que réfléchir la lumière générée par une source primaire.
 C'est le cas de la plupart des objets dans notre environnement.
 
-Lorsqu'une onde éléctromagnétique rencontre une interface entre 2 milieux d'indice de réfraction différents, elle est en partie **transmise**, en partie **absorbée**, et en partie **réfléchie**.
+Lorsqu'une onde éléctromagnétique rencontre une interface entre 2 milieux d'indice de réfraction différents, d'après la théorie de Fresnel, elle est en partie **transmise**, en partie **absorbée**, et en partie **réfléchie**.
 
 Notre environnement est composé de nombreux objets dont la surface représente des **interfaces avec l'air**, dont l'indice de réfraction est plus faible.
 D'où le fait qu'une part de la lumière soit **réfléchie** à la surface de ces objets, en faisant des **sources de secondaires** de lumière.
 
-Il existe 2 grands types de réflexion de la lumière sur une surface :
+En optique, on sépare les réflexions de la lumière sur une surface en 2 grandes catégories :
 
-*
+* La **réflexion spéculaire** :
 
-*
+Si une surface est **lisse**, et le matériau **homogène** au regard des longueurs d'ondes de la lumière incidente, la réflexion se fera dans **une direction**.
+Nous sommes ici dans le cas d'une loi de **Snell-Descartes simple**, et si l'intégralité de la lumière est réfléchie nous avons un **miroir parfait**.
+
+* La **réflexion diffuse** :
+
+Si la surface est **rugueuse**, ou le matériau **hétérogène** au regard des longueurs d'ondes de la lumière incidente, la réflexion se fera dans de **multiples directions**.
+Nous sommes ici dans face à une **multitude de réflexions** et **réfractions** sur de multiples interfaces, dans différentes directions.
+Si les réflexions sont suffisamment nombreuses, la source devient **lambertienne** : pour un angle d'incidence donné sa luminance est indépendante de l'angle avec lequel on l'observe.
+
+La lumière provenant d'une source secondaire n'est jamais parfaitement spéculaire ou parfaitement diffuse, mais elle est **plus ou moins proche d'un des 2 modèles**.
 
 
+
+L'**angle d'incidence** avec lequel une source primaire éclaire une source secondaire aura donc une importance sur la perception que nous en avons.
 
 Il n'existe pas de source primaire capable d'émettre avec la même énergie pour toutes les longueurs d'ondes, comment il n'existe pas de surface réfléchissant avec la même énergie pour toutes les longueurs d'onde.
 
