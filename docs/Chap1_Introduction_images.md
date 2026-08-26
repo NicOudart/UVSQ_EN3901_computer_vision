@@ -87,6 +87,8 @@ Dans notre environnement, c'est par exemple le cas du soleil, des étoiles, des 
 * Les **sources secondaires**, qui ne font que réfléchir la lumière générée par une source primaire.
 C'est le cas de la plupart des objets dans notre environnement.
 
+![Exemples de sources de lumière primaire et secondaire](img/Chap1_primary_secondary_light_source.png)
+
 Lorsqu'une onde éléctromagnétique rencontre une interface entre 2 milieux d'indice de réfraction différents, d'après la théorie de Fresnel, elle est en partie **transmise**, en partie **absorbée**, et en partie **réfléchie**.
 
 Notre environnement est composé de nombreux objets dont la surface représente des **interfaces avec l'air**, dont l'indice de réfraction est plus faible.
@@ -107,7 +109,7 @@ Si les réflexions sont suffisamment nombreuses, la source devient **lambertienn
 
 La lumière provenant d'une source secondaire n'est jamais parfaitement spéculaire ou parfaitement diffuse, mais elle est **plus ou moins proche d'un des 2 modèles**.
 
-
+![Exemples de réflexion spéculaire et diffuse](img/Chap1_specular_diffuse_reflection.png)
 
 L'**angle d'incidence** avec lequel une source primaire éclaire une source secondaire aura donc une importance sur la perception que nous en avons.
 
