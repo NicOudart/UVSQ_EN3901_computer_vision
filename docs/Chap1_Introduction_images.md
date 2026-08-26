@@ -21,7 +21,7 @@ Vous trouverez la première [ici](https://github.com/NicOudart/UVSQ_EN3901_compu
 
 Il s'agit d'une photographie d'un _Ocypode quadrata_, aussi connu sous le nom de "Atlantic Ghost Crab", prise en 2023 à Padre Island National Seashore (Texas, USA).
 
-![Image exemple du Chapitre 1](img/Chap1_exemple_image_ghost_crab.png)
+![Image exemple du Chapitre 1](img/Chap1_example_image_ghost_crab.png)
 
 Sauf cas spécifique, nous utiliserons cette image dans les cas où un seul exemple est suffisant.
 
@@ -29,7 +29,7 @@ Vous trouverez [ici](https://github.com/NicOudart/UVSQ_EN3901_computer_vision/bl
 
 Il s'agit de photographies d'un _Cardisoma guanhumi_, ou "Crabe de terre blue", prises en 2012 en Guadeloupe (Antilles françaises), avec des paramètres et un angle de vue différents.
 
-![Image exemple du Chapitre 1](img/Chap1_exemple_image_land_crab.png)
+![Image exemple du Chapitre 1](img/Chap1_example_image_land_crab.png)
 
 Sauf cas spécifique, nous utiliserons ces images dans les cas où une image de référence est nécessaire en plus d'une image exemple.
 
@@ -53,7 +53,7 @@ _Mais comment sommes-nous capables de comprendre le monde qui nous entoure à pa
 
 Imaginez que vous assistiez à la scène suivante :
 
-![Vision d'un crabe](img/Chap1_exemple_image_ghost_crab.png)
+![Vision d'un crabe](img/Chap1_example_image_ghost_crab.png)
 
 _Que voyez-vous ?_
 
@@ -375,41 +375,41 @@ Le triangle d'exposition :
 
 ### Luminosité
 
-![Exemple de retouche de luminosité](img/Chap1_exemple_luminosite.png)
+![Exemple de retouche de luminosité](img/Chap1_example_luminosity.png)
 
 ### Contraste
 
-![Exemple de retouche de contraste](img/Chap1_exemple_contraste.png)
+![Exemple de retouche de contraste](img/Chap1_example_contrast.png)
 
 ### Saturation
 
-![Exemple de retouche de saturation](img/Chap1_exemple_saturation.png)
+![Exemple de retouche de saturation](img/Chap1_example_saturation.png)
 
 ## Les histogrammes : étalonner des images
 
 ### Analyse des histogrammes
 
-![Exemple d'histogramme pour une image en noir et blanc](img/Chap1_exemple_histogrammes_grayscale.png)
+![Exemple d'histogramme pour une image en noir et blanc](img/Chap1_example_histograms_grayscale.png)
 
-![Exemple d'histogramme pour une image en couleurs](img/Chap1_exemple_histogrammes_couleurs.png)
+![Exemple d'histogramme pour une image en couleurs](img/Chap1_example_histograms_colors.png)
 
 ### Histogram equalization
 
-![Exemple d'application noir et blanc de l'histogram equalization](img/Chap1_exemple_grayscale_histogram_equalization.png)
+![Exemple d'application noir et blanc de l'histogram equalization](img/Chap1_example_grayscale_histogram_equalization.png)
 
-![Histogrammes avant et après l'histogram equalization](img/Chap1_exemple_grayscale_histogram_equalization_histogrammes.png)
+![Histogrammes avant et après l'histogram equalization](img/Chap1_example_grayscale_histogram_equalization_histograms.png)
 
-![Exemple d'application HSV de l'histogram equalization](img/Chap1_exemple_histogram_equalization.png)
+![Exemple d'application HSV de l'histogram equalization](img/Chap1_example_histogram_equalization.png)
 
-![Exemple d'application noir et blanc de CLAHE](img/Chap1_exemple_grayscale_CLAHE.png)
+![Exemple d'application noir et blanc de CLAHE](img/Chap1_example_grayscale_CLAHE.png)
 
-![Exemple d'application HSV de CLAHE](img/Chap1_exemple_CLAHE.png)
+![Exemple d'application HSV de CLAHE](img/Chap1_example_CLAHE.png)
 
 ### Histogram matching
 
-![Exemple d'application de l'histogram matching](img/Chap1_exemple_histogram_matching.png)
+![Exemple d'application de l'histogram matching](img/Chap1_example_histogram_matching.png)
 
-![Histogrammes avant et après matching](img/Chap1_exemple_histogram_matching_histogrammes.png)
+![Histogrammes avant et après matching](img/Chap1_exemple_histogram_matching_histograms.png)
 
 ## A la recherche des dimensions perdues
 
