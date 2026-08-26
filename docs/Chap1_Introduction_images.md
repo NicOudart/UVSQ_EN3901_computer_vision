@@ -409,7 +409,7 @@ Le triangle d'exposition :
 
 ![Exemple d'application de l'histogram matching](img/Chap1_example_histogram_matching.png)
 
-![Histogrammes avant et après matching](img/Chap1_exemple_histogram_matching_histograms.png)
+![Histogrammes avant et après matching](img/Chap1_example_histogram_matching_histograms.png)
 
 ## A la recherche des dimensions perdues
 
