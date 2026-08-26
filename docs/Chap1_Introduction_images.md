@@ -1,7 +1,7 @@
 # Chapitre I : Introduction à la vision par ordinateur
 
 Ce chapitre introduit des notions essentielles pour ce cours telles que la capture, la numérisation, l'affichage et la retouche d'images.
-Il amènera ainsi petit à petit le concept de "vision", et la discipline de la "vision par ordinateur".
+Il amènera ainsi petit à petit le concept de "vision", et la discipline de la "vision par ordinateur" (ou "computer vision" en anglais).
 
 ![En-tête chapitre I](img/Chap1_header.png)
 
@@ -264,12 +264,38 @@ Mais comme nous l'avons évoqué plus tôt, la vision est plus compliquée que l
 
 ### Le cerveau, grand illusioniste
 
-La perspective,
+Si l'oeil est le capteur de notre système visuel, **nous ne percevons jamais l'image brute formée sur notre rétine** ou **le signal brut** généré par chacun de ces photorécepteurs.
+Et c'est quelque chose qu'il faut avoir en tête quand on parle de la vision humaine !
 
-La couleur,
+Nous "voyons" en réalité une représentation **filtrée**, **modifiée** et **interprétée** de notre environnement, et ceci sans même nous en rendre compte.
 
-Le mouvement,
+**Notre cerveau est un grand illusioniste**.
 
+Voici une représentation schématique du système nerveux visuel humain :
+
+
+
+* Une fois la lumière transformée en influx nerveux par nos yeux, ce signal est transmis vers le **cerveau** par le **nerf optique** de chaque oeil.
+
+* Les 2 nerfs se croisent au niveau du **chiasma optique**. 
+Là, les informations de la partie gauche de chaque retine passent à droite, et les informations de la partie droite de chaque rétine passent à gauche.
+Ainsi, le champ visuel droit sera traité par l'hémisphère gauche du cerveau, et le champ visuel gauche par l'hémisphère droit, en **stéréoscopie**.
+
+* Les informations ainsi séparées vont ensuite dans une partie du thalamus appelée **corps genouillé latéral**.
+Des **traitements** et **filtres** sont appliqués aux signaux, en conservant l'information de position sur la rétine.
+Les informations sont ensuite relayés au cortex visuel.
+
+* Le **cortex visuel primaire** est la première couche de traitement cognitif complexe.
+Elle va extraire des informations de **contours**, de **contrastes**, de **mouvements**, de **position** dans le champ visuel.
+Ces informations vont être transmises aux autres aires du cortex visuel.
+
+* Les autres aires du **cortex visuel** vont permettre les **interprétations** complexes nécessaire à la vision : détection d'objets, reconnaissance, couleurs, trajectoires, etc.
+
+Il est à noter que ce trajet de l'information est plein de **rétroactions**, et que le cerveau **combine les informations** des yeux avec celles d'autres sens et de la mémoire.
+
+Nous allons voir quelques **traitements** et **interprétations** que fait notre cerveau pour notre vision.
+
+Parlons d'abord de **filtrage**.
 Lors de sa lecture de notre environnement, le cerveau fait disparaitre différents éléments gênants sans que l'on s'en aperçoive :
 
 * Le nez
@@ -278,7 +304,30 @@ Lors de sa lecture de notre environnement, le cerveau fait disparaitre différen
 
 * Les vaisseaux sanguins de la rétine
 
+Parmi les autres **traitements** appliqués aux signaux provenant de nos yeux, on peut citer le **retournement de l'image**, qui est projetée à l'envers sur la rétine par notre cristallin.
+Nous en reparlerons quand nous introduirons le concept de "caméra".
 
+Parlons à présent des **interprétations "simples"** réalisées par notre cerveau.
+
+La perspective,
+
+Les contours,
+
+La **couleur** est une construction du cerveau.
+
+Le mouvement,
+
+Et enfin, parlons des **interprétations les plus complexes**.
+
+La reconnaissance d'objets
+
+La reconnaissance de visages
+
+L'estimation de la distance
+
+L'estimation du mouvement
+
+Lorsque l'on met en place un système de **vision par ordinateur**, on cherchera donc à reproduire un **oeil**, et aussi le processus de **traitement** et d'**interprétation** du cerveau !
 
 ### Computer vision
 
