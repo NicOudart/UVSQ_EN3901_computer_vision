@@ -360,15 +360,20 @@ Si la longueur d'onde de la lumière reçue par notre oeil est une grandeur phys
 Les 3 types de cônes de notre rétine réagissent plus ou moins à la lumière reçue suivant sa longueur d'onde, et leur spectre d'absorption.
 Le cerveau créé alors à partir des signaux reçus une sensation appelée "couleur".
 
+D'ailleurs, on peut percevoir une même couleur pour des spectres reçus différents.
+C'est ce que l'on appelle des **couleurs métamères**.
+
 Mais ce n'est pas pour autant que le concept de "couleur" ne peut pas être théorisé !
 Nous reparlerons plus tard de la théorie des couleurs.
 En attendant, si vous voulez vous convaincre du fait que les couleurs sont des constructions mentales, posez-vous la question suivante :
 _Comment décririez-vous le rose à quelqu'un qui n'a jamais vu les couleurs ?_
 
-La couleur étant une construction du cerveau, celui-ci peut en modifier la perception **selon le contexte**, afin de faciliter notre interprétation de l'environnement.
+La couleur étant une construction du cerveau, celui-ci peut en modifier notre perception **selon le contexte**, afin de faciliter notre interprétation de l'environnement.
 
 Il est par exemple très important que nous soyons capables d'identifier un objet peu importe son éclairage.
 Dans ce but, notre cerveau applique le principe de la "**constance des couleurs**".
+
+
 
 Le mouvement,
 
@@ -470,7 +475,7 @@ Le triangle d'exposition :
 
 ### La stéréoscopie
 
-### Le influx optique
+### Le flux optique
 
 ## La vision par ordinateur
 
