@@ -315,9 +315,26 @@ Le cerveau croise la perception des 2 yeux pour faire disparaitre votre nez.
 
 * La **tâche aveugle** :
 
+Comme nous l'avions mentionné plus tôt, la zone de la rétine autour du nerf optique est dépourvue de photorécpteurs.
+On parle alors de "tâche aveugle", car l'oeil est incapable de détecter la portion de l'image projetée sur cette partie de la rétine.
+Et pourtant, même si vous fermez un oeil, vous ne voyez pas une tâche noire dans votre champ de vision.
+Votre cerveau rempli le vide.
+
+En 1668, le physicien Edme Mariotte réalise une expérience que vous pouvez facilement reproduire chez vous.
+Cachez votre oeil droit avec votre main, et regardez fixement avec votre oeil gauche la croix blanche à droite sur ce dessin :
+
 ![Expérience de Mariotte](img/Chap1_illusion_blind_spot.png)
 
+Avancez ou reculez votre visage de l'écran.
+A un moment, comme par magie, le cercle blanc à gauche disparait !
+
+Vous avez trouvé la distance pour laquelle le cercle est projeté sur la tâche aveugle de votre oeil, et votre cerveau a complété avec le bleu qui entoure le cercle.
+
 * Les **vaisseaux sanguins** de la rétine :
+
+La rétine est constituée de cellules vivantes, et elle a donc besoin d'être irriguée par des vaisseaux sanguins.
+
+
 
 ![Vascularisation de la rétine humaine](img/Chap1_retina_image.png)
 
