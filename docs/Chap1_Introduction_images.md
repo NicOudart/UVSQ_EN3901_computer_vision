@@ -306,11 +306,20 @@ Nous allons voir quelques **traitements** et **interprétations** que fait notre
 Parlons d'abord de **filtrage**.
 Lors de sa lecture de notre environnement, le cerveau fait disparaitre différents éléments gênants sans que l'on s'en aperçoive :
 
-* Le nez
+* Le **nez** :
 
-* La tâche aveugle
+C'est le plus évident.
+Votre nez représente une portion non-négligeable de votre champ de vision, et pourtant à moins de vous concentrer dessus, vous ne le voyez jamais.
+Si vous fermez un oeil, il réapparait.
+Le cerveau croise la perception des 2 yeux pour faire disparaitre votre nez. 
 
-* Les vaisseaux sanguins de la rétine
+* La **tâche aveugle** :
+
+![Expérience de Mariotte](img/Chap1_illusion_blind_spot.png)
+
+* Les **vaisseaux sanguins** de la rétine :
+
+![Vascularisation de la rétine humaine](img/Chap1_retina_image.png)
 
 Parmi les autres **traitements** appliqués aux signaux provenant de nos yeux, on peut citer le **retournement de l'image**, qui est projetée à l'envers sur la rétine par notre cristallin.
 Nous en reparlerons quand nous introduirons le concept de "caméra".
