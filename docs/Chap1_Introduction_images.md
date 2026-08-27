@@ -96,6 +96,8 @@ D'où le fait qu'une part de la lumière soit **réfléchie** à la surface de c
 
 En optique, on sépare les réflexions de la lumière sur une surface en 2 grandes catégories :
 
+![Principe de la réflexion spéculaire et diffuse](img/Chap1_reflection_models.png)
+
 * La **réflexion spéculaire** :
 
 Si une surface est **lisse**, et le matériau **homogène** au regard des longueurs d'ondes de la lumière incidente, la réflexion se fera dans **une direction**.
@@ -123,7 +125,7 @@ Il est clair que le **spectre de la lumière réfléchie** par une source second
 
 Voici le spectre d'émission de notre source primaire la plus commune, le **soleil** :
 
-
+![Spectre d'émission du soleil](img/Chap1_solar_spectrum.png)
 
 * Le spectre solaire étant proche de celui d'un **corps noir à 5777 K**, on ne s'attend pas à ce qu'un objet éclairé par celui-ci reçoive la même intensité lumineuse pour toutes les longueurs d'ondes.
 
@@ -140,9 +142,9 @@ Il faut néanmoins garder en tête que si le spectre d'émission solaire est pre
 
 Quand on utilise une autre source primaire pour la vision, le spectre d'émission sera différence, et donc **le spectre de la lumière réfléchie par un objet sera différent**.
 
-Voici par exemple à quoi ressemble le spectre d'une LED blanche :
+Voici par exemple le spectre d'une lampe à incandescence et le spectre d'une LED blanche, comparés au spectre solaire :
 
-
+![Spectres d'émission de lampes comparés au soleil](img/Chap1_lamp_spectrum.png)
 
 Maintenant que nous avons vu les mécanismes à l'origine de la lumière issue de notre environnement, voyons comment cette lumière est captée par notre vision.
 
