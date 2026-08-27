@@ -277,19 +277,23 @@ Nous "voyons" en réalité une représentation **filtrée**, **modifiée** et **
 
 Voici une représentation schématique du système nerveux visuel humain :
 
+![Système nerveux visuel humain](img/Chap1_human_visual_system.png)
 
+* La lumière transformée en **influx nerveux** par nos yeux.
+Ce signal est transmis vers le **cerveau** par le **nerf optique** de chaque oeil.
 
-* Une fois la lumière transformée en influx nerveux par nos yeux, ce signal est transmis vers le **cerveau** par le **nerf optique** de chaque oeil.
+* Les 2 nerfs se croisent au niveau du **chiasma optique**.
 
-* Les 2 nerfs se croisent au niveau du **chiasma optique**. 
 Là, les informations de la partie gauche de chaque retine passent à droite, et les informations de la partie droite de chaque rétine passent à gauche.
 Ainsi, le champ visuel droit sera traité par l'hémisphère gauche du cerveau, et le champ visuel gauche par l'hémisphère droit, en **stéréoscopie**.
 
 * Les informations ainsi séparées vont ensuite dans une partie du thalamus appelée **corps genouillé latéral**.
+
 Des **traitements** et **filtres** sont appliqués aux signaux, en conservant l'information de position sur la rétine.
 Les informations sont ensuite relayés au cortex visuel.
 
 * Le **cortex visuel primaire** est la première couche de traitement cognitif complexe.
+
 Elle va extraire des informations de **contours**, de **contrastes**, de **mouvements**, de **position** dans le champ visuel.
 Ces informations vont être transmises aux autres aires du cortex visuel.
 
