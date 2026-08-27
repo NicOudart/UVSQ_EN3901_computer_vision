@@ -301,7 +301,7 @@ Ces informations vont être transmises aux autres aires du cortex visuel.
 
 Il est à noter que ce trajet de l'information est plein de **rétroactions**, et que le cerveau **combine les informations** des yeux avec celles d'autres sens et de la mémoire.
 
-Nous allons voir quelques **traitements** et **interprétations** que fait notre cerveau pour notre vision.
+**Nous allons voir quelques traitements et interprétations que fait notre cerveau pour notre vision**.
 
 Parlons d'abord de **filtrage**.
 Lors de sa lecture de notre environnement, le cerveau fait disparaitre différents éléments gênants sans que l'on s'en aperçoive :
@@ -333,10 +333,17 @@ Vous avez trouvé la distance pour laquelle le cercle est projeté sur la tâche
 * Les **vaisseaux sanguins** de la rétine :
 
 La rétine est constituée de cellules vivantes, et elle a donc besoin d'être irriguée par des vaisseaux sanguins.
-
-
+Nous devrions donc voir en permanence les vaisseaux sanguins passant devant les photorécepteurs.
+Mais leur position étant constante, nous cerveau les supprime de notre vue sans que nous nous en apercevions.
 
 ![Vascularisation de la rétine humaine](img/Chap1_retina_image.png)
+
+Il est néanmoins possible tromper votre cerveau pour les faire apparaitre.
+Mettez-vous dans l'obscurité, allumez une lampe, et fermez un oeil.
+Secouez votre lampe juste en dessous de votre oeil ouvert.
+Vous devriez voir apparaitre les vaisseaux sanguins de votre rétine !
+
+Secouer la lampe fait bouger l'ombre des vaisseaux sanguins sur votre rétine, qui rend plus difficile le traitement pour votre cerveau.
 
 Parmi les autres **traitements** appliqués aux signaux provenant de nos yeux, on peut citer le **retournement de l'image**, qui est projetée à l'envers sur la rétine par notre cristallin.
 Nous en reparlerons quand nous introduirons le concept de "caméra".
@@ -348,6 +355,20 @@ La perspective,
 Les contours,
 
 La **couleur** est une construction du cerveau.
+
+Si la longueur d'onde de la lumière reçue par notre oeil est une grandeur physique mesurable, ce n'est pas directement ce que nous voyons.
+Les 3 types de cônes de notre rétine réagissent plus ou moins à la lumière reçue suivant sa longueur d'onde, et leur spectre d'absorption.
+Le cerveau créé alors à partir des signaux reçus une sensation appelée "couleur".
+
+Mais ce n'est pas pour autant que le concept de "couleur" ne peut pas être théorisé !
+Nous reparlerons plus tard de la théorie des couleurs.
+En attendant, si vous voulez vous convaincre du fait que les couleurs sont des constructions mentales, posez-vous la question suivante :
+_Comment décririez-vous le rose à quelqu'un qui n'a jamais vu les couleurs ?_
+
+La couleur étant une construction du cerveau, celui-ci peut en modifier la perception **selon le contexte**, afin de faciliter notre interprétation de l'environnement.
+
+Il est par exemple très important que nous soyons capables d'identifier un objet peu importe son éclairage.
+Dans ce but, notre cerveau applique le principe de la "**constance des couleurs**".
 
 Le mouvement,
 
