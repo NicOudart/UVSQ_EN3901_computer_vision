@@ -378,9 +378,48 @@ L'origine du débat est la difficulté à identifier l'éclairage de la robe sur
 Suivant l'a priori que prend votre cerveau sur l'éclairage, il interprétera différement la couleur de la robe : votre ressenti sera différent.
 Et pourtant, on peut facilement vérifier que dans les 2 cas, le spectre réfléchi est **strictement le même** !
 
-Nous reparlerons plus loin des couleurs et de la "colorimétrie".
+Nous reparlerons plus loin des couleurs et introduirons le concept de "colorimétrie".
 
-#### Contours et perspective
+#### Découpage des contours et objets
+
+Pour donner du sens à ce que nous voyons, notre cerveau cherche en permanence à **découper des formes** dans l'image que nous percevons.
+
+Le but est évident : déliminer les **contours des objets** dans notre environnement, et les séparer de l'arrière-plan, pour les identifier par la suite.
+
+Pour  voir ce travail à l'oeuvre, voici 2 illusions d'optique célèbres :
+
+![Illusions de Kanizsa et Rubin](img/Chap1_illusion_kanizsa_rubin.gif)
+
+Dans la 1ère illusion, notre cerveau délimite un triangle qui n'est pourtant pas dessiné explicitement.
+Dans la 2nde illusion, notre cerveau ne sait pas s'il doit séparer un vase noir d'un arrière-plan blanc, ou 2 visages blancs d'un arrière-plan noir.
+
+Nous reparlerons plus loin des problématiques de détection de contours et de segmentation d'images.
+
+#### Estimation de la taille et des distances
+
+Sans que nous nous en rendions compte, notre cerveau réalise en permance des estimations de **taille** et de **distance** des objets qui nous entourent.
+
+Pour des objets suffisamment **proches**, comme nous avons 2 yeux, le cerveau peut utiliser la **stéréoscopie**.
+Nous en reparlerons plus loin.
+
+Pour des objets **lointains**, notre cerveau doit se baser sur des **indices dans l'image**.
+Par exemple :
+
+* Les lignes droites, les ombres ou la diminution de la taille apparente d'objets connu, afin de comprendre la perspective.
+
+* La taille apparente d'un objet inconnu par rapport à un objet connu se situant à côté.
+
+* Le souvenir de la taille que peut raisonnablement faire un type d'objet.
+
+Les estimations de taille et de distance d'un objet par le cerveau vont donc **dépendre du contexte** de l'environnement.
+
+On peut facilement voir ce travail à l'oeuvre, en essayant de tromper notre cerveau sur la taille d'un trait ou d'un cercle.
+Voici 2 illusions d'optique connues à ce sujet :
+
+![Illusions de Ponzo et Ebbinghaus](img/Chap1_illusion_ponzo_ebbinghaus.gif)
+
+Vous avez aussi probablement eu un jour la sensation que la lune était plus grande dans le ciel, ou plus proche que d'habitude.
+Il s'agit également d'une illusion : la taille apparente de la lune dans le ciel ne change pas de manière perceptible.
 
 #### Persistance rétinienne et effet phi
 
@@ -388,7 +427,8 @@ Nous reparlerons plus loin des couleurs et de la "colorimétrie".
 
 
 
-Lorsque l'on met en place un système de **vision par ordinateur**, on cherchera donc à reproduire un **oeil**, et aussi le processus de **traitement** et d'**interprétation** du cerveau !
+Lorsque l'on met en place un système de **vision par ordinateur**, on cherche à reproduire la vision humaine avec une machine.
+Et nous avons vu que reproduire la vision humaine, ce n'est pas seulement reproduire le capteur, notre **oeil**, mais aussi reproduire le processus de **traitement** et d'**interprétation** du cerveau !
 
 ### Computer vision
 
