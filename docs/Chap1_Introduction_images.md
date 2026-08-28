@@ -439,9 +439,12 @@ On parle de **mouvement apparent**.
 
 Voici un exemple simple :
 
+![Mouvement apparent par effet phi](img/Chap1_illusion_motion.gif)
 
+On a l'impression de voir les ronds rouge-orange-jaune se déplacer les uns après les autres, alors qu'il ne s'agit que d'une suite d'images avec des ronds blancs changeant de couleur d'une image à l'autre.
+Notre cerveau crée la sensation de mouvement.
 
-Si cette illusion est particulièrement intéressante, c'est parce qu'elle va nous être utile dans la suite de ce cours, quand nous parlerons de **vidéos** et de **temps de rafraichissement d'écran**.
+Si ce type d'illusion est particulièrement intéressante, c'est parce qu'elle va nous être utile dans la suite de ce cours, quand nous parlerons de "flux optique" et de "temps de rafraichissement d'écran".
 
 |Nota Bene|
 |:-|
@@ -451,10 +454,27 @@ Si cette illusion est particulièrement intéressante, c'est parce qu'elle va no
 
 #### Interprétations complexes
 
+Nous avons vu que notre cerveau filtre les informations inutiles, interprète les couleurs, les contours, les tailles, les distances et les mouvements.
+Mais il est capable d'un niveau d'interprétation supérieur.
 
+Vous pouvez d'un seul regard :
+
+* Mettre un nom sur un visage familier.
+
+* Comprendre les panneaux de signalisation sur la route.
+
+* Anticiper la trajectoire d'un ballon pour l'attraper.
+
+* Repérer un fruit mûr sur un étalage.
+
+* Deviner au visage de quelqu'un s'il est heureux ou triste.
+
+Ces tâches qui vous paraissent faciles demandent en réalité un **processus cognitif très complexe !**
 
 Lorsque l'on met en place un système de **vision par ordinateur**, on cherche à reproduire la vision humaine avec une machine.
 Et nous avons vu que reproduire la vision humaine, ce n'est pas seulement reproduire le capteur, notre **oeil**, mais aussi reproduire le processus de **traitement** et d'**interprétation** du cerveau !
+
+Nous reparlerons à la fin de ce chapitre des principales catégories de problématiques en vision par ordinateur.
 
 ### Computer vision
 
