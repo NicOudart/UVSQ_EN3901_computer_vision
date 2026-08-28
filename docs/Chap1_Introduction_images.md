@@ -275,6 +275,8 @@ Nous "voyons" en réalité une représentation **filtrée**, **modifiée** et **
 
 **Notre cerveau est un grand illusioniste**.
 
+#### Le système nerveux visuel humain
+
 Voici une représentation schématique du système nerveux visuel humain :
 
 ![Système nerveux visuel humain](img/Chap1_human_visual_system.png)
@@ -302,6 +304,8 @@ Ces informations vont être transmises aux autres aires du cortex visuel.
 Il est à noter que ce trajet de l'information est plein de **rétroactions**, et que le cerveau **combine les informations** des yeux avec celles d'autres sens et de la mémoire.
 
 **Nous allons voir quelques traitements et interprétations que fait notre cerveau pour notre vision**.
+
+#### Faire disparaitre les 
 
 Parlons d'abord de **filtrage**.
 Lors de sa lecture de notre environnement, le cerveau fait disparaitre différents éléments gênants sans que l'on s'en aperçoive :
@@ -348,44 +352,41 @@ Secouer la lampe fait bouger l'ombre des vaisseaux sanguins sur votre rétine, q
 Parmi les autres **traitements** appliqués aux signaux provenant de nos yeux, on peut citer le **retournement de l'image**, qui est projetée à l'envers sur la rétine par notre cristallin.
 Nous en reparlerons quand nous introduirons le concept de "caméra".
 
-Parlons à présent des **interprétations "simples"** réalisées par notre cerveau.
+#### La couleur est une construction du cerveau.
 
-La perspective,
+Si le spectre réfléchi reçu par notre oeil est une grandeur physique mesurable, **ce n'est pas directement ce que nous voyons**.
+Notre cerveau reçoit les stimuli provenant des 3 types de cônes, et les converti en une sensation que nous appelons "couleur".
 
-Les contours,
+La couleur n'est donc pas une propriété des objets de notre environnement, mais une **construction mentale** qui va dépendre du spectre réfléchi par les objets et du spectre d'absorption des cônes.
 
-La **couleur** est une construction du cerveau.
-
-Si la longueur d'onde de la lumière reçue par notre oeil est une grandeur physique mesurable, ce n'est pas directement ce que nous voyons.
-Les 3 types de cônes de notre rétine réagissent plus ou moins à la lumière reçue suivant sa longueur d'onde, et leur spectre d'absorption.
-Le cerveau créé alors à partir des signaux reçus une sensation appelée "couleur".
-
-D'ailleurs, on peut percevoir une même couleur pour des spectres reçus différents.
+Pour preuve, on peut percevoir une même couleur pour des spectres reçus différents.
 C'est ce que l'on appelle des **couleurs métamères**.
 
-Mais ce n'est pas pour autant que le concept de "couleur" ne peut pas être théorisé !
-Nous reparlerons plus tard de la théorie des couleurs.
-En attendant, si vous voulez vous convaincre du fait que les couleurs sont des constructions mentales, posez-vous la question suivante :
-_Comment décririez-vous le rose à quelqu'un qui n'a jamais vu les couleurs ?_
+![Principe des couleurs métamères](img/Chap1_metamerism.gif)
 
-La couleur étant une construction du cerveau, celui-ci peut en modifier notre perception **selon le contexte**, afin de faciliter notre interprétation de l'environnement.
+La couleur étant une construction du cerveau, celui-ci peut en **modifier notre perception selon le contexte**, afin de faciliter notre interprétation de l'environnement.
+Par exemple, le cerveau adapte notre perception de la couleur en fonction de l'éclairage, afin que nous soyons capable de reconnaitre un objet peu importe son éclairage.
+C'est ce que l'on appelle le principe de "constance des couleurs".
 
-Il est par exemple très important que nous soyons capables d'identifier un objet peu importe son éclairage.
-Dans ce but, notre cerveau applique le principe de la "**constance des couleurs**".
+En 2015 apparait sur les réseaux sociaux le meme "The dress".
+Il s'agit de l'incapacité des internautes à identifier la couleur d'une robe sur une photo : bleu et noir ou jaune et blanc ?
+
+L'origine du débat est la difficulté à identifier l'éclairage de la robe sur la photo : est-il jaune ou bleu ?
+
+![Illusion du meme "The dress"](img/Chap1_illusion_the_dress.gif)
+
+Suivant l'a priori que prend votre cerveau sur l'éclairage, il interprétera différement la couleur de la robe : votre ressenti sera différent.
+Et pourtant, on peut facilement vérifier que dans les 2 cas, le spectre réfléchi est **strictement le même** !
+
+Nous reparlerons plus loin des couleurs et de la "colorimétrie".
+
+#### Contours et perspective
+
+#### Persistance rétinienne et effet phi
+
+#### Interprétations complexes
 
 
-
-Le mouvement,
-
-Et enfin, parlons des **interprétations les plus complexes**.
-
-La reconnaissance d'objets
-
-La reconnaissance de visages
-
-L'estimation de la distance
-
-L'estimation du mouvement
 
 Lorsque l'on met en place un système de **vision par ordinateur**, on cherchera donc à reproduire un **oeil**, et aussi le processus de **traitement** et d'**interprétation** du cerveau !
 
