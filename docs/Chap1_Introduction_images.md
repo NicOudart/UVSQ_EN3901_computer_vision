@@ -305,7 +305,7 @@ Il est à noter que ce trajet de l'information est plein de **rétroactions**, e
 
 **Nous allons voir quelques traitements et interprétations que fait notre cerveau pour notre vision**.
 
-#### Faire disparaitre les 
+#### Faire disparaitre les informations inutiles
 
 Parlons d'abord de **filtrage**.
 Lors de sa lecture de notre environnement, le cerveau fait disparaitre différents éléments gênants sans que l'on s'en aperçoive :
@@ -421,7 +421,33 @@ Voici 2 illusions d'optique connues à ce sujet :
 Vous avez aussi probablement eu un jour la sensation que la lune était plus grande dans le ciel, ou plus proche que d'habitude.
 Il s'agit également d'une illusion : la taille apparente de la lune dans le ciel ne change pas de manière perceptible.
 
-#### Persistance rétinienne et effet phi
+#### L'apparence du mouvement
+
+Tous les objets de notre environnement ne sont pas fixes, et il est donc vital pour notre système visuel d'être capable de **percevoir le mouvement**.
+
+Si nos yeux restent fixes et qu'un objet se déplace par rapport à nous, l'image formée sur nos rétine va changer, se qui va modifier les stimuli reçus par notre cerveau.
+Reste alors à reconnaitre que la modification des stimuli correspond au déplacement d'un même objet, ce qui est loin d'être simple !
+Et pourtant, notre cerveau le fait sans même que nous nous en appercevions.
+
+Nous reparlerons plus tard de la perception du mouvement.
+
+Néanmoins, il y a un point intéressant à aborder pour la suite : on peut tromper notre cerveau pour se donner l'illusion de mouvement.
+Vous le savez déjà, c'est le principe utilisé pour le **cinéma**.
+
+Si on fait défiler suffisamment vite devant nos yeux une succession d'images fixes représentant un même objet à différentes positions, nous aurons l'impression du mouvement.
+On parle de **mouvement apparent**.
+
+Voici un exemple simple :
+
+
+
+Si cette illusion est particulièrement intéressante, c'est parce qu'elle va nous être utile dans la suite de ce cours, quand nous parlerons de **vidéos** et de **temps de rafraichissement d'écran**.
+
+|Nota Bene|
+|:-|
+|Dans la culture populaire, le phénomène du "mouvement apparent" est souvent relié à la "persistance rétinienne".|
+|Si l'origine exacte du phénomène est encore sujet à débat, on sait en revanche depuis longtemps qu'il n'est pas lié à la persistance rétinienne.|
+|Il est plus probablement lié à ce que l'on appelle "l'effet phi".|
 
 #### Interprétations complexes
 
