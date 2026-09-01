@@ -548,10 +548,13 @@ avec $\lambda$ la longueur d'onde de la lumière, que l'on considère souvent co
 
 Donc, pour une chambre noire dont la boite fait 20 cm, on choisira un trou d'un diamètre d'environ 0.6 mm.
 
+Les chambres noires ont longtemps été utilisées pour aider les peintres à représenter le réel en 2D : il suffit de dessiner par dessus l'image projetée.
+Elles ont aussi aidé les astronomes à observer le soleil et ses éclipses, qui ne peuvent être regardées direct.
+
 Ce système a cependant un gros désavantage : la **luminosité**.
 
 On imagine en effet facilement qu'en limitant la lumière entrant dans la chambre noire à un trou de moins de 1 mm, on réduit grandement la quantité de lumière servant à former l'image.
-
+C'est pourquoi à partir du XVIème siècle, on commencera progessivement à remplacer le trou des chambres noires par des lentilles.
 
 ### L'objectif photographique
 
