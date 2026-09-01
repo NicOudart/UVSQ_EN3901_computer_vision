@@ -478,6 +478,27 @@ Nous reparlerons à la fin de ce chapitre des principales catégories de problé
 
 ### Computer vision
 
+La "**vision par ordinateur**" ou "**computer vision**" en anglais, est la discipline de "l'**intelligence artificielle**" (ou **IA**) visant à **reproduire avec des machines la vision humaine**.
+
+Comme vous l'aurez maintenant compris, "reproduire la vision humaine" implique :
+
+* De reproduire l'**oeil**, organe capable de former une image à partir de la lumière réfléchie par notre environnement, et de la transformer en signal électrique.
+
+C'est pourquoi dans ce chapitre, nous introduirons le concept de **caméra**, le concept d'**image numérique**, et les principaux paramètres à maitriser en **photographie**.
+
+* De reproduire les **traitements** appliqués aux images en amont par le cerveau pour les rendre lisibles.
+
+C'est pourquoi vous aurez grâce au chapitre suivant une introduction au **traitement d'images**.
+
+* De reproduire les **interprétations complexes** réalisée par le cortex visuel.
+
+C'est pourquoi les 2 derniers chapitres vous introduirons des outils de d'**apprentissage supervisé** ("Machine-Learning") modernes pour des problématiques de vision.
+
+|Nota Bene|
+|:-|
+|Si la vision par ordinateur est grandement bio-inspirée, cela ne signifie pas que toutes les méthodes utilisées sont similaires à celles qui ont évolué chez l'humain pour répondre aux mêmes problématiques.|
+|En effet, la vision par ordinateur s'attache plus à reproduire le résultat que la méthode pour y arriver.|
+
 ## La caméra : une machine à faire du 2D
 
 ### Sténopé et chambre noire
