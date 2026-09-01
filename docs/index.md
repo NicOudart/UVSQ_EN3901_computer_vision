@@ -10,4 +10,6 @@ _Cours de "Computer vision" conçu pour les étudiants du M1 E3A de l'Universit�
 
 ## Credits
 
+_Sauf mention contraire, les images utilisées dans ce cours sont des photographies de Nicolas OUDART._
+
 © Nicolas OUDART & Assaad ZEGHINA

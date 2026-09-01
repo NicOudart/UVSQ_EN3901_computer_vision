@@ -501,7 +501,57 @@ C'est pourquoi les 2 derniers chapitres vous introduirons des outils de d'**appr
 
 ## La caméra : une machine à faire du 2D
 
+Comme nous venons de le mentionner, la **caméra** est l'**oeil** de tout système de vision par ordinateur.
+
+Nous parlerons ici de "caméra" au sens large, quitte à faire un anglicisme : **un appareil capable d'acquérir une image 2D de son environnement 3D**.
+
+|Nota Bene|
+|:-|
+|En français, on parle d'un "appareil photographique" dans le cas où il optimisé pour acquérir une image unique ou "photographie", et d'une "caméra" dans le cas où il est optimisé pour acquérir une succession d'images et en faire une "vidéo".|
+|Nous ne ferons pas la distinction ici, pour nous aligner sur la convention anglaise.|
+
 ### Sténopé et chambre noire
+
+"Caméra" vient du mot latin _camera_, faisant référence à ce que l'on appelle une "**chambre noire**".
+
+La "chambre noire" est un dispositif connu de puis l'antiquité, qui était initialement basé sur le principe du "**sténopé**" :
+
+Il s'agit dans sa forme la plus simple d'une boite fermée, avec sur une des ses faces un petit trou.
+Sur la face opposée, se forme une image.
+La taille de l'image ainsi formée dépend de la distance entre les 2 faces de la boite.
+
+Le principe optique derrière la formation de cette image est théorisé pour la première fois dans le célèbre traité d'optique d'Alhazen en 1021 :
+
+Nous avons vu précédemment que dans le cas d'une **réflexion diffuse** parfaite, la lumière est réfléchie dans **toutes les directions** par un objet de notre environnement.
+Or, pour former une image 2D de l'environnement, il faut pouvoir projeter en chaque point de la face opposée de la boite la lumière provenant d'une **unique direction**.
+D'où la présence d'un trou.
+
+En effet, pour un **trou infiniment petit**, la lumière se déplaçant en ligne droite selon les règles de l'**optique géométrique**, on montre facilement que la lumière éclairant un point sur la face opposée de la boite ne peut provenir que **d'une direction**.
+
+On montre aussi facilement que l'image est **renversée**, et que la taille $h$ d'un objet sur l'image dépendra de la taille réelle de l'objet $H$, de la distance entre l'objet et le trou $D$, et de la taille entre le trou et la face opposée $d$, selon la formule :
+
+$\frac{h}{H} = \frac{d}{D}$
+
+Dans la réalité, un trou infinement petit est bien entendu absurde.
+Le choix de la **taille du trou** sera **un compromis entre 2 limites physiques** :
+
+* Plus le trou sera grand, et moins l'image sera "nette", car moins directive sera la projection.
+
+* Plus le trou est petit, et plus nous nous éloignons du domaine optique.
+En effet, la lumière est une onde, et apparaissent alors des effet de diffraction, qui vont déformer l'image.
+
+Vers la fin du XIXème siècle, Rayleigh propose la formule empirique suivante pour la détermination de la taille idéale du trou :
+
+$1.9 \sqrt{d \times \lambda}$
+
+avec $\lambda$ la longueur d'onde de la lumière, que l'on considère souvent comme ayant une médiane à 550 nm dans le visible.
+
+Donc, pour une chambre noire dont la boite fait 20 cm, on choisira un trou d'un diamètre d'environ 0.6 mm.
+
+Ce système a cependant un gros désavantage : la **luminosité**.
+
+On imagine en effet facilement qu'en limitant la lumière entrant dans la chambre noire à un trou de moins de 1 mm, on réduit grandement la quantité de lumière servant à former l'image.
+
 
 ### L'objectif photographique
 
