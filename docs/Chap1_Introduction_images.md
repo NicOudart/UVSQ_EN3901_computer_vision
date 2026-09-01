@@ -532,6 +532,10 @@ On montre aussi facilement que l'image est **renversée**, et que la taille $h$ 
 
 $\frac{h}{H} = \frac{d}{D}$
 
+Par exemple, si un objet de 10 cm se trouve à 1 m du trou de la chambre noire, et que cette chambre noire mesure 20 cm, la taille de l'objet sur l'image sera de 2 cm.
+
+![Schéma d'une chambre noire avec sténopé](img/Chap1_camera_obscura.png)
+
 Dans la réalité, un trou infinement petit est bien entendu absurde.
 Le choix de la **taille du trou** sera **un compromis entre 2 limites physiques** :
 
@@ -554,9 +558,22 @@ Elles ont aussi aidé les astronomes à observer le soleil et ses éclipses, qui
 Ce système a cependant un gros désavantage : la **luminosité**.
 
 On imagine en effet facilement qu'en limitant la lumière entrant dans la chambre noire à un trou de moins de 1 mm, on réduit grandement la quantité de lumière servant à former l'image.
-C'est pourquoi à partir du XVIème siècle, on commencera progessivement à remplacer le trou des chambres noires par des lentilles.
+C'est pourquoi à partir du XVIème siècle, on commencera progessivement à remplacer le trou des chambres noires par des **lentilles**.
+
+|Nota Bene|
+|:-|
+|Vous l'aurez probablement remarqué : ce type de caméra a un fonctionnement équivalent aux yeux du nautile.|
 
 ### L'objectif photographique
+
+En optique, on appelle "**lentille**" un morceau de matériau **isotrope**, **transparent** (réfléchissant peu la la lumière visible) et **réfringent**, dont la forme permet de faire **converger** ou **diverger** les rayons lumineux qui le traversent.
+
+Tout comme la "chambre noire", le principe de la lentille est connu depuis l'antiquité :
+
+Les lentilles **convergentes** ont d'abord été utilisées en complément du système humain, pour grossir un texte (principe de la loupe), puis au moyen-âge pour aider les personnes ayant des problèmes de vue (principe des lunettes).
+Avec l'amélioration des techniques de fabrication des lentilles, au XVIIème siècle sont inventés le microscope et le téléscope.
+
+Comme nous l'avons mentionné, c'est à cette période aussi que les chambres noires commencent à utiliser des lentilles convergentes plutôt qu'un sténopé.
 
 ### La photographie argentique
 
