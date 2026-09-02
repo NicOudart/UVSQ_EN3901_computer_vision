@@ -656,7 +656,67 @@ Reste un problème : comment capter cette image ?
 
 ### La photographie argentique
 
+En 1827, Nicéphore Niépce réalise ce qui est à ce jour la photographie la plus ancienne qui nous soit parvenue : Le _Point de vue du Gras_.
+
 ![Le point de vue du Gras](img/Chap1_point_de_vue_du_Gras.png)
+
+Elle représente le domaine du Gras, maison de Niépce en Saône-et-Loire.
+Pour l'obtenir, il a utilisé un procédé de son invention, qu'il a appelé "héliographie".
+Il s'agit d'une chambre noire, avec une lentille convergente, et un système de fixation d'image à base de "bitume de Judée".
+
+Le "bitume de Judée" est un matériau **photosensible**, c'est-à-dire que ses propriétés physiques changent lorsqu'il est exposé à la lumière.
+Niépce recouvre une plaque de métal d'un vernis contenant du bitume dissous, et la place au fond de la chambre noire.
+Quand il est exposé à la lumière, le bitume durçit et devient moins soluble.
+Il suffit alors de nettoyer la plaque pour retirer le bitume des zones de la plaque où il n'a pas durcit.
+
+On obtient alors une **impression en noir et blanc** de l'image formée par la lentille au fond de la chambre noir.
+
+Le principal problème de ce procédé ? **Le temps de pause**.
+
+En effet, selon certaines estimations, il a fallu que la plaque soit exposée plus d'une journée pour obtenir cette photographie !
+Un temps bien trop long pour espérer capturer autre chose que des natures mortes ou des paysages.
+
+Niépce s'associe avec le peintre Louis Daguerre, qui a entendu parler de son invention.
+Ensemble, ils vont améliorer le processus, réduisant le temps de pause nécessaire à quelques dizaines de minutes.
+Daguerre profitera de la mort de Niépce en 1833 pour s'attribuer la paternité de l'invention, qu'il nommera humblement "**daguerreotype**" en 1835.
+Le brevet est acheté en 1839 par l'état français, qui "l'offre au monde entier" en le rendant public.
+
+Le Daguerreotype utilise un nouveau matériau photosensible : **l'iodure d'argent**.
+Voici le principe :
+
+* L'**exposition** à la lumière :
+
+Une couche d'argent est déposée sur un support au fond de la chambre noire.
+On expose la plaque à de l'iode, pour produire de l'iodure d'argent.
+On laisse l'iodure d'argent réagir à la lumière quelques dizaines de minutes.
+
+* Le **développement** de l'image :
+
+Une "**image latente**", invisible, s'est formée sur la plaque.
+Pour faire apparaitre l'image, il faut exposer la plaque à des vapeurs de mercure.
+Le mercure se condense sur l'iodure d'argent, proportionnellement à son exposition à la lumière, faisant apparaitre l'image.
+
+* La **fixation** de l'image :
+
+L'image formée à ce stade est très fragile, et risque de disparaitre avec le temps.
+Pour la figer, on la trempe dans une solution d'hyposulfite de soude.
+
+Si les techniques photographiques ont beaucoup évolué au court du XIXème puis du XXème siècle, ces 3 grandes étapes restent : **exposition** à la lumière d'un matériau photosensible, **développement** de l'image latente obtenue, **fixation** de l'image.
+Une autre constante est l'utilisation de matériaux photosensibles à base d'argent, d'où le nom de **photographie argentique**.
+
+Les appareils photographique de la fin du XXème utilisaient des "**pellicules**", un film plastique recouvert d'une émulsion contenant des cristaux d'**halogénures d'argent**, photosensibles.
+On confiait en général à un professionnel le soin de développer et fixer les photographies enregistrées sur la pellicule.
+
+Et pour les couleurs ?
+
+Si des procédés de photographie en couleurs existent depuis 1861 (invention de Thomas Sutton), ils restent pendant longtemps des processus complexes et nécessitant des temps d'exposition trop longs.
+Ce n'est que dans les années 1930 que des pellicules "couleur" apparaissent sur le marché, et que dans les années 1960-1970 qu'elles deviennent suffisamment peu chères pour se démocratiser.
+
+Les pellicules couleur étaient constituées de **plusieurs couches** d'émulsions d'halogènure d'argent, avec des **filtres** pour les rendre sensibles à différentes longueurs d'ondes.
+Le processus de développement a également été adapté pour faire apparaitre les images captées par les différentes couches de la couleur voulue, et les additionner.
+
+Si la **photographie argentique** permet de capter l'image projetée par la caméra, il s'agit d'un enregistrement **analogique**.
+Or, pour faire de la vision par ordinateur, il nous faut un enregistrement **numérique**.
 
 ### La photographie numérique
 
