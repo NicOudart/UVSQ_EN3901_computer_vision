@@ -520,7 +520,7 @@ Il s'agit dans sa forme la plus simple d'une boite fermée, avec sur une des ses
 Sur la face opposée, se forme une image.
 La taille de l'image ainsi formée dépend de la distance entre les 2 faces de la boite.
 
-Le principe optique derrière la formation de cette image est théorisé pour la première fois dans le célèbre traité d'optique d'Alhazen en 1021 :
+Le principe optique derrière la formation de cette image est théorisé pour la première fois dans le célèbre traité d'optique d'Alhazen en 1021.
 
 Nous avons vu précédemment que dans le cas d'une **réflexion diffuse** parfaite, la lumière est réfléchie dans **toutes les directions** par un objet de notre environnement.
 Or, pour former une image 2D de l'environnement, il faut pouvoir projeter en chaque point de la face opposée de la boite la lumière provenant d'une **unique direction**.
@@ -555,14 +555,14 @@ Donc, pour une chambre noire dont la boite fait 20 cm, on choisira un trou d'un 
 Les chambres noires ont longtemps été utilisées pour aider les peintres à représenter le réel en 2D : il suffit de dessiner par dessus l'image projetée.
 Elles ont aussi aidé les astronomes à observer le soleil et ses éclipses, qui ne peuvent être regardées direct.
 
+|Nota Bene|
+|:-|
+|Vous l'aurez probablement remarqué : ce type de caméra a un fonctionnement équivalent aux yeux du nautile.|
+
 Ce système a cependant un gros désavantage : la **luminosité**.
 
 On imagine en effet facilement qu'en limitant la lumière entrant dans la chambre noire à un trou de moins de 1 mm, on réduit grandement la quantité de lumière servant à former l'image.
 C'est pourquoi à partir du XVIème siècle, on commencera progessivement à remplacer le trou des chambres noires par des **lentilles**.
-
-|Nota Bene|
-|:-|
-|Vous l'aurez probablement remarqué : ce type de caméra a un fonctionnement équivalent aux yeux du nautile.|
 
 ### L'objectif photographique
 
@@ -575,7 +575,88 @@ Avec l'amélioration des techniques de fabrication des lentilles, au XVIIème si
 
 Comme nous l'avons mentionné, c'est à cette période aussi que les chambres noires commencent à utiliser des lentilles convergentes plutôt qu'un sténopé.
 
+Là où le sténopé va essayer de restreindre la lumière reçue en un point de l'image à une direction, une lentille convergente va chercher à **dévier la lumière diffusée dans différentes directions** par un point d'un objet **vers un même point de l'image**.
+
+![Schéma d'une chambre noire avec lentille convergente](img/Chap1_camera_lens.png)
+
+On comprend alors sans mal qu'avec une lentille **beaucoup plus de lumière** provenant de l'environnement est utilisée pour former l'image au fond de la chambre noire.
+
+Une **lentille convergente** parfaite est caractérisée par sa **distance focale** $f$, c'est-à-dire la distance au centre de la lentille du point vers lequel convergent tous les rayons arrivant dans l'axe de la lentille.
+En optique, on appelle se point le "foyer".
+
+C'est cette propriété qui va définir la distance $d$ à laquelle se forme l'image d'un objet se trouvant à une distance $D$, suivant la formule :
+
+$\frac{1}{f} = \frac{1}{d} + \frac{1}{D}$
+
+La taille $h$ de l'image de cet objet de taille $H$ se calcule alors de la même façon que pour le sténopé :
+
+$\frac{h}{H} = \frac{d}{D}$
+
+Par exemple, pour une lentille de 20 cm de distance focale, un objet situé à 1 m aura son image projetée à 25 cm.
+Si l'objet fait 10 cm, sa taille sur l'image projetée sera de 2.5 cm.
+
+Si le fond de la chambre noire se trouve exactement à la distance $d$ de la lentille, on dira que cet objet est "**net**" sur l'image.
+
+On remarque alors que pour obtenir une image "nette" d'un objet situé à une certaine distance, il faut adapter $f$ ou $d$, ce qui implique de pouvoir **changer la lentille** ou **changer sa position** par rapport au fond de la caméra.
+Choisir une configuration de $f$ et $d$ pour rendre un objet net sur l'image s'appelle faire la "**mise au point**".
+
+Contrairement au sténopé, on ne peut donc pas avoir tous les objets de l'environnement "nets" sur une même image avec ce type de caméra.
+En revanche, nous verrons dans la suite qu'il est possible d'adapter la zone dans laquelle les objets peuvent être considérés comme "suffisamment nets", lorsque nous introduirons la notion de "profondeur de champ optique". 
+
+|Nota Bene|
+|:-|
+|Vous l'aurez probablement remarqué : ce type de caméra fonctionne sur le même principe que l'oeil humain.|
+|Les yeux des mammifères sont capables de modifier la distance focale du cristallin, la "lentille" naturelle.|
+|Chez les poulpes et les seiches, c'est la distance du cristallin à la rétine qui peut être modifiée.|
+
+Dans la réalité, une lentille convergente "parfaite" **n'existe pas** : aucune lentille n'est infiniment mince, parfaitement isotrope, au coefficient de réfraction constant avec la longueur d'onde, etc.
+
+Ceci entraine des défauts sur l'image projetée appelés "**aberrations optiques**".
+En voici quelques exemples :
+
+![Exemples d'aberrations optiques classiques](img/Chap1_optical_aberrations.png)
+
+* La **aberrations géométriques** :
+
+Les rayons lumineux traversant une lentille parallèlement à son axe ne passent jamais tous exactement par le foyer quelque soit leur distance à l'axe.
+Ces petits décalages auront tendance à dégrader la netteté de l'image, voir à la déformer.
+
+* Les **aberrations chromatiques** :
+
+Les rayons lumineux de différentes longueurs d'onde ne sont jamais dévié avec le même angle par une lentille.
+En effet, le coefficient de réfraction d'un matériau dépend toujours plus ou moins de la longueur d'onde de la lumière.
+On appelle se phénomène la "**dispersion**".
+La distance focale de la lentille va donc légèrement varier avec la longueur d'onde, ce qui provoque un décalage des couleurs sur l'image.
+
+* Les **réflexions et diffusions internes** :
+
+Une lentille n'est jamais complètement transparente.
+Il y a des réflexions multiples et de la diffusion de la lumière au sein du matériau.
+Ceci peut provoquer des artéfacts dans l'image, le plus connu étant le "facteur de flare".
+
+* Les **défauts** de la lentille :
+
+Le moindre défaut de la lentille peut impacter l'image obtenue.
+Une poussière, un impact, une inclusion dans le matériau peut provoquer des artéfacts visibles.
+
+Pour lutter contre ces désavantages connus de l'utilisation d'une lentille convergente par rapport au sténopé, les caméras modernes n'utilisent plus une lentille convergente simple, mais un système optique composé de **multiples lentilles**, appelé "**objectif photographique**".
+
+En général, l'objectif d'une caméra permet d'adapter la distance focale du système, ainsi que de corriger certaines des aberrations dont nous avons parlé.
+
+Nous parlerons plus en détails dans la suite des paramètres photographiques sur lesquels on peut jouer lors d'une acquisition d'image.
+
+|Nota Bene|
+|:-|
+|Il est à noter que les aberrations présentées ici sont parfois recherchées pour certaines applications.|
+|Par exemple, le facteur de flare est souvent recherché en photographie artistique pour son côté esthétique.|
+|Ou encore, les aberrations géométriques peuvent être recherchées dans la cas de la photographie 360° par un objectif "fisheye".|
+
+Nous avons à présent un système capable de former une image dans une chambre noire.
+Reste un problème : comment capter cette image ?
+
 ### La photographie argentique
+
+![Le point de vue du Gras](img/Chap1_point_de_vue_du_Gras.png)
 
 ### La photographie numérique
 
