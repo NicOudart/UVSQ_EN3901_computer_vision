@@ -614,8 +614,6 @@ Dans la réalité, une lentille convergente "parfaite" **n'existe pas** : aucune
 Ceci entraine des défauts sur l'image projetée appelés "**aberrations optiques**".
 En voici quelques exemples :
 
-![Exemples d'aberrations optiques classiques](img/Chap1_optical_aberrations.png)
-
 * La **aberrations géométriques** :
 
 Les rayons lumineux traversant une lentille parallèlement à son axe ne passent jamais tous exactement par le foyer quelque soit leur distance à l'axe.
@@ -638,6 +636,8 @@ Ceci peut provoquer des artéfacts dans l'image, le plus connu étant le "facteu
 
 Le moindre défaut de la lentille peut impacter l'image obtenue.
 Une poussière, un impact, une inclusion dans le matériau peut provoquer des artéfacts visibles.
+
+![Exemples d'aberrations optiques classiques](img/Chap1_optical_aberrations.png)
 
 Pour lutter contre ces désavantages connus de l'utilisation d'une lentille convergente par rapport au sténopé, les caméras modernes n'utilisent plus une lentille convergente simple, mais un système optique composé de **multiples lentilles**, appelé "**objectif photographique**".
 
