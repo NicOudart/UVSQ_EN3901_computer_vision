@@ -733,6 +733,10 @@ Le processus de développement a également été adapté pour faire apparaitre 
 
 Nous reparlerons dans la suite de la synthétisation des couleurs.
 
+|Nota Bene|
+|:-|
+|La pellicule étant beaucoup plus petite que les supports précédemment utilisés, il faut ajouter une étape de **grossissement** de l'image par projection.|
+
 Si la **photographie argentique** permet de capter l'image projetée par la caméra, il s'agit d'un enregistrement **analogique**.
 Or, pour faire de la vision par ordinateur, il nous faut un enregistrement **numérique**.
 
