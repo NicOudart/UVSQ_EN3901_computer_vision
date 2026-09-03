@@ -678,7 +678,7 @@ Un temps bien trop long pour espérer capturer autre chose que des natures morte
 
 Niépce s'associe avec le peintre Louis Daguerre, qui a entendu parler de son invention.
 Ensemble, ils vont améliorer le processus, réduisant le temps de pause nécessaire à quelques dizaines de minutes.
-Daguerre profitera de la mort de Niépce en 1833 pour s'attribuer la paternité de l'invention, qu'il nommera humblement "**daguerreotype**" en 1835.
+Daguerre profitera de la mort de Niépce en 1833 pour s'attribuer la paternité de l'invention, qu'il nommera humblement "**daguerréotype**" en 1835.
 Le brevet est acheté en 1839 par l'état français, qui "l'offre au monde entier" en le rendant public.
 
 Le Daguerreotype utilise un nouveau matériau photosensible : **l'iodure d'argent**.
@@ -704,21 +704,60 @@ Pour la figer, on la trempe dans une solution d'hyposulfite de soude.
 Si les techniques photographiques ont beaucoup évolué au court du XIXème puis du XXème siècle, ces 3 grandes étapes restent : **exposition** à la lumière d'un matériau photosensible, **développement** de l'image latente obtenue, **fixation** de l'image.
 Une autre constante est l'utilisation de matériaux photosensibles à base d'argent, d'où le nom de **photographie argentique**.
 
-Les appareils photographique de la fin du XXème utilisaient des "**pellicules**", un film plastique recouvert d'une émulsion contenant des cristaux d'**halogénures d'argent**, photosensibles.
-On confiait en général à un professionnel le soin de développer et fixer les photographies enregistrées sur la pellicule.
+L'inventeur William Henry Fox Talbot brevète en 1841 le "**calotype**", qui utilise comme support du papier recouvert d'iodure d'argent, et permet de réaliser des photographies en "**négatif**".
+Ceci est particulièrement pratique pour **imprimer plusieurs tirages** à partir d'une photographie négative.
+En 1847, l'imprimeur Louis Désiré Blanquart-Evrard arrive à réduire le coût de cette technique en utilisant du blanc d'oeuf pour la fixation de l'image : c'est le "**papier albuminé**".
+Il créé dans la foulée en 1851 une des 1ères imprimeries photographique du monde, dans la région de Lille.
 
-Et pour les couleurs ?
+![Exemples de daguerréotype et de calotype](img/Chap1_daguerreotype_calotype.png)
+
+En 1888, l'entrepreneur George Eastman, fondateur de l'entreprise Kodak, commercialise les premières **pellicules photographiques**, démocratisant encore plus la photographie.
+
+Jusqu'à la fin du XXème siècle, les appareils photographique utilisaient donc ces "**pellicules**", un film plastique recouvert d'une émulsion contenant des cristaux de **bromure d'argent**, photosensibles.
+Un même appareil pouvait prendre plusieurs photographies d'affilée, en faisant simplement défiler la pellicule.
+En général, on confiait ensuite à un professionnel le soin de développer et fixer les photographies enregistrées sur la pellicule.
+
+_Et pour les couleurs ?_
 
 Si des procédés de photographie en couleurs existent depuis 1861 (invention de Thomas Sutton), ils restent pendant longtemps des processus complexes et nécessitant des temps d'exposition trop longs.
 Ce n'est que dans les années 1930 que des pellicules "couleur" apparaissent sur le marché, et que dans les années 1960-1970 qu'elles deviennent suffisamment peu chères pour se démocratiser.
 
-Les pellicules couleur étaient constituées de **plusieurs couches** d'émulsions d'halogènure d'argent, avec des **filtres** pour les rendre sensibles à différentes longueurs d'ondes.
-Le processus de développement a également été adapté pour faire apparaitre les images captées par les différentes couches de la couleur voulue, et les additionner.
+Les pellicules couleur étaient constituées de **plusieurs couches** d'émulsions de bromure d'argent, avec des **filtres** pour les rendre sensibles à différentes longueurs d'ondes, à la manière des cônes de notre oeil.
+Le processus de développement a également été adapté pour faire apparaitre les images captées par les différentes couches de la couleur voulue.
+
+![Structure des pellicules couleur](img/Chap1_photographic_film.png)
+
+Nous reparlerons dans la suite de la synthétisation des couleurs.
 
 Si la **photographie argentique** permet de capter l'image projetée par la caméra, il s'agit d'un enregistrement **analogique**.
 Or, pour faire de la vision par ordinateur, il nous faut un enregistrement **numérique**.
 
 ### La photographie numérique
+
+Si les premiers développements en **photographie numérique** remontent aux années 1970, ce n'est qu'au début du XXIème siècle qu'elle se démocratise, jusqu'à remplacer la photographie argentique auprès du grand public.
+
+Une caméra "**numérique**" est caractérisée par les éléments suivants :
+
+* Un "**capteur photographique**" remplace la pellicule et fait office de "rétine" :
+
+Il s'agit d'une matrice de composants électroniques appelés "**photosites**", capables de convertir de l'énergie lumineuse en **énergie électrique**.
+
+* Le signal obtenu par chaque photosite est en général **amplifié**.
+
+Mais il faut noter que l'effet photoélectrique utilisé par les photosites a un meilleur rendement que l'effet photochimique utilisé par les pellicules argentiques.
+C'est-à-dire qu'un proportion plus grande des photons incidents sont captés par un capteur photographique.
+
+* Un convertisseur analogique-numérique va **numériser** ces signaux.
+
+Nous reparlerons plus loin des aspects de "numérisation" (échantillonnage / quantification) d'une image.
+
+* La matrice des signaux obtenus va être **encoder** selon un format définit, et enregistrée sur un support physique (en général une "carte mémoire").
+
+Il existe 2 grandes technologies de **capteurs photographiques** : 
+
+* Les capteurs **CCD** :
+
+* Les capteurs **CMOS** :
 
 ### Réglages d'une caméra
 
