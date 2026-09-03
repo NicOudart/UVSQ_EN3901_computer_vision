@@ -237,6 +237,8 @@ Voici le spectre d'absorption approximatif des photorécépteurs humains :
 
 ![Spectre d'absorption des photorécepteurs humains](img/Chap1_photoreceptors_absorbance.png)
 
+La répartition des cônes sur la rétine, et le spectre d'absorption des 3 types de cônes, fait que le **pic de sensibilité** de l'oeil humain (en vision de jour) se situe aux alentours de 555 nm de longueur d'onde, **proche du vert**.
+
 Nous reparlerons plus loin de la notion de "couleur", qui peut être ambiguë.
 
 Il est important de noter que les bâtonnets et les cônes ne sont **pas répartis uniformément sur la rétine** : 
@@ -698,11 +700,13 @@ Le mercure se condense sur l'iodure d'argent, proportionnellement à son exposit
 
 * La **fixation** de l'image :
 
-L'image formée à ce stade est très fragile, et risque de disparaitre avec le temps.
-Pour la figer, on la trempe dans une solution d'hyposulfite de soude.
+L'image formée à ce stade est très fragile, et risque de disparaitre avec une nouvelle exposition à la lumière.
+Pour la figer, on la trempe dans une solution d'hyposulfite de soude, puis on la lave de tout matériau photosensible non figé.
 
 Si les techniques photographiques ont beaucoup évolué au court du XIXème puis du XXème siècle, ces 3 grandes étapes restent : **exposition** à la lumière d'un matériau photosensible, **développement** de l'image latente obtenue, **fixation** de l'image.
 Une autre constante est l'utilisation de matériaux photosensibles à base d'argent, d'où le nom de **photographie argentique**.
+
+![Principe de la photographie argentique](img/Chap1_analog_photography.png)
 
 L'inventeur William Henry Fox Talbot brevète en 1841 le "**calotype**", qui utilise comme support du papier recouvert d'iodure d'argent, et permet de réaliser des photographies en "**négatif**".
 Ceci est particulièrement pratique pour **imprimer plusieurs tirages** à partir d'une photographie négative.
@@ -747,11 +751,29 @@ Il s'agit d'une matrice de composants électroniques appelés "**photosites**", 
 Mais il faut noter que l'effet photoélectrique utilisé par les photosites a un meilleur rendement que l'effet photochimique utilisé par les pellicules argentiques.
 C'est-à-dire qu'un proportion plus grande des photons incidents sont captés par un capteur photographique.
 
-* Un convertisseur analogique-numérique va **numériser** ces signaux.
+* Un convertisseur analogique-numérique (CAN) va **numériser** ces signaux.
 
 Nous reparlerons plus loin des aspects de "numérisation" (échantillonnage / quantification) d'une image.
 
-* La matrice des signaux obtenus va être **encoder** selon un format définit, et enregistrée sur un support physique (en général une "carte mémoire").
+* La matrice des signaux obtenus va être **encodée** selon un format définit, et **enregistrée** sur un support physique (en général une "carte mémoire").
+
+On obtient ainsi une image en nuances de gris.
+Pour obtenir une image **en couleurs**, il faut ajouter les éléments suivants :
+
+* Une matrice de **filtres colorés** avant le capteur photographique :
+
+L'idée est d'imiter la rétine humaine, avec un tapis de "photorécepteurs" sensibles à 3 longueurs d'onde différentes.
+En général, on choisi la "**mosaïque de Bayer**", qui réparti des filtres rouges / verts / bleus avec les proportions 25% / 50% / 25%, pour reproduire le fait que le pic de sensibilité de la vision humaine est **proche du vert**.
+
+* Une étape de traitement entre la numérisation et l'encodage, que l'on appelle "**dématriçage**" :
+
+Les photocites dédiés aux 3 couleurs sont distribués sur le capteur, avec en plus un déséquilibre dans leur répartition.
+Or, nous avons besoins de mesures de rouge / vert / bleu pour une même position sur l'image projetée sur le capteur.
+On réalise donc des **interpolations 2D**.
+
+Quelques corrections numériques peuvent également être apportées aux données avant encodage.
+
+![Principe de la photographie numérique](img/Chap1_digital_photography.png)
 
 Il existe 2 grandes technologies de **capteurs photographiques** : 
 
