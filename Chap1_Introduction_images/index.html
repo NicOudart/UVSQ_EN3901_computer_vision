@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Nicolas OUDART" /><link rel="canonical" href="https://nicoudart.github.io/UVSQ_EN3901_computer_vision/Chap1_Introduction_images/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>I. Introduction aux images - UVSQ_EN3901_computer_vision</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "I. Introduction aux images";
+        var mkdocs_page_input_path = "Chap1_Introduction_images.md";
+        var mkdocs_page_url = "/UVSQ_EN3901_computer_vision/Chap1_Introduction_images/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> UVSQ_EN3901_computer_vision
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Accueil</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">I. Introduction aux images</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#images-exemples">Images exemples</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#la-vision">La vision</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#cest-quoi-la-vision">C'est quoi la vision ?</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#interactions-lumiere-matiere">Intéractions lumière-matière</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#loeil-organe-de-la-vision">L'oeil, organe de la vision</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#le-cerveau-grand-illusioniste">Le cerveau, grand illusioniste</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#le-systeme-nerveux-visuel-humain">Le système nerveux visuel humain</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#faire-disparaitre-les-informations-inutiles">Faire disparaitre les informations inutiles</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#la-couleur-est-une-construction-du-cerveau">La couleur est une construction du cerveau.</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#decoupage-des-contours-et-objets">Découpage des contours et objets</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#estimation-de-la-taille-et-des-distances">Estimation de la taille et des distances</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#lapparence-du-mouvement">L'apparence du mouvement</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#interpretations-complexes">Interprétations complexes</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#computer-vision">Computer vision</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#la-camera-une-machine-a-faire-du-2d">La caméra : une machine à faire du 2D</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#stenope-et-chambre-noire">Sténopé et chambre noire</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#lobjectif-photographique">L'objectif photographique</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#la-photographie-argentique">La photographie argentique</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#la-photographie-numerique">La photographie numérique</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#reglages-dune-camera">Réglages d'une caméra</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#numerisation-dune-image-passer-du-monde-continu-au-monde-discret">Numérisation d'une image : passer du monde continu au monde discret</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#discretisation-de-limage">Discrétisation de l'image</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#encodage-des-couleurs">Encodage des couleurs</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#formats-et-compression">Formats et compression</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#lecran-reproduire-le-reel">L'écran : reproduire le réel</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#manipuler-des-images-avec-python">Manipuler des images avec Python</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#pillow">Pillow</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#scikit-image">Scikit-image</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#open-cv">Open-CV</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#retouche-dimages-ameliorer-la-lisibilite">Retouche d'images : améliorer la lisibilité</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#luminosite">Luminosité</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#contraste">Contraste</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#saturation">Saturation</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#les-histogrammes-etalonner-des-images">Les histogrammes : étalonner des images</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#analyse-des-histogrammes">Analyse des histogrammes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#histogram-equalization">Histogram equalization</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#histogram-matching">Histogram matching</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#a-la-recherche-des-dimensions-perdues">A la recherche des dimensions perdues</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#la-stereoscopie">La stéréoscopie</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#le-flux-optique">Le flux optique</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#la-vision-par-ordinateur">La vision par ordinateur</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#classification-dimages">Classification d'images</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#localisation-dobjets">Localisation d'objets</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#segmentation-dimages">Segmentation d'images</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#reconstruction-3d-suivi">Reconstruction 3D / suivi</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#conclusion">Conclusion</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Chap2_Filtrage_transformation/">II. Filtrage et transformations</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Chap3_Reseaux_convolutifs/">III. Réseaux convolutifs</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Chap4_Deep_Learning/">IV. Deep Learning</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">UVSQ_EN3901_computer_vision</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">I. Introduction aux images</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="chapitre-i-introduction-a-la-vision-par-ordinateur">Chapitre I : Introduction à la vision par ordinateur</h1>
+<p>Ce chapitre introduit des notions essentielles pour ce cours telles que la capture, la numérisation, l'affichage et la retouche d'images.
+Il amènera ainsi petit à petit le concept de "vision", et la discipline de la "vision par ordinateur" (ou "computer vision" en anglais).</p>
+<p><img alt="En-tête chapitre I" src="../img/Chap1_header.png" /></p>
+<p><em>"J’ai la satisfaction de pouvoir t’annoncer enfin, qu’à l’aide du perfectionnement de mes procédés je suis parvenu à obtenir un point de vue tel que je pouvais le désirer, et que je n’osais guère pourtant m’en flatter, parce que jusqu’ici, je n’avais eu que des résultats forts incomplets.
+Ce point de vue a été pris de ta chambre du côté du Gras; et je me suis servi à cet effet de ma plus grande chambre obscure et de ma plus grande pierre.
+L’image des objets s’y trouve représentée avec une netteté, une fidélité étonnante, jusque dans ses moindres détails, et avec leurs nuances les plus délicates."</em></p>
+<p><strong>Nicéphore Niépce, lettre du 16 septembre 1824, à destination de son frère Claude.</strong></p>
+<hr />
+<h2 id="images-exemples">Images exemples</h2>
+<p>Ce chapitre sera illustré par quelques images exemples.</p>
+<p>Vous trouverez la première <a href="https://github.com/NicOudart/UVSQ_EN3901_computer_vision/blob/master/images/Ghost_crab.jpg">ici</a>.</p>
+<p>Il s'agit d'une photographie d'un <em>Ocypode quadrata</em>, aussi connu sous le nom de "Atlantic Ghost Crab", prise en 2023 à Padre Island National Seashore (Texas, USA).</p>
+<p><img alt="Image exemple du Chapitre 1" src="../img/Chap1_example_image_ghost_crab.png" /></p>
+<p>Sauf cas spécifique, nous utiliserons cette image dans les cas où un seul exemple est suffisant.</p>
+<p>Vous trouverez <a href="https://github.com/NicOudart/UVSQ_EN3901_computer_vision/blob/master/images/Land_crab_1.jpg">ici</a> et <a href="https://github.com/NicOudart/UVSQ_EN3901_computer_vision/blob/master/images/Land_crab_2.jpg">ici</a> deux autres images.</p>
+<p>Il s'agit de photographies d'un <em>Cardisoma guanhumi</em>, ou "Crabe de terre blue", prises en 2012 en Guadeloupe (Antilles françaises), avec des paramètres et un angle de vue différents.</p>
+<p><img alt="Image exemple du Chapitre 1" src="../img/Chap1_example_image_land_crab.png" /></p>
+<p>Sauf cas spécifique, nous utiliserons ces images dans les cas où une image de référence est nécessaire en plus d'une image exemple.</p>
+<p>N'hésitez pas à aller regarder les détails de la prise de vue des différentes photographies dans les métadonnées des images !</p>
+<hr />
+<h2 id="la-vision">La vision</h2>
+<h3 id="cest-quoi-la-vision">C'est quoi la vision ?</h3>
+<p><em>C'est quoi voir ?</em></p>
+<p><strong>La question est plus difficile qu'il n'y parait.</strong></p>
+<p>Une définition pourrait être : <strong>la vue est un sens</strong>, commun à de nombreux animaux, qui permet de <strong>comprendre à distance le monde qui nous entoure</strong> à partir de la <strong>lumière émise par des sources externes</strong> et <strong>réfléchie par différentes surfaces</strong>.</p>
+<p>On sait aussi que ce sens implique un organe sensoriel, l'<strong>oeil</strong>, et un organe de traitement de l'information, le <strong>cerveau</strong>.</p>
+<p><em>Mais comment sommes-nous capables de comprendre le monde qui nous entoure à partir de la lumière réfléchie par des surfaces ?</em></p>
+<p>Imaginez que vous assistiez à la scène suivante :</p>
+<p><img alt="Vision d'un crabe" src="../img/Chap1_example_image_ghost_crab.png" /></p>
+<p><em>Que voyez-vous ?</em></p>
+<p>Vous répondrez probablement : un crabe, sur la plage, avec en fond la mer et le ciel.</p>
+<p>Vous ajouterez peut-être que le crabe est jaune et blanc, que sa pince droite est plus grande que la gauche, et qu'il a l'air de vous regarder.</p>
+<p>Vous vous représentez probablement mentalement la plage, avec la mer au loin, et le crabe presque à vos pieds. 
+Il y a de fortes chances que vous vous imaginiez proche du sol.</p>
+<p><em>Mais comment savez-vous tout ceci ?</em></p>
+<p>La vue est avant tout une <strong>expérience sensorielle</strong>, et comme toute expérience sensorielle, elle nous parait à la fois évidente et difficile à décrire.</p>
+<p>Ce que l'on nomme "<strong>vision</strong>" n'est donc pas que la perception de la lumière provenant de notre environnement, c'est aussi un <strong>processus cognitif complexe</strong>, qui passe par la formation d'une <strong>représentation 2D</strong> de la lumière reçue appelée <strong>image</strong>, et son <strong>interprétation en 3D</strong> par l'identification de différentes zones et de leurs distances respectives.</p>
+<p>Voyons rapidement comment ce processus fonctionne chez l'animal avant d'essayer de le reproduire avec une machine.</p>
+<h3 id="interactions-lumiere-matiere">Intéractions lumière-matière</h3>
+<p>La vision repose sur la perception de la <strong>lumière</strong> provenant de notre environnement.</p>
+<p>On rappelle que l'on nomme "lumière" un <strong>rayonnement électromagnétiques</strong> dont la longueur d'onde est située <strong>entre 380 et 780 nm</strong>, les rendant détectables par la vision humaine.
+Par extension, on parle parfois de "lumière visible" et de "lumière invisible" pour désigner des ondes électromagnétiques de longueur d'onde plus faible (infrarouge) ou plus élevée (ultraviolet).</p>
+<p>On divise les <strong>sources de lumières</strong> en 2 grandes catégories :</p>
+<ul>
+<li>
+<p>Les <strong>sources primaires</strong>, qui produisent leur propre lumière.
+Dans notre environnement, c'est par exemple le cas du soleil, des étoiles, des lampes allumées, du feu, ou des vers luisants.</p>
+</li>
+<li>
+<p>Les <strong>sources secondaires</strong>, qui ne font que réfléchir la lumière générée par une source primaire.
+C'est le cas de la plupart des objets dans notre environnement.</p>
+</li>
+</ul>
+<p><img alt="Exemples de sources de lumière primaire et secondaire" src="../img/Chap1_primary_secondary_light_source.png" /></p>
+<p>Lorsqu'une onde éléctromagnétique rencontre une interface entre 2 milieux d'indice de réfraction différents, d'après la théorie de Fresnel, elle est en partie <strong>transmise</strong>, en partie <strong>absorbée</strong>, et en partie <strong>réfléchie</strong>.</p>
+<p>Notre environnement est composé de nombreux objets dont la surface représente des <strong>interfaces avec l'air</strong>, dont l'indice de réfraction est plus faible.
+D'où le fait qu'une part de la lumière soit <strong>réfléchie</strong> à la surface de ces objets, en faisant des <strong>sources de secondaires</strong> de lumière.</p>
+<p>En optique, on sépare les réflexions de la lumière sur une surface en 2 grandes catégories :</p>
+<p><img alt="Principe de la réflexion spéculaire et diffuse" src="../img/Chap1_reflection_models.png" /></p>
+<ul>
+<li>La <strong>réflexion spéculaire</strong> :</li>
+</ul>
+<p>Si une surface est <strong>lisse</strong>, et le matériau <strong>homogène</strong> au regard des longueurs d'ondes de la lumière incidente, la réflexion se fera dans <strong>une direction</strong>.
+Nous sommes ici dans le cas d'une loi de <strong>Snell-Descartes simple</strong>, et si l'intégralité de la lumière est réfléchie nous avons un <strong>miroir parfait</strong>.</p>
+<ul>
+<li>La <strong>réflexion diffuse</strong> :</li>
+</ul>
+<p>Si la surface est <strong>rugueuse</strong>, ou le matériau <strong>hétérogène</strong> au regard des longueurs d'ondes de la lumière incidente, la réflexion se fera dans de <strong>multiples directions</strong>.
+Nous sommes ici dans face à une <strong>multitude de réflexions</strong> et <strong>réfractions</strong> sur de multiples interfaces, dans différentes directions.
+Si les réflexions sont suffisamment nombreuses, la source devient <strong>lambertienne</strong> : pour un angle d'incidence donné sa luminance est indépendante de l'angle avec lequel on l'observe.</p>
+<p>La lumière provenant d'une source secondaire n'est jamais parfaitement spéculaire ou parfaitement diffuse, mais elle est <strong>plus ou moins proche d'un des 2 modèles</strong>.</p>
+<p><img alt="Exemples de réflexion spéculaire et diffuse" src="../img/Chap1_specular_diffuse_reflection.png" /></p>
+<p>L'<strong>angle d'incidence</strong> avec lequel une source primaire éclaire une source secondaire aura donc une importance sur la perception que nous en avons.</p>
+<p>Il n'existe pas de source primaire capable d'émettre avec la même énergie pour toutes les longueurs d'ondes, comment il n'existe pas de surface réfléchissant avec la même énergie pour toutes les longueurs d'onde.</p>
+<ul>
+<li>
+<p>Une <strong>source primaire</strong> est caractérisée par son <strong>spectre d'émission</strong>, qui représente son irradiance en fonction de la longueur d'onde.</p>
+</li>
+<li>
+<p>Une <strong>source secondaire</strong> est caractérisée par son <strong>spectre de réflexion</strong>, qui représente sa réflectance en fonction de la longueur d'onde.</p>
+</li>
+</ul>
+<p>Il est clair que le <strong>spectre de la lumière réfléchie</strong> par une source secondaire dépendra à la fois du spectre de réfléxion de la source secondaire, <strong>et</strong> du spectre d'émission de la source primaire.</p>
+<p>Voici le spectre d'émission de notre source primaire la plus commune, le <strong>soleil</strong> :</p>
+<p><img alt="Spectre d'émission du soleil" src="../img/Chap1_solar_spectrum.png" /></p>
+<ul>
+<li>
+<p>Le spectre solaire étant proche de celui d'un <strong>corps noir à 5777 K</strong>, on ne s'attend pas à ce qu'un objet éclairé par celui-ci reçoive la même intensité lumineuse pour toutes les longueurs d'ondes.</p>
+</li>
+<li>
+<p>De plus, le soleil n'étant <strong>pas parfaitement homogène</strong>, et sa lumière étant en partie <strong>absorbée par son atmosphère</strong>, le spectre solaire présente des pics et des creux l'éloignant encore plus d'un spectre uniforme.</p>
+</li>
+<li>
+<p>Enfin, l'<strong>atmosphère terrestre absorbe</strong> aussi en partie le spectre solaire, modifiant encore le spectre qui nous éclaire à la surface de la Terre.</p>
+</li>
+</ul>
+<p>On remarque néanmoins que la plage de la <strong>lumière visible</strong> est au niveau du <strong>pic d'irradiance</strong>. 
+On peut aussi noter que cette portion du spectre est <strong>quasi-uniforme</strong>. </p>
+<p>Ce n'est donc pas un hasard si notre vision a évolué pour être sensible à ces longueurs d'ondes !</p>
+<p>Il faut néanmoins garder en tête que si le spectre d'émission solaire est presque uniforme à la surface de la Terre, cela reste <strong>une approximation</strong>.</p>
+<p>Quand on utilise une autre source primaire pour la vision, le spectre d'émission sera différence, et donc <strong>le spectre de la lumière réfléchie par un objet sera différent</strong>.</p>
+<p>Voici par exemple le spectre d'une lampe à incandescence et le spectre d'une LED blanche, comparés au spectre solaire :</p>
+<p><img alt="Spectres d'émission de lampes comparés au soleil" src="../img/Chap1_lamp_spectrum.png" /></p>
+<p>Maintenant que nous avons vu les mécanismes à l'origine de la lumière issue de notre environnement, voyons comment cette lumière est captée par notre vision.</p>
+<h3 id="loeil-organe-de-la-vision">L'oeil, organe de la vision</h3>
+<p>Dans les systèmes de vision animale, l'<strong>oeil</strong> est le <strong>capteur</strong>.</p>
+<p>Il s'agit d'un organe capable de <strong>détecter la lumière</strong> provenant d'une ou plusieurs <strong>directions</strong>, et de convertir cette information en <strong>influx nerveux</strong>.
+Il est parfois capable de transmettre des <strong>informations complémentaires</strong> sur la lumière reçue (intensité, longueur d'onde, polarisation).</p>
+<p>Au cours de l'évolution, différents types d'oeil sont apparus dans le monde animal, avec <strong>différentes méthodes</strong> et <strong>différents niveaux de complexité</strong> suivant les contraintes environnementales auxquels les animaux sont soumis.
+Certains types d'oeil sont même apparus plusieurs fois par convergence évolutive, pour des animaux très différents mais soumis aux mêmes contraintes.</p>
+<p>Voici un résumé très succinct des différents types d'oeil que l'on rencontre actuellement dans la nature :</p>
+<p><img alt="Les différents types d'oeil" src="../img/Chap1_eye_types.png" /></p>
+<p>On sépare ici les yeux en 3 grandes catégories :</p>
+<ul>
+<li>Les <strong>photorécepteurs</strong> ou "ocelles" :</li>
+</ul>
+<p>Il s'agit d'un oeil très rudimentaire, ne permettant pas de construire une "image" de l'environnement de l'animal.
+Les ocelles sont au mieux capables de percevoir une variation de luminosité et une direction d'origine de la lumière.
+Chez certains animaux, ils sont présents en complément d'yeux plus complexes.</p>
+<ul>
+<li>Les <strong>yeux composés</strong> :</li>
+</ul>
+<p>Il s'agit d'un <strong>ensemble de photorécepteurs</strong> appellés "ommatidies", chacun capable de <strong>percevoir une portion du champ visuel</strong> de l'animal.
+Une "image" sera composée plus tard par traitement cognitif.
+On les distingue en 2 sous-catégories, suivant si les photorécepteurs sont utilisés <strong>indépendamment</strong> (par "apposition") ou en <strong>combinaison</strong> (par "superposition").
+Il s'agit d'un compromis entre <strong>résolution</strong> et <strong>sensibilité</strong> : un oeil composé vera mieux dans l'obscurité par superposition, mais avec une résolution moindre que par apposition.
+De manière générale, les yeux composés permettent un <strong>grand champ de vision</strong> et une <strong>bonne détection des mouvements</strong>.</p>
+<ul>
+<li>Les <strong>yeux imageurs</strong> :</li>
+</ul>
+<p>Il s'agit d'un système optique <strong>focalisant la lumière</strong> au fond d'une <strong>cavité recouverte de photorécepteurs</strong> appellée "rétine".
+Une "image" est donc physiquement formée sur la rétine, à la manière d'une <strong>chambre noire</strong>.
+Il existe plusieurs méthodes pour focaliser la lumière : un "<strong>sténopé</strong>" (un trou suffisamment petit), un <strong>miroir concave</strong>, ou une <strong>lentille</strong>.
+Certains animaux peuvent <strong>modifier l'orientation</strong> de leurs yeux avec des muscles, <strong>ajuster la quantité de lumière</strong> entrant dans l'oeil avec un diaphragme, et <strong>ajuster la distance focale</strong> de la lentille en la déplaçant ou en la déformant.
+De manière générale, les yeux imageurs permettent une <strong>fine résolution</strong> et une <strong>grande sensibilité à la lumière</strong>.</p>
+<p>De nombreux animaux possèdent <strong>plusieurs yeux</strong>, ce qui leur permet d'<strong>agrandir leur champ de vision</strong>, et d'<strong>estimer la distance des objets</strong> par "stéréoscopie".</p>
+<p><strong>Les humains possèdent 2 yeux imageurs à lentilles</strong>.
+Il n'est donc pas étonnant que la plupart des systèmes de vision par ordinateur utilisent également ce principe.</p>
+<p>Voici la structure de l'oeil humain schématisée :</p>
+<p><img alt="Anatomie de l'oeil humain" src="../img/Chap1_human_eye_anatomy.png" /></p>
+<ul>
+<li>
+<p>L' "iris" est un <strong>diaphragme</strong> qui permet d'ajuster la quantité de lumière entrant dans l'oeil.</p>
+</li>
+<li>
+<p>Le "cristallin" est la <strong>lentille</strong> de l'oeil, qui lui permet de focaliser la lumière.
+Les muscles ciliaires permettent l'ajustement de la distance focale de la lentille.</p>
+</li>
+<li>
+<p>La "rétine" est la couche de <strong>photorécepteurs</strong> tapissant le fond de l'oeil.</p>
+</li>
+<li>
+<p>Le "nerf optique" permet de transmettre l'influx nerveux au <strong>système cognitif</strong>, dont nous parlerons dans la suite.</p>
+</li>
+</ul>
+<p>Nous verrons plus en détails son fonctionnement quand nous introduirons le concept de "caméra".</p>
+<p>Un point commun aux 3 catégories d'oeil que nous avons présentées est la présence de "<strong>photorécépteurs</strong>".</p>
+<p>Les photorécepteurs sont des <strong>cellules réagissant à la lumière</strong> en générant un <strong>influx nerveux</strong>, à la manière d'un <strong>transducteur</strong>.
+Il s'agit plus précisément de neurones spécialisés, utilisant des protéines photosensibles de la famille des "opsines" pour détecter les photons.</p>
+<p>Chez les humains, il existe 2 grands types de photorécepteurs :</p>
+<ul>
+<li>Les <strong>bâtonnets</strong> (95% des photorécepteurs de la rétine) :</li>
+</ul>
+<p>Ces cellules sont <strong>très sensibles</strong>, avec un pic d'absorption aux alentours de 498 nm.
+Elles ne permettent pas de distinguer des couleurs, et sont en général saturées de jour.
+Par contre, elle nous permettent de voir dans des <strong>environnements faiblement éclairés</strong>, et de détecter des <strong>mouvements en périphérie</strong> de notre vision.</p>
+<ul>
+<li>Les <strong>cônes</strong> (5% des photorécepteurs de la rétine) :</li>
+</ul>
+<p>Chez les humains, ces cellules sont de <strong>3 types</strong>, "Bleu" / "Vert" / "Rouge" (ou Short / Medium / Long en anglais), avec des pics d'absorption différents aux alentours de 437 / 533 / 564 nm.
+Elles nous permettent ainsi de <strong>distinguer les couleurs</strong>, mais elles sont beaucoup moins sensibles et permettent un champ de vision beaucoup plus réduit que les cônes.
+Leur répartition sur la rétine n'est pas égalitaire, avec environ 10 / 30 / 60 %.</p>
+<p>Voici des images de la rétine prises avec un microscope et des colorants :</p>
+<p><img alt="Images de la rétine au microscope" src="../img/Chap1_retina_microscope_image.png" /></p>
+<p>La vision humaine est donc <strong>trichromatique</strong>, ce qui aura des conséquences en vision par ordinateurs.
+Cependant, ce n'est pas la norme dans le règne animal.
+Par exemple, les cétacés sont monochromates, la plupart des mammifères terrestres sont dichromates, la plupart des réptiles et des oiseaux sont tetrachromates.</p>
+<p>Voici le spectre d'absorption approximatif des photorécépteurs humains :</p>
+<p><img alt="Spectre d'absorption des photorécepteurs humains" src="../img/Chap1_photoreceptors_absorbance.png" /></p>
+<p>La répartition des cônes sur la rétine, et le spectre d'absorption des 3 types de cônes, fait que le <strong>pic de sensibilité</strong> de l'oeil humain (en vision de jour) se situe aux alentours de 555 nm de longueur d'onde, <strong>proche du vert</strong>.</p>
+<p>Nous reparlerons plus loin de la notion de "couleur", qui peut être ambiguë.</p>
+<p>Il est important de noter que les bâtonnets et les cônes ne sont <strong>pas répartis uniformément sur la rétine</strong> : </p>
+<p><img alt="Répartition des photorécepteurs sur la rétine humaine" src="../img/Chap1_photoreceptors_density.png" /></p>
+<ul>
+<li>
+<p><strong>La densité des cônes explose</strong> entre -10 et 10° autour du centre de la rétine, alors que <strong>la densité des bâtonnets diminue</strong>.
+On appelle cette zone la "fovéa".</p>
+</li>
+<li>
+<p>Il y a une <strong>tâche dépourvue de photorécepteurs</strong> entre 15 et 20° du centre de la rétine, correspondant à l'emplacement du <strong>nerf optique</strong>, dont nous reparlerons plus loin.
+On appelle cette zone "tâche aveugle".</p>
+</li>
+<li>
+<p>La densité des bâtonnets diminue avec l'angle par rapport au centre de la rétine, mais ils restent <strong>beaucoup plus denses que les cônes</strong>.</p>
+</li>
+</ul>
+<p>Cette répartition impacte directement le <strong>champ de vision</strong> humain, avec différentes types de vision suivant la direction d'où vient la lumière par rapport à l'oeil :</p>
+<p><img alt="Champ visuel humain" src="../img/Chap1_visual_field.png" /></p>
+<ul>
+<li>
+<p>Le champ visuel de la lecture n'est qu'entre -10 et 10°.</p>
+</li>
+<li>
+<p>Le champ visuel de la discrimination des couleurs n'est qu'entre -30 et 30°.</p>
+</li>
+<li>
+<p>Le champ visuel stéréoscopique n'est qu'entre -60 et 60°.</p>
+</li>
+</ul>
+<p>Alors que le champ visuel total humain peut s'étendre de -110 à 110° !</p>
+<p>Il est important d'avoir ces éléments de fonctionnement de l'oeil en tête pour comprendre les problématiques liées à la vision humaine, et à la vision par ordinateur qu'elle a inspiré.
+Mais comme nous l'avons évoqué plus tôt, la vision est plus compliquée que la simple acquisition d'une image, c'est aussi un <strong>traitement cognitif</strong> complexe !</p>
+<h3 id="le-cerveau-grand-illusioniste">Le cerveau, grand illusioniste</h3>
+<p>Si l'oeil est le capteur de notre système visuel, <strong>nous ne percevons jamais l'image brute formée sur notre rétine</strong> ou <strong>le signal brut</strong> généré par chacun de ces photorécepteurs.
+Et c'est quelque chose qu'il faut avoir en tête quand on parle de la vision humaine !</p>
+<p>Nous "voyons" en réalité une représentation <strong>filtrée</strong>, <strong>modifiée</strong> et <strong>interprétée</strong> de notre environnement, et ceci sans même nous en rendre compte.</p>
+<p><strong>Notre cerveau est un grand illusioniste</strong>.</p>
+<h4 id="le-systeme-nerveux-visuel-humain">Le système nerveux visuel humain</h4>
+<p>Voici une représentation schématique du système nerveux visuel humain :</p>
+<p><img alt="Système nerveux visuel humain" src="../img/Chap1_human_visual_system.png" /></p>
+<ul>
+<li>
+<p>La lumière transformée en <strong>influx nerveux</strong> par nos yeux.
+Ce signal est transmis vers le <strong>cerveau</strong> par le <strong>nerf optique</strong> de chaque oeil.</p>
+</li>
+<li>
+<p>Les 2 nerfs se croisent au niveau du <strong>chiasma optique</strong>.</p>
+</li>
+</ul>
+<p>Là, les informations de la partie gauche de chaque retine passent à droite, et les informations de la partie droite de chaque rétine passent à gauche.
+Ainsi, le champ visuel droit sera traité par l'hémisphère gauche du cerveau, et le champ visuel gauche par l'hémisphère droit, en <strong>stéréoscopie</strong>.</p>
+<ul>
+<li>Les informations ainsi séparées vont ensuite dans une partie du thalamus appelée <strong>corps genouillé latéral</strong>.</li>
+</ul>
+<p>Des <strong>traitements</strong> et <strong>filtres</strong> sont appliqués aux signaux, en conservant l'information de position sur la rétine.
+Les informations sont ensuite relayés au cortex visuel.</p>
+<ul>
+<li>Le <strong>cortex visuel primaire</strong> est la première couche de traitement cognitif complexe.</li>
+</ul>
+<p>Elle va extraire des informations de <strong>contours</strong>, de <strong>contrastes</strong>, de <strong>mouvements</strong>, de <strong>position</strong> dans le champ visuel.
+Ces informations vont être transmises aux autres aires du cortex visuel.</p>
+<ul>
+<li>Les autres aires du <strong>cortex visuel</strong> vont permettre les <strong>interprétations</strong> complexes nécessaire à la vision : détection d'objets, reconnaissance, couleurs, trajectoires, etc.</li>
+</ul>
+<p>Il est à noter que ce trajet de l'information est plein de <strong>rétroactions</strong>, et que le cerveau <strong>combine les informations</strong> des yeux avec celles d'autres sens et de la mémoire.</p>
+<p><strong>Nous allons voir quelques traitements et interprétations que fait notre cerveau pour notre vision</strong>.</p>
+<h4 id="faire-disparaitre-les-informations-inutiles">Faire disparaitre les informations inutiles</h4>
+<p>Parlons d'abord de <strong>filtrage</strong>.
+Lors de sa lecture de notre environnement, le cerveau fait disparaitre différents éléments gênants sans que l'on s'en aperçoive :</p>
+<ul>
+<li>Le <strong>nez</strong> :</li>
+</ul>
+<p>C'est le plus évident.
+Votre nez représente une portion non-négligeable de votre champ de vision, et pourtant à moins de vous concentrer dessus, vous ne le voyez jamais.
+Si vous fermez un oeil, il réapparait.
+Le cerveau croise la perception des 2 yeux pour faire disparaitre votre nez. </p>
+<ul>
+<li>La <strong>tâche aveugle</strong> :</li>
+</ul>
+<p>Comme nous l'avions mentionné plus tôt, la zone de la rétine autour du nerf optique est dépourvue de photorécpteurs.
+On parle alors de "tâche aveugle", car l'oeil est incapable de détecter la portion de l'image projetée sur cette partie de la rétine.
+Et pourtant, même si vous fermez un oeil, vous ne voyez pas une tâche noire dans votre champ de vision.
+Votre cerveau rempli le vide.</p>
+<p>En 1668, le physicien Edme Mariotte réalise une expérience que vous pouvez facilement reproduire chez vous.
+Cachez votre oeil droit avec votre main, et regardez fixement avec votre oeil gauche la croix blanche à droite sur ce dessin :</p>
+<p><img alt="Expérience de Mariotte" src="../img/Chap1_illusion_blind_spot.png" /></p>
+<p>Avancez ou reculez votre visage de l'écran.
+A un moment, comme par magie, le cercle blanc à gauche disparait !</p>
+<p>Vous avez trouvé la distance pour laquelle le cercle est projeté sur la tâche aveugle de votre oeil, et votre cerveau a complété avec le bleu qui entoure le cercle.</p>
+<ul>
+<li>Les <strong>vaisseaux sanguins</strong> de la rétine :</li>
+</ul>
+<p>La rétine est constituée de cellules vivantes, et elle a donc besoin d'être irriguée par des vaisseaux sanguins.
+Nous devrions donc voir en permanence les vaisseaux sanguins passant devant les photorécepteurs.
+Mais leur position étant constante, nous cerveau les supprime de notre vue sans que nous nous en apercevions.</p>
+<p><img alt="Vascularisation de la rétine humaine" src="../img/Chap1_retina_image.png" /></p>
+<p>Il est néanmoins possible tromper votre cerveau pour les faire apparaitre.
+Mettez-vous dans l'obscurité, allumez une lampe, et fermez un oeil.
+Secouez votre lampe juste en dessous de votre oeil ouvert.
+Vous devriez voir apparaitre les vaisseaux sanguins de votre rétine !</p>
+<p>Secouer la lampe fait bouger l'ombre des vaisseaux sanguins sur votre rétine, qui rend plus difficile le traitement pour votre cerveau.</p>
+<p>Parmi les autres <strong>traitements</strong> appliqués aux signaux provenant de nos yeux, on peut citer le <strong>retournement de l'image</strong>, qui est projetée à l'envers sur la rétine par notre cristallin.
+Nous en reparlerons quand nous introduirons le concept de "caméra".</p>
+<h4 id="la-couleur-est-une-construction-du-cerveau">La couleur est une construction du cerveau.</h4>
+<p>Si le spectre réfléchi reçu par notre oeil est une grandeur physique mesurable, <strong>ce n'est pas directement ce que nous voyons</strong>.
+Notre cerveau reçoit les stimuli provenant des 3 types de cônes, et les converti en une sensation que nous appelons "couleur".</p>
+<p>La couleur n'est donc pas une propriété des objets de notre environnement, mais une <strong>construction mentale</strong> qui va dépendre du spectre réfléchi par les objets et du spectre d'absorption des cônes.</p>
+<p>Pour preuve, on peut percevoir une même couleur pour des spectres reçus différents.
+C'est ce que l'on appelle des <strong>couleurs métamères</strong>.</p>
+<p><img alt="Principe des couleurs métamères" src="../img/Chap1_metamerism.gif" /></p>
+<p>La couleur étant une construction du cerveau, celui-ci peut en <strong>modifier notre perception selon le contexte</strong>, afin de faciliter notre interprétation de l'environnement.
+Par exemple, le cerveau adapte notre perception de la couleur en fonction de l'éclairage, afin que nous soyons capable de reconnaitre un objet peu importe son éclairage.
+C'est ce que l'on appelle le principe de "constance des couleurs".</p>
+<p>En 2015 apparait sur les réseaux sociaux le meme "The dress".
+Il s'agit de l'incapacité des internautes à identifier la couleur d'une robe sur une photo : bleu et noir ou jaune et blanc ?</p>
+<p>L'origine du débat est la difficulté à identifier l'éclairage de la robe sur la photo : est-il jaune ou bleu ?</p>
+<p><img alt="Illusion du meme &quot;The dress&quot;" src="../img/Chap1_illusion_the_dress.gif" /></p>
+<p>Suivant l'a priori que prend votre cerveau sur l'éclairage, il interprétera différement la couleur de la robe : votre ressenti sera différent.
+Et pourtant, on peut facilement vérifier que dans les 2 cas, le spectre réfléchi est <strong>strictement le même</strong> !</p>
+<p>Nous reparlerons plus loin des couleurs et introduirons le concept de "colorimétrie".</p>
+<h4 id="decoupage-des-contours-et-objets">Découpage des contours et objets</h4>
+<p>Pour donner du sens à ce que nous voyons, notre cerveau cherche en permanence à <strong>découper des formes</strong> dans l'image que nous percevons.</p>
+<p>Le but est évident : déliminer les <strong>contours des objets</strong> dans notre environnement, et les séparer de l'arrière-plan, pour les identifier par la suite.</p>
+<p>Pour  voir ce travail à l'oeuvre, voici 2 illusions d'optique célèbres :</p>
+<p><img alt="Illusions de Kanizsa et Rubin" src="img/Chap1_illusion_kanizsa_rubin.gif" /></p>
+<p>Dans la 1ère illusion, notre cerveau délimite un triangle qui n'est pourtant pas dessiné explicitement.
+Dans la 2nde illusion, notre cerveau ne sait pas s'il doit séparer un vase noir d'un arrière-plan blanc, ou 2 visages blancs d'un arrière-plan noir.</p>
+<p>Nous reparlerons plus loin des problématiques de détection de contours et de segmentation d'images.</p>
+<h4 id="estimation-de-la-taille-et-des-distances">Estimation de la taille et des distances</h4>
+<p>Sans que nous nous en rendions compte, notre cerveau réalise en permance des estimations de <strong>taille</strong> et de <strong>distance</strong> des objets qui nous entourent.</p>
+<p>Pour des objets suffisamment <strong>proches</strong>, comme nous avons 2 yeux, le cerveau peut utiliser la <strong>stéréoscopie</strong>.
+Nous en reparlerons plus loin.</p>
+<p>Pour des objets <strong>lointains</strong>, notre cerveau doit se baser sur des <strong>indices dans l'image</strong>.
+Par exemple :</p>
+<ul>
+<li>
+<p>Les lignes droites, les ombres ou la diminution de la taille apparente d'objets connu, afin de comprendre la perspective.</p>
+</li>
+<li>
+<p>La taille apparente d'un objet inconnu par rapport à un objet connu se situant à côté.</p>
+</li>
+<li>
+<p>Le souvenir de la taille que peut raisonnablement faire un type d'objet.</p>
+</li>
+</ul>
+<p>Les estimations de taille et de distance d'un objet par le cerveau vont donc <strong>dépendre du contexte</strong> de l'environnement.</p>
+<p>On peut facilement voir ce travail à l'oeuvre, en essayant de tromper notre cerveau sur la taille d'un trait ou d'un cercle.
+Voici 2 illusions d'optique connues à ce sujet :</p>
+<p><img alt="Illusions de Ponzo et Ebbinghaus" src="../img/Chap1_illusion_ponzo_ebbinghaus.gif" /></p>
+<p>Vous avez aussi probablement eu un jour la sensation que la lune était plus grande dans le ciel, ou plus proche que d'habitude.
+Il s'agit également d'une illusion : la taille apparente de la lune dans le ciel ne change pas de manière perceptible.</p>
+<h4 id="lapparence-du-mouvement">L'apparence du mouvement</h4>
+<p>Tous les objets de notre environnement ne sont pas fixes, et il est donc vital pour notre système visuel d'être capable de <strong>percevoir le mouvement</strong>.</p>
+<p>Si nos yeux restent fixes et qu'un objet se déplace par rapport à nous, l'image formée sur nos rétine va changer, se qui va modifier les stimuli reçus par notre cerveau.
+Reste alors à reconnaitre que la modification des stimuli correspond au déplacement d'un même objet, ce qui est loin d'être simple !
+Et pourtant, notre cerveau le fait sans même que nous nous en appercevions.</p>
+<p>Nous reparlerons plus tard de la perception du mouvement.</p>
+<p>Néanmoins, il y a un point intéressant à aborder pour la suite : on peut tromper notre cerveau pour se donner l'illusion de mouvement.
+Vous le savez déjà, c'est le principe utilisé pour le <strong>cinéma</strong>.</p>
+<p>Si on fait défiler suffisamment vite devant nos yeux une succession d'images fixes représentant un même objet à différentes positions, nous aurons l'impression du mouvement.
+On parle de <strong>mouvement apparent</strong>.</p>
+<p>Voici un exemple simple :</p>
+<p><img alt="Mouvement apparent par effet phi" src="../img/Chap1_illusion_motion.gif" /></p>
+<p>On a l'impression de voir les ronds rouge-orange-jaune se déplacer les uns après les autres, alors qu'il ne s'agit que d'une suite d'images avec des ronds blancs changeant de couleur d'une image à l'autre.
+Notre cerveau crée la sensation de mouvement.</p>
+<p>Si ce type d'illusion est particulièrement intéressante, c'est parce qu'elle va nous être utile dans la suite de ce cours, quand nous parlerons de "flux optique" et de "temps de rafraichissement d'écran".</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Nota Bene</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Dans la culture populaire, le phénomène du "mouvement apparent" est souvent relié à la "persistance rétinienne".</td>
+</tr>
+<tr>
+<td style="text-align: left;">Si l'origine exacte du phénomène est encore sujet à débat, on sait en revanche depuis longtemps qu'il n'est pas lié à la persistance rétinienne.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Il est plus probablement lié à ce que l'on appelle "l'effet phi".</td>
+</tr>
+</tbody>
+</table>
+<h4 id="interpretations-complexes">Interprétations complexes</h4>
+<p>Nous avons vu que notre cerveau filtre les informations inutiles, interprète les couleurs, les contours, les tailles, les distances et les mouvements.
+Mais il est capable d'un niveau d'interprétation supérieur.</p>
+<p>Vous pouvez d'un seul regard :</p>
+<ul>
+<li>
+<p>Mettre un nom sur un visage familier.</p>
+</li>
+<li>
+<p>Comprendre les panneaux de signalisation sur la route.</p>
+</li>
+<li>
+<p>Anticiper la trajectoire d'un ballon pour l'attraper.</p>
+</li>
+<li>
+<p>Repérer un fruit mûr sur un étalage.</p>
+</li>
+<li>
+<p>Deviner au visage de quelqu'un s'il est heureux ou triste.</p>
+</li>
+</ul>
+<p>Ces tâches qui vous paraissent faciles demandent en réalité un <strong>processus cognitif très complexe !</strong></p>
+<p>Lorsque l'on met en place un système de <strong>vision par ordinateur</strong>, on cherche à reproduire la vision humaine avec une machine.
+Et nous avons vu que reproduire la vision humaine, ce n'est pas seulement reproduire le capteur, notre <strong>oeil</strong>, mais aussi reproduire le processus de <strong>traitement</strong> et d'<strong>interprétation</strong> du cerveau !</p>
+<p>Nous reparlerons à la fin de ce chapitre des principales catégories de problématiques en vision par ordinateur.</p>
+<h3 id="computer-vision">Computer vision</h3>
+<p>La "<strong>vision par ordinateur</strong>" ou "<strong>computer vision</strong>" en anglais, est la discipline de "l'<strong>intelligence artificielle</strong>" (ou <strong>IA</strong>) visant à <strong>reproduire avec des machines la vision humaine</strong>.</p>
+<p>Comme vous l'aurez maintenant compris, "reproduire la vision humaine" implique :</p>
+<ul>
+<li>De reproduire l'<strong>oeil</strong>, organe capable de former une image à partir de la lumière réfléchie par notre environnement, et de la transformer en signal électrique.</li>
+</ul>
+<p>C'est pourquoi dans ce chapitre, nous introduirons le concept de <strong>caméra</strong>, le concept d'<strong>image numérique</strong>, et les principaux paramètres à maitriser en <strong>photographie</strong>.</p>
+<ul>
+<li>De reproduire les <strong>traitements</strong> appliqués aux images en amont par le cerveau pour les rendre lisibles.</li>
+</ul>
+<p>C'est pourquoi vous aurez grâce au chapitre suivant une introduction au <strong>traitement d'images</strong>.</p>
+<ul>
+<li>De reproduire les <strong>interprétations complexes</strong> réalisée par le cortex visuel.</li>
+</ul>
+<p>C'est pourquoi les 2 derniers chapitres vous introduirons des outils de d'<strong>apprentissage supervisé</strong> ("Machine-Learning") modernes pour des problématiques de vision.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Nota Bene</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Si la vision par ordinateur est grandement bio-inspirée, cela ne signifie pas que toutes les méthodes utilisées sont similaires à celles qui ont évolué chez l'humain pour répondre aux mêmes problématiques.</td>
+</tr>
+<tr>
+<td style="text-align: left;">En effet, la vision par ordinateur s'attache plus à reproduire le résultat que la méthode pour y arriver.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="la-camera-une-machine-a-faire-du-2d">La caméra : une machine à faire du 2D</h2>
+<p>Comme nous venons de le mentionner, la <strong>caméra</strong> est l'<strong>oeil</strong> de tout système de vision par ordinateur.</p>
+<p>Nous parlerons ici de "caméra" au sens large, quitte à faire un anglicisme : <strong>un appareil capable d'acquérir une image 2D de son environnement 3D</strong>.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Nota Bene</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">En français, on parle d'un "appareil photographique" dans le cas où il optimisé pour acquérir une image unique ou "photographie", et d'une "caméra" dans le cas où il est optimisé pour acquérir une succession d'images et en faire une "vidéo".</td>
+</tr>
+<tr>
+<td style="text-align: left;">Nous ne ferons pas la distinction ici, pour nous aligner sur la convention anglaise.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="stenope-et-chambre-noire">Sténopé et chambre noire</h3>
+<p>"Caméra" vient du mot latin <em>camera</em>, faisant référence à ce que l'on appelle une "<strong>chambre noire</strong>".</p>
+<p>La "chambre noire" est un dispositif connu de puis l'antiquité, qui était initialement basé sur le principe du "<strong>sténopé</strong>" :</p>
+<p>Il s'agit dans sa forme la plus simple d'une boite fermée, avec sur une des ses faces un petit trou.
+Sur la face opposée, se forme une image.
+La taille de l'image ainsi formée dépend de la distance entre les 2 faces de la boite.</p>
+<p>Le principe optique derrière la formation de cette image est théorisé pour la première fois dans le célèbre traité d'optique d'Alhazen en 1021.</p>
+<p>Nous avons vu précédemment que dans le cas d'une <strong>réflexion diffuse</strong> parfaite, la lumière est réfléchie dans <strong>toutes les directions</strong> par un objet de notre environnement.
+Or, pour former une image 2D de l'environnement, il faut pouvoir projeter en chaque point de la face opposée de la boite la lumière provenant d'une <strong>unique direction</strong>.
+D'où la présence d'un trou.</p>
+<p>En effet, pour un <strong>trou infiniment petit</strong>, la lumière se déplaçant en ligne droite selon les règles de l'<strong>optique géométrique</strong>, on montre facilement que la lumière éclairant un point sur la face opposée de la boite ne peut provenir que <strong>d'une direction</strong>.</p>
+<p>On montre aussi facilement que l'image est <strong>renversée</strong>, et que la taille <span class="arithmatex">\(h\)</span> d'un objet sur l'image dépendra de la taille réelle de l'objet <span class="arithmatex">\(H\)</span>, de la distance entre l'objet et le trou <span class="arithmatex">\(D\)</span>, et de la taille entre le trou et la face opposée <span class="arithmatex">\(d\)</span>, selon la formule :</p>
+<p><span class="arithmatex">\(\frac{h}{H} = \frac{d}{D}\)</span></p>
+<p>Par exemple, si un objet de 10 cm se trouve à 1 m du trou de la chambre noire, et que cette chambre noire mesure 20 cm, la taille de l'objet sur l'image sera de 2 cm.</p>
+<p><img alt="Schéma d'une chambre noire avec sténopé" src="../img/Chap1_camera_obscura.png" /></p>
+<p>Dans la réalité, un trou infinement petit est bien entendu absurde.
+Le choix de la <strong>taille du trou</strong> sera <strong>un compromis entre 2 limites physiques</strong> :</p>
+<ul>
+<li>
+<p>Plus le trou sera grand, et moins l'image sera "nette", car moins directive sera la projection.</p>
+</li>
+<li>
+<p>Plus le trou est petit, et plus nous nous éloignons du domaine optique.
+En effet, la lumière est une onde, et apparaissent alors des effet de diffraction, qui vont déformer l'image.</p>
+</li>
+</ul>
+<p>Vers la fin du XIXème siècle, Rayleigh propose la formule empirique suivante pour la détermination de la taille idéale du trou :</p>
+<p><span class="arithmatex">\(1.9 \sqrt{d \times \lambda}\)</span></p>
+<p>avec <span class="arithmatex">\(\lambda\)</span> la longueur d'onde de la lumière, que l'on considère souvent comme ayant une médiane à 550 nm dans le visible.</p>
+<p>Donc, pour une chambre noire dont la boite fait 20 cm, on choisira un trou d'un diamètre d'environ 0.6 mm.</p>
+<p>Les chambres noires ont longtemps été utilisées pour aider les peintres à représenter le réel en 2D : il suffit de dessiner par dessus l'image projetée.
+Elles ont aussi aidé les astronomes à observer le soleil et ses éclipses, qui ne peuvent être regardées direct.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Nota Bene</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Vous l'aurez probablement remarqué : ce type de caméra a un fonctionnement équivalent aux yeux du nautile.</td>
+</tr>
+</tbody>
+</table>
+<p>Ce système a cependant un gros désavantage : la <strong>luminosité</strong>.</p>
+<p>On imagine en effet facilement qu'en limitant la lumière entrant dans la chambre noire à un trou de moins de 1 mm, on réduit grandement la quantité de lumière servant à former l'image.
+C'est pourquoi à partir du XVIème siècle, on commencera progessivement à remplacer le trou des chambres noires par des <strong>lentilles</strong>.</p>
+<h3 id="lobjectif-photographique">L'objectif photographique</h3>
+<p>En optique, on appelle "<strong>lentille</strong>" un morceau de matériau <strong>isotrope</strong>, <strong>transparent</strong> (réfléchissant peu la la lumière visible) et <strong>réfringent</strong>, dont la forme permet de faire <strong>converger</strong> ou <strong>diverger</strong> les rayons lumineux qui le traversent.</p>
+<p>Tout comme la "chambre noire", le principe de la lentille est connu depuis l'antiquité :</p>
+<p>Les lentilles <strong>convergentes</strong> ont d'abord été utilisées en complément du système humain, pour grossir un texte (principe de la loupe), puis au moyen-âge pour aider les personnes ayant des problèmes de vue (principe des lunettes).
+Avec l'amélioration des techniques de fabrication des lentilles, au XVIIème siècle sont inventés le microscope et le téléscope.</p>
+<p>Comme nous l'avons mentionné, c'est à cette période aussi que les chambres noires commencent à utiliser des lentilles convergentes plutôt qu'un sténopé.</p>
+<p>Là où le sténopé va essayer de restreindre la lumière reçue en un point de l'image à une direction, une lentille convergente va chercher à <strong>dévier la lumière diffusée dans différentes directions</strong> par un point d'un objet <strong>vers un même point de l'image</strong>.</p>
+<p><img alt="Schéma d'une chambre noire avec lentille convergente" src="../img/Chap1_camera_lens.png" /></p>
+<p>On comprend alors sans mal qu'avec une lentille <strong>beaucoup plus de lumière</strong> provenant de l'environnement est utilisée pour former l'image au fond de la chambre noire.</p>
+<p>Une <strong>lentille convergente</strong> parfaite est caractérisée par sa <strong>distance focale</strong> <span class="arithmatex">\(f\)</span>, c'est-à-dire la distance au centre de la lentille du point vers lequel convergent tous les rayons arrivant dans l'axe de la lentille.
+En optique, on appelle se point le "foyer".</p>
+<p>C'est cette propriété qui va définir la distance <span class="arithmatex">\(d\)</span> à laquelle se forme l'image d'un objet se trouvant à une distance <span class="arithmatex">\(D\)</span>, suivant la formule :</p>
+<p><span class="arithmatex">\(\frac{1}{f} = \frac{1}{d} + \frac{1}{D}\)</span></p>
+<p>La taille <span class="arithmatex">\(h\)</span> de l'image de cet objet de taille <span class="arithmatex">\(H\)</span> se calcule alors de la même façon que pour le sténopé :</p>
+<p><span class="arithmatex">\(\frac{h}{H} = \frac{d}{D}\)</span></p>
+<p>Par exemple, pour une lentille de 20 cm de distance focale, un objet situé à 1 m aura son image projetée à 25 cm.
+Si l'objet fait 10 cm, sa taille sur l'image projetée sera de 2.5 cm.</p>
+<p>Si le fond de la chambre noire se trouve exactement à la distance <span class="arithmatex">\(d\)</span> de la lentille, on dira que cet objet est "<strong>net</strong>" sur l'image.</p>
+<p>On remarque alors que pour obtenir une image "nette" d'un objet situé à une certaine distance, il faut adapter <span class="arithmatex">\(f\)</span> ou <span class="arithmatex">\(d\)</span>, ce qui implique de pouvoir <strong>changer la lentille</strong> ou <strong>changer sa position</strong> par rapport au fond de la caméra.
+Choisir une configuration de <span class="arithmatex">\(f\)</span> et <span class="arithmatex">\(d\)</span> pour rendre un objet net sur l'image s'appelle faire la "<strong>mise au point</strong>".</p>
+<p>Contrairement au sténopé, on ne peut donc pas avoir tous les objets de l'environnement "nets" sur une même image avec ce type de caméra.
+En revanche, nous verrons dans la suite qu'il est possible d'adapter la zone dans laquelle les objets peuvent être considérés comme "suffisamment nets", lorsque nous introduirons la notion de "profondeur de champ optique". </p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Nota Bene</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Vous l'aurez probablement remarqué : ce type de caméra fonctionne sur le même principe que l'oeil humain.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Les yeux des mammifères sont capables de modifier la distance focale du cristallin, la "lentille" naturelle.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Chez les poulpes et les seiches, c'est la distance du cristallin à la rétine qui peut être modifiée.</td>
+</tr>
+</tbody>
+</table>
+<p>Dans la réalité, une lentille convergente "parfaite" <strong>n'existe pas</strong> : aucune lentille n'est infiniment mince, parfaitement isotrope, au coefficient de réfraction constant avec la longueur d'onde, etc.</p>
+<p>Ceci entraine des défauts sur l'image projetée appelés "<strong>aberrations optiques</strong>".
+En voici quelques exemples :</p>
+<ul>
+<li>La <strong>aberrations géométriques</strong> :</li>
+</ul>
+<p>Les rayons lumineux traversant une lentille parallèlement à son axe ne passent jamais tous exactement par le foyer quelque soit leur distance à l'axe.
+Ces petits décalages auront tendance à dégrader la netteté de l'image, voir à la déformer.</p>
+<ul>
+<li>Les <strong>aberrations chromatiques</strong> :</li>
+</ul>
+<p>Les rayons lumineux de différentes longueurs d'onde ne sont jamais dévié avec le même angle par une lentille.
+En effet, le coefficient de réfraction d'un matériau dépend toujours plus ou moins de la longueur d'onde de la lumière.
+On appelle se phénomène la "<strong>dispersion</strong>".
+La distance focale de la lentille va donc légèrement varier avec la longueur d'onde, ce qui provoque un décalage des couleurs sur l'image.</p>
+<ul>
+<li>Les <strong>réflexions et diffusions internes</strong> :</li>
+</ul>
+<p>Une lentille n'est jamais complètement transparente.
+Il y a des réflexions multiples et de la diffusion de la lumière au sein du matériau.
+Ceci peut provoquer des artéfacts dans l'image, le plus connu étant le "facteur de flare".</p>
+<ul>
+<li>Les <strong>défauts</strong> de la lentille :</li>
+</ul>
+<p>Le moindre défaut de la lentille peut impacter l'image obtenue.
+Une poussière, un impact, une inclusion dans le matériau peut provoquer des artéfacts visibles.</p>
+<p><img alt="Exemples d'aberrations optiques classiques" src="../img/Chap1_optical_aberrations.png" /></p>
+<p>Pour lutter contre ces désavantages connus de l'utilisation d'une lentille convergente par rapport au sténopé, les caméras modernes n'utilisent plus une lentille convergente simple, mais un système optique composé de <strong>multiples lentilles</strong>, appelé "<strong>objectif photographique</strong>".</p>
+<p>En général, l'objectif d'une caméra permet d'adapter la distance focale du système, ainsi que de corriger certaines des aberrations dont nous avons parlé.</p>
+<p>Nous parlerons plus en détails dans la suite des paramètres photographiques sur lesquels on peut jouer lors d'une acquisition d'image.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Nota Bene</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Il est à noter que les aberrations présentées ici sont parfois recherchées pour certaines applications.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Par exemple, le facteur de flare est souvent recherché en photographie artistique pour son côté esthétique.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Ou encore, les aberrations géométriques peuvent être recherchées dans la cas de la photographie 360° par un objectif "fisheye".</td>
+</tr>
+</tbody>
+</table>
+<p>Nous avons à présent un système capable de former une image dans une chambre noire.
+Reste un problème : comment capter cette image ?</p>
+<h3 id="la-photographie-argentique">La photographie argentique</h3>
+<p>En 1827, Nicéphore Niépce réalise ce qui est à ce jour la photographie la plus ancienne qui nous soit parvenue : Le <em>Point de vue du Gras</em>.</p>
+<p><img alt="Le point de vue du Gras" src="../img/Chap1_point_de_vue_du_Gras.png" /></p>
+<p>Elle représente le domaine du Gras, maison de Niépce en Saône-et-Loire.
+Pour l'obtenir, il a utilisé un procédé de son invention, qu'il a appelé "héliographie".
+Il s'agit d'une chambre noire, avec une lentille convergente, et un système de fixation d'image à base de "bitume de Judée".</p>
+<p>Le "bitume de Judée" est un matériau <strong>photosensible</strong>, c'est-à-dire que ses propriétés physiques changent lorsqu'il est exposé à la lumière.
+Niépce recouvre une plaque de métal d'un vernis contenant du bitume dissous, et la place au fond de la chambre noire.
+Quand il est exposé à la lumière, le bitume durçit et devient moins soluble.
+Il suffit alors de nettoyer la plaque pour retirer le bitume des zones de la plaque où il n'a pas durcit.</p>
+<p>On obtient alors une <strong>impression en noir et blanc</strong> de l'image formée par la lentille au fond de la chambre noir.</p>
+<p>Le principal problème de ce procédé ? <strong>Le temps de pause</strong>.</p>
+<p>En effet, selon certaines estimations, il a fallu que la plaque soit exposée plus d'une journée pour obtenir cette photographie !
+Un temps bien trop long pour espérer capturer autre chose que des natures mortes ou des paysages.</p>
+<p>Niépce s'associe avec le peintre Louis Daguerre, qui a entendu parler de son invention.
+Ensemble, ils vont améliorer le processus, réduisant le temps de pause nécessaire à quelques dizaines de minutes.
+Daguerre profitera de la mort de Niépce en 1833 pour s'attribuer la paternité de l'invention, qu'il nommera humblement "<strong>daguerréotype</strong>" en 1835.
+Le brevet est acheté en 1839 par l'état français, qui "l'offre au monde entier" en le rendant public.</p>
+<p>Le Daguerreotype utilise un nouveau matériau photosensible : <strong>l'iodure d'argent</strong>.
+Voici le principe :</p>
+<ul>
+<li>L'<strong>exposition</strong> à la lumière :</li>
+</ul>
+<p>Une couche d'argent est déposée sur un support au fond de la chambre noire.
+On expose la plaque à de l'iode, pour produire de l'iodure d'argent.
+On laisse l'iodure d'argent réagir à la lumière quelques dizaines de minutes.</p>
+<ul>
+<li>Le <strong>développement</strong> de l'image :</li>
+</ul>
+<p>Une "<strong>image latente</strong>", invisible, s'est formée sur la plaque.
+Pour faire apparaitre l'image, il faut exposer la plaque à des vapeurs de mercure.
+Le mercure se condense sur l'iodure d'argent, proportionnellement à son exposition à la lumière, faisant apparaitre l'image.</p>
+<ul>
+<li>La <strong>fixation</strong> de l'image :</li>
+</ul>
+<p>L'image formée à ce stade est très fragile, et risque de disparaitre avec une nouvelle exposition à la lumière.
+Pour la figer, on la trempe dans une solution d'hyposulfite de soude, puis on la lave de tout matériau photosensible non figé.</p>
+<p>Si les techniques photographiques ont beaucoup évolué au court du XIXème puis du XXème siècle, ces 3 grandes étapes restent : <strong>exposition</strong> à la lumière d'un matériau photosensible, <strong>développement</strong> de l'image latente obtenue, <strong>fixation</strong> de l'image.
+Une autre constante est l'utilisation de matériaux photosensibles à base d'argent, d'où le nom de <strong>photographie argentique</strong>.</p>
+<p><img alt="Principe de la photographie argentique" src="../img/Chap1_analog_photography.png" /></p>
+<p>L'inventeur William Henry Fox Talbot brevète en 1841 le "<strong>calotype</strong>", qui utilise comme support du papier recouvert d'iodure d'argent, et permet de réaliser des photographies en "<strong>négatif</strong>".
+Ceci est particulièrement pratique pour <strong>imprimer plusieurs tirages</strong> à partir d'une photographie négative.
+En 1847, l'imprimeur Louis Désiré Blanquart-Evrard arrive à réduire le coût de cette technique en utilisant du blanc d'oeuf pour la fixation de l'image : c'est le "<strong>papier albuminé</strong>".
+Il créé dans la foulée en 1851 une des 1ères imprimeries photographique du monde, dans la région de Lille.</p>
+<p><img alt="Exemples de daguerréotype et de calotype" src="../img/Chap1_daguerreotype_calotype.png" /></p>
+<p>En 1888, l'entrepreneur George Eastman, fondateur de l'entreprise Kodak, commercialise les premières <strong>pellicules photographiques</strong>, démocratisant encore plus la photographie.</p>
+<p>Jusqu'à la fin du XXème siècle, les appareils photographique utilisaient donc ces "<strong>pellicules</strong>", un film plastique recouvert d'une émulsion contenant des cristaux de <strong>bromure d'argent</strong>, photosensibles.
+Un même appareil pouvait prendre plusieurs photographies d'affilée, en faisant simplement défiler la pellicule.
+En général, on confiait ensuite à un professionnel le soin de développer et fixer les photographies enregistrées sur la pellicule.</p>
+<p><em>Et pour les couleurs ?</em></p>
+<p>Si des procédés de photographie en couleurs existent depuis 1861 (invention de Thomas Sutton), ils restent pendant longtemps des processus complexes et nécessitant des temps d'exposition trop longs.
+Ce n'est que dans les années 1930 que des pellicules "couleur" apparaissent sur le marché, et que dans les années 1960-1970 qu'elles deviennent suffisamment peu chères pour se démocratiser.</p>
+<p>Les pellicules couleur étaient constituées de <strong>plusieurs couches</strong> d'émulsions de bromure d'argent, avec des <strong>filtres</strong> pour les rendre sensibles à différentes longueurs d'ondes, à la manière des cônes de notre oeil.
+Le processus de développement a également été adapté pour faire apparaitre les images captées par les différentes couches de la couleur voulue.</p>
+<p><img alt="Structure des pellicules couleur" src="../img/Chap1_photographic_film.png" /></p>
+<p>Nous reparlerons dans la suite de la synthétisation des couleurs.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Nota Bene</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">La pellicule étant beaucoup plus petite que les supports précédemment utilisés, il faut ajouter une étape de <strong>grossissement</strong> de l'image par projection.</td>
+</tr>
+</tbody>
+</table>
+<p>Si la <strong>photographie argentique</strong> permet de capter l'image projetée par la caméra, il s'agit d'un enregistrement <strong>analogique</strong>.
+Or, pour faire de la vision par ordinateur, il nous faut un enregistrement <strong>numérique</strong>.</p>
+<h3 id="la-photographie-numerique">La photographie numérique</h3>
+<p>Si les premiers développements en <strong>photographie numérique</strong> remontent aux années 1970, ce n'est qu'au début du XXIème siècle qu'elle se démocratise, jusqu'à remplacer la photographie argentique auprès du grand public.</p>
+<p>Une caméra "<strong>numérique</strong>" est caractérisée par les éléments suivants :</p>
+<ul>
+<li>Un "<strong>capteur photographique</strong>" remplace la pellicule et fait office de "rétine" :</li>
+</ul>
+<p>Il s'agit d'une matrice de composants électroniques appelés "<strong>photosites</strong>", capables de convertir de l'énergie lumineuse en <strong>énergie électrique</strong>.
+Pour ce faire, les photosites utilisent un type de composants appelé "<strong>photodiodes</strong>".
+Une photodiode contient du <strong>silicium dopé</strong> pour être <strong>semi-conducteur</strong>.
+L'idée est qu'un photon capté va créer une paire électron-trou au sein du semi-conducteur.</p>
+<ul>
+<li>Le signal obtenu par chaque photosite est en général <strong>amplifié</strong>.</li>
+</ul>
+<p>Mais il faut noter que l'effet photoélectrique utilisé par les photosites a un meilleur rendement que l'effet photochimique utilisé par les pellicules argentiques.
+C'est-à-dire qu'un proportion plus grande des photons incidents sont captés par un capteur photographique.</p>
+<ul>
+<li>Un convertisseur analogique-numérique (CAN) va <strong>numériser</strong> ces signaux.</li>
+</ul>
+<p>Nous reparlerons plus loin des aspects de "numérisation" (échantillonnage / quantification) d'une image.</p>
+<ul>
+<li>La matrice des signaux obtenus va être <strong>encodée</strong> selon un format définit, et <strong>enregistrée</strong> sur un support physique (en général une "carte mémoire").</li>
+</ul>
+<p>On obtient ainsi une image en nuances de gris.
+Pour obtenir une image <strong>en couleurs</strong>, il faut ajouter les éléments suivants :</p>
+<ul>
+<li>Une matrice de <strong>filtres colorés</strong> avant le capteur photographique :</li>
+</ul>
+<p>L'idée est d'imiter la rétine humaine, avec un tapis de "photorécepteurs" sensibles à 3 longueurs d'onde différentes.
+En général, on choisi la "<strong>mosaïque de Bayer</strong>", qui réparti des filtres rouges / verts / bleus avec les proportions 25% / 50% / 25%, pour reproduire le fait que le pic de sensibilité de la vision humaine est <strong>proche du vert</strong>.</p>
+<ul>
+<li>Une étape de traitement entre la numérisation et l'encodage, que l'on appelle "<strong>dématriçage</strong>" :</li>
+</ul>
+<p>Les photocites dédiés aux 3 couleurs sont distribués sur le capteur, avec en plus un déséquilibre dans leur répartition.
+Or, nous avons besoins de mesures de rouge / vert / bleu pour une même position sur l'image projetée sur le capteur.
+On réalise donc des <strong>interpolations 2D</strong>.</p>
+<p>Quelques corrections numériques peuvent également être apportées aux données avant encodage.</p>
+<p><img alt="Principe de la photographie numérique" src="../img/Chap1_digital_photography.png" /></p>
+<p>Les capteurs photographiques sont</p>
+<p>Il existe <strong>2 grandes technologies</strong> de <strong>capteurs photographiques</strong> : </p>
+<ul>
+<li>Les capteurs <strong>CCD</strong> :</li>
+</ul>
+<p><img alt="Principe du capteur CCD" src="../img/Chap1_CCD_sensor.gif" /></p>
+<ul>
+<li>Les capteurs <strong>CMOS</strong> :</li>
+</ul>
+<p><img alt="Principe du capteur CMOS" src="../img/Chap1_CMOS_sensor.gif" /></p>
+<h3 id="reglages-dune-camera">Réglages d'une caméra</h3>
+<p>Le triangle d'exposition :</p>
+<ul>
+<li>
+<p>Ouverture</p>
+</li>
+<li>
+<p>Vitesse d'obturation</p>
+</li>
+<li>
+<p>Sensibilité ISO</p>
+</li>
+</ul>
+<h2 id="numerisation-dune-image-passer-du-monde-continu-au-monde-discret">Numérisation d'une image : passer du monde continu au monde discret</h2>
+<h3 id="discretisation-de-limage">Discrétisation de l'image</h3>
+<p><img alt="Aliasing par décimation d'une image" src="../img/Chap1_aliasing.png" /></p>
+<h3 id="encodage-des-couleurs">Encodage des couleurs</h3>
+<h3 id="formats-et-compression">Formats et compression</h3>
+<h2 id="lecran-reproduire-le-reel">L'écran : reproduire le réel</h2>
+<h2 id="manipuler-des-images-avec-python">Manipuler des images avec Python</h2>
+<h3 id="pillow">Pillow</h3>
+<h3 id="scikit-image">Scikit-image</h3>
+<h3 id="open-cv">Open-CV</h3>
+<h2 id="retouche-dimages-ameliorer-la-lisibilite">Retouche d'images : améliorer la lisibilité</h2>
+<h3 id="luminosite">Luminosité</h3>
+<p><img alt="Exemple de retouche de luminosité" src="../img/Chap1_example_luminosity.png" /></p>
+<h3 id="contraste">Contraste</h3>
+<p><img alt="Exemple de retouche de contraste" src="../img/Chap1_example_contrast.png" /></p>
+<h3 id="saturation">Saturation</h3>
+<p><img alt="Exemple de retouche de saturation" src="../img/Chap1_example_saturation.png" /></p>
+<h2 id="les-histogrammes-etalonner-des-images">Les histogrammes : étalonner des images</h2>
+<h3 id="analyse-des-histogrammes">Analyse des histogrammes</h3>
+<p><img alt="Exemple d'histogramme pour une image en noir et blanc" src="../img/Chap1_example_histograms_grayscale.png" /></p>
+<p><img alt="Exemple d'histogramme pour une image en couleurs" src="../img/Chap1_example_histograms_colors.png" /></p>
+<h3 id="histogram-equalization">Histogram equalization</h3>
+<p><img alt="Exemple d'application noir et blanc de l'histogram equalization" src="../img/Chap1_example_grayscale_histogram_equalization.png" /></p>
+<p><img alt="Histogrammes avant et après l'histogram equalization" src="../img/Chap1_example_grayscale_histogram_equalization_histograms.png" /></p>
+<p><img alt="Exemple d'application HSV de l'histogram equalization" src="../img/Chap1_example_histogram_equalization.png" /></p>
+<p><img alt="Exemple d'application noir et blanc de CLAHE" src="../img/Chap1_example_grayscale_CLAHE.png" /></p>
+<p><img alt="Exemple d'application HSV de CLAHE" src="../img/Chap1_example_CLAHE.png" /></p>
+<h3 id="histogram-matching">Histogram matching</h3>
+<p><img alt="Exemple d'application de l'histogram matching" src="../img/Chap1_example_histogram_matching.png" /></p>
+<p><img alt="Histogrammes avant et après matching" src="../img/Chap1_example_histogram_matching_histograms.png" /></p>
+<h2 id="a-la-recherche-des-dimensions-perdues">A la recherche des dimensions perdues</h2>
+<h3 id="la-stereoscopie">La stéréoscopie</h3>
+<h3 id="le-flux-optique">Le flux optique</h3>
+<h2 id="la-vision-par-ordinateur">La vision par ordinateur</h2>
+<h3 id="classification-dimages">Classification d'images</h3>
+<h3 id="localisation-dobjets">Localisation d'objets</h3>
+<h3 id="segmentation-dimages">Segmentation d'images</h3>
+<h3 id="reconstruction-3d-suivi">Reconstruction 3D / suivi</h3>
+<h2 id="conclusion">Conclusion</h2>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="Accueil"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Chap2_Filtrage_transformation/" class="btn btn-neutral float-right" title="II. Filtrage et transformations">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Chap2_Filtrage_transformation/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../javascripts/mathjax.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
