@@ -749,6 +749,9 @@ Une caméra "**numérique**" est caractérisée par les éléments suivants :
 * Un "**capteur photographique**" remplace la pellicule et fait office de "rétine" :
 
 Il s'agit d'une matrice de composants électroniques appelés "**photosites**", capables de convertir de l'énergie lumineuse en **énergie électrique**.
+Pour ce faire, les photosites utilisent un type de composants appelé "**photodiodes**".
+Une photodiode contient du **silicium dopé** pour être **semi-conducteur**.
+L'idée est qu'un photon capté va créer une paire électron-trou au sein du semi-conducteur.
 
 * Le signal obtenu par chaque photosite est en général **amplifié**.
 
@@ -779,13 +782,17 @@ Quelques corrections numériques peuvent également être apportées aux donnée
 
 ![Principe de la photographie numérique](img/Chap1_digital_photography.png)
 
-Il existe 2 grandes technologies de **capteurs photographiques** : 
+Les capteurs photographiques sont
+
+Il existe **2 grandes technologies** de **capteurs photographiques** : 
 
 * Les capteurs **CCD** :
 
 ![Principe du capteur CCD](img/Chap1_CCD_sensor.gif)
 
 * Les capteurs **CMOS** :
+
+![Principe du capteur CMOS](img/Chap1_CMOS_sensor.gif)
 
 ### Réglages d'une caméra
 
