@@ -783,6 +783,8 @@ Il existe 2 grandes technologies de **capteurs photographiques** :
 
 * Les capteurs **CCD** :
 
+![Principe du capteur CCD](img/Chap1_CCD_sensor.gif)
+
 * Les capteurs **CMOS** :
 
 ### Réglages d'une caméra
