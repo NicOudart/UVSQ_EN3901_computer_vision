@@ -673,13 +673,13 @@ Il suffit alors de nettoyer la plaque pour retirer le bitume des zones de la pla
 
 On obtient alors une **impression en noir et blanc** de l'image formée par la lentille au fond de la chambre noir.
 
-Le principal problème de ce procédé ? **Le temps de pause**.
+Le principal problème de ce procédé ? **Le temps de pose**.
 
 En effet, selon certaines estimations, il a fallu que la plaque soit exposée plus d'une journée pour obtenir cette photographie !
 Un temps bien trop long pour espérer capturer autre chose que des natures mortes ou des paysages.
 
 Niépce s'associe avec le peintre Louis Daguerre, qui a entendu parler de son invention.
-Ensemble, ils vont améliorer le processus, réduisant le temps de pause nécessaire à quelques dizaines de minutes.
+Ensemble, ils vont améliorer le processus, réduisant le temps de pose nécessaire à quelques dizaines de minutes.
 Daguerre profitera de la mort de Niépce en 1833 pour s'attribuer la paternité de l'invention, qu'il nommera humblement "**daguerréotype**" en 1835.
 Le brevet est acheté en 1839 par l'état français, qui "l'offre au monde entier" en le rendant public.
 
@@ -818,13 +818,39 @@ Dans la suite de ce cours, nous ne parlerons plus que de **photographie numériq
 
 ### Réglages d'une caméra
 
-Le triangle d'exposition :
+Lorsque l'on utilise une caméra, il y a **3 principaux réglages** sur lesquels jouer pour acquérir une image d'une scène : **vitesse d'obturation**, **sensibilité ISO** et **ouverture**.
+Ces 3 paramètres vont définir ce que l'on appelle l'**exposition** et la **profondeur de champ**.
 
-* Ouverture
+Parlons d'abord de l'**exposition**.
+Il s'agit de la quantité de lumière reçue par le capteur phographique.
 
-* Vitesse d'obturation
+Cette grandeur est liées à nos 3 paramètres par ce que l'on appelle parfois le "**triangle d'exposition**".
 
-* Sensibilité ISO
+#### La vitesse d'obturation
+
+On parle aussi de "temps de pose" ou "temps d'exposition".
+Il s'agit de la **durée pendant laquelle on expose à la lumière** le capteur photographique pour acquérir une image.
+
+Historiquement, les caméras disposaient d'un système mécanique masquant la pellicule ou le capteur, appelé "**obturateur**".
+Aujourd'hui, l'obturation se fait souvent de manière électronique, en activant / désactivant le capteur.
+
+Il est en général exprimé en **fraction de seconde**.
+
+Son choix est un compromis, choisi en fonction de la **luminosité** de la scène et de la **vitesse de déplacement** des objets.
+En effet, un temps de pose long permet de rendre l'image plus lumineuse, mais risque de rendre flou des objets en mouvement.
+
+Par exemple, pour de la photographie sportive, on prendra de l'ordre de 1/1000 s, alors que pour photographier la lune on prendra de l'ordre de 1/250 s.
+
+#### La sensibilité ISO
+
+#### L'ouverture
+
+#### La profondeur de champ
+
+L'ouverture va également permettre d'adapter la **profondeur de champ**.
+Il s'agit 
+
+
 
 ## Numérisation d'une image : passer du monde continu au monde discret
 
