@@ -788,11 +788,33 @@ Il existe **2 grandes technologies** de **capteurs photographiques** :
 
 * Les capteurs **CCD** :
 
+"Charge Coupled Device".
+Ce type de capteur est constitué d'une matrice de **photosites passifs**.
+Lorsqu'ils sont illuminés par des photons, ils **accumulent des charges**.
+Les charges sont ensuite **transférées** électrostatiquement au pixel du dessous, afin d'être lues **ligne par ligne** par un "registre de lecture".
+Enfin, les charges d'une ligne sont une à une **converties en tensions**, et transmises à l'amplitificateur puis au CAN de la caméra.
+
 ![Principe du capteur CCD](img/Chap1_CCD_sensor.gif)
 
 * Les capteurs **CMOS** :
 
+"Complementary Metal Oxide Semiconductor".
+Ce type de capteur est constitué d'une matrice de **photosites actifs**.
+Chaque photosite contient des **transistors**, qui permettent de **convertir les charges accumulées en tension**, et de **sélectionner le photosite** dont on veut lire la tension avec un sélectionneur de **ligne** puis un sélectionneur de **colonne**.
+Les tensions sont lues ligne par ligne, puis colonne par colonne, puis transmises à **une ligne de CAN**.
+
 ![Principe du capteur CMOS](img/Chap1_CMOS_sensor.gif)
+
+Historiquement, les capteurs CCD sont plus anciens (1969) que les capteurs CMOS (1992).
+A partir de 2004, les capteurs CMOS deviennent plus utilisés en photographie numérique que les capteurs CCD, jusqu'à devenir ultra-dominants aujourd'hui.
+
+Les capteurs CMOS ont en effet les avantages suivants comparés aux CCD : **plus rapides**, **moins gourmants en énergie**, et **moins coûteux**.
+Si les capteurs CMOS avaient originellement un bruit plus élevé que les CCD, ce retard a depuis été rattrapé.
+
+Néanmoins, les capteurs CCD restent utilisés dans des domaines spécifiques, par exemple en astronomie ou en spectrométrie.
+En effet, l'indépendance des photosites d'un CMOS rend la mesure de tension moins homogène et moins linéaire, des propriétés importantes pour certaines applications.
+
+Dans la suite de ce cours, nous ne parlerons plus que de **photographie numérique**.
 
 ### Réglages d'une caméra
 
