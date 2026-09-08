@@ -826,6 +826,10 @@ Il s'agit de la quantité de lumière reçue par le capteur phographique.
 
 Cette grandeur est liées à nos 3 paramètres par ce que l'on appelle parfois le "**triangle d'exposition**".
 
+![Le triangle d'exposition](img/Chap1_exposure_triangle.png)
+
+L'idée est que pour une application de vision donnée, **on cherche le meilleur compromis** entre ces 3 paramètres sur ce triangle.
+
 #### La vitesse d'obturation
 
 On parle aussi de "temps de pose" ou "temps d'exposition".
@@ -841,9 +845,9 @@ En effet, un temps de pose long permet de rendre l'image plus lumineuse, mais ri
 
 Par exemple, pour de la photographie sportive, on prendra de l'ordre de 1/1000 s, alors que pour photographier la lune on prendra de l'ordre de 1/250 s.
 
-#### La sensibilité ISO
-
 #### L'ouverture
+
+#### La sensibilité ISO
 
 #### La profondeur de champ
 
