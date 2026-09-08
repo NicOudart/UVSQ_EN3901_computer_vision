@@ -843,16 +843,27 @@ Il est en général exprimé en **fraction de seconde**.
 Son choix est un compromis, choisi en fonction de la **luminosité** de la scène et de la **vitesse de déplacement** des objets.
 En effet, un temps de pose long permet de rendre l'image plus lumineuse, mais risque de rendre flou des objets en mouvement.
 
-Par exemple, pour de la photographie sportive, on prendra de l'ordre de 1/1000 s, alors que pour photographier la lune on prendra de l'ordre de 1/250 s.
+Pour donner un ordre d'idée, pour de la photographie sportive, on prendra de l'ordre de 1/1000 s, alors que pour photographier la lune on prendra de l'ordre de 1/250 s.
+Notre image exemple d'_Ocypode quadrata_ a par exemple été prise avec une vitesse d'obturation de 1/1600 s, cohérent pour de la photographie animalière.
+
+Voici un exemple poussé à l'extrême : une photographie de nuit sur une plage de l'île de la Réunion, prise avec un **long temps d'exposition de 30 secondes** (vitesse d'obturation très faible).
+
+![Le triangle d'exposition](img/Chap1_exposure_triangle.png)
+
+Un temps de pose aussi long permet de faire apparaitre la plage, la mer, les rochers, et même quelques étoiles dans le ciel nocturne.
+Par contre, les objets en mouvement tels que les vagues, les nuages, et les voitures sur la route cotière sont flous.
+Quelques lumières de la ville ont également tendance à "éblouir" le capteur.
 
 #### L'ouverture
 
+Nous l'avons évoqué plus tôt, l'oeil humain possède un **diaphragme**, appelé "iris", qui permet d'adapter la quantité de lumière atteignant la rétine.
+C'est aussi le cas de nombreuses caméras.
+
+Le lien entre l'ouverture du diaphragme d'une caméra, et la quantité de lumière arrivant au capteur parait évident.
+Mais, l'ouverture ne permet pas de régler que l'exposition.
+Elle permet aussi de régler ce que la **profondeur de champ** optique.
+
 #### La sensibilité ISO
-
-#### La profondeur de champ
-
-L'ouverture va également permettre d'adapter la **profondeur de champ**.
-Il s'agit 
 
 
 
