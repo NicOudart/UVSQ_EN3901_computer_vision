@@ -819,7 +819,7 @@ Dans la suite de ce cours, nous ne parlerons plus que de **photographie numériq
 ### Réglages d'une caméra
 
 Lorsque l'on utilise une caméra, il y a **3 principaux réglages** sur lesquels jouer pour acquérir une image d'une scène : **vitesse d'obturation**, **sensibilité ISO** et **ouverture**.
-Ces 3 paramètres vont définir ce que l'on appelle l'**exposition** et la **profondeur de champ**.
+Ces 3 paramètres vont définir ce que l'on appelle l'**exposition** et la **profondeur de champ** optique.
 
 Parlons d'abord de l'**exposition**.
 Il s'agit de la quantité de lumière reçue par le capteur phographique.
@@ -856,12 +856,19 @@ Quelques lumières de la ville ont également tendance à "éblouir" le capteur.
 
 #### L'ouverture
 
-Nous l'avons évoqué plus tôt, l'oeil humain possède un **diaphragme**, appelé "iris", qui permet d'adapter la quantité de lumière atteignant la rétine.
+Nous l'avons déjà evoqué, l'oeil humain possède un **diaphragme**, appelé "iris", qui permet d'adapter la quantité de lumière atteignant la rétine.
 C'est aussi le cas de nombreuses caméras.
 
 Le lien entre l'ouverture du diaphragme d'une caméra, et la quantité de lumière arrivant au capteur parait évident.
 Mais, l'ouverture ne permet pas de régler que l'exposition.
-Elle permet aussi de régler ce que la **profondeur de champ** optique.
+Elle permet aussi de régler ce que l'on appelle la "**profondeur de champ**" optique.
+
+Comme expliqué plus tôt, un sténopé parfait permet en théorie d'obtenir une image nette sur le fond de la caméra, quelque soit la distance de l'objet.
+Mais cette image est peu lumineuse.
+Une lentille parfaite quant à elle, à distance constante du fond de la caméra, ne permet d'obtenir une image nette que pour des objets à un distance précise.
+Mais cette image est plus lumineuse.
+
+En ajoutant un diaphragme à une caméra ayant une lentille, on cherche **un compromis** entre les 2 solutions.
 
 #### La sensibilité ISO
 
