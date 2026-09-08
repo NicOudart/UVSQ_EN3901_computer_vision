@@ -859,6 +859,15 @@ Quelques lumières de la ville ont également tendance à "éblouir" le capteur.
 Nous l'avons déjà evoqué, l'oeil humain possède un **diaphragme**, appelé "iris", qui permet d'adapter la quantité de lumière atteignant la rétine.
 C'est aussi le cas de nombreuses caméras.
 
+On appelle "**ouverture**" le paramètre noté $N$, grandeur sans dimension :
+
+$N = \frac{f}{\phi}$
+
+avec $f$ la distance focale de la lentille, et $\phi$ le diamètre de la "pupille" du diaphragme.
+On parle aussi de "nombre d'ouverture".
+
+Les photographes le notent souvent sous la forme "$f/$", par exemple pour $N = 5.6$ on notera $f/5.6$.
+
 Le lien entre l'ouverture du diaphragme d'une caméra, et la quantité de lumière arrivant au capteur parait évident.
 Mais, l'ouverture ne permet pas de régler que l'exposition.
 Elle permet aussi de régler ce que l'on appelle la "**profondeur de champ**" optique.
@@ -869,6 +878,45 @@ Une lentille parfaite quant à elle, à distance constante du fond de la caméra
 Mais cette image est plus lumineuse.
 
 En ajoutant un diaphragme à une caméra ayant une lentille, on cherche **un compromis** entre les 2 solutions.
+
+La **profondeur de champ** est la zone autour de la distance de **mise au point** pour laquelle on considère que l'image d'un objet sera "**suffisamment nette**".
+
+Cette notion est liée à celle de "**cercle de confusion**" : il s'agit du diamètre maximum d'un cercle sur le capteur photographique au sein du lequel tous les rayons reçus seront considérés comme **un même point de l'image**.
+On note en général ce diamètre $c$.
+
+Le diamètre du cercle de confusion permet de déterminer permet de déterminer l'**hyperfocale** de l'appareil : la distance de mise au point pour une distance focale et une ouverture donnée qui permet de **maximiser la profondeur de champ**.
+On la note en général $H$.
+L'image sera alors considérée comme nette de $H/2$ à l'infini.
+C'est souvent le **réglage par défaut** choisi par un photographe qui ne sait pas quelle ouverture choisir.
+
+$H = \frac{f^2}{N c} + f \approx \frac{f^2}{N c}
+
+Notons $D$ la distance de mise au point d'un objet.
+On peut montrer que la distance la plus proche considérée comme nette est :
+
+$P_1 = \frac{H D}{H+D}$
+
+Dans le cas ou $D < H$, on peut également montrer que la distance la plus lointaine considérée comme nette est :
+
+$P_2 = \frac{H D}{H-D}$
+
+La zone considérée comme nette sera alors l'intervalle de distance $[P-P_1;P+P_2]$.
+
+Sinon, on considère que $P_2$ tend vers l'infini, et l'intervalle devient $[P-P_1;\infinity]$.
+
+On en déduit que dans le cas où $D < H$, la profondeur de champ s'exprime :
+
+$\Delta P = P_2 - P_1 = \frac{2 H D^2}{H^2 - P^2}$
+
+Sinon, la profondeur de champ sera considérée comme infinie.
+
+Lorsque l'on utilise une caméra, il faut donc **choisir l'ouverture** en fonction de l'**exposition** et de la **profondeur de champ** voulue.
+Ceci implique d'avoir un a priori sur les distances des objets d'intérêt pour une application de vision donnée.
+
+|Nota Bene|
+|:-|
+|Parfois, une profondeur de champ très faible est recherchée pour un effet artistique.|
+|Cet effet est appelé en photographie le "bokeh", mot venant du japonais et signifiant "flou".|
 
 #### La sensibilité ISO
 
