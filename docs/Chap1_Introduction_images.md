@@ -848,7 +848,7 @@ Notre image exemple d'_Ocypode quadrata_ a par exemple été prise avec une vite
 
 Voici un exemple poussé à l'extrême : une photographie de nuit sur une plage de l'île de la Réunion, prise avec un **long temps d'exposition de 30 secondes** (vitesse d'obturation très faible).
 
-![Le triangle d'exposition](img/Chap1_exposure_triangle.png)
+![Illustration de la vitesse d'obturation](img/Chap1_shutter_speed.png)
 
 Un temps de pose aussi long permet de faire apparaitre la plage, la mer, les rochers, et même quelques étoiles dans le ciel nocturne.
 Par contre, les objets en mouvement tels que les vagues, les nuages, et les voitures sur la route cotière sont flous.
@@ -889,24 +889,24 @@ On la note en général $H$.
 L'image sera alors considérée comme nette de $H/2$ à l'infini.
 C'est souvent le **réglage par défaut** choisi par un photographe qui ne sait pas quelle ouverture choisir.
 
-$H = \frac{f^2}{N c} + f \approx \frac{f^2}{N c}
+$H = \frac{f^2}{N c} + f \approx \frac{f^2}{N c}$
 
 Notons $D$ la distance de mise au point d'un objet.
 On peut montrer que la distance la plus proche considérée comme nette est :
 
-$P_1 = \frac{H D}{H+D}$
+$D_1 = \frac{H D}{H+D}$
 
 Dans le cas ou $D < H$, on peut également montrer que la distance la plus lointaine considérée comme nette est :
 
-$P_2 = \frac{H D}{H-D}$
+$D_2 = \frac{H D}{H-D}$
 
-La zone considérée comme nette sera alors l'intervalle de distance $[P-P_1;P+P_2]$.
+La zone considérée comme nette sera alors l'intervalle de distance $[D-D_1;D+D_2]$.
 
-Sinon, on considère que $P_2$ tend vers l'infini, et l'intervalle devient $[P-P_1;\infinity]$.
+Sinon, on considère que $D_2$ tend vers l'infini, et l'intervalle devient $[D-D_1;\infty]$.
 
 On en déduit que dans le cas où $D < H$, la profondeur de champ s'exprime :
 
-$\Delta P = P_2 - P_1 = \frac{2 H D^2}{H^2 - P^2}$
+$\Delta D = D_2 - D_1 = \frac{2 H D^2}{H^2 - D^2}$
 
 Sinon, la profondeur de champ sera considérée comme infinie.
 
