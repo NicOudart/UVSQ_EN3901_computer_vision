@@ -840,7 +840,7 @@ Il s'agit de la **durée pendant laquelle on expose à la lumière** le capteur 
 Historiquement, les caméras disposaient d'un système mécanique masquant la pellicule ou le capteur, appelé "**obturateur**".
 Aujourd'hui, l'obturation se fait souvent de manière électronique, en activant / désactivant le capteur.
 
-Il est en général exprimé en **fraction de seconde**.
+Il est en général exprimé en **fraction de seconde**, et nous le noterons $t$.
 
 Son choix est un compromis, choisi en fonction de la **luminosité** de la scène et de la **vitesse de déplacement** des objets.
 En effet, un temps de pose long permet de rendre l'image plus lumineuse, mais risque de rendre flou des objets en mouvement.
@@ -954,7 +954,73 @@ Soit une profondeur de champ $\Delta D \approx 20 cm$.
 
 #### La sensibilité ISO
 
+Bien qu'elle soit représentée sur le triangle d'exposition, **la **sensibilité ISO n'influe pas sur l'exposition**, dans le sens où elle ne permet pas de régler la quantité de lumière arrivant au capteur, contrairement à la vitesse d'obturation et à l'ouverture.
+La sensibilité ISO modifie l'**amplification** du signal transmis par le capteur photographique.
 
+Il s'agit d'une **norme** définie par l'organisme "ISO", d'où son nom.
+
+Par convention, on va définir une indicateur d'exposition à **ISO 100**, que l'on appelle **EV** (ou "indice de lumination" en français) :
+
+$EV = log_2(\frac{N^2}{t})$
+
+Ce critère est fait pour **augmenter quand la quantité de lumière diminue** : la quantité de lumière augmente avec $t$, et diminue avec $N^2$ car elle augmente avec la surface du trou du diaphragme.
+Ce critère est également fait pour que $+1 EV$ représente une **multiplication par 2** de la quantité de lumière.
+
+Pour un même objet illuminé de la même façon, 2 combinaisons vitesse d'obturation / ouverture donnant le **même EV** donneront une **même exposition**.
+
+Voici un tableau de valeurs de EV pour des vitesses d'obturation et ouvertures typiques :
+
+|     |1 s|1/2 s|1/4 s|1/8 s|1/15 s|1/30 s|1/60 s|1/125 s|1/250 s|1/500 s|1/1000 s|
+|:---:|:-:|:---:|:---:|:---:|:----:|:----:|:----:|:-----:|:-----:|:-----:|:------:|
+|f/1.4|1  |2    |3    |4    |5     |6     |7     |8      |9      |10     |11      |
+|f/2  |2  |3    |4    |5    |6     |7     |8     |9      |10     |11     |12      |
+|f/2.8|3  |4    |5    |6    |7     |8     |9     |10     |11     |12     |13      |
+|f/4  |4  |5    |6    |7    |8     |9     |10    |11     |12     |13     |14      |
+|f/5.6|5  |6    |7    |8    |9     |10    |11    |12     |13     |14     |15      |
+|f/8  |6  |7    |8    |9    |10    |11    |12    |13     |14     |15     |16      |
+|f/11 |7  |8    |9    |10   |11    |12    |13    |14     |15     |16     |17      |
+|f/16 |8  |9    |10   |11   |12    |13    |14    |15     |16     |17     |18      |
+|f/22 |9  |10   |11   |12   |13    |14    |15    |16     |17     |18     |19      |
+
+Et voici les expositions recommandées à ISO 100 pour différentes applications :
+
+|EV |Application                                    |
+|:-:|:---------------------------------------------:|
+|16 |Neige au soleil, plage de sable clair au soleil|
+|15 |Scène ensoleillée                              |
+|14 |Scène avec un ciel légèrement nuageux          |
+|13 |Scène avec un ciel nuageux                     |
+|12 |Scène avec un ciel très nuageux                |
+|11 |Scène au soleil couchant                       |
+|8  |Ville bien éclairée de nuit                    |
+|6  |Concert / spectacle                            |
+|4  |Eclairage domestique                           |
+|3  |Ville peu éclairée de nuit                     |
+|-3 |Pleine lune                                    |
+|-11|Voie lactée                                    |
+
+On peut donc en théorie choisir une ouverture pour avoir une profondeur de champ adaptée à un problème de vision, puis ajuster la vitesse d'obturation pour obtenir l'EV adapté.
+Le problème est que si le temps de pose nécessaire est trop long, certains objets seront potentiellement flous.
+
+Idem, si on choisi une vitesse d'obturation adaptée à un problème, puis on ajuste l'ouverture pour obtenir l'EV adapté, on risque d'obtenir une profondeur de champ inadapté.
+
+D'où l'intérêt de pouvoir jouer sur la **sensibilité ISO**, afin d'**amplifier** le signal reçu par le capteur. 
+
+Pour connaitre l'EV à régler $EV_reg$ afin d'obtenir une image similaire avec une valeur d'ISO $i$ quelconque, on utilise la formule :
+
+$EV_{reg} = EV + log_2 (\frac{i}{100})$
+
+Mais attention, il y a une limite dans l'ajustement de la sensibilité ISO.
+Comme ce paramètre n'augmente pas réellement la quantité de lumière captée, mais amplifie le signal reçu, il va également **augmenter le bruit du capteur**.
+
+Cet effet sera d'autant plus visible que la luminosité de la scène est faible.
+
+En général, une sensibilité aux alentours de ISO de 100 sera considérée comme faible, alors qu'une valeur au-dessus de 1600 sera considérée comme élevée.
+
+Dans le cas de notre image exemple d'_Ocypode quadrata_, la sensibilité ISO était très faible : 80.
+L'image ayant été prise en plein jour, sur une plage de sable clair bien éclairée par le soleil, une valeur faible est cohérente.
+
+Par exemple,
 
 ## Numérisation d'une image : passer du monde continu au monde discret
 
