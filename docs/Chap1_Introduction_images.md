@@ -602,6 +602,8 @@ Si le fond de la chambre noire se trouve exactement à la distance $d$ de la len
 On remarque alors que pour obtenir une image "nette" d'un objet situé à une certaine distance, il faut adapter $f$ ou $d$, ce qui implique de pouvoir **changer la lentille** ou **changer sa position** par rapport au fond de la caméra.
 Choisir une configuration de $f$ et $d$ pour rendre un objet net sur l'image s'appelle faire la "**mise au point**".
 
+Un photographe peut en général déplacer la lentille avec une bague pour modifier $d$, ou changer d'objectif pour modifier $f$.
+
 Contrairement au sténopé, on ne peut donc pas avoir tous les objets de l'environnement "nets" sur une même image avec ce type de caméra.
 En revanche, nous verrons dans la suite qu'il est possible d'adapter la zone dans laquelle les objets peuvent être considérés comme "suffisamment nets", lorsque nous introduirons la notion de "profondeur de champ optique". 
 
@@ -879,17 +881,33 @@ Mais cette image est plus lumineuse.
 
 En ajoutant un diaphragme à une caméra ayant une lentille, on cherche **un compromis** entre les 2 solutions.
 
+Le diaphragme va réduire les angles d'incidence possibles pour la lumière diffusée par un même point d'un objet.
+Si l'objet est plus proche ou plus loin que la distance de mise au point, cela va réduire la surface éclairée par un même point de l'objet sur le capteur photographique.
+Dans le cas où l'objet est exactement à la distance de mise au point, la zone éclairée restera ponctuelle.
+
+![Schéma d'une caméra avec diaphragme](img/Chap1_camera_aperture.gif)
+
 La **profondeur de champ** est la zone autour de la distance de **mise au point** pour laquelle on considère que l'image d'un objet sera "**suffisamment nette**".
 
-Cette notion est liée à celle de "**cercle de confusion**" : il s'agit du diamètre maximum d'un cercle sur le capteur photographique au sein du lequel tous les rayons reçus seront considérés comme **un même point de l'image**.
+Voici pour illustrer une photographie d'un insecte longicorne sur un rondin de bois :
+
+![Illustration de la profondeur de champ](img/Chap1_aperture.png)
+
+La mise au point a été faite sur l'insecte, et on peut discerner assez facilement la zone trop proche pour être nette, la zone "suffisamment nette" autour de la distance de mise au point, et la zone trop loin pour être nette.
+
+La notion de profondeur de champ est liée à celle de "**cercle de confusion**" : il s'agit du diamètre maximum d'un cercle sur le capteur photographique au sein du lequel tous les rayons reçus seront considérés comme **un même point de l'image**.
 On note en général ce diamètre $c$.
 
-Le diamètre du cercle de confusion permet de déterminer permet de déterminer l'**hyperfocale** de l'appareil : la distance de mise au point pour une distance focale et une ouverture donnée qui permet de **maximiser la profondeur de champ**.
+Le diamètre du cercle de confusion permet de déterminer permet de déterminer l'**hyperfocale** de l'appareil : la distance minimum pour laquelle on peut faire la mise au point en gardant les objets "suffisament nets" jusqu'à l'infini.
 On la note en général $H$.
 L'image sera alors considérée comme nette de $H/2$ à l'infini.
-C'est souvent le **réglage par défaut** choisi par un photographe qui ne sait pas quelle ouverture choisir.
 
 $H = \frac{f^2}{N c} + f \approx \frac{f^2}{N c}$
+
+|Nota Bene|
+|:-|
+|L'hyperfocale est la distance de mise au point pour un objectif et un capteur donnés qui permet de **maximiser la profondeur de champ**.|
+|C'est donc souvent le **réglage par défaut** choisi par un photographe qui ne sait pas quelle ouverture choisir.|
 
 Notons $D$ la distance de mise au point d'un objet.
 On peut montrer que la distance la plus proche considérée comme nette est :
