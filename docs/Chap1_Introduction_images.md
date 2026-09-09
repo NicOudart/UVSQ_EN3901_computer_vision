@@ -898,11 +898,13 @@ La mise au point a été faite sur l'insecte, et on peut discerner assez facilem
 La notion de profondeur de champ est liée à celle de "**cercle de confusion**" : il s'agit du diamètre maximum d'un cercle sur le capteur photographique au sein du lequel tous les rayons reçus seront considérés comme **un même point de l'image**.
 On note en général ce diamètre $c$.
 
-Le diamètre du cercle de confusion permet de déterminer permet de déterminer l'**hyperfocale** de l'appareil : la distance minimum pour laquelle on peut faire la mise au point en gardant les objets "suffisament nets" jusqu'à l'infini.
+Le diamètre du cercle de confusion permet de déterminer permet de déterminer l'**hyperfocale** de l'appareil : la distance minimum pour laquelle on peut faire la mise au point en gardant les objets "suffisamment nets" jusqu'à l'infini.
 On la note en général $H$.
 L'image sera alors considérée comme nette de $H/2$ à l'infini.
 
 $H = \frac{f^2}{N c} + f \approx \frac{f^2}{N c}$
+
+![Schéma de la distance hyperfocale](img/Chap1_hyperfocal_distance.png)
 
 |Nota Bene|
 |:-|
@@ -928,8 +930,22 @@ $\Delta D = D_2 - D_1 = \frac{2 H D^2}{H^2 - D^2}$
 
 Sinon, la profondeur de champ sera considérée comme infinie.
 
+![Schéma de la profondeur de champ](img/Chap1_depth_of_field.png)
+
 Lorsque l'on utilise une caméra, il faut donc **choisir l'ouverture** en fonction de l'**exposition** et de la **profondeur de champ** voulue.
 Ceci implique d'avoir un a priori sur les distances des objets d'intérêt pour une application de vision donnée.
+
+Notre image exemple d'_Ocypode quadrata_ a par exemple été prise avec une ouverture de $f/4.5$, et une distance focale $f = 15 mm$.
+Admettons que pour la caméra utilisée, $c = 5 µm$.
+On en déduit que :
+
+$H \approx 10 m$
+
+Si on considère que le crabe sur lequel on a fait la mise au point était à 1 m de la caméra (c'est-à-dire $D = 1 m$), alors :
+
+$D_1 \approx 0.91 m$ et $D2 \approx 1.11 m$
+
+Soit une profondeur de champ $\Delta D \approx 20 cm$.
 
 |Nota Bene|
 |:-|
