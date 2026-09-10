@@ -959,7 +959,8 @@ La sensibilité ISO modifie l'**amplification** du signal transmis par le capteu
 
 Il s'agit d'une **norme** définie par l'organisme "ISO", d'où son nom.
 
-Par convention, on va définir une indicateur d'exposition à **ISO 100**, que l'on appelle **EV** (ou "indice de lumination" en français) :
+Un indicateur d'exposition a été créé par un fabricant d'objectifs photographiques dans les année 1950 : l'**EV** ou "indice de lumination" en français.
+Il est définit comme :
 
 $EV = log_2(\frac{N^2}{t})$
 
@@ -968,7 +969,13 @@ Ce critère est également fait pour que $+1 EV$ représente une **multiplicatio
 
 Pour un même objet illuminé de la même façon, 2 combinaisons vitesse d'obturation / ouverture donnant le **même EV** donneront une **même exposition**.
 
-Voici un tableau de valeurs de EV pour des vitesses d'obturation et ouvertures typiques :
+Mais si la sensiblité ISO change, **l'image obtenue sera différente**, car l'amplification du signal du capteur photographique sera différente.
+En gardant EV constant, augmenter la sensibilité ISO donnera une image plus "lumineuse".
+
+Donc, lorsque l'on choisi une valeur de EV pour obtenir une exposition adaptée à une application donnée, on le fait **pour une certaine sensibilité ISO** du capteur photographique.
+En général, on donne par **convention** des tableaux des valeurs de EV **pour ISO 100**, que l'on note $EV_{100}$.
+
+Voici un tableau de valeurs de $EV_{100}$ pour des vitesses d'obturation et ouvertures typiques :
 
 |     |1 s|1/2 s|1/4 s|1/8 s|1/15 s|1/30 s|1/60 s|1/125 s|1/250 s|1/500 s|1/1000 s|
 |:---:|:-:|:---:|:---:|:---:|:----:|:----:|:----:|:-----:|:-----:|:-----:|:------:|
@@ -982,40 +989,50 @@ Voici un tableau de valeurs de EV pour des vitesses d'obturation et ouvertures t
 |f/16 |8  |9    |10   |11   |12    |13    |14    |15     |16     |17     |18      |
 |f/22 |9  |10   |11   |12   |13    |14    |15    |16     |17     |18     |19      |
 
-Et voici les expositions recommandées à ISO 100 pour différentes applications :
+Et voici les valeurs de $EV_{100}$ pour différentes applications :
 
-|EV |Application                                    |
-|:-:|:---------------------------------------------:|
-|16 |Neige au soleil, plage de sable clair au soleil|
-|15 |Scène ensoleillée                              |
-|14 |Scène avec un ciel légèrement nuageux          |
-|13 |Scène avec un ciel nuageux                     |
-|12 |Scène avec un ciel très nuageux                |
-|11 |Scène au soleil couchant                       |
-|8  |Ville bien éclairée de nuit                    |
-|6  |Concert / spectacle                            |
-|4  |Eclairage domestique                           |
-|3  |Ville peu éclairée de nuit                     |
-|-3 |Pleine lune                                    |
-|-11|Voie lactée                                    |
+|$EV_{100}$|Application                                    |
+|:--------:|:---------------------------------------------:|
+|16        |Neige au soleil, plage de sable clair au soleil|
+|15        |Scène ensoleillée                              |
+|14        |Scène avec un ciel légèrement nuageux          |
+|13        |Scène avec un ciel nuageux                     |
+|12        |Scène avec un ciel très nuageux                |
+|11        |Scène au soleil couchant                       |
+|8         |Ville bien éclairée de nuit                    |
+|6         |Concert / spectacle                            |
+|4         |Eclairage domestique                           |
+|3         |Ville peu éclairée de nuit                     |
+|-3        |Pleine lune                                    |
+|-11       |Voie lactée                                    |
 
-On peut donc en théorie choisir une ouverture pour avoir une profondeur de champ adaptée à un problème de vision, puis ajuster la vitesse d'obturation pour obtenir l'EV adapté.
-Le problème est que si le temps de pose nécessaire est trop long, certains objets seront potentiellement flous.
+Pour connaitre l'EV à régler $EV_i$ afin d'obtenir une image similaire avec une valeur d'ISO $i$ quelconque, on utilise la formule :
 
-Idem, si on choisi une vitesse d'obturation adaptée à un problème, puis on ajuste l'ouverture pour obtenir l'EV adapté, on risque d'obtenir une profondeur de champ inadapté.
+$EV_i = EV + log_2 (\frac{i}{100})$
 
-D'où l'intérêt de pouvoir jouer sur la **sensibilité ISO**, afin d'**amplifier** le signal reçu par le capteur. 
+Par exemple, pour photographier un concert avec une sensibilité ISO de 1600, on utilisera un EV de 10 au lieu de 6 pour ISO 100.
+On pourra alors par exemple utiliser une vitesse d'obturation de 1/30 s, et une ouverture de f/5.6 (sous réserve que le profondeur de champ est acceptable).
 
-Pour connaitre l'EV à régler $EV_reg$ afin d'obtenir une image similaire avec une valeur d'ISO $i$ quelconque, on utilise la formule :
+Pour une sensibilité ISO donnée, on peut donc en théorie choisir une ouverture pour avoir une profondeur de champ adaptée à un problème de vision, puis ajuster la vitesse d'obturation pour obtenir l'EV adapté à cet ISO.
+Le problème est que **si le temps de pose nécessaire est trop long**, certains objets seront potentiellement **flous**.
 
-$EV_{reg} = EV + log_2 (\frac{i}{100})$
+Idem, si à ISO constant on choisi une vitesse d'obturation adaptée à un problème, puis on ajuste l'ouverture pour obtenir l'EV adapté, on risque d'obtenir **une profondeur de champ inadaptée**.
 
-Mais attention, il y a une limite dans l'ajustement de la sensibilité ISO.
+D'où l'intérêt de pouvoir **jouer sur la sensibilité ISO**, afin d'**amplifier** le signal reçu par le capteur. 
+
+**Mais attention**, il y a une limite dans l'ajustement de la sensibilité ISO.
 Comme ce paramètre n'augmente pas réellement la quantité de lumière captée, mais amplifie le signal reçu, il va également **augmenter le bruit du capteur**.
 
 Cet effet sera d'autant plus visible que la luminosité de la scène est faible.
 
-En général, une sensibilité aux alentours de ISO de 100 sera considérée comme faible, alors qu'une valeur au-dessus de 1600 sera considérée comme élevée.
+Voici un exemple de photographie d'un papillon du genre _Caligo_, prise à Puerto Maldonado au Pérou.
+Cette photographie a été prise de nuit, avec une illumination très faible, que l'on a tenté de compenser avec une sensibilité ISO élevée de 3200.
+
+![Illustration de la sensibilité ISO](img/Chap1_ISO_sensitivity.png)
+
+
+
+En général, une sensibilité aux alentours de ISO de 100 sera considérée comme faible, alors qu'une valeur au-dessus de 1600 sera considérée comme élevée et sera donc sensible au bruit.
 
 Dans le cas de notre image exemple d'_Ocypode quadrata_, la sensibilité ISO était très faible : 80.
 L'image ayant été prise en plein jour, sur une plage de sable clair bien éclairée par le soleil, une valeur faible est cohérente.
