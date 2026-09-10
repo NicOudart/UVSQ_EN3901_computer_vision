@@ -957,7 +957,7 @@ Soit une profondeur de champ $\Delta D \approx 20 cm$.
 Bien qu'elle soit représentée sur le triangle d'exposition, **la **sensibilité ISO n'influe pas sur l'exposition**, dans le sens où elle ne permet pas de régler la quantité de lumière arrivant au capteur, contrairement à la vitesse d'obturation et à l'ouverture.
 La sensibilité ISO modifie l'**amplification** du signal transmis par le capteur photographique.
 
-Il s'agit d'une **norme** définie par l'organisme "ISO", d'où son nom.
+Il s'agit d'une **norme** définie par l'organisme "ISO" (d'où son nom), d'abord pour les pellicules puis pour les capteurs photographiques.
 
 Un indicateur d'exposition a été créé par un fabricant d'objectifs photographiques dans les année 1950 : l'**EV** ou "indice de lumination" en français.
 Il est définit comme :
@@ -965,7 +965,7 @@ Il est définit comme :
 $EV = log_2(\frac{N^2}{t})$
 
 Ce critère est fait pour **augmenter quand la quantité de lumière diminue** : la quantité de lumière augmente avec $t$, et diminue avec $N^2$ car elle augmente avec la surface du trou du diaphragme.
-Ce critère est également fait pour que $+1 EV$ représente une **multiplication par 2** de la quantité de lumière.
+Ce critère est également fait pour que +1 EV représente une **multiplication par 2** de la quantité de lumière.
 
 Pour un même objet illuminé de la même façon, 2 combinaisons vitesse d'obturation / ouverture donnant le **même EV** donneront une **même exposition**.
 
@@ -1030,22 +1030,58 @@ Cette photographie a été prise de nuit, avec une illumination très faible, qu
 
 ![Illustration de la sensibilité ISO](img/Chap1_ISO_sensitivity.png)
 
-
+Si une telle sensibilité a permis de faire ressortir le papillon malgré l'obscurité, elle a aussi fait apparaitre le bruit du capteur.
+Et le bruit est ici tellement élevé que les détails du papillon paraissent presque flous.
 
 En général, une sensibilité aux alentours de ISO de 100 sera considérée comme faible, alors qu'une valeur au-dessus de 1600 sera considérée comme élevée et sera donc sensible au bruit.
 
 Dans le cas de notre image exemple d'_Ocypode quadrata_, la sensibilité ISO était très faible : 80.
 L'image ayant été prise en plein jour, sur une plage de sable clair bien éclairée par le soleil, une valeur faible est cohérente.
 
-Par exemple,
+La vitesse d'obturation était de 1/1600 s, et l'ouverture était de f/4.5, ce qui correspond à une valeur de EV d'environ 15 pour ISO 80.
+Si nous voulions obtenir la même image pour ISO 100, il faudrait un EV de 15.3 environ.
+
+|Nota Bene|
+|:-|
+|Attention, si vous réglez +1 EV sur votre appareil photo ou sur la caméra de votre portable, l'image sera plus "claire", alors que l'on s'attend à l'inverse lorsque EV augmente.|
+|C'est une convention choisie par beaucoup de fabricants, pour rendre le réglage plus instictif pour les utilisateur : on fait +1 pour augmenter l'exposition.|
+|En réalité, l'exposition diminue bien quand on augmente EV.|
 
 ## Numérisation d'une image : passer du monde continu au monde discret
 
-### Discrétisation de l'image
+Le principe même de la photographie numérique est que l'on converti l'image "continue" qui se forme sur la capteur en image "**discrète**".
+
+Cette discrétisation se fait **à plusieurs niveaux** :
+
+* Une discrétisation **spatiale** : on transforme l'image optique en une matrice 2D, contenant des valeurs discrètes.
+
+* Une discrétisation des **couleurs** : on transforme le ressenti des couleurs d'une image en des valeurs discrètes.
+
+* Une discrétisation **temporelle** : dans le cas d'une vidéo, on a une succession d'images espacées par un pas de temps.
+
+Nous allons nous développer dans ce cours le 2 premiers.
+
+### Discrétisation spatiale
+
+Le capteur photographique étant une matrice de photocites, on **échantillonne** spatialement l'image sous la forme d'une **matrice 2D** de tensions.
+Chaque case de la matrice est appelée un "**pixel**".
+
+Après passage dans le CAN, les tensions mesurées sont également **quantifiées**, et **encodées** en binaire sur un certain nombre de bits.
+
+Il est évident que ces processus d'**échantillonnage** et de **quantification** vont faire perdre de l'information sur l'image, et donc sur l'environnement.
+Comme pour les signaux 1D, se posera alors la question de la **fréquence d'échantillonnage**, et du **pas de quantification**.
+
+
 
 ![Aliasing par décimation d'une image](img/Chap1_aliasing.png)
 
-### Encodage des couleurs
+|Nota Bene|
+|:-|
+|Nous avons présenté ici une image numérique comme étant une matrice 2D.|
+|En réalité, c'est ce que l'on appelle une "image matricielle", et il existe d'autres types d'images, notamment les images "vectorielles".|
+|Dans ce cours, nous ne parlons que d'images matricielles.|
+
+### Discrétisation des couleurs
 
 ### Formats et compression
 
