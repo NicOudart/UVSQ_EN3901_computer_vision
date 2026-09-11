@@ -1126,6 +1126,80 @@ Le principe est le même dans les 2 cas : un **filtrage passe-bas** de l'image a
 
 ### Discrétisation des couleurs
 
+Après l'étape de dématriçage, une caméra numérique a généré 3 matrices 2D, contenant chacune des valeurs pour les photosites rouge / vert / bleu.
+L'oeil humain utilise également des photorécepteurs rouge / vert / bleu pour produire la sensation de couleurs.
+
+_Mais comment transformer les valeurs de nos 3 matrices 2D en "couleurs" telles que perçuent par notre oeil ?_
+
+On appelle **colorimétrie** la discipline qui cherche à **synthétiser numériquement** la vision humaine des couleurs.
+L'objectif est d'être capable de définir par des nombres les couleurs perceptibles par un humain.
+
+Comme évoqué plus tôt dans ce cours, les cônes de l'oeil humain ne réalisent pas directement une mesure du spectre réfléchi par un objet.
+
+Notons $\Lambda$ la bande spectrale du visible (en longueur d'onde).
+Les stimuli perçus par un cône "rouge" ($R$), "vert" ($V$), et bleu ($B$) lorqu'ils sont illuminé par un spectre $S(\lambda)$ (avec $\lambda$ la longueur d'onde de la lumière) peuvent être modélisés par :
+
+$R = \int_{\Lambda} S(\lambda) r(\lambda) d\lambda$
+
+$V = \int_{\Lambda} S(\lambda) v(\lambda) d\lambda$
+
+$B = \int_{\Lambda} S(\lambda) b(\lambda) d\lambda$
+
+avec $r$, $v$ et $b$ la réponse spectrale des cônes rouges, verts et bleus.
+
+Les stimuli $R$ / $V$ / $B$ ne donnent donc pas accès à $S(\lambda)$, mais à **3 valeurs dérivées de $S(\lambda)$**.
+
+De plus, comme nous l'avons également évoqué plus tôt, 2 spectres différents $S_1(\lambda)$ et $S_2(\lambda)$ peuvent donner les 3 mêmes valeurs de $R$ / $V$ / $B$. 
+Ce que l'on appelle le "**métamérisme**".
+
+En 1853, après une série d'expériences, **Grassmann** formule les **3 lois empiriques** suivantes :
+
+* **Trichromatisme** : Pour représenter toutes les sensations de couleurs possibles, **3 variables sont nécessaires et suffisantes**.
+On appelle ces 3 variables des "**primaires**".
+
+* **Additivité** : La sensation provoquée par l'addition de 2 spectres lumineux est égal à la somme des 3 composantes de la couleur perçue pour chaque spectre.
+
+* **Proportionnalité** : Multiplier par un facteur l'intensité de la lumière reçue revient à multiplier les 3 composante de sa couleur par ce facteur.
+
+D'où l'idée de représenter les couleurs par un **espace vectoriel à 3 dimensions**.
+
+En 1931, la Commission Internationale de l'Eclairage (CIE) a définit un **système de coordonnées 3D** appelé "**CIE XYZ**" pour représenter l'espace colorimétrique.
+
+La CIE réalise pour se faire l'expérience suivante.
+On montre à des volontaires une lumière monochromatique de longueur d'onde $\lambda$.
+On donne ensuite aux volontaire la possibilité d'adapter les coefficients apportés à 3 primaires afin d'obtenir la même couleur ressentie.
+En répétant ce processus pour différentes valeurs de $\lambda$ dans le spectre visible, on obtient 3 fonctions colorimétriques $c_r(\lambda)$, $c_v(\lambda)$ et $c_b(\lambda)$.
+
+2 grands problèmes se posent alors :
+
+* Ce système dépend des primaires choisies.
+
+* Il est incapable de reproduire toutes les couleurs possibles avec des coefficients positifs.
+Il faut des coefficients négatifs pour reproduire certaines couleurs, ce qui est problématique pour certains calculs.
+
+Le CIE va donc appliquer une transformation afin d'obtenir un système "X,Y,Z" respectant les propriétés suivantes :
+
+* Toutes les couleurs peuvent être représentées avec des **coefficients positifs** de X,Y,Z.
+
+* Le blanc de référence se trouve à (X,Y,Z) = (1/3,1/3,1/3).
+
+* Y représente la "luminance", ce qui permet de la séparer de la "chromaticité" : une propriété de la couleur **indépendante de la luminosité**.
+
+Les primaires X,Y,Z sont ici "**virtuels**" : ils ne correspondent pas à une lumière physiquement possible.
+
+Pour représenter la "chromaticité", on définit en général des variables normalisées : 
+
+$x = \frac{X}{X+Y+Z}$
+
+$y = \frac{Y}{X+Y+Z}$
+
+$z = \frac{Z}{X+Y+Z}$
+
+Comme $x+y+z=1$, il s'agit de l'équation d'un plan, que l'on peut représenter 2D.
+On appelle cette représentation le "**diagramme de chromaticité**" **CIE xy**.
+
+En voici une représentation (attention, les couleurs sont purement indicatives, puisque votre écran est incapable de représenter toutes les couleurs possibles) :
+
 
 
 ### Formats et compression
