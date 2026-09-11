@@ -1071,9 +1071,52 @@ Après passage dans le CAN, les tensions mesurées sont également **quantifiée
 Il est évident que ces processus d'**échantillonnage** et de **quantification** vont faire perdre de l'information sur l'image, et donc sur l'environnement.
 Comme pour les signaux 1D, se posera alors la question de la **fréquence d'échantillonnage**, et du **pas de quantification**.
 
+En plus de perdre une partie de l'information, l'échantillonnage peut faire apparaitre des **artéfacts** dans l'image !
 
+On modélise l'image optique formée sur le capteur photographique comme une fonction continue $I(x,y)$ de la position selon l'axe horizontal $x$ et selon l'axe vertical $y$ du capteur.
+On considère chaque photosites comme étant carré de dimension $\delta$, on néglige les effets de la surface du photosite, et de l'intégration temporelle lié à la vitesse d'obturation.
+Un échantillonnage spatial idéal donnera donc :
+
+$I[i,j] = I(i \times \delta, j \times \delta)$
+
+Nous noterons $f_s = \frac{1}{\delta}$ la **fréquence d'échantillonnage spatial**, homogène à des pixels / mètre.
+
+D'après le **théorème de Nyquist-Shannon**, pour représenter discrètement un signal n'ayant pas de composantes fréquentielles supérieures à $f_{max}$, il faut choisir une fréquence d'échantillonnage $f_s$ telle que :
+
+$f_s > 2 f_{max}$
+
+Sinon, risque d'apparaitre un phénomène nommé "**aliasing**" (parfois appelé "repliement de spectre" en français).
+
+Mettons que l'image formée sur le capteur présente un motif périodique selon l'axe horizontal, de fréquence $f$ et d'amplitude $A$ : 
+
+$I(x,y) = A cos(2 \pi f x)$
+
+Après échantillonnage, on obtient :
+
+$I[i,j] = A cos(2 \pi f \frac{i}{f_s})$
+
+Problème, $cos(2 \pi f \frac{i}{f_s}) = cos(2 \pi (f-f_s) \frac{i}{f_s}) = cos(2 \pi (f+f_s) \frac{i}{f_s})$
+
+Ce qui signifie qu'une fois le signal échantillonné, une fréquence $f-f_s$ ou $f+f_s$ seront **indicernables de $f$**.
+Et si le critère de Nyquist-Shannon n'est pas respecté, c'est-à-dire si $f_e \leq 2 f$, il y aura potentiellement **ambiguïté** avec d'autres composantes fréquentielles de l'image.
+
+Voici un exemple sur une photographie de la Stavkirke de Hopperstad, en Norvège :
 
 ![Aliasing par décimation d'une image](img/Chap1_aliasing.png)
+
+Les tuiles du toit du monument forment un motif périodique selon l'axe horizontal et l'axe vertical.
+Si on diminue petit à petit la résolution de l'image jusqu'à ne plus respecter le critère de Nyquist-Shannon, on voit apparaitre un artefact classique que l'on appelle "**Moiré**".
+Des rayures claires-foncées apparaissent sur le toit.
+
+Il est à noter que si on considère le fait qu'une mosaïque de Bayer de filtres colorés est utilisée par les caméras numériques, l'aliasing va aussi créer des artefacts dans les couleurs.
+
+Pour éviter les artefacts liés à l'échantillonnage, on utilise des dispositifs **anti-aliasing** à 2 niveaux :
+
+* Les caméras numériques possèdent un filtre optique, qui va très légèrement flouter l'image avant son arrivée sur le capteur.
+
+* Lorsque l'on réduit la résolution d'une image avec un logiciel de traitement, le logiciel utilise en général une méthode d'interpolation.
+
+Le principe est le même dans les 2 cas : un **filtrage passe-bas** de l'image avant échantillonnage, avec une fréquence de coupure choisie pour s'assurer que l'on respecte le critère de Nyquist-Shannon.
 
 |Nota Bene|
 |:-|
@@ -1082,6 +1125,8 @@ Comme pour les signaux 1D, se posera alors la question de la **fréquence d'éch
 |Dans ce cours, nous ne parlons que d'images matricielles.|
 
 ### Discrétisation des couleurs
+
+
 
 ### Formats et compression
 
