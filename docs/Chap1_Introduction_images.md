@@ -1200,7 +1200,72 @@ On appelle cette représentation le "**diagramme de chromaticité**" **CIE xy**.
 
 En voici une représentation (attention, les couleurs sont purement indicatives, puisque votre écran est incapable de représenter toutes les couleurs possibles) :
 
+![Diagramme de chromaticité](img/Chap1_CIExy_chromaticity_diagram.png)
 
+On distingue différentes zones sur ce diagramme :
+
+* Le contour en fer à cheval est appelé "**lieu du spectre**".
+Il correspond à toutes les couleurs monochromatiques possibles, dont les longueurs d'onde en nm sont indiquées.
+
+* La droite en bas est appelée "**droite des pourpres**".
+Elle correspond aux couleurs non-spectrales dans leur version la plus saturée.
+
+* La courbe graduée coupant le milieu du diagramme est appelée **lieu du corps noir**.
+Elle correspond aux couleurs émises par un corps noir idéal.
+
+* Le **blanc** se trouve aux coordonnées $(x,y) = (1/3,1/3)$.
+
+|Nota Bene|
+|:-|
+|Il est à noter que le diagramme de chromaticité CIE xy ne conserve pas les distances.|
+|On ne peut donc pas se fier à la distance entre 2 points sur le diagramme pour juger la proximité sensorielle de 2 couleurs.|
+
+CIE XYZ est très pratique pour représenter l'ensemble des chromaticités possibles, mais pas pour représenter une image dont le but sera d'être **affichée** ou **imprimée**.
+En effet, il utilise des primaires "virtuels", alors qu'un écran ou une imprimante utilisent des primaires "physiques".
+
+C'est pourquoi la plupart des images sont encodées en utilisant le **sRGB**.
+Mis au point en 1996 par HP et Microsoft, et publié officiellement par la CIE en 1999, il s'agit du standard par défaut utilisé en informatique.
+
+Ses primaires sont des couleurs de coordonnées $(x,y)$ suivantes dans le diagramme de chromaticité :
+
+* "Rouge" : $(0.64,0.33)$.
+
+* "Vert" : $(0.3,0.6)$.
+
+* "Bleu" : $(0.15,0.06)$.
+
+L'ensemble des couleurs représentables avec sRGB se trouvent dans le triangle formé par ces 3 points sur le diagramme de chromaticité.
+On appelle l'ensemble des couleurs synthétisables par un système son "**gamut**".
+
+Le blanc correspond au "D65", un étalon connu.
+
+Voici le gamut du sRGB représenté sur le diagramme de chromaticité :
+
+![Gamut du sRGB](img/Chap1_gamut_sRGB.png)
+
+On voit clairement qu'un système ayant ce gamut ne pourra pas reproduire l'intégralité des couleurs visibles par un humain (et aucun système ne le peut).
+Mais on considère en général le gamut du sRGB suffisant pour de nombreuses applications.
+
+Lorsque les couleurs d'une image numérique sont encodées par une machine, elle ne va pas directement convertir les 3 valeurs de sRGB en binaire.
+_Pourquoi ?_
+
+Parce que la perception humaine de la luminosité n'est **pas linéaire**, et qu'en encodant les niveaux de sRGB linéairement avec un **pas de quantification fixe** on risquerait de mal reproduire notre sensation visuelle de la couleur.
+On applique donc une **transformation non-linéaire** aux couleurs avant encodage en binaire.
+
+Pour chacune des 3 composantes $L$, on applique la transformation non-linéaire $H$ suivante :
+
+$H(L) =
+\begin{cases}
+12.92\,L, & \text{si } L \leq 0.0031308,\\
+1.055\,L^{1/2.4} - 0.055, & \text{si } L > 0.0031308.
+\end{cases}$
+
+Les valeurs obtenues sont ensuite encodées en **binaire** sur le nombre de bits désiré.
+
+Il est alors évident que le **nombre de bits** choisi aura un impact sur la **résolution des couleurs** que l'on peut obtenir.
+En effet, on effectue ici une **discrétisation** du gamut du sRGB, qui est lui continu.
+
+hsv
 
 ### Formats et compression
 
