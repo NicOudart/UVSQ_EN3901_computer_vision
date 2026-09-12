@@ -1281,6 +1281,13 @@ Voici un résumé du processus d'encodage des couleurs pour une caméra numériq
 
 ### Formats et compression
 
+|Format                          |Extension    |
+|:------------------------------:|:-----------:|
+|Windows Bitmap                  |.bmp         |
+|Joint Photographic Experts Group|.jpg ou .jpeg|
+|Portable Network Graphics       |.png         |
+
+
 ## L'écran : reproduire le réel
 
 ## Manipuler des images avec Python
