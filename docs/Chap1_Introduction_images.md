@@ -1223,7 +1223,7 @@ Elle correspond aux couleurs émises par un corps noir idéal.
 CIE XYZ est très pratique pour représenter l'ensemble des chromaticités possibles, mais pas pour représenter une image dont le but sera d'être **affichée** ou **imprimée**.
 En effet, il utilise des primaires "virtuels", alors qu'un écran ou une imprimante utilisent des primaires "physiques".
 
-C'est pourquoi la plupart des images sont encodées en utilisant le **sRGB**.
+C'est pourquoi la plupart des images sont encodées en utilisant le **sRGB** (pour "standard RGB").
 Mis au point en 1996 par HP et Microsoft, et publié officiellement par la CIE en 1999, il s'agit du standard par défaut utilisé en informatique.
 
 Ses primaires sont des couleurs de coordonnées $(x,y)$ suivantes dans le diagramme de chromaticité :
@@ -1265,7 +1265,19 @@ Les valeurs obtenues sont ensuite encodées en **binaire** sur le nombre de bits
 Il est alors évident que le **nombre de bits** choisi aura un impact sur la **résolution des couleurs** que l'on peut obtenir.
 En effet, on effectue ici une **discrétisation** du gamut du sRGB, qui est lui continu.
 
-hsv
+En général, on encode la couleur sur **8 bits** pour chaque primaire, soit 24 bits au total.
+On parle alors d'une **profondeur de couleur** de 24 bits.
+
+Avec 24 bits, on peut représenter 16 777 216 couleurs différentes.
+
+Voici un résumé du processus d'encodage des couleurs pour une caméra numérique classique :
+
+![Encodage des couleurs](img/Chap1_color_encoding.png)
+
+|Nota Bene|
+|:-|
+|Si les 3 composantes sRGB d'une image sont en général encodées sur 8 bits chacune, le signal de chaque photosite en sortie du CAN de la caméra était enregistré sur 12-14 bits.|
+|En effet, certaines corrections apportées à la matrice brute en sortie du CAN nécessitent un pas de quantification aussi fin.|
 
 ### Formats et compression
 
@@ -1280,6 +1292,8 @@ hsv
 ### Open-CV
 
 ## Retouche d'images : améliorer la lisibilité
+
+### La représentation HSV
 
 ### Luminosité
 
