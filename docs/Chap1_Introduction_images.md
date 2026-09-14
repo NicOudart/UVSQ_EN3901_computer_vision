@@ -1281,14 +1281,20 @@ Voici un résumé du processus d'encodage des couleurs pour une caméra numériq
 
 ### Formats et compression
 
-|Format                          |Extension    |
-|:------------------------------:|:-----------:|
-|Windows Bitmap                  |.bmp         |
-|Joint Photographic Experts Group|.jpg ou .jpeg|
-|Portable Network Graphics       |.png         |
+|Format                           |Extension     |Création|Usage                                                                              |
+|:-------------------------------:|:------------:|:------:|:---------------------------------------------------------------------------------:|
+|Windows Bitmap                   |.bmp          |1990    |Format historique pas ou très peu compressé mais assez lourd                       |
+|Joint Photographic Experts Group |.jpg ou .jpeg |1992    |Format compressé avec pertes, plutôt léger, adapté pour le partage d'images        |
+|Portable Network Graphics        |.png          |1996    |Très utilisé pour les logos / vignettes avec de la transparence                    |
+|Graphics Interchange Format      |.gif          |1987    |Permet de faire des petites animations avec une suite d'images                     |
+|Tagged Image File Format         |.tif ou .tiff |1986    |A l'origine pour les scanners et les impressions, permet de stocker des métadonnées|
+|WebP                             |.webp         |2010    |Format compressé avec pertes, fait pour l'affichage web                            |
+|High Efficiency Image File Format|.heif ou .heic|2015    |Très utilisé pour le stockage sur téléphone mobile                                 |
+
+Les images exemple proposée dans ce cours sont au format JPEG.
 
 
-## L'écran : reproduire le réel
+## L'écran et l'impression : reproduire le réel
 
 ## Manipuler des images avec Python
 
