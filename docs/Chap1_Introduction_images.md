@@ -1281,6 +1281,10 @@ Voici un résumé du processus d'encodage des couleurs pour une caméra numériq
 
 ### Formats et compression
 
+Une fois que l'image capturée par la caméra est encodée comme nous venons de le décrire, elle est généralement enregistrée sur la carte mémoire sous la forme d'un **fichier** d'un **format** standard.
+
+Voici quelques exemples de formats très classiques en informatique pour le **stockage d'images** :
+
 |Format                           |Extension     |Création|Usage                                                                              |
 |:-------------------------------:|:------------:|:------:|:---------------------------------------------------------------------------------:|
 |Windows Bitmap                   |.bmp          |1990    |Format historique pas ou très peu compressé mais assez lourd                       |
@@ -1291,7 +1295,13 @@ Voici un résumé du processus d'encodage des couleurs pour une caméra numériq
 |WebP                             |.webp         |2010    |Format compressé avec pertes, fait pour l'affichage web                            |
 |High Efficiency Image File Format|.heif ou .heic|2015    |Très utilisé pour le stockage sur téléphone mobile                                 |
 
-Les images exemple proposée dans ce cours sont au format JPEG.
+Les images exemple proposée dans ce cours sont au format **JPEG**.
+
+Comme indiqué dans le tableau, il s'agit du plébicité pour le partage d'images, car il permet de **compresser** plus ou moins l'information contenue dans une image, tout en conservant un rendu de **bonne qualité**.
+Il est souvent le format utilisé par défaut par les caméras numériques pour stocker les photographies.
+
+C'est pourquoi nous allons parler plus en détails de la manière dont le JPEG compresse les images.
+
 
 
 ## L'écran et l'impression : reproduire le réel
