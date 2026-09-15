@@ -1297,12 +1297,77 @@ Voici quelques exemples de formats très classiques en informatique pour le **st
 
 Les images exemple proposée dans ce cours sont au format **JPEG**.
 
-Comme indiqué dans le tableau, il s'agit du plébicité pour le partage d'images, car il permet de **compresser** plus ou moins l'information contenue dans une image, tout en conservant un rendu de **bonne qualité**.
+Comme indiqué dans le tableau, il s'agit du format plébicité pour le partage d'images, car il permet de **compresser** plus ou moins l'information contenue dans une image, tout en conservant un rendu de **bonne qualité**.
 Il est souvent le format utilisé par défaut par les caméras numériques pour stocker les photographies.
 
 C'est pourquoi nous allons parler plus en détails de la manière dont le JPEG compresse les images.
 
+Tout d'abord, dans sa version classique, le JPEG propose une compression "**avec pertes**" (ou "irréversible").
+Ce qui signifie qu'il ne s'agit pas uniquement d'une façon plus efficace d'encoder l'image : une partie de l'information est **définitivement perdue** dans le processus.
 
+La compression avec pertes d'un JPEG suit les étapes suivantes :
+
+* **Transformation des couleurs en YCbCr** :
+
+La vision humaine est moins bonne pour distinguer les différences de couleur que les différences de luminosité.
+Partant de ce constat, la compression JPEG propose de séparer la chrominance de la luminance, grâce à système de représentation des couleurs adapté.
+
+C'est le cas du **YCbCr**, qui permet de séparer sur un axe Y la luminance, et sur 2 axes Cb et Cr la chrominance.
+La 1ère étape est donc de passer du sRGB au YCbCr.
+
+* **Sous-échantillonnage de la chrominance** :
+
+Une fois passé en YCbCr, on va sous-échantillonner les 2 axes de chrominance Cb et Cr, et garder intact l'axe de luminance Y.
+
+Ce sous-échantillonnage peut se faire de 3 façons différentes : 4:2:2, 4:2:0, 4:1:1.
+
+Considérons 2 lignes de 4 pixels : le 1er chiffre correspond au nombre d'échantillons Y dans chaque ligne, le 2nd chiffre au nombre d'échantillons de Cb/Cr dans la 1ère ligne, le 3ème chiffre au nombre d'échantillons de Cb/Cr dans la 2ème ligne.
+On en déduit que 4:4:4 correspondrait à l'échantillonage de base.
+
+* **Découpage en bloc** :
+
+La vision humaine est beaucoup moins sensible aux petites variations de l'image qu'aux grandes.
+Partant de ce constat, la compression JPEG propose d'appliquer une sorte de filtre passe-bas à la l'image, par bloc.
+
+L'image est donc d'abord découpée en blocs de 64 pixels (8x8), sachant que l'on a sous-échantillonné les pixels pour la chrominance (Cb et Cr).
+
+* **Transformation en Cosinus Discrète (DTC)** :
+
+Une Transformation en Cosinus Discrète (ou DTC) est appliquée à chaque bloc :
+
+$\mathrm{DCT}(i,j)=\frac{2}{N}C(i)C(j)\sum_{x=0}^{N-1}\sum_{y=0}^{N-1}B(x,y)\cos\left[\frac{(2x+1)i\pi}{2N}\right]\cos\left[\frac{(2y+1)j\pi}{2N}\right]$
+
+avec $C(x) = \begin{cases}\dfrac{1}{\sqrt{2}},&\text{pour }x=0,\\[1ex]1,&\text{pour }x>0.\end{cases}$
+
+et avec $B(x,y)$ la valeur du pixel d'un bloc à la position $(x,y)$.
+
+Dans le cas d'un JPEG, nous avons dit qu'un bloc a une dimension $N=8$.
+
+Cette transformée produit une matrice 64 coefficients réels (8x8), représentant une **analyse spectrale** du bloc.
+Le coefficient en haut à gauche correspond à la fréquence zéro, et en allant à droite ou en bas les coefficients correspondent à des fréquences horizontales ou verticales plus élevées.
+
+Nous reparlerons au chapitre suivant de l'analyse spectrale d'images.
+
+* **Quantification** :
+
+Maintenant que nous avons obtenu une représentation spectrale de chaque bloc, reste à leur appliquer un **filtrage passe-bas**.
+
+Pour ce faire, la DTC de chaque bloc est divisée par une matrice de 64 coefficients (8x8), appelée "**matrice de quantification**".
+Pour filtrer les hautes fréquences, cette matrice a des valeurs croissantes à mesure que l'on approche du coin en bas à droite, et on applique un arrondi à l'entier inférieur après division par la matrice de quantification.
+
+C'est cette étape de la compression qui permet de gagner le plus d'espace mémoire.
+
+* **Codage RLE-Huffman** :
+
+
+
+Et pour décoder l'image contenue dans un fichier JPEG, on inverse ces étapes les unes après les autres.
+On comprend alors pourquoi on dit la compression "irréversible" : en inversant certaines de ces étapes, on ne récupère pas exactement les matrices d'origine.
+
+![Variation de la qualité d'exportation d'un JPEG](img/Chap1_example_jpeg_quality.png)
+
+Lorsque vous traiterez des images JPEG, il faudra garder en tête que ce format réalise une **compression avec pertes**, qui pourra avoir un impact vos traitements et interprétations.
+Et lorsque que vous exporterez des images en JPEG, vous aurez potentiellement à choisir les paramètres des différentes étapes de la compression, d'où l'intérêt de les connaitre.
 
 ## L'écran et l'impression : reproduire le réel
 
