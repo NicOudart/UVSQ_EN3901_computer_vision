@@ -1283,6 +1283,22 @@ Voici un résumé du processus d'encodage des couleurs pour une caméra numériq
 
 Une fois que l'image capturée par la caméra est encodée comme nous venons de le décrire, elle est généralement enregistrée sur la carte mémoire sous la forme d'un **fichier** d'un **format** standard.
 
+Il faut faire attention à ne pas confondre 3 termes :
+
+* Les **dimensions** d'une image correspond à son nombre de colonnes de pixels $nb_c$ et à son nombre de lignes de pixels $nb_l$, mis sous la forme "$nb_c \times nb_l$".
+Notre image exemple a pour dimensions 3000x3000.
+
+* Le **poids** d'une image correspond au nombre de d'octets (1 octet = 8 bits) de mémoire nécessaires pour stocker l'image une fois encodée.
+Notre image exemple a un poids de 1.83 Mo.
+
+* Le **format** d'une image désigne le type de fichier informatique utilisé pour sauvegarder l'image.
+Il s'agit d'une convention d'encodage et d'organisation des données, permettant à différents logiciels de lire l'image.
+Notre image exemple est au format JPEG.
+
+|Nota Bene|
+|:-|
+|On évite en général le mot "taille" d'une image, qui est ambigu quant à ce qu'il désigne : les dimensions ou le poids ?|
+
 Voici quelques exemples de formats très classiques en informatique pour le **stockage d'images** :
 
 |Format                           |Extension     |Création|Usage                                                                              |
@@ -1295,7 +1311,7 @@ Voici quelques exemples de formats très classiques en informatique pour le **st
 |WebP                             |.webp         |2010    |Format compressé avec pertes, fait pour l'affichage web                            |
 |High Efficiency Image File Format|.heif ou .heic|2015    |Très utilisé pour le stockage sur téléphone mobile                                 |
 
-Les images exemple proposée dans ce cours sont au format **JPEG**.
+Toutes les images exemple proposées dans ce cours seront au format **JPEG**.
 
 Comme indiqué dans le tableau, il s'agit du format plébicité pour le partage d'images, car il permet de **compresser** plus ou moins l'information contenue dans une image, tout en conservant un rendu de **bonne qualité**.
 Il est souvent le format utilisé par défaut par les caméras numériques pour stocker les photographies.
