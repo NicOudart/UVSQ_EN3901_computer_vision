@@ -1315,6 +1315,12 @@ Partant de ce constat, la compression JPEG propose de séparer la chrominance de
 C'est le cas du **YCbCr**, qui permet de séparer sur un axe Y la luminance, et sur 2 axes Cb et Cr la chrominance.
 La 1ère étape est donc de passer du sRGB au YCbCr.
 
+Voici notre image exemple en représentation YCbCr :
+
+![Exemple représentation Y](img/Chap1_color_encoding.png)
+
+(Les échelles de couleurs choisies pour l'affichage permettent de faire ressortir les chrominances positives et négatives).
+
 * **Sous-échantillonnage de la chrominance** :
 
 Une fois passé en YCbCr, on va sous-échantillonner les 2 axes de chrominance Cb et Cr, et garder intact l'axe de luminance Y.
@@ -1324,6 +1330,8 @@ Ce sous-échantillonnage peut se faire de 3 façons différentes : 4:2:2, 4:2:0,
 Considérons 2 lignes de 4 pixels : le 1er chiffre correspond au nombre d'échantillons Y dans chaque ligne, le 2nd chiffre au nombre d'échantillons de Cb/Cr dans la 1ère ligne, le 3ème chiffre au nombre d'échantillons de Cb/Cr dans la 2ème ligne.
 On en déduit que 4:4:4 correspondrait à l'échantillonage de base.
 
+![Sous-échantillonnage de la chrominance](img/Chap1_chroma_subsampling.png)
+
 * **Découpage en bloc** :
 
 La vision humaine est beaucoup moins sensible aux petites variations de l'image qu'aux grandes.
@@ -1331,9 +1339,9 @@ Partant de ce constat, la compression JPEG propose d'appliquer une sorte de filt
 
 L'image est donc d'abord découpée en blocs de 64 pixels (8x8), sachant que l'on a sous-échantillonné les pixels pour la chrominance (Cb et Cr).
 
-* **Transformation en Cosinus Discrète (DTC)** :
+* **Transformation en Cosinus Discrète (DCT)** :
 
-Une Transformation en Cosinus Discrète (ou DTC) est appliquée à chaque bloc :
+Une Transformation en Cosinus Discrète (ou DCT) est appliquée à chaque bloc :
 
 $\mathrm{DCT}(i,j)=\frac{2}{N}C(i)C(j)\sum_{x=0}^{N-1}\sum_{y=0}^{N-1}B(x,y)\cos\left[\frac{(2x+1)i\pi}{2N}\right]\cos\left[\frac{(2y+1)j\pi}{2N}\right]$
 
@@ -1352,16 +1360,32 @@ Nous reparlerons au chapitre suivant de l'analyse spectrale d'images.
 
 Maintenant que nous avons obtenu une représentation spectrale de chaque bloc, reste à leur appliquer un **filtrage passe-bas**.
 
-Pour ce faire, la DTC de chaque bloc est divisée par une matrice de 64 coefficients (8x8), appelée "**matrice de quantification**".
+Pour ce faire, la DCT de chaque bloc est divisée par une matrice de 64 coefficients (8x8), appelée "**matrice de quantification**".
 Pour filtrer les hautes fréquences, cette matrice a des valeurs croissantes à mesure que l'on approche du coin en bas à droite, et on applique un arrondi à l'entier inférieur après division par la matrice de quantification.
 
 C'est cette étape de la compression qui permet de gagner le plus d'espace mémoire.
 
-* **Codage RLE-Huffman** :
+* **Codage zigzag / RLE / Huffman** :
 
+Les 3 dernières étapes correspondent à l'encodage final.
+Il s'agit d'une compression **sans perte d'information** : on ne fait qu'écrire les choses de manière efficace.
 
+Tout d'abord, les données de la DCT de chaque bloc sont lues en "**zigzag**", afin qu'elles soient rangées de la fréquence la plus faible à la fréquence la plus élevée.
+A partir des blocs 8x8, on obtient des **lignes de 64 valeurs**.
 
-Et pour décoder l'image contenue dans un fichier JPEG, on inverse ces étapes les unes après les autres.
+Ensuite, un encodage "**RLE**" (pour "Run Length Encoding") va permettre d'**éviter les répétitions** quand un nombre apparait plusieurs fois d'affilée dans une des lignes de 64 valeurs.
+C'est notamment le cas du 0, qui apparait en général beaucoup en fin de ligne, puisque nous avons appliqué un filtrage passe-bas.
+
+Enfin, un encodage de **Huffman** va représenter par des **petits nombres** les valeurs **apparaissant souvent** dans les différentes lignes, et par de **grands nombres** les valeurs **apparaissant rarement**.
+Le choix d'encodage exact est sauvegardé dans une table.
+
+Voici un schéma résumant toutes ces étapes de la compression d'un JPEG :
+
+![Schéma représentant la chaîne de compression d'un fichier JPEG](img/Chap1_jpeg_compression_pipeline.png)
+
+Et pour décoder l'image contenue dans un fichier JPEG, on inverse simplement ces étapes les unes après les autres.
+Le fichier doit donc contenir les informations nécessaires à cette inversion (matrice de quantification, table de conversion de Huffman, etc.).
+
 On comprend alors pourquoi on dit la compression "irréversible" : en inversant certaines de ces étapes, on ne récupère pas exactement les matrices d'origine.
 
 ![Variation de la qualité d'exportation d'un JPEG](img/Chap1_example_jpeg_quality.png)
