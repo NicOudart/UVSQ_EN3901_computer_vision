@@ -1317,7 +1317,7 @@ La 1ère étape est donc de passer du sRGB au YCbCr.
 
 Voici notre image exemple en représentation YCbCr :
 
-![Exemple représentation Y](img/Chap1_color_encoding.png)
+![Exemple représentation en YCbCr](img/Chap1_example_YCbCr.png)
 
 (Les échelles de couleurs choisies pour l'affichage permettent de faire ressortir les chrominances positives et négatives).
 
@@ -1330,7 +1330,7 @@ Ce sous-échantillonnage peut se faire de 3 façons différentes : 4:2:2, 4:2:0,
 Considérons 2 lignes de 4 pixels : le 1er chiffre correspond au nombre d'échantillons Y dans chaque ligne, le 2nd chiffre au nombre d'échantillons de Cb/Cr dans la 1ère ligne, le 3ème chiffre au nombre d'échantillons de Cb/Cr dans la 2ème ligne.
 On en déduit que 4:4:4 correspondrait à l'échantillonage de base.
 
-![Sous-échantillonnage de la chrominance](img/Chap1_chroma_subsampling.png)
+![Sous-échantillonnage de la chrominance](img/Chap1_jpeg_chroma_subsampling.png)
 
 * **Découpage en bloc** :
 
@@ -1354,6 +1354,8 @@ Dans le cas d'un JPEG, nous avons dit qu'un bloc a une dimension $N=8$.
 Cette transformée produit une matrice 64 coefficients réels (8x8), représentant une **analyse spectrale** du bloc.
 Le coefficient en haut à gauche correspond à la fréquence zéro, et en allant à droite ou en bas les coefficients correspondent à des fréquences horizontales ou verticales plus élevées.
 
+![Application de la DCT à un bloc](img/Chap1_jpeg_DCT.png)
+
 Nous reparlerons au chapitre suivant de l'analyse spectrale d'images.
 
 * **Quantification** :
@@ -1362,6 +1364,8 @@ Maintenant que nous avons obtenu une représentation spectrale de chaque bloc, r
 
 Pour ce faire, la DCT de chaque bloc est divisée par une matrice de 64 coefficients (8x8), appelée "**matrice de quantification**".
 Pour filtrer les hautes fréquences, cette matrice a des valeurs croissantes à mesure que l'on approche du coin en bas à droite, et on applique un arrondi à l'entier inférieur après division par la matrice de quantification.
+
+![Quantification d'un bloc](img/Chap1_jpeg_quantification.png)
 
 C'est cette étape de la compression qui permet de gagner le plus d'espace mémoire.
 
@@ -1372,6 +1376,8 @@ Il s'agit d'une compression **sans perte d'information** : on ne fait qu'écrire
 
 Tout d'abord, les données de la DCT de chaque bloc sont lues en "**zigzag**", afin qu'elles soient rangées de la fréquence la plus faible à la fréquence la plus élevée.
 A partir des blocs 8x8, on obtient des **lignes de 64 valeurs**.
+
+![Lecture en zigzag d'un bloc](img/Chap1_jpeg_zigzag.png)
 
 Ensuite, un encodage "**RLE**" (pour "Run Length Encoding") va permettre d'**éviter les répétitions** quand un nombre apparait plusieurs fois d'affilée dans une des lignes de 64 valeurs.
 C'est notamment le cas du 0, qui apparait en général beaucoup en fin de ligne, puisque nous avons appliqué un filtrage passe-bas.
