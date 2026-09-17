@@ -1417,7 +1417,52 @@ Et lorsque que vous exporterez des images en JPEG, vous aurez potentiellement à
 
 ## L'écran et l'impression : reproduire le réel
 
+Vous êtes probablement en train de lire ce cours sur un **écran** d'ordinateur ou de téléphone mobile.
+De même, lors de ce cours vous verrez les effets de vos traitements d'images sur un écran.
+
+Il faut donc être conscient de ceci :
+L'image projetée sur le capteur de la caméra n'est qu'une représentation 2D de l'environnement.
+L'image enregistrée par une caméra numérique n'est qu'une représentation discrète et encodée de l'image projetée sur le capteur.
+Et l'image affichée par un écran n'est qu'une tentative de reproduction de la sensation visuelle associée à cette image numérique.
+
+En bref, un écran **ne peut pas reproduire parfaitement** la sensation visuelle associée à une image.
+Et d'ailleurs, **2 écrans différents** donneront des **rendus différents**.
+Pire encore, un même écran avec des **réglages différents** donnera des **rendus différents** !
+
+La plupart des écrans que vous utilisez au quotidien sont basés sur la technologie **LCD** (pour "Liquid Crystal Display").
+
+Un écran **LCD** est une matrice 2D de petits éléments que l'on appelle "**pixels**".
+
+|Nota Bene|
+|:-|
+|On nomme "pixel" à la fois la plus petite unité d'une image numérique, et la plus petite unité d'affichage d'un écran, ce qui peut porter à confusion.|
+|Hormis le cas particulier où une image est affichée de telle sorte que chacun de ses pixels soit représenté par un pixel de l'écran, il n'y a pas de correspondance directe entre "pixels" de l'écran et "pixels" de l'image numérique.|
+
+Chaque pixel est composé des éléments suivants :
+
+* Une **lumière blanche** générée par des LED **éclaire** l'arrière des pixels.
+
+* Un 1er **filtre polarisant** va filtrer la lumière selon sa polarisation, dans une orientation donnée.
+On dit que la lumière est **polarisée** par le filtre.
+
+* Une couche de **cristaux liquides**, contrôlable par une tension électrique, permet de **modifier l'orientation** de la lumière polarisée par le 1er filtre.
+
+* Un 2nd **filtre polarisant** va filtrer la lumière selon sa polarisation, dans l'orientation **perpendiculaire au 1er filtre**.
+
+L'idée est que plus la couche de cristaux liquides va rapprocher l'orientation de la lumière polarisée de celle du 2nd filtre, et plus de lumière passera.
+Par défaut, la lumière sera polarisée perpendiculairement aux 2nd filtre, qui ne laissera presque rien passer.
+
+La tension appliquée aux cristaux liquides permettra donc de **contrôler la quantité de lumière que laisse passer le pixel**.
+
+Pour reproduire les couleurs associées à chaque pixel, un écran va utiliser le principe de la **synthèse additive**.
+
+En réalité, un pixel est composé de 3 "sous-pixels", ayant chacun un **filtre coloré**, "rouge" / "vert" / "bleu".
+On reconnait 
+
+
 ## Manipuler des images avec Python
+
+Dans le cadre de ce cours, nous allons utiliser
 
 ### Pillow
 
