@@ -1437,6 +1437,7 @@ Un écran **LCD** est une matrice 2D de petits éléments que l'on appelle "**pi
 |:-|
 |On nomme "pixel" à la fois la plus petite unité d'une image numérique, et la plus petite unité d'affichage d'un écran, ce qui peut porter à confusion.|
 |Hormis le cas particulier où une image est affichée de telle sorte que chacun de ses pixels soit représenté par un pixel de l'écran, il n'y a pas de correspondance directe entre "pixels" de l'écran et "pixels" de l'image numérique.|
+|La carte graphique d'un ordinateur va en général redimensionner une image pour l'afficher sur un écran.|
 
 Chaque pixel est composé des éléments suivants :
 
@@ -1457,7 +1458,31 @@ La tension appliquée aux cristaux liquides permettra donc de **contrôler la qu
 Pour reproduire les couleurs associées à chaque pixel, un écran va utiliser le principe de la **synthèse additive**.
 
 En réalité, un pixel est composé de 3 "sous-pixels", ayant chacun un **filtre coloré**, "rouge" / "vert" / "bleu".
-On reconnait 
+On reconnait ici 3 primaires, destinés à reproduire un espace colorimétrique.
+
+L'idée est que si ces 3 sous-pixels sont suffisamment petits et proches, ils ne seront **pas séparables par notre oeil**, qui percevra alors la combinaison des 3 primaires.
+
+Suivant le spectre de la lumière blanche utilisée, et les longueurs d'ondes auxquelles est filtrée la lumière venant en passant par chaque sous-pixels, un écran pourra reproduire ou non certaines couleurs perceptibles par un humain.
+On peut donc définir le **gamut** d'un écran.
+
+En général, les écrans sont conçus pour couvrir le gamut sRGB.
+Mais attention, les couleurs synthétisées par l'écran peuvent être différentes de celles attendues si :
+
+* Le gamut de l'écran est significativement différent de celui du sRGB.
+
+* La résolution en pixels de l'affichage à l'écran est différent de la résolution de l'image numérique en pixels.
+
+* La profondeur des couleurs de l'écran est différente de celle de l'image.
+
+* L'écran n'a pas été calibré correctement.
+
+* On joue sur les paramètres d'affichage de l'écran.
+
+|Nota Bene|
+|:-|
+|Vous avez sûrement déjà été confrontés à ce problème en voulant acheter en ligne un vêtement coloré ou de la peinture : l'objet n'a pas la même couleur que sur le site web !|
+|Maintenant, vous savez pourquoi...|
+
 
 
 ## Manipuler des images avec Python
