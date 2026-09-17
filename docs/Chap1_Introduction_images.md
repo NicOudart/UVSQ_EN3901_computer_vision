@@ -1446,14 +1446,14 @@ Chaque pixel est composé des éléments suivants :
 * Un 1er **filtre polarisant** va filtrer la lumière selon sa polarisation, dans une orientation donnée.
 On dit que la lumière est **polarisée** par le filtre.
 
-* Une couche de **cristaux liquides**, contrôlable par une tension électrique, permet de **modifier l'orientation** de la lumière polarisée par le 1er filtre.
+* Une couche de **cristaux liquides**, contrôlable par une tension électrique, permet de **modifier ou non l'orientation** de la lumière polarisée par le 1er filtre.
 
 * Un 2nd **filtre polarisant** va filtrer la lumière selon sa polarisation, dans l'orientation **perpendiculaire au 1er filtre**.
 
-L'idée est que plus la couche de cristaux liquides va rapprocher l'orientation de la lumière polarisée de celle du 2nd filtre, et plus de lumière passera.
-Par défaut, la lumière sera polarisée perpendiculairement aux 2nd filtre, qui ne laissera presque rien passer.
-
+L'idée est que suivant la tension qui leur est appliquée, la couche de cristaux liquides va rapprocher ou éloigner l'orientation de la lumière polarisée de celle du 2nd filtre, laissant ainsi passer plus ou moins de lumière.
 La tension appliquée aux cristaux liquides permettra donc de **contrôler la quantité de lumière que laisse passer le pixel**.
+
+Suivant le type exact d'écran LCD, le pixel sera par défaut dans l'état le plus passant ou dans l'état le plus opaque. 
 
 Pour reproduire les couleurs associées à chaque pixel, un écran va utiliser le principe de la **synthèse additive**.
 
