@@ -1453,7 +1453,9 @@ On dit que la lumière est **polarisée** par le filtre.
 L'idée est que suivant la tension qui leur est appliquée, la couche de cristaux liquides va rapprocher ou éloigner l'orientation de la lumière polarisée de celle du 2nd filtre, laissant ainsi passer plus ou moins de lumière.
 La tension appliquée aux cristaux liquides permettra donc de **contrôler la quantité de lumière que laisse passer le pixel**.
 
-Suivant le type exact d'écran LCD, le pixel sera par défaut dans l'état le plus passant ou dans l'état le plus opaque. 
+Suivant le type exact d'écran LCD, le pixel sera par défaut dans l'état le plus passant ou dans l'état le plus opaque.
+
+![Schéma d'un pixel d'écran LCD](img/Chap1_LCD_pixel.png)
 
 Pour reproduire les couleurs associées à chaque pixel, un écran va utiliser le principe de la **synthèse additive**.
 
