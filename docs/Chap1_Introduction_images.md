@@ -1464,6 +1464,8 @@ On reconnait ici 3 primaires, destinés à reproduire un espace colorimétrique.
 
 L'idée est que si ces 3 sous-pixels sont suffisamment petits et proches, ils ne seront **pas séparables par notre oeil**, qui percevra alors la combinaison des 3 primaires.
 
+![Photographie d'un écran LCD prise au microscope](img/Chap1_LCD_screen_microscope_view.png)
+
 Suivant le spectre de la lumière blanche utilisée, et les longueurs d'ondes auxquelles est filtrée la lumière venant en passant par chaque sous-pixels, un écran pourra reproduire ou non certaines couleurs perceptibles par un humain.
 On peut donc définir le **gamut** d'un écran.
 
@@ -1485,7 +1487,26 @@ Mais attention, les couleurs synthétisées par l'écran peuvent être différen
 |Vous avez sûrement déjà été confrontés à ce problème en voulant acheter en ligne un vêtement coloré ou de la peinture : l'objet n'a pas la même couleur que sur le site web !|
 |Maintenant, vous savez pourquoi...|
 
+Lorsque vous **imprimez** une image sur papier, votre imprimante aussi est **limitée dans les couleurs qu'elle peut représenter**, dans un certain **gamut**.
 
+Contrairement à un écran, une feuille de papier imprimée ne produit pas sa propre lumière, mais elle diffuse la lumière d'une source extérieure.
+Les couleurs sur une impression ne sont donc pas reproduites par synthèse additive, mais par **synthèse soustractive**.
+
+Une imprimante va recouvrir une feuille de papier de petits points de colorant, appelés "**points d'impression**", avec 3 primaires "magenta", "jaune" et "cyan".
+
+Comme pour les pixels d'un écran, ces points sont trop petits et rapprochés pour être séparés par l'oeil humain.
+Afin de synthétiser les couleurs à partir des 3 primaires, on joue sur le diamètre des points : plus un point est gros, plus le primaire correspondant sera "intense".
+
+![Photographie d'une impression sur papier prise au microscope](img/Chap1_printed_paper_microscope_view.png)
+
+Aucun colorant ne réfléchit totalement la lumière sur une longueur d'onde, et absorbe toutes les autres.
+La conséquence est que si on se contentait du magenta / jaune / cyan, on obtiendrait des impressions avec **très peu de contraste**.
+De plus, produire des couleurs foncées coûterait cher en encre avec ce système, puisqu'il faudrait de l'encre des 3 primaires, en grande quantité.
+
+Pour contourner ce problème, les imprimantes disposent d'un colorant supplémentaire : le **noir**.
+On parle alors de **quadrichromatisme**, ou système "CMYK" en anglais.
+
+Le choix de 
 
 ## Manipuler des images avec Python
 
