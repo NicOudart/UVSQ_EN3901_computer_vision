@@ -1488,14 +1488,18 @@ Mais attention, les couleurs synthétisées par l'écran peuvent être différen
 |Maintenant, vous savez pourquoi...|
 
 Lorsque vous **imprimez** une image sur papier, votre imprimante aussi est **limitée dans les couleurs qu'elle peut représenter**, dans un certain **gamut**.
+Et en général, ce gamut est **plus limité** que celui des écrans !
 
 Contrairement à un écran, une feuille de papier imprimée ne produit pas sa propre lumière, mais elle diffuse la lumière d'une source extérieure.
 Les couleurs sur une impression ne sont donc pas reproduites par synthèse additive, mais par **synthèse soustractive**.
 
-Une imprimante va recouvrir une feuille de papier de petits points de colorant, appelés "**points d'impression**", avec 3 primaires "magenta", "jaune" et "cyan".
+Une imprimante va recouvrir une feuille de papier de petits points de colorant, appelés "**points de trame**", avec 3 primaires "magenta", "jaune" et "cyan".
 
 Comme pour les pixels d'un écran, ces points sont trop petits et rapprochés pour être séparés par l'oeil humain.
 Afin de synthétiser les couleurs à partir des 3 primaires, on joue sur le diamètre des points : plus un point est gros, plus le primaire correspondant sera "intense".
+On appelle ce procédé la "**demi-teinte**" (ou "halftoning" en anglais).
+
+Pour éviter que des motifs périodiques n'apparaissent sur l'image, on oriente en général les lignes de points de trame selon des axes différents pour les différents primaires.
 
 ![Photographie d'une impression sur papier prise au microscope](img/Chap1_printed_paper_microscope_view.png)
 
@@ -1506,11 +1510,22 @@ De plus, produire des couleurs foncées coûterait cher en encre avec ce systèm
 Pour contourner ce problème, les imprimantes disposent d'un colorant supplémentaire : le **noir**.
 On parle alors de **quadrichromatisme**, ou système "CMYK" en anglais.
 
-Le choix de 
+Tout ceci fait que le gamut d'une impression sur papier, en plus d'être plus réduit que celui d'un écran, n'est en général **pas triangulaire** sur le diagramme de chromaticité.
+
+![Gamut d'une impression sur papier](img/Chap1_gamut_CMYK.png)
+
+Il faut donc avoir à l'esprit qu'une impression sur papier synthétise encore moins de couleurs visibles qu'un écran.
+Certains logiciels de traitement d'image vous préviennent quand des couleurs ne sont pas synthétisables par une imprimante.
+
+|Nota Bene|
+|:-|
+|Vous avez peut-être déjà été déçu du rendu des couleurs en imprimant des photos sur papier.|
+|Les couleurs vous paraissent sûrement plus ternes que sur votre écran.|
+|Maintenant vous savez pourquoi...|
 
 ## Manipuler des images avec Python
 
-Dans le cadre de ce cours, nous allons utiliser
+Dans le cadre de ce cours, nous allons utiliser 
 
 ### Pillow
 
