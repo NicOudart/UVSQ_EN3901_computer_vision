@@ -1525,17 +1525,31 @@ Certains logiciels de traitement d'image vous préviennent quand des couleurs ne
 
 ## Manipuler des images avec Python
 
-Dans le cadre de ce cours, nous allons utiliser 
+Dans le cadre de ce cours, nous allons utiliser 3 grandes **bibliothèques Python** pour le traitement d'images.
 
-### Pillow
+* **Pillow** : 
 
-### Scikit-image
+Successeur de la bibliothèque historique "Python Imaging Library" (PIL), elle est conçue pour de la **manipulation basique d'image**.
+Elle permet notamment d'importer des images, les recadrer, les retoucher, leur appliquer quelques filtres, et les sauvegarder dans différents formats.
 
-### Open-CV
+* **Scikit-image** :
+
+Bibliothèque de **traitement et d'analyse d'image** basée sur Numpy et Scipy.
+Elle implémente de nombreuses méthodes de filtrage, de transformées, de segmentation, d'extraction de caractéristiques et d'analyse scientifique.
+
+* **Open-CV** :
+
+Bibliothèque dédiée à la **vision par ordinateur**, elle permet de répondre à de nombreuses problématiques de vision.
+On peut citer entre autre la détection de contours, la détection de formes, la détection d'objets, et la reconnaissance de visages.
+
+La combinaison de ces 3 bibliothèques permet de couvrir toutes les fonctionnalités dont nous aurons besoin durant ce cours de vision par ordinateur.
 
 ## Retouche d'images : améliorer la lisibilité
 
-### La représentation HSV
+L'expression "**retouche d'image**" peut être ambiguë parce que désignant différents niveaux de modification d'une image.
+Dans le cadre ce cours, nous désignerons comme des "**retouches**" des **corrections légères** de l'aspect d'une image, dans le but de la rendre plus **lisible** ou dans un but artistique.
+
+Nous allons nous concentrer sur 3 types de retouches classiques : la **luminosité**, le **contraste** et la **saturation**.
 
 ### Luminosité
 
@@ -1548,6 +1562,8 @@ Dans le cadre de ce cours, nous allons utiliser
 ### Saturation
 
 ![Exemple de retouche de saturation](img/Chap1_example_saturation.png)
+
+### La représentation HSV
 
 ## Les histogrammes : étalonner des images
 
