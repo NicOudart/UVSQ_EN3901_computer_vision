@@ -1532,15 +1532,36 @@ Dans le cadre de ce cours, nous allons utiliser 3 grandes **bibliothèques Pytho
 Successeur de la bibliothèque historique "Python Imaging Library" (PIL), elle est conçue pour de la **manipulation basique d'image**.
 Elle permet notamment d'importer des images, les recadrer, les retoucher, leur appliquer quelques filtres, et les sauvegarder dans différents formats.
 
+Voici comment importer une image située à un emplacement _path_ sous la forme d'une variable _img_ avec Pillow :
+
+~~~
+from PIL import Image
+img = Image.open(path)
+~~~
+
 * **Scikit-image** :
 
 Bibliothèque de **traitement et d'analyse d'image** basée sur Numpy et Scipy.
 Elle implémente de nombreuses méthodes de filtrage, de transformées, de segmentation, d'extraction de caractéristiques et d'analyse scientifique.
 
+Voici comment importer une image située à un emplacement _path_ sous la forme d'une variable _img_ avec Scikit-image :
+
+~~~
+from skimage import io
+img = io.imread(path)
+~~~
+
 * **Open-CV** :
 
 Bibliothèque dédiée à la **vision par ordinateur**, elle permet de répondre à de nombreuses problématiques de vision.
 On peut citer entre autre la détection de contours, la détection de formes, la détection d'objets, et la reconnaissance de visages.
+
+Voici comment importer une image située à un emplacement _path_ sous la forme d'une variable _img_ avec Open-CV :
+
+~~~
+import cv2 as cv
+img = cv.imread(path)
+~~~
 
 La combinaison de ces 3 bibliothèques permet de couvrir toutes les fonctionnalités dont nous aurons besoin durant ce cours de vision par ordinateur.
 
@@ -1552,6 +1573,16 @@ Dans le cadre ce cours, nous désignerons comme des "**retouches**" des **correc
 Nous allons nous concentrer sur 3 types de retouches classiques : la **luminosité**, le **contraste** et la **saturation**.
 
 ### Luminosité
+
+La **luminosité** d'une image correspond au ressenti de "clarté" ou "d'obscurité" que l'on a en la regardant.
+
+Une augmentation de la luminosité correspond à une augmentation des valeurs des pixels pour les 3 primaires.
+L'augmentation peut être la même pour tous les primaires, ou de valeurs différentes si on veut tenir compte de la perception des couleurs par l'oeil humain.
+Il existe donc en réalité différentes définitions de la luminosité.
+
+On considère dans tous les cas que l'image la moins lumineuse possible est entièrement noire, et l'image la plus lumineuse possible entièrement blanche.
+
+Il est possible de modifier la luminosité d'une image avec la bibliothèque Pillow, en jouant sur un paramètre 
 
 ![Exemple de retouche de luminosité](img/Chap1_example_luminosity.png)
 
@@ -1590,12 +1621,6 @@ Nous allons nous concentrer sur 3 types de retouches classiques : la **luminosit
 ![Exemple d'application de l'histogram matching](img/Chap1_example_histogram_matching.png)
 
 ![Histogrammes avant et après matching](img/Chap1_example_histogram_matching_histograms.png)
-
-## A la recherche des dimensions perdues
-
-### La stéréoscopie
-
-### Le flux optique
 
 ## La vision par ordinateur
 
