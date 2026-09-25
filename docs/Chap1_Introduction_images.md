@@ -1584,11 +1584,11 @@ L'augmentation peut être la même pour tous les primaires, ou de valeurs diffé
 
 On considère dans tous les cas que l'image la **moins lumineuse** possible est **entièrement noire**, et l'image la **plus lumineuse** possible **entièrement blanche**.
 
-Il est possible de modifier la luminosité d'une image avec la bibliothèque **Pillow**, en jouant sur le paramètre $c$ d'un objet _ImageEnhance.Contrast_ :
+Il est possible de modifier la luminosité d'une image avec la bibliothèque **Pillow**, en jouant sur le paramètre $c$ d'un objet _ImageEnhance.Brightness_ :
 
 ~~~
 brightness_enhancer = ImageEnhance.Brightness(img)
-img_enhanced = brightness_enhancer.enhance(coeff)
+img_enhanced = brightness_enhancer.enhance(c)
 ~~~
 
 Cette méthode multiplie simplement les 3 composantes RGB de chaque pixels de l'image par le coefficient $c$.
@@ -1615,7 +1615,24 @@ Il existe plusieurs indicateurs pour évaluer le contraste d'une image, mais tou
 On cosidère que l'image la **plus contrastée** possible est ne contient **que du noir et du blanc**.
 L'image la **moins contrastée possible** ne contient a **tous ses pixels de la même valeur**.
 
-Il est possible de modifier le contraste d'une image avec la bibliothèque **Pillow**, 
+Il est possible de modifier le contraste d'une image avec la bibliothèque **Pillow**, en jouant sur le paramètre $c$ d'un objet _ImageEnhance.Contrast_ :
+
+~~~
+contrast_enhancer = ImageEnhance.Contrast(img)
+img_enhanced = contrast_enhancer.enhance(c)
+~~~
+
+Tout d'abord, cette méthode génère une image de "référence" dont toutes les composantes de tous les pixels auront une même valeur $pix_{ref}$, de manière à avoir la même luminance que l'image originale.
+Cette image de référence est donc "grise".
+La méthode va ensuite appliquer la formule suivante à chacune des composantes $(pix_R,pix_G,pix_B)$ d'un pixel de l'image :
+
+$(pix_R',pix_G',pix_B') = (pix_{ref} + c (pix_R-pix_{ref}), pix_{ref} + c (pix_G-pix_{ref}), pix_{ref} + c (pix_B-pix_{ref}))$
+
+Pour un encodage sur 8 bit de chaque composante, les nouvelles valeurs du pixel $(pix_R',pix_G',pix_B')$ sont seuillées entre 0 et 255.
+
+Un coefficient de 0 donnera une image complètement grise, correspondant à l'image de "référence", un coefficient de 1 donnera l'image originale, et un coefficient supérieur à 1 suffisamment élevé donnera une image ne contenant que du noir et du blanc.
+
+Voici un exemple de modification du contraste de notre image d'un _Ocypode quadrata_ avec Pillow :
 
 ![Exemple de retouche de contraste](img/Chap1_example_contrast.png)
 
@@ -1651,14 +1668,6 @@ Il est possible de modifier le contraste d'une image avec la bibliothèque **Pil
 
 ![Histogrammes avant et après matching](img/Chap1_example_histogram_matching_histograms.png)
 
-## La vision par ordinateur
-
-### Classification d'images
-
-### Localisation d'objets
-
-### Segmentation d'images
-
-### Reconstruction 3D / suivi
+## Vers la vision par ordinateur
 
 ## Conclusion

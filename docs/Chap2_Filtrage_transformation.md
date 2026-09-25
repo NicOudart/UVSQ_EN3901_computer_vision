@@ -2,4 +2,14 @@
 
 ---
 
-##
+## Analyse spectrale
+
+## Filtrage linéaire
+
+## Opérations morphologiques
+
+## Détection de contours
+
+## Détection de forme
+
+## Détection de ROI
