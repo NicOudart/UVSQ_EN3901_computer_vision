@@ -1268,7 +1268,8 @@ En effet, on effectue ici une **discrétisation** du gamut du sRGB, qui est lui 
 En général, on encode la couleur sur **8 bits** pour chaque primaire, soit 24 bits au total.
 On parle alors d'une **profondeur de couleur** de 24 bits.
 
-Avec 24 bits, on peut représenter 16 777 216 couleurs différentes.
+Avec 24 bits, on peut représenter 16 777 216 couleurs différentes, soit beaucoup plus que le nombre de couleurs discernable par l'oeil humain.
+Et les valeurs pour chaque primaire de chaque pixel peuvent aller de 0 à 255.
 
 Voici un résumé du processus d'encodage des couleurs pour une caméra numérique classique :
 
@@ -1576,17 +1577,45 @@ Nous allons nous concentrer sur 3 types de retouches classiques : la **luminosit
 
 La **luminosité** d'une image correspond au ressenti de "clarté" ou "d'obscurité" que l'on a en la regardant.
 
-Une augmentation de la luminosité correspond à une augmentation des valeurs des pixels pour les 3 primaires.
+Une augmentation de la luminosité correspond à une **augmentation des valeurs des pixels pour les 3 primaires**.
+
 L'augmentation peut être la même pour tous les primaires, ou de valeurs différentes si on veut tenir compte de la perception des couleurs par l'oeil humain.
-Il existe donc en réalité différentes définitions de la luminosité.
+**Il existe donc en réalité différentes définitions de la luminosité**.
 
-On considère dans tous les cas que l'image la moins lumineuse possible est entièrement noire, et l'image la plus lumineuse possible entièrement blanche.
+On considère dans tous les cas que l'image la **moins lumineuse** possible est **entièrement noire**, et l'image la **plus lumineuse** possible **entièrement blanche**.
 
-Il est possible de modifier la luminosité d'une image avec la bibliothèque Pillow, en jouant sur un paramètre 
+Il est possible de modifier la luminosité d'une image avec la bibliothèque **Pillow**, en jouant sur le paramètre $c$ d'un objet _ImageEnhance.Contrast_ :
+
+~~~
+brightness_enhancer = ImageEnhance.Brightness(img)
+img_enhanced = brightness_enhancer.enhance(coeff)
+~~~
+
+Cette méthode multiplie simplement les 3 composantes RGB de chaque pixels de l'image par le coefficient $c$.
+Par exemple, pour un pixel de composantes $(pix_R,pix_G,pix_B)$ :
+
+$(pix_R',pix_G',pix_B') = (c \times pix_R,c \times pix_G,c \times pix_B)$
+
+Pour un encodage sur 8 bit de chaque composante, les nouvelles valeurs du pixel $(pix_R',pix_G',pix_B')$ sont seuillées entre 0 et 255.
+
+Un coefficient de 0 donnera une image complètement noire, un coefficient de 1 donnera l'image originale, et un coefficient supérieur à 1 suffisamment élevé donnera une image complètement blanche.
+
+Voici un exemple de modification de la luminosité de notre image d'un _Ocypode quadrata_ avec Pillow :
 
 ![Exemple de retouche de luminosité](img/Chap1_example_luminosity.png)
 
 ### Contraste
+
+Le **contraste** d'une image correspond à la largeur de l'intervalle entre les pixels les plus "sombres" et les pixels les plus "clairs" de l'image.
+
+Une augmentation du contraste correspond donc à un **élargissement de la plage de valeurs des pixels pour les 3 primaires**.
+
+Il existe plusieurs indicateurs pour évaluer le contraste d'une image, mais tous ont en commun d'être des **indicateurs de dispersion** (écart-type, minimum-maximum, etc.).
+
+On cosidère que l'image la **plus contrastée** possible est ne contient **que du noir et du blanc**.
+L'image la **moins contrastée possible** ne contient a **tous ses pixels de la même valeur**.
+
+Il est possible de modifier le contraste d'une image avec la bibliothèque **Pillow**, 
 
 ![Exemple de retouche de contraste](img/Chap1_example_contrast.png)
 
