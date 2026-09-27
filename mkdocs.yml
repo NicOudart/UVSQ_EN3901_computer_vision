@@ -6,10 +6,13 @@ theme:
   name: readthedocs
 nav:
   - Accueil: index.md
-  - I. Introduction aux images: Chap1_Introduction_images.md
-  - II. Filtrage et transformations: Chap2_Filtrage_transformation.md
-  - III. Réseaux convolutifs: Chap3_Reseaux_convolutifs.md
-  - IV. Deep Learning: Chap4_Deep_Learning.md
+  - Chapitre I. Introduction aux images: Chap1_Introduction_images.md
+  - Chapitre II. Filtrage et transformations: Chap2_Filtrage_transformation.md
+  - Chapitre III. Réseaux convolutifs: Chap3_Reseaux_convolutifs.md
+  - Chapitre IV. Deep Learning: Chap4_Deep_Learning.md
+  - Exercice 1: Ex1_Retouches.md
+  - Exercice 2: Ex2_Traitement.md
+  - Exercice 3: Ex3_Classification.md
 markdown_extensions:
   - pymdownx.arithmatex:
       generic: true

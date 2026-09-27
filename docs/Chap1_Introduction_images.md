@@ -1593,11 +1593,11 @@ img_enhanced = brightness_enhancer.enhance(c)
 ~~~
 
 Cette méthode multiplie simplement les 3 composantes RGB de chaque pixels de l'image par le coefficient $c$.
-Par exemple, pour un pixel de composantes $(pix_R,pix_G,pix_B)$ :
+Par exemple, pour un pixel de coordonnées [x,y] et de composantes $(pix_R[x,y],pix_G[x,y],pix_B[x,y])$ de l'image :
 
-$(pix_R',pix_G',pix_B') = (c \times pix_R,c \times pix_G,c \times pix_B)$
+$(pix_R'[x,y],pix_G'[x,y],pix_B'[x,y]) = (c \times pix_R[x,y],c \times pix_G[x,y],c \times pix_B[x,y])$
 
-Pour un encodage sur 8 bit de chaque composante, les nouvelles valeurs du pixel $(pix_R',pix_G',pix_B')$ sont seuillées entre 0 et 255.
+Pour un encodage sur 8 bit de chaque composante, les nouvelles valeurs du pixel $(pix_R'[x,y],pix_G'[x,y],pix_B'[x,y])$ sont seuillées entre 0 et 255.
 
 Un coefficient de 0 donnera une image complètement noire, un coefficient de 1 donnera l'image originale, et un coefficient supérieur à 1 suffisamment élevé donnera une image complètement blanche.
 
@@ -1625,11 +1625,11 @@ img_enhanced = contrast_enhancer.enhance(c)
 
 Tout d'abord, cette méthode génère une image de "référence" dont toutes les composantes de tous les pixels auront une même valeur $pix_{ref}$, de manière à avoir la même luminance que l'image originale.
 Cette image de référence est donc "grise".
-La méthode va ensuite appliquer la formule suivante à chacune des composantes $(pix_R,pix_G,pix_B)$ d'un pixel de l'image :
+La méthode va ensuite appliquer la formule suivante à chacune des composantes $(pix_R[x,y],pix_G[x,y],pix_B[x,y])$ d'un pixel de l'image de coordonnées [x,y] :
 
-$(pix_R',pix_G',pix_B') = (pix_{ref} + c (pix_R-pix_{ref}), pix_{ref} + c (pix_G-pix_{ref}), pix_{ref} + c (pix_B-pix_{ref}))$
+$(pix_R'[x,y],pix_G'[x,y],pix_B'[x,y]) = (pix_{ref} + c (pix_R[x,y]-pix_{ref}), pix_{ref} + c (pix_G[x,y]-pix_{ref}), pix_{ref} + c (pix_B[x,y]-pix_{ref}))$
 
-Pour un encodage sur 8 bit de chaque composante, les nouvelles valeurs du pixel $(pix_R',pix_G',pix_B')$ sont seuillées entre 0 et 255.
+Pour un encodage sur 8 bit de chaque composante, les nouvelles valeurs du pixel $(pix_R'[x,y],pix_G'[x,y],pix_B'[x,y])$ sont seuillées entre 0 et 255.
 
 Un coefficient de 0 donnera une image complètement grise, correspondant à l'image de "référence", un coefficient de 1 donnera l'image originale, et un coefficient supérieur à 1 suffisamment élevé donnera une image ne contenant que du noir et du blanc.
 
@@ -1654,7 +1654,17 @@ color_enhancer = ImageEnhance.Color(img)
 img_enhanced = color_enhancer.enhance(c)
 ~~~
 
+Tout d'abord, cette méthode génère une image de "référence", en "niveaux de gris", ayant la même luminance que l'image originale.
+Un pixel de coordonnées [x,y] de l'image aura donc pour composantes : $(pix_{ref}[x,y],pix_{ref}[x,y],pix_{ref}[x,y])$.
+La méthode va ensuite appliquer la formule suivante aux composantes $(pix_R[x,y],pix_G[x,y],pix_B[x,y])$ d'un pixel de l'image de coordonnées [x,y] :
 
+$(pix_R'[x,y],pix_G'[x,y],pix_B'[x,y]) = (pix_{ref}[x,y] + c (pix_R[x,y]-pix_{ref}[x,y]), pix_{ref}[x,y] + c (pix_G[x,y]-pix_{ref}[x,y]), pix_{ref}[x,y] + c (pix_B[x,y]-pix_{ref}[x,y]))$
+
+Pour un encodage sur 8 bit de chaque composante, les nouvelles valeurs du pixel $(pix_R'[x,y],pix_G'[x,y],pix_B'[x,y])$ sont seuillées entre 0 et 255.
+
+Un coefficient de 0 donnera une image en niveaux de gris, correspondant à l'image de "référence", un coefficient de 1 donnera l'image originale, et un coefficient supérieur à 1 suffisamment élevé donnera une image ne contenant que du noir/blanc/rouge/bleu/vert/magenta/jaune/cyan purs.
+
+Voici un exemple de modification du contraste de notre image d'un _Ocypode quadrata_ avec Pillow :
 
 ![Exemple de retouche de saturation](img/Chap1_example_saturation.png)
 
