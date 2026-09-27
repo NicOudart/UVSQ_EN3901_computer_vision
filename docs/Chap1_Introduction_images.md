@@ -1581,6 +1581,7 @@ Une augmentation de la luminosité correspond à une **augmentation des valeurs 
 
 L'augmentation peut être la même pour tous les primaires, ou de valeurs différentes si on veut tenir compte de la perception des couleurs par l'oeil humain.
 **Il existe donc en réalité différentes définitions de la luminosité**.
+Nous en reparlerons.
 
 On considère dans tous les cas que l'image la **moins lumineuse** possible est **entièrement noire**, et l'image la **plus lumineuse** possible **entièrement blanche**.
 
@@ -1638,9 +1639,26 @@ Voici un exemple de modification du contraste de notre image d'un _Ocypode quadr
 
 ### Saturation
 
+La **saturation** d'une image correspond à la "purité" des couleurs, par opposition au gris de même luminosité.
+
+Il s'agit de **modifications des valeurs des 3 primaires de chaque pixel** de l'image, afin d'éloigner les couleurs du gris de "référence".
+La manière d'éloigner les couleurs du gris varie, car il y a en réalité **différentes définitions de la saturation**.
+Nous en reparlerons.
+
+On considère que l'image la **moins saturée** possible ne contient que des **niveaux de gris**, et que l'image la **plus saturée** possible ne contient que du blanc, du noir, du rouge, du vert, du bleu, du magenta, du jaune et du cyan **purs**.
+
+Il est possible de modifier la saturation des couleurs d'une image avec la bibliothèque **Pillow**, en jouant sur le paramètre $c$ d'un objet _ImageEnhance.Color_ :
+
+~~~
+color_enhancer = ImageEnhance.Color(img)
+img_enhanced = color_enhancer.enhance(c)
+~~~
+
+
+
 ![Exemple de retouche de saturation](img/Chap1_example_saturation.png)
 
-### La représentation HSV
+### Les représentations HSV et HSL
 
 ## Les histogrammes : étalonner des images
 
