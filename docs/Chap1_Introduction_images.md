@@ -1670,6 +1670,58 @@ Voici un exemple de modification du contraste de notre image d'un _Ocypode quadr
 
 ### Les représentations HSV et HSL
 
+La représentation sRGB est pratique pour encoder les couleurs d'une image, mais elle n'est **pas très adaptée pour la retouche d'images**.
+
+En effet, modifier les couleurs, leur saturation et leur luminosité nécessite des opérations selon les 3 primaires en sRGB, qui sont loin d'être instinctives pour un humain.
+_Combien ajouter aux composantes sRGB d'un pixel pour le faire passer d'une couleur à une autre ?_ 
+Difficile à dire...
+
+C'est pourquoi à la fin des années 1970 ont été introduits les systèmes de coordonnées "**Hue Saturation Value**" (HSV) et "**Hue Saturation Lightness**" (HSL).
+
+Il s'agit de 2 systèmes de représentation en **coordonnées cylindriques**, que l'on peut obtenir à partir de transformations géométriques du système de coordonnées cartésien du sRGB.
+
+![Systèmes de coordonnées HSV et HSL](img/Chap1_HSV_HSL_systems.png)
+
+Voyons comment sont obtenues les représentations HSV et HSL à partir du sRGB.
+
+Tout d'abord, on définit 3 variables $m$, $M$ et $C$ à partir des composantes R / G / B d'une couleur donnée :
+
+* $m = min(R,G,B)$ la valeur minimale des 3 composantes de cette couleur.
+
+* $M = max(R,G,B)$ la valeur maximale des 3 composantes de cette couleur.
+
+* $C = M-m$ est parfois appelé "chroma", il représente l'écart entre la composante la plus forte et la composante la plus faible de cette couleur.
+On notera que $C = 0$ correspond à une nuance de gris, et que $C$ augmente à mesure que l'on s'éloigne d'un gris.
+
+Ensuite, on définit les composantes H / S / V ou L pour 3 valeurs de composantes R / G / B
+
+* "**Hue**" ou "teinte" en français correspond au type de couleur, en faisant abstraction de la luminosité et de la saturation.
+
+Il est représenté par un angle entre 0 et 360° dans les coordonnées cylindriques, avec 0° pour le rouge, 60° pour le jaune, 120° pour le vert, 180° pour le cyan, 240° pour le bleu, et 300° pour le magenta.
+
+On obtient cet angle à partir des valeurs des 3 composantes et de C :
+
+$H =
+\begin{cases}
+\text{indéfini (souvent mis à 0)} & \text{si } C=0,\\
+60^\circ\left(\dfrac{G-B}{C}\bmod 6\right)
+& \text{si } R=M,\\[8pt]
+60^\circ\left(\dfrac{B-R}{C}+2\right)
+& \text{si } G=M,\\[8pt]
+60^\circ\left(\dfrac{R-G}{C}+4\right)$
+
+* "**Value**" et "**Lightness**" correspondent au concept de luminosité vu précédemment.
+
+Comme nous l'avions expliqué plus tôt, il n'existe pas une unique définition de la luminosité.
+Les 2 représentations HSV et HSL font un choix différent :
+
+
+
+* "**Saturation**" correspond au même concept que celui vu précédemment.
+
+Pour pouvoir manipuler indépendamment la luminosité, la teinte et la saturation des couleurs d'une image, on peut donc la **convertir en HSV ou HSL**, puis appliquer une **transformation sur un seul axe**.
+Cette approche est beaucoup plus intuitive pour un humain.
+
 ## Les histogrammes : étalonner des images
 
 ### Analyse des histogrammes
