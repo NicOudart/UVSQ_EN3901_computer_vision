@@ -1748,6 +1748,11 @@ Cette approche est beaucoup plus intuitive pour un humain.
 
 ## Les histogrammes : étalonner des images
 
+Imaginons que nous ayons capturé des images d'un même type de scène, mais avec des paramètres photographiques et / ou un éclairage différent.
+Certaines application nécessitent des images "**étalonnées**", c'est-à-dire dont les valeurs ont été adaptées par avoir **la même répartition**.
+
+Nous allons voir dans cette section comment analyser la répartition des valeurs des pixels d'une image, et comment étalonner une image à partir d'une image de référence.
+
 ### Analyse des histogrammes
 
 ![Exemple d'histogramme pour une image en noir et blanc](img/Chap1_example_histograms_grayscale.png)
@@ -1774,4 +1779,3 @@ Cette approche est beaucoup plus intuitive pour un humain.
 
 ## Vers la vision par ordinateur
 
-## Conclusion
