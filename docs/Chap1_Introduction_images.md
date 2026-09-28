@@ -1705,19 +1705,42 @@ $H =
 \begin{cases}
 \text{indéfini (souvent mis à 0)} & \text{si } C=0,\\
 60^\circ\left(\dfrac{G-B}{C}\bmod 6\right)
-& \text{si } R=M,\\[8pt]
+& \text{si } R=M,\\
 60^\circ\left(\dfrac{B-R}{C}+2\right)
-& \text{si } G=M,\\[8pt]
-60^\circ\left(\dfrac{R-G}{C}+4\right)$
+& \text{si } G=M,\\
+60^\circ\left(\dfrac{R-G}{C}+4\right)
+\end{cases}$
 
 * "**Value**" et "**Lightness**" correspondent au concept de luminosité vu précédemment.
 
 Comme nous l'avions expliqué plus tôt, il n'existe pas une unique définition de la luminosité.
-Les 2 représentations HSV et HSL font un choix différent :
+Les 2 représentations HSV et HSL font un choix différent : 
 
+$V = M$ pour HSV et $L = \frac{m+M}{2}$ pour HSL.
 
+HSV fait donc le choix du maximum des valeurs des 3 composantes, et HSL fait le choix de la moyenne du minimum et du maximum.
 
 * "**Saturation**" correspond au même concept que celui vu précédemment.
+
+Comme nous l'avions expliqué plus tôt, il n'existe pas une unique définition de la saturation.
+Les 2 représentations HSV et HSL font encore un choix différent :
+
+$S_{\mathrm{HSV}}=
+\begin{cases}
+0 & \text{si } M=0,\\
+\dfrac{C}{M} & \text{si } M>0.
+\end{cases}$
+
+et
+
+$S_{\mathrm{HSL}}=
+\begin{cases}
+0 & \text{si } C=0,\\
+\dfrac{C}{1-\lvert2L-1\rvert}
+& \text{si } C\neq0.
+\end{cases}$
+
+HSV fait le choix de normaliser $C$ par le maximum des valeurs des 3 composantes, et HSL fait le choix de normaliser $C$ par le $C$ maximum obtenable pour cette valeur de $L$.
 
 Pour pouvoir manipuler indépendamment la luminosité, la teinte et la saturation des couleurs d'une image, on peut donc la **convertir en HSV ou HSL**, puis appliquer une **transformation sur un seul axe**.
 Cette approche est beaucoup plus intuitive pour un humain.
