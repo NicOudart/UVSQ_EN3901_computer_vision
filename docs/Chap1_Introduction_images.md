@@ -1709,6 +1709,7 @@ $H =
 60^\circ\left(\dfrac{B-R}{C}+2\right)
 & \text{si } G=M,\\
 60^\circ\left(\dfrac{R-G}{C}+4\right)
+& \text{si } B=M.
 \end{cases}$
 
 * "**Value**" et "**Lightness**" correspondent au concept de luminosité vu précédemment.
