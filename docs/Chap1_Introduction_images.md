@@ -1755,6 +1755,30 @@ Nous allons voir dans cette section comment analyser la répartition des valeurs
 
 ### Analyse des histogrammes
 
+Lorsque l'on veut étudier la distribution des valeurs des pixels d'une image numérique, on utilise souvent un **histogramme**.
+
+Dans le cas d'une image 8 bits en noir et blanc, l'histogramme aura **256 intervalles**, pour les valeurs des pixels de 0 à 255.
+
+On peut tirer de nombreuses interprétations de l'histogramme d'une image :
+
+* La **position du pic de la distribution** permet d'interpréter la **luminosité** de l'image.
+De nombreux pixels pour des valeurs faibles traduira une image "sombre", de nombreux pixels pour des valeurs élevées traduira une image "claire".
+
+* La **largeur de la distribution** permet de d'interpréter le **contraste** de l'image.
+Un large pic traduira un contraste fort, alors qu'un pic étroit traduira un contraste faible.
+
+* La présence de **plusieurs pics** sera un signe que des zones de luminosité différentes et bien délimitées sont présentes dans l'image.
+
+* Beaucoup de valeurs à 0 ou à 255 sera un signe que la plage de quantification des pixels de l'image était inadaptée.
+
+On peut facilement obtenir l'histogramme _hist_ d'une image noir et blanc avec **Pillow**, grâce à la méthode _histogram_ :
+
+~~~
+hist = img.histogram()
+~~~
+
+Voici l'histogramme obtenu pour notre image d'un _Ocypode quadrata_ avec Pillow :
+
 ![Exemple d'histogramme pour une image en noir et blanc](img/Chap1_example_histograms_grayscale.png)
 
 ![Exemple d'histogramme pour une image en couleurs](img/Chap1_example_histograms_colors.png)
