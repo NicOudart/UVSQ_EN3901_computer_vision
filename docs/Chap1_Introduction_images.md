@@ -1757,7 +1757,8 @@ Nous allons voir dans cette section comment analyser la répartition des valeurs
 
 Lorsque l'on veut étudier la distribution des valeurs des pixels d'une image numérique, on utilise souvent un **histogramme**.
 
-Dans le cas d'une image 8 bits en noir et blanc, l'histogramme aura **256 intervalles**, pour les valeurs des pixels de 0 à 255.
+Dans le cas d'une image 8 bits en **noir et blanc**, l'histogramme aura **256 intervalles**, pour les valeurs des pixels de 0 à 255.
+Chaque intervalle contiendra le nombre de pixels ayant la valeur correspondante.
 
 On peut tirer de nombreuses interprétations de l'histogramme d'une image :
 
@@ -1781,9 +1782,48 @@ Voici l'histogramme obtenu pour notre image d'un _Ocypode quadrata_ avec Pillow 
 
 ![Exemple d'histogramme pour une image en noir et blanc](img/Chap1_example_histograms_grayscale.png)
 
+On voit sur cet exemple que le pic est plutôt centré, ce qui est signe d'un bon compromis de luminosité.
+Le pic est assez étroit, ce qui est signe d'un contraste plutôt faible.
+Et on discerne en réalité 3 pics, avec des valeurs centrales et des largeurs différentes, qui correspondent probablement aux 3 grandes zones de l'image : la plage, la mer et le ciel.
+
+Le second graphique est ce que l'on appelle la **fonction de répartition** (ou "CDF" en anglais).
+On affiche ici pour chaque valeur possible le nombre de pixel ayant une valeur inférieure ou égale.
+
+C'est ce type de représentation que nous utiliserons pour **étalonner** des images.
+
+On peut également représenter l'histogramme et la fonction de répartition d'une image **couleur**, **primaire par primaire** sRGB.
+Ainsi, on peut détecter un **déséquilibre** entre les différents primaires dans l'image.
+
+Pour obtenir avec **Pillow** 3 histogrammes correspondant chacun à un primaire, il suffit d'utiliser à nouveau la méthode _histogram_, et de diviser l'histogramme obtenu en 3 :
+
+~~~
+hist = img.histogram()
+
+hist_red = hist[0:256]
+hist_green = hist[256:512]
+hist_blue = hist[512:768]
+~~~
+
+Les 3 variables obtenues contiendront chacune l'histogramme correspondant à un primaire sRGB.
+
+Voici les 3 histogrammes et leurs fonctions de répartition obtenus pour notre image d'un _Ocypode quadrata_ avec Pillow :
+
 ![Exemple d'histogramme pour une image en couleurs](img/Chap1_example_histograms_colors.png)
 
+Pour cet exemple, nous n'observons pas de déséquilibre flagrant : les pics des 3 composantes correspondent à des valeurs de pixel similaires.
+Cependant, on note que le rouge et le bleu ont 2 pics prononcés, là où le vert n'a qu'un seul pic flagrant.
+Les 2 pics du bleu correspondent probablement au ciel et à la mer, et les pics du rouge à la plage et au crabe.
+
+|Nota Bene|
+|:-|
+|Les histogrammes d'images numériques servent parfois à répondre à des problématiques de "segmentation d'image".|
+|L'idée est que si les histogrammes d'une image présentent plusieurs pics, les pixels correspondants sont probablement issus de zones bien démarquées de l'image.|
+|On peut alors utiliser l'histogramme pour démarquer ces zones, en sélectionnant les pixels correspondant à un pic particulier.|
+|Nous reparlerons plus loin des problèmes de segmentation.|
+
 ### Histogram equalization
+
+
 
 ![Exemple d'application noir et blanc de l'histogram equalization](img/Chap1_example_grayscale_histogram_equalization.png)
 
