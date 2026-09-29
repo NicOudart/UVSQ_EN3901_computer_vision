@@ -1772,6 +1772,13 @@ Un large pic traduira un contraste fort, alors qu'un pic étroit traduira un con
 
 * Beaucoup de valeurs à 0 ou à 255 sera un signe que la plage de quantification des pixels de l'image était inadaptée.
 
+|Nota Bene|
+|:-|
+|Les histogrammes d'images numériques servent parfois à répondre à des problématiques de "segmentation d'image".|
+|L'idée est que si les histogrammes d'une image présentent plusieurs pics, les pixels correspondants sont probablement issus de zones bien démarquées de l'image.|
+|On peut alors utiliser l'histogramme pour démarquer ces zones, en sélectionnant les pixels correspondant à un pic particulier.|
+|Nous reparlerons plus loin des problèmes de segmentation.|
+
 On peut facilement obtenir l'histogramme _hist_ d'une image noir et blanc avec **Pillow**, grâce à la méthode _histogram_ :
 
 ~~~
@@ -1816,10 +1823,8 @@ Les 2 pics du bleu correspondent probablement au ciel et à la mer, et les pics 
 
 |Nota Bene|
 |:-|
-|Les histogrammes d'images numériques servent parfois à répondre à des problématiques de "segmentation d'image".|
-|L'idée est que si les histogrammes d'une image présentent plusieurs pics, les pixels correspondants sont probablement issus de zones bien démarquées de l'image.|
-|On peut alors utiliser l'histogramme pour démarquer ces zones, en sélectionnant les pixels correspondant à un pic particulier.|
-|Nous reparlerons plus loin des problèmes de segmentation.|
+|Il est également possible de transformer les couleurs d'une image en HSV ou HSL, et d'afficher les 3 histogrammes correspondants.|
+|Ceci peut grandement faciliter certaines interprétations.|
 
 ### Histogram equalization
 
