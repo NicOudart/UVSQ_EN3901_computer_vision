@@ -1746,6 +1746,14 @@ HSV fait le choix de normaliser $C$ par le maximum des valeurs des 3 composantes
 Pour pouvoir manipuler indépendamment la luminosité, la teinte et la saturation des couleurs d'une image, on peut donc la **convertir en HSV ou HSL**, puis appliquer une **transformation sur un seul axe**.
 Cette approche est beaucoup plus intuitive pour un humain.
 
+On peut facilement convertir une image sRGB en HSV ou HSL avec **Pillow**.
+Il suffit d'utiliser la méthode _convert_ :
+
+~~~
+img_hsv = img.convert("HSV")
+img_hsl = img.convert("HSL")
+~~~
+
 ## Les histogrammes : étalonner des images
 
 Imaginons que nous ayons capturé des images d'un même type de scène, mais avec des paramètres photographiques et / ou un éclairage différent.
@@ -1855,7 +1863,19 @@ Ceci est lié au fait que les valeurs des pixels sont discrètes : on n'obtient 
 
 ![Histogrammes avant et après l'histogram equalization](img/Chap1_example_grayscale_histogram_equalization_histograms.png)
 
-Voici l'image obtenue après application de l'égalisation d'histogramme :
+On peut également appliquer l'égalisation d'histogramme à une image numérique **en couleurs**.
+Pour se faire, il faut convertir l'image en HSV ou HSL, appliquer la transformation à V ou L, et reconvertir l'image en sRGB.
+
+Voici comment faire ceci en utilisant la représentation HSV avec **Pillow** :
+
+~~~
+img_hsv = img.convert("HSV")
+h, s, v = img_hsv.split()
+v_calibrated = ImageOps.equalize(v)
+img_calibrated = Image.merge("HSV", (h, s, v_eq)).convert("RGB")
+~~~
+
+Voici l'application de l'égalisation d'histogramme à notre image couleur d'un _Ocypode quadrata_ :
 
 ![Exemple d'application HSV de l'histogram equalization](img/Chap1_example_histogram_equalization.png)
 
@@ -1868,13 +1888,32 @@ Pour éviter ce genre de problème, il est possible d'utiliser une version modif
 Une interpolation permet ensuite reconstituer une image complète avec les fenêtres obtenues.
 Cette méthode s'appelle "**CLAHE**" ("Contrast Limited Adaptive Histogram Equalization").
 
+CLAHE n'est pas implémentée par Pillow, mais il existe une implémentation **Open-CV** :
 
+~~~
+clahe = cv.createCLAHE(clipLimit=2.0,tileGridSize=(8,8))
+img_calibrated = clahe.apply(img)
+~~~
+
+Les 2 paramètres _clipLimit_ et _tileGridSize_ correspondent respectivement un seuil de contraste maximum, et au nombre de fenêtres découpées selon les 2 axes de l'image.
+
+Voici l'application de CLAHE à la version noir et blanc de notre image d'un _Ocypode quadrata_ :
 
 ![Exemple d'application noir et blanc de CLAHE](img/Chap1_example_grayscale_CLAHE.png)
 
+De la même façon que précédemment, on aussi appliquer CLAHE à une image couleur en la convertissant en HSV ou HSL.
+Voici le résultat sur notre image exemple :
+
 ![Exemple d'application HSV de CLAHE](img/Chap1_example_CLAHE.png)
 
+Pour l'image noir et blanc comme pour l'image couleur, on observe que le contraste est bien meilleur, donnant ainsi une image beaucoup plus lisible.
+
 ### Histogram matching
+
+Lorsque l'on dispose d'une **image de référence**, et que l'on veut étalonner en contraste ou en couleurs de nouvelles images prises dans des conditions différentes, on va en général chercher à ce que les **histogrammes** des différentes images soient **tous les mêmes**.
+C'est ce que l'on appelle faire de l'"**histogram matching**".
+
+
 
 ![Exemple d'application de l'histogram matching](img/Chap1_example_histogram_matching.png)
 
