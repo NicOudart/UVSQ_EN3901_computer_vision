@@ -1593,7 +1593,7 @@ img_enhanced = brightness_enhancer.enhance(c)
 ~~~
 
 Cette méthode multiplie simplement les 3 composantes RGB de chaque pixels de l'image par le coefficient $c$.
-Par exemple, pour un pixel de coordonnées [x,y] et de composantes $(pix_R[x,y],pix_G[x,y],pix_B[x,y])$ de l'image :
+Par exemple, pour un pixel de coordonnées $(x,y)$ et de composantes $(pix_R[x,y],pix_G[x,y],pix_B[x,y])$ de l'image :
 
 $(pix_R'[x,y],pix_G'[x,y],pix_B'[x,y]) = (c \times pix_R[x,y],c \times pix_G[x,y],c \times pix_B[x,y])$
 
@@ -1625,7 +1625,7 @@ img_enhanced = contrast_enhancer.enhance(c)
 
 Tout d'abord, cette méthode génère une image de "référence" dont toutes les composantes de tous les pixels auront une même valeur $pix_{ref}$, de manière à avoir la même luminance que l'image originale.
 Cette image de référence est donc "grise".
-La méthode va ensuite appliquer la formule suivante à chacune des composantes $(pix_R[x,y],pix_G[x,y],pix_B[x,y])$ d'un pixel de l'image de coordonnées [x,y] :
+La méthode va ensuite appliquer la formule suivante à chacune des composantes $(pix_R[x,y],pix_G[x,y],pix_B[x,y])$ d'un pixel de l'image de coordonnées $(x,y)$ :
 
 $(pix_R'[x,y],pix_G'[x,y],pix_B'[x,y]) = (pix_{ref} + c (pix_R[x,y]-pix_{ref}), pix_{ref} + c (pix_G[x,y]-pix_{ref}), pix_{ref} + c (pix_B[x,y]-pix_{ref}))$
 
@@ -1655,8 +1655,8 @@ img_enhanced = color_enhancer.enhance(c)
 ~~~
 
 Tout d'abord, cette méthode génère une image de "référence", en "niveaux de gris", ayant la même luminance que l'image originale.
-Un pixel de coordonnées [x,y] de l'image aura donc pour composantes : $(pix_{ref}[x,y],pix_{ref}[x,y],pix_{ref}[x,y])$.
-La méthode va ensuite appliquer la formule suivante aux composantes $(pix_R[x,y],pix_G[x,y],pix_B[x,y])$ d'un pixel de l'image de coordonnées [x,y] :
+Un pixel de coordonnées $(x,y)$ de l'image aura donc pour composantes : $(pix_{ref}[x,y],pix_{ref}[x,y],pix_{ref}[x,y])$.
+La méthode va ensuite appliquer la formule suivante aux composantes $(pix_R[x,y],pix_G[x,y],pix_B[x,y])$ d'un pixel de l'image de coordonnées $(x,y)$ :
 
 $(pix_R'[x,y],pix_G'[x,y],pix_B'[x,y]) = (pix_{ref}[x,y] + c (pix_R[x,y]-pix_{ref}[x,y]), pix_{ref}[x,y] + c (pix_G[x,y]-pix_{ref}[x,y]), pix_{ref}[x,y] + c (pix_B[x,y]-pix_{ref}[x,y]))$
 
@@ -1828,13 +1828,47 @@ Les 2 pics du bleu correspondent probablement au ciel et à la mer, et les pics 
 
 ### Histogram equalization
 
+Une transformation classique que l'on peut réaliser pour **étalonner le contraste** d'images acquises dans des conditions différentes est l'égalisation d'histogramme, ou "**histogram equalization**" en anglais.
 
+Le principe est le suivant : modifier les valeurs des pixels de l'image pour obtenir une **fonction de répartition linéaire**.
+Ceci revient à avoir un **histogramme plat**.
+
+Imaginons que nous ayons une image numérique en **noir et blanc**.
+Pour réaliser cette transformation, on applique à chaque pixel de coordonnées $(x,y)$ et de valeur $pix[x,y]$ la formule suivante :
+
+$pix[x,y]' = \frac{255}{N} \sum_{i=0}^{pix_[x,y]} n_i$
+
+avec $N$ le nombre total de pixels dans l'image, et $n_i$ le nombre de pixels ayant la valeur $i$.
+
+Il existe une implémentation de cette transformation dans **Pillow**, sous la forme d'une méthode _ImageOps.equalize_:
+
+~~~
+img_calibrated = ImageOps.equalize(img)
+~~~
+
+Voici l'histogramme et la fonction de répartition de la version noir et blanc de notre image d'un _Ocypode quadrata_, avant et après application de l'égalisation d'histogramme :
 
 ![Exemple d'application noir et blanc de l'histogram equalization](img/Chap1_example_grayscale_histogram_equalization.png)
 
+On note que l'histogramme obtenu n'est pas parfaitement plat, et que sa fonction de répartition n'est donc pas parfaitement linéaire.
+Ceci est lié au fait que les valeurs des pixels sont discrètes : on n'obtient jamais un un histogramme parfaitement plat.
+
 ![Histogrammes avant et après l'histogram equalization](img/Chap1_example_grayscale_histogram_equalization_histograms.png)
 
+Voici l'image obtenue après application de l'égalisation d'histogramme :
+
 ![Exemple d'application HSV de l'histogram equalization](img/Chap1_example_histogram_equalization.png)
+
+On voit bien que le contraste a été augmenté, mais par endroit l'image ne parait pas beaucoup plus lisible.
+Le sable de la plage apparait plus clairement, mais pour la mer et le crabe le contraste parait beaucoup trop fort.
+
+Ceci est lié au fait que notre image contient des zones bien délimitées avec des valeurs de pixels différentes, ce que nous avions déjà observé dans les histogrammes.
+
+Pour éviter ce genre de problème, il est possible d'utiliser une version modifiée de l'égalisation d'histogramme, qui divise l'image en fenêtres, et **applique la transformation fenêtre par fenêtre**.
+Une interpolation permet ensuite reconstituer une image complète avec les fenêtres obtenues.
+Cette méthode s'appelle "**CLAHE**" ("Contrast Limited Adaptive Histogram Equalization").
+
+
 
 ![Exemple d'application noir et blanc de CLAHE](img/Chap1_example_grayscale_CLAHE.png)
 
