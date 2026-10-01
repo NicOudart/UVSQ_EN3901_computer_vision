@@ -1918,9 +1918,9 @@ Le principe est de modifier la valeur des pixels d'une image, pour que sa **fonc
 Imaginons que nous ayons une image numérique en **noir et blanc**.
 Pour réaliser cette transformation, on réalise les opérations suivantes :
 
-* Calculer la fonction de répartition de l'image $CDF_img$ et de la référence $CDF_ref$.
+* Calculer la fonction de répartition de l'image $CDF_{img}$ et de la référence $CDF_{ref}$.
 
-* Pour chaque valeur de pixel $i$ possible de 0 à 255 dans l'image, trouver la valeur de pixel $j$ telle que $\underset{j}{\arg\min}\left|CDF_img(i)-CDF_ref(j)\right|$.
+* Pour chaque valeur de pixel $i$ possible de 0 à 255 dans l'image, trouver la valeur de pixel $j$ telle que $\underset{j}{\arg\min}\left|CDF_{img}(i)-CDF_{ref}(j)\right|$.
 
 * Remplacer alors dans l'image les pixels de valeur $i$ par la valeur $j$ déterminée dans l'image de référence.
 
