@@ -1913,11 +1913,58 @@ Pour l'image noir et blanc comme pour l'image couleur, on observe que le contras
 Lorsque l'on dispose d'une **image de référence**, et que l'on veut étalonner en contraste ou en couleurs de nouvelles images prises dans des conditions différentes, on va en général chercher à ce que les **histogrammes** des différentes images soient **tous les mêmes**.
 C'est ce que l'on appelle faire de l'"**histogram matching**".
 
+Le principe est de modifier la valeur des pixels d'une image, pour que sa **fonction de répartition** soit **similaire à celle d'une **image de référence**.
 
+Imaginons que nous ayons une image numérique en **noir et blanc**.
+Pour réaliser cette transformation, on réalise les opérations suivantes :
 
-![Exemple d'application de l'histogram matching](img/Chap1_example_histogram_matching.png)
+* Calculer la fonction de répartition de l'image $CDF_img$ et de la référence $CDF_ref$.
+
+* Pour chaque valeur de pixel $i$ possible de 0 à 255 dans l'image, trouver la valeur de pixel $j$ telle que $\underset{j}{\arg\min}\left|CDF_img(i)-CDF_ref(j)\right|$.
+
+* Remplacer alors dans l'image les pixels de valeur $i$ par la valeur $j$ déterminée dans l'image de référence.
+
+On peut également appliquer cette méthode sur une image en **couleurs**, sur chaque composante sRGB, ou sur une seule composante HSV.
+
+Prenons nos 2 images exemple d'un _Cardisoma guanhumi_, et prenons-en une comme référence.
+Ces image représentent le même animal dans un environnement similaire, mais les conditions d'acquisition sont clairement différentes.
+On voit nettement que les nuances de couleurs sont différentes entre les 2 images.
+
+Si nous affichons les histogrammes et fonctions de répartition des composantes sRGB de chaque image, on note en effet une grande différence.
+Pour l'image de référence, les pics pour le 3 primaires sont resserrés, alors qu'ils sont beaucoup plus séparés pour l'image à étalonner.
+
+Appliquons de l'"histogram matching" à notre image pour l'étalonner sur l'image de référence :
 
 ![Histogrammes avant et après matching](img/Chap1_example_histogram_matching_histograms.png)
 
+On obtient des fonctions de répartitions et donc des histogrammes très similaires, même si on peut noter quelques différences.
+Comme pour l'égalisation d'histogramme, ceci est lié à la discrétisation des valeurs des pixels.
+
+Voici l'image obtenue après "histogram matching" :
+
+![Exemple d'application de l'histogram matching](img/Chap1_example_histogram_matching.png)
+
+L'image obtenue donne clairement l'impression d'avoir été acquise avec les mêmes paramètres que l'image de référence !
+
+Il n'existe pas d'implémentation Pillow de l'"histogram matching".
+En revanche, il existe une méthode dans la bibliothèque **Scikit-image** : 
+
+~~~
+from skimage.exposure import match_histograms
+
+img_ref = io.imread(...)
+img_tomatch = io.imread(...)
+
+img_calibrated = match_histograms(img_tomatch,img_ref,channel_axis=-1)
+~~~
+
+|Nota Bene|
+|:-|
+|Attention ! Ici la méthode fonctionne bien car les 2 images étaient très similaires.|
+|Sur des images représentant des scènes très différentes, on obtiendra des résultats décevants.|
+|En effet, en traitant chaque composante sRGB comme indépendante, on fait une hypothèse lourde.|
+|Problème inexistant si on applique la méthode à une seule composante HSV.|
+
 ## Vers la vision par ordinateur
 
+Dans ce chapitre, nous avons vu 
