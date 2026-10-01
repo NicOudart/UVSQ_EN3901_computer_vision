@@ -1967,4 +1967,39 @@ img_calibrated = match_histograms(img_tomatch,img_ref,channel_axis=-1)
 
 ## Vers la vision par ordinateur
 
-Dans ce chapitre, nous avons vu 
+Dans ce chapitre, nous avons t'abord introduit le concept de **vision** avec :
+
+* Une définition générale de ce **processus cognitif** complexe.
+
+* Une description de l'**intéraction lumière-matière**.
+
+* Un aperçu du fonctionnement des systèmes de vision **dans le règne animal**.
+
+Ensuite, nous avons parlé de **photographie**, en introduisant le capteur de la vision, la "**caméra**", avec :
+
+* Une description de la partie **optique**, avec les concepts de chambre noire et d'objectif.
+
+* Une description de la partie **pellicule** / **capteur**.
+
+* Une présentation des principaux **paramètres** à choisir quand on réalise une **photographie**.
+
+Ensuite, nous avons parlé de la **numérisation** des images, étape obligée en vision par ordinateur :
+
+* La **discrétisation spatiale** avec les fameux "pixels".
+
+* La **discrétisation des couleurs**, correspondant aux valeurs des pixels.
+
+* Le différents **formats** d'image, et le processus de **compression**.
+
+Ensuite, nous avons évoqué les **écrans** et les **impressions papiers**, nos moyens de visualiser une image, mais dont les limites sont à garder en tête quand on manipule des images.
+
+Nous avons également introduit les **librairies Python** liées à la vision par ordinateur.
+Nous avons montré que l'une d'entre elles, Pillows, permet de préparer une image pour de la vision par ordinateur :
+
+* En introduisant le concept de **retouche d'images**, et en donnant les principaux paramètres sur lesquels jouer pour retoucher une image.
+
+* En montrant des techniques d'**étalonnage d'images**, très utiles lorsque l'on veut utiliser des image d'un même type de scène, mais acquises avec des paramètres différents.
+
+Dans le **chapitre suivant**, nous allons faire un pas de plus vers la **vision** par ordinateur, en introduisant des notions essentielles de **traitement d'images** : transformées, filtres, opérations, etc.
+
+Ces notions sont à la base des méthodes complexes d'analyse d'image que nous verrons plus tard dans ce cours.
