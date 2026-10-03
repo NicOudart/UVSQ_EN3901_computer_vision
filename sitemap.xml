@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://nicoudart.github.io/UVSQ_EN3901_computer_vision/</loc>
+         <lastmod>2026-10-03</lastmod>
+    </url>
+    <url>
+         <loc>https://nicoudart.github.io/UVSQ_EN3901_computer_vision/Chap1_Introduction_images/</loc>
+         <lastmod>2026-10-03</lastmod>
+    </url>
+    <url>
+         <loc>https://nicoudart.github.io/UVSQ_EN3901_computer_vision/Chap2_Filtrage_transformation/</loc>
+         <lastmod>2026-10-03</lastmod>
+    </url>
+    <url>
+         <loc>https://nicoudart.github.io/UVSQ_EN3901_computer_vision/Chap3_Reseaux_convolutifs/</loc>
+         <lastmod>2026-10-03</lastmod>
+    </url>
+    <url>
+         <loc>https://nicoudart.github.io/UVSQ_EN3901_computer_vision/Chap4_Deep_Learning/</loc>
+         <lastmod>2026-10-03</lastmod>
+    </url>
+    <url>
+         <loc>https://nicoudart.github.io/UVSQ_EN3901_computer_vision/Ex1_Retouches/</loc>
+         <lastmod>2026-10-03</lastmod>
+    </url>
+    <url>
+         <loc>https://nicoudart.github.io/UVSQ_EN3901_computer_vision/Ex2_Traitement/</loc>
+         <lastmod>2026-10-03</lastmod>
+    </url>
+    <url>
+         <loc>https://nicoudart.github.io/UVSQ_EN3901_computer_vision/Ex3_Classification/</loc>
+         <lastmod>2026-10-03</lastmod>
+    </url>
+</urlset>
