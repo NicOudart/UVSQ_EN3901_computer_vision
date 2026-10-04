@@ -954,12 +954,12 @@ Soit une profondeur de champ $\Delta D \approx 20 cm$.
 
 #### La sensibilité ISO
 
-Bien qu'elle soit représentée sur le triangle d'exposition, **la **sensibilité ISO n'influe pas sur l'exposition**, dans le sens où elle ne permet pas de régler la quantité de lumière arrivant au capteur, contrairement à la vitesse d'obturation et à l'ouverture.
+Bien qu'elle soit représentée sur le triangle d'exposition, **la sensibilité ISO n'influe pas sur l'exposition**, dans le sens où elle ne permet pas de régler la quantité de lumière arrivant au capteur, contrairement à la vitesse d'obturation et à l'ouverture.
 La sensibilité ISO modifie l'**amplification** du signal transmis par le capteur photographique.
 
 Il s'agit d'une **norme** définie par l'organisme "ISO" (d'où son nom), d'abord pour les pellicules puis pour les capteurs photographiques.
 
-Un indicateur d'exposition a été créé par un fabricant d'objectifs photographiques dans les année 1950 : l'**EV** ou "indice de lumination" en français.
+Un indicateur d'exposition a été créé par un fabricant d'objectifs photographiques dans les années 1950 : l'**EV** ou "indice de lumination" en français.
 Il est définit comme :
 
 $EV = log_2(\frac{N^2}{t})$

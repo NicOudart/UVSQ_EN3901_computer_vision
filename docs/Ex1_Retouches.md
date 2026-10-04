@@ -26,8 +26,37 @@ D'après ses métadonnées, elle a les propriétés suivantes :
 
 ## Question 1
 
-Pour prendre cette photographie, une caméra ayant un objectif classique constitué d'un lentille convergente, que nous considèrerons parfaite, a été utilisée.
-Nous considèrerons que la lentille se trouve 
+Pour prendre cette photographie, une caméra ayant un objectif classique constitué d'un lentille convergente de focale fixe, que nous considèrerons parfaite, a été utilisée.
 
-Imaginons que le hanneton se trouve à 25 cm de la caméra au moment de la photographie.
+Imaginons que le hanneton mesure 5 cm, et se trouve à 25 cm de la caméra au moment de la photographie.
+
+* A quelle distance du capteur photographique doit-on placer la lentille de l'objectif afin de faire la mise au point ?
+
+* Quelle sera alors la taille de l'image du hanneton sur le capteur photographique ?
+
+## Question 2
+
+* Quel est ici le diamètre d'ouverture du diaphragme ?
+
+Considérons que le cercle de confusion du capeur photographique a un diamètre de 5 µm.
+
+Pour le choix d'ouverture et de distance de mise au point qui ont été faits pour cette photographie :
+
+* Quelle est la distance hyperfocale ?
+
+* Quelle est la distance la plus proche considérée comme nette ?
+
+* Quelle est la distance la plus lointaine considérée comme nette ?
+
+* Déduisez-en la profondeur de champ.
+
+## Question 3
+
+Avec le temps d'exposition et l'ouverture choisie :
+
+* Quel est l'indice de lumination (ou EV) ?
+
+On considère qu'une scène très ensoleillée comme celle que nous avons photographiée ici nécessite un EV pour ISO 100 (ou $EV_{100}$) de 15.
+
+* 
 
