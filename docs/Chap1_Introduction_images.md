@@ -1010,7 +1010,7 @@ Pour connaitre l'EV à régler $EV_i$ afin d'obtenir une image similaire avec un
 
 $EV_i = EV + log_2 (\frac{i}{100})$
 
-Par exemple, pour photographier un concert avec une sensibilité ISO de 1600, on utilisera un EV de 10 au lieu de 6 pour ISO 100.
+Par exemple, pour photographier un concert avec une sensibilité ISO de 1600, on utilisera une EV de 10 au lieu de 6 pour ISO 100.
 On pourra alors par exemple utiliser une vitesse d'obturation de 1/30 s, et une ouverture de f/5.6 (sous réserve que le profondeur de champ est acceptable).
 
 Pour une sensibilité ISO donnée, on peut donc en théorie choisir une ouverture pour avoir une profondeur de champ adaptée à un problème de vision, puis ajuster la vitesse d'obturation pour obtenir l'EV adapté à cet ISO.
@@ -1039,7 +1039,7 @@ Dans le cas de notre image exemple d'_Ocypode quadrata_, la sensibilité ISO ét
 L'image ayant été prise en plein jour, sur une plage de sable clair bien éclairée par le soleil, une valeur faible est cohérente.
 
 La vitesse d'obturation était de 1/1600 s, et l'ouverture était de f/4.5, ce qui correspond à une valeur de EV d'environ 15 pour ISO 80.
-Si nous voulions obtenir la même image pour ISO 100, il faudrait un EV de 15.3 environ.
+Si nous voulions obtenir la même image pour ISO 100, il faudrait une EV de 15.3 environ.
 
 |Nota Bene|
 |:-|

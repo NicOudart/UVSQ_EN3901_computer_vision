@@ -24,7 +24,7 @@ D'après ses métadonnées, elle a les propriétés suivantes :
 |Profondeur de couleur|$24 bits$ (8 par primaire)|
 |Encodage des couleurs|sRGB                      |
 
-## Question 1
+## Question 1 : la mise au point
 
 Pour prendre cette photographie, une caméra ayant un objectif classique constitué d'un lentille convergente de focale fixe, que nous considèrerons parfaite, a été utilisée.
 
@@ -34,7 +34,7 @@ Imaginons que le hanneton mesure 5 cm, et se trouve à 25 cm de la caméra au mo
 
 * Quelle sera alors la taille de l'image du hanneton sur le capteur photographique ?
 
-## Question 2
+## Question 2 : la profondeur de champ
 
 * Quel est ici le diamètre d'ouverture du diaphragme ?
 
@@ -50,13 +50,23 @@ Pour le choix d'ouverture et de distance de mise au point qui ont été faits po
 
 * Déduisez-en la profondeur de champ.
 
-## Question 3
+## Question 3 : l'exposition
 
 Avec le temps d'exposition et l'ouverture choisie :
 
 * Quel est l'indice de lumination (ou EV) ?
 
-On considère qu'une scène très ensoleillée comme celle que nous avons photographiée ici nécessite un EV pour ISO 100 (ou $EV_{100}$) de 15.
+On considère qu'une scène très ensoleillée comme celle que nous avons photographiée ici nécessite une EV pour ISO 100 (ou $EV_{100}$) de 15.
 
-* 
+* Pour obtenir un résultat similaire à $EV_{100} = 15$ pour ISO 80, quelle EV faudrait-il choisir ? Notre choix d'exposition est-il donc adapté ? Sinon, faudrait-il augmenter ou diminuer l'exposition ?
+
+Partons des hypothèses suivantes : le hanneton s'envole et il bouge donc rapidement, l'appareil a un temps d'exposition minimum de 1/2500 s, et le photographe veut une profondeur de champ resserrée sur le hanneton.
+
+* Expliquez pourquoi nous ne pouvons donc pas jouer sur la valeur d'EV pour obtenir un résultat similaire à $EV_{100} = 15$ pour ISO 80 ?
+
+On décide donc de plutôt jouer sur le paramètre ISO de l'appareil photographique :
+
+* Quelle valeur d'ISO utiliser pour obtenir un résultat similaire à $EV_{100} = 15$, pour la même valeur d'EV ?
+
+## Question 4 : la discrétisation
 
