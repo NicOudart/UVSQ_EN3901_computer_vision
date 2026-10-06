@@ -1246,7 +1246,26 @@ Voici le gamut du sRGB représenté sur le diagramme de chromaticité :
 On voit clairement qu'un système ayant ce gamut ne pourra pas reproduire l'intégralité des couleurs visibles par un humain (et aucun système ne le peut).
 Mais on considère en général le gamut du sRGB suffisant pour de nombreuses applications.
 
-Lorsque les couleurs d'une image numérique sont encodées par une machine, elle ne va pas directement convertir les 3 valeurs de sRGB en binaire.
+La conversion du système CIE XYZ au sRGB peut se faire par simple transformation linéaire :
+
+$\begin{pmatrix}
+R_{\mathrm{standard}}\\
+G_{\mathrm{standard}}\\
+B_{\mathrm{standard}}
+\end{pmatrix}
+=
+\begin{pmatrix}
+3.2406 & -1.5372 & -0.4986\\
+-0.9689 & 1.8758 & 0.0415\\
+0.0557 & -0.2040 & 1.0570
+\end{pmatrix}
+\begin{pmatrix}
+X\\
+Y\\
+Z
+\end{pmatrix}$
+
+Mais lorsque les couleurs d'une image numérique sont encodées par une machine, elle ne va pas directement convertir les 3 valeurs de sRGB en binaire.
 _Pourquoi ?_
 
 Parce que la perception humaine de la luminosité n'est **pas linéaire**, et qu'en encodant les niveaux de sRGB linéairement avec un **pas de quantification fixe** on risquerait de mal reproduire notre sensation visuelle de la couleur.

@@ -12,17 +12,17 @@ Il s'agit d'une image JPEG d'un _Polyphylla decemlineata_, une espèce de hannet
 Cette photographie a été prise dans le parc national "Great Sand Dunes" (Colorado, USA).
 D'après ses métadonnées, elle a les propriétés suivantes :
 
-|Propriété            |Valeur                    |
-|:-------------------:|:------------------------:|
-|Ouverture            |$f/2.8$                   |
-|Temps d'exposition   |$1/2500 s$                |
-|ISO                  |$80$                      |
-|Distance focale      |$4 mm$                    |
-|Résolution           |$3000 \times 3000$        |
-|Poids                |$1.74 Mo$                 |
-|Format               |JPEG                      |
-|Profondeur de couleur|$24 bits$ (8 par primaire)|
-|Encodage des couleurs|sRGB                      |
+|Propriété            |Valeur            |
+|:-------------------:|:----------------:|
+|Ouverture            |$f/2.8$           |
+|Temps d'exposition   |$1/2500 s$        |
+|ISO                  |$80$              |
+|Distance focale      |$4 mm$            |
+|Résolution           |$3000 \times 3000$|
+|Poids                |$1.74 Mo$         |
+|Format               |JPEG              |
+|Profondeur de couleur|$24 bits$         |
+|Encodage des couleurs|sRGB              |
 
 ## Question 1 : la mise au point
 
@@ -70,3 +70,9 @@ On décide donc de plutôt jouer sur le paramètre ISO de l'appareil photographi
 
 ## Question 4 : la discrétisation
 
+Vous l'aurez remarqué, il y a des rayures sur la carapace du hanneton.
+Imaginons que sur l'image du hanneton formée sur le capteur, la distance entre 2 rayures soit de 10 µm.
+
+* Quelle doit être la distance d'échantillonnage maximale sur le capteur afin d'éviter un phénomène d'aliasing ?
+
+D'après les métadonnées, les couleurs de l'image sont encodées en sRGB, avec une profondeur de 24 bits.
