@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Nicolas OUDART" /><link rel="canonical" href="https://nicoudart.github.io/UVSQ_EN3901_computer_vision/Ex1_Retouches/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Exercice 1 - UVSQ_EN3901_computer_vision</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Exercice 1";
+        var mkdocs_page_input_path = "Ex1_Retouches.md";
+        var mkdocs_page_url = "/UVSQ_EN3901_computer_vision/Ex1_Retouches/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> UVSQ_EN3901_computer_vision
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Accueil</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Chap1_Introduction_images/">Chapitre I. Introduction aux images</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Chap2_Filtrage_transformation/">Chapitre II. Filtrage et transformations</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Chap3_Reseaux_convolutifs/">Chapitre III. Réseaux convolutifs</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Chap4_Deep_Learning/">Chapitre IV. Deep Learning</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Exercice 1</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#sujet">Sujet</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#question-1-la-mise-au-point">Question 1 : la mise au point</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#question-2-la-profondeur-de-champ">Question 2 : la profondeur de champ</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#question-3-lexposition">Question 3 : l'exposition</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#question-4-la-discretisation">Question 4 : la discrétisation</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Ex2_Traitement/">Exercice 2</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Ex3_Classification/">Exercice 3</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">UVSQ_EN3901_computer_vision</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Exercice 1</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="exercice-1-retouche-et-etalonnage-dune-image">Exercice 1 : retouche et étalonnage d'une image</h1>
+<h2 id="sujet">Sujet</h2>
+<p>Le but de cet exercice est de préparer une image pour une application de vision par ordinateur.
+Vous la trouverez <a href="https://github.com/NicOudart/UVSQ_EN3901_computer_vision/blob/master/images/Ten_lined_june_beetle.jpg">ici</a>.</p>
+<p>Il s'agit d'une image JPEG d'un <em>Polyphylla decemlineata</em>, une espèce de hanneton appelé "Ten lined June beetle" aux Etats-Unis :</p>
+<p><img alt="Image exemple de l'Exercice 1" src="../img/Ex1_example_image_ten_lined_june_beetle.png" /></p>
+<p>Cette photographie a été prise dans le parc national "Great Sand Dunes" (Colorado, USA).
+D'après ses métadonnées, elle a les propriétés suivantes :</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Propriété</th>
+<th style="text-align: center;">Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">Ouverture</td>
+<td style="text-align: center;"><span class="arithmatex">\(f/2.8\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">Temps d'exposition</td>
+<td style="text-align: center;"><span class="arithmatex">\(1/2500 s\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">ISO</td>
+<td style="text-align: center;"><span class="arithmatex">\(80\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">Distance focale</td>
+<td style="text-align: center;"><span class="arithmatex">\(4 mm\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">Résolution</td>
+<td style="text-align: center;"><span class="arithmatex">\(3000 \times 3000\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">Poids</td>
+<td style="text-align: center;"><span class="arithmatex">\(1.74 Mo\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">Format</td>
+<td style="text-align: center;">JPEG</td>
+</tr>
+<tr>
+<td style="text-align: center;">Profondeur de couleur</td>
+<td style="text-align: center;"><span class="arithmatex">\(24 bits\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">Encodage des couleurs</td>
+<td style="text-align: center;">sRGB</td>
+</tr>
+</tbody>
+</table>
+<h2 id="question-1-la-mise-au-point">Question 1 : la mise au point</h2>
+<p>Pour prendre cette photographie, une caméra ayant un objectif classique constitué d'un lentille convergente de focale fixe, que nous considèrerons parfaite, a été utilisée.</p>
+<p>Imaginons que le hanneton mesure 5 cm, et se trouve à 25 cm de la caméra au moment de la photographie.</p>
+<ul>
+<li>
+<p>A quelle distance du capteur photographique doit-on placer la lentille de l'objectif afin de faire la mise au point ?</p>
+</li>
+<li>
+<p>Quelle sera alors la taille de l'image du hanneton sur le capteur photographique ?</p>
+</li>
+</ul>
+<h2 id="question-2-la-profondeur-de-champ">Question 2 : la profondeur de champ</h2>
+<ul>
+<li>Quel est ici le diamètre d'ouverture du diaphragme ?</li>
+</ul>
+<p>Considérons que le cercle de confusion du capeur photographique a un diamètre de 5 µm.</p>
+<p>Pour le choix d'ouverture et de distance de mise au point qui ont été faits pour cette photographie :</p>
+<ul>
+<li>
+<p>Quelle est la distance hyperfocale ?</p>
+</li>
+<li>
+<p>Quelle est la distance la plus proche considérée comme nette ?</p>
+</li>
+<li>
+<p>Quelle est la distance la plus lointaine considérée comme nette ?</p>
+</li>
+<li>
+<p>Déduisez-en la profondeur de champ.</p>
+</li>
+</ul>
+<h2 id="question-3-lexposition">Question 3 : l'exposition</h2>
+<p>Avec le temps d'exposition et l'ouverture choisie :</p>
+<ul>
+<li>Quel est l'indice de lumination (ou EV) ?</li>
+</ul>
+<p>On considère qu'une scène très ensoleillée comme celle que nous avons photographiée ici nécessite une EV pour ISO 100 (ou <span class="arithmatex">\(EV_{100}\)</span>) de 15.</p>
+<ul>
+<li>Pour obtenir un résultat similaire à <span class="arithmatex">\(EV_{100} = 15\)</span> pour ISO 80, quelle EV faudrait-il choisir ? Notre choix d'exposition est-il donc adapté ? Sinon, faudrait-il augmenter ou diminuer l'exposition ?</li>
+</ul>
+<p>Partons des hypothèses suivantes : le hanneton s'envole et il bouge donc rapidement, l'appareil a un temps d'exposition minimum de 1/2500 s, et le photographe veut une profondeur de champ resserrée sur le hanneton.</p>
+<ul>
+<li>Expliquez pourquoi nous ne pouvons donc pas jouer sur la valeur d'EV pour obtenir un résultat similaire à <span class="arithmatex">\(EV_{100} = 15\)</span> pour ISO 80 ?</li>
+</ul>
+<p>On décide donc de plutôt jouer sur le paramètre ISO de l'appareil photographique :</p>
+<ul>
+<li>Quelle valeur d'ISO utiliser pour obtenir un résultat similaire à <span class="arithmatex">\(EV_{100} = 15\)</span>, pour la même valeur d'EV ?</li>
+</ul>
+<h2 id="question-4-la-discretisation">Question 4 : la discrétisation</h2>
+<p>Vous l'aurez remarqué, il y a des rayures sur la carapace du hanneton.
+Imaginons que sur l'image du hanneton formée sur le capteur, la distance entre 2 rayures soit de 10 µm.</p>
+<ul>
+<li>Quelle doit être la distance d'échantillonnage maximale sur le capteur afin d'éviter un phénomène d'aliasing ?</li>
+</ul>
+<p>D'après les métadonnées, les couleurs de l'image sont encodées en sRGB, avec une profondeur de 24 bits, et la résolution de l'image est de <span class="arithmatex">\(3000 \times 3000\)</span>.</p>
+<ul>
+<li>Quelle devrait être le poids de l'image en Mo ?</li>
+</ul>
+<p>Toujours d'après les métadonnées, le poids de l'image est en réalité de 1.74 Mo.</p>
+<ul>
+<li>Comment expliquez-vous cette différence ?</li>
+</ul>
+<h1 id="question-5-analyse-des-histogrammes">Question 5 : analyse des histogrammes</h1>
+<p>Nous allons à présent analyser les histogrammes de notre image :</p>
+<ul>
+<li>
+<p>Importez l'image sous Python avec la bibliothèque Pillow.</p>
+</li>
+<li>
+<p>Affichez sur un même graphique les histogrammes de l'image pour les 3 primaires, et repérez les différents pics.
+Commentez les histogrammes en termes de luminosité et de contraste.</p>
+</li>
+<li>
+<p>Séparez les 3 matrices correspondant aux 3 primaires, appliquez leurs des seuils bien choisis et affichez-les pour essayer d'identifier l'origine des différents pics des histogrammes.</p>
+</li>
+<li>
+<p>Quelles zones de l'image identifiez-vous dans l'histogramme ?</p>
+</li>
+</ul>
+<h1 id="question-6-egalisation-dhistogramme">Question 6 : égalisation d'histogramme</h1>
+<p>Essayons d'optimiser le contraste de notre image par égalisation d'histogramme :</p>
+<ul>
+<li>Convertissez l'image en HSV, et récupérez la composante V.</li>
+</ul>
+<p>*</p>
+<h1 id="question-7-histogram-matching">Question 7 : histogram matching</h1>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Chap4_Deep_Learning/" class="btn btn-neutral float-left" title="Chapitre IV. Deep Learning"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Ex2_Traitement/" class="btn btn-neutral float-right" title="Exercice 2">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../Chap4_Deep_Learning/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Ex2_Traitement/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../javascripts/mathjax.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
