@@ -75,4 +75,33 @@ Imaginons que sur l'image du hanneton formée sur le capteur, la distance entre 
 
 * Quelle doit être la distance d'échantillonnage maximale sur le capteur afin d'éviter un phénomène d'aliasing ?
 
-D'après les métadonnées, les couleurs de l'image sont encodées en sRGB, avec une profondeur de 24 bits.
+D'après les métadonnées, les couleurs de l'image sont encodées en sRGB, avec une profondeur de 24 bits, et la résolution de l'image est de $3000 \times 3000$.
+
+* Quelle devrait être le poids de l'image en Mo ?
+
+Toujours d'après les métadonnées, le poids de l'image est en réalité de 1.74 Mo.
+
+* Comment expliquez-vous cette différence ?
+
+# Question 5 : analyse des histogrammes
+
+Nous allons à présent analyser les histogrammes de notre image :
+
+* Importez l'image sous Python avec la bibliothèque Pillow.
+
+* Affichez sur un même graphique les histogrammes de l'image pour les 3 primaires, et repérez les différents pics.
+Commentez les histogrammes en termes de luminosité et de contraste.
+
+* Séparez les 3 matrices correspondant aux 3 primaires, appliquez leurs des seuils bien choisis et affichez-les pour essayer d'identifier l'origine des différents pics des histogrammes.
+
+* Quelles zones de l'image identifiez-vous dans l'histogramme ?
+
+# Question 6 : égalisation d'histogramme
+
+Essayons d'optimiser le contraste de notre image par égalisation d'histogramme :
+
+* Convertissez l'image en HSV, et récupérez la composante V.
+
+*
+
+# Question 7 : histogram matching
