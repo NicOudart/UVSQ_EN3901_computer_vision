@@ -83,7 +83,7 @@ Toujours d'après les métadonnées, le poids de l'image est en réalité de 1.7
 
 * Comment expliquez-vous cette différence ?
 
-# Question 5 : analyse des histogrammes
+## Question 5 : analyse des histogrammes
 
 Nous allons à présent analyser les histogrammes de notre image :
 
@@ -96,12 +96,44 @@ Commentez les histogrammes en termes de luminosité et de contraste.
 
 * Quelles zones de l'image identifiez-vous dans l'histogramme ?
 
-# Question 6 : égalisation d'histogramme
+## Question 6 : égalisation d'histogramme
 
 Essayons d'optimiser le contraste de notre image par égalisation d'histogramme :
 
 * Convertissez l'image en HSV, et récupérez la composante V.
 
-*
+* Appliquer la méthode de l'égalisation d'histogramme à la composante V de l'image.
+Pourquoi uniquement à V ?
 
-# Question 7 : histogram matching
+* Affichez l'histogramme et la fonction de répartition de la composante V de l'image avant et après égalisation.
+Commentez le résultat.
+
+* Fusionnez la composante V égalisée avec les composantes H et S, convertissez l'image obtenue en sRGB, et enregistrez-là au format JPEG.
+Le résultat est-il aussi bon qu'attendu ? Selon vous, pourquoi ?
+
+Essayons à présent d'améliorer le contraste de l'image en utilisant CLAHE :
+
+* Convertissez à nouveau l'image en HSV, et récupérez la composant V.
+
+* Appliquez à la composante V la méthode CLAHE, avec les paramètres _clipLimit_ à 2 et _tileGridSize_ à (8,8).
+
+* Fusionnez la composante V égalisée avec les composantes H et S, convertissez l'image obtenue en sRGB, et enregistrez-là au format JPEG.
+
+* Répétez ce processus en jouant sur les paramètres _clipLimit_ et _tileGridSize_.
+Vous pouvez essayer _tileGridSize_ = (4,4) et (8,8) et (16,16) en gardant _clipLimit_ constant, puis essayer _clipLimit_ = 1, 2 et 4 en gardant _tileGridSize_ constant.
+Commentez l'effet de chacun des 2 paramètres.
+
+## Question 7 : histogram matching
+
+Vous trouverez [ici](https://github.com/NicOudart/UVSQ_EN3901_computer_vision/blob/master/images/Ten_lined_june_beetle_2.jpg) une nouvelle image de la même scène, dont la distribution des pixels en sRGB a été modifiée.
+
+![Image exemple modifiée de l'Exercice 1](img/Ten_lined_june_beetle_2.png)
+
+Essayons de corriger cette image pour obtenir des histogrammes sRGB similaires à ceux de l'image d'origine, par la méthode de "l'histogram matching".
+Cette approche est classique pour essayer d'étalonner une image sur une autre en vue d'une application de computer vision.
+
+* Importez la nouvelle image, et appliquez lui l'histogram matching en prenant l'image originale comme référence. Commentez le résultat obtenu.
+
+* Convertissez les images en HSV, et appliquez l'histogram matching à la composante H. Que fait-on ici ? Commentez le résultat.
+
+* Appliquez à présent l'histogram matching à la composante S. Que fait-on ici ? Commentez le résultat.

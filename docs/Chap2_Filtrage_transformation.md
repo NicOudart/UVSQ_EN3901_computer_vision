@@ -2,6 +2,10 @@
 
 ---
 
+## Images exemples
+
+## Le traitement d'images numériques
+
 ## Analyse spectrale
 
 ## Filtrage linéaire
