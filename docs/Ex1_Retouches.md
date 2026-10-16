@@ -127,7 +127,7 @@ Commentez l'effet de chacun des 2 paramètres.
 
 Vous trouverez [ici](https://github.com/NicOudart/UVSQ_EN3901_computer_vision/blob/master/images/Ten_lined_june_beetle_2.jpg) une nouvelle image de la même scène, dont la distribution des pixels en sRGB a été modifiée.
 
-![Image exemple modifiée de l'Exercice 1](img/Ten_lined_june_beetle_2.png)
+![Image exemple modifiée de l'Exercice 1](img/Ex1_example_image_ten_lined_june_beetle_histogram_matching.png)
 
 Essayons de corriger cette image pour obtenir des histogrammes sRGB similaires à ceux de l'image d'origine, par la méthode de "l'histogram matching".
 Cette approche est classique pour essayer d'étalonner une image sur une autre en vue d'une application de computer vision.
