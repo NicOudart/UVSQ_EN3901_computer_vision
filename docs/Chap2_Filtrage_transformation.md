@@ -37,6 +37,12 @@ N'hésitez pas à aller regarder les détails de la prise de vue de cette photog
 
 ## FFT et filtrage fréquentiel
 
+![Exemple d'application de la FFT à une image](img/Chap2_example_image_FFT.png)
+
+![Exemple d'application d'un filtre passe-bas à une image](img/Chap2_example_lowpass_filtering.png)
+
+![Exemple d'application d'un filtre passe-haut à une image](img/Chap2_example_highpass_filtering.png)
+
 ## Opérations morphologiques
 
 ## Détection de contours
