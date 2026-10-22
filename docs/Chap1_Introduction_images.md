@@ -31,7 +31,7 @@ Il s'agit de photographies d'un _Cardisoma guanhumi_, ou "Crabe de terre blue", 
 
 ![Image exemple du Chapitre 1](img/Chap1_example_image_land_crab.png)
 
-Sauf cas spécifique, nous utiliserons ces images dans les cas où une image de référence est nécessaire en plus d'une image exemple.
+Nous utiliserons ces images dans les cas où une image de référence est nécessaire en plus d'une image exemple.
 
 N'hésitez pas à aller regarder les détails de la prise de vue des différentes photographies dans les métadonnées des images !
 
