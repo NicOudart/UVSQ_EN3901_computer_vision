@@ -33,6 +33,8 @@ N'hésitez pas à aller regarder les détails de la prise de vue de cette photog
 
 ## Le traitement d'image
 
+## Transformations géométriques
+
 ## Filtrage linéaire
 
 ## FFT et filtrage fréquentiel
@@ -45,8 +47,7 @@ N'hésitez pas à aller regarder les détails de la prise de vue de cette photog
 
 ## Opérations morphologiques
 
-## Détection de contours
+## Détection de contours ou de coins
 
 ## Détection de forme
 
-## Détection de ROI
