@@ -15,7 +15,7 @@ _Cézanne peint, Il laisse s'accomplir le prodige de ses mains._
 
 _Cézanne peint, Et il éclaire le monde pour nos yeux qui n'voient rien."_
 
-** Michel Berger & France Gall, Cézanne peint, 1985**
+**Michel Berger & France Gall, Cézanne peint, 1985**
 
 ---
 
