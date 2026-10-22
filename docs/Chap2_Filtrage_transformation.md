@@ -35,11 +35,23 @@ N'hésitez pas à aller regarder les détails de la prise de vue de cette photog
 
 ## Transformations géométriques
 
+### Agrandissement / rétrécissement
+
+### Rotation / translation
+
 ## Filtrage linéaire
+
+### Convolution
+
+### Choix du kernel
 
 ## FFT et filtrage fréquentiel
 
+### Analyse spectrale d'une image
+
 ![Exemple d'application de la FFT à une image](img/Chap2_example_image_FFT.png)
+
+### Filtrage en fréquences d'une image
 
 ![Exemple d'application d'un filtre passe-bas à une image](img/Chap2_example_lowpass_filtering.png)
 
@@ -47,7 +59,30 @@ N'hésitez pas à aller regarder les détails de la prise de vue de cette photog
 
 ## Opérations morphologiques
 
+### Element structurant
+
+### Filtre médian
+
+### Erosion
+
+### Dilatation
+
+### Ouverture
+
+### Fermeture
+
 ## Détection de contours ou de coins
+
+### Filtre de Sobel
+
+### Filtre de Canny
+
+### 
 
 ## Détection de forme
 
+### La transformée de Hough
+
+### Adaptation aux cercles
+
+### Généralisation
