@@ -1,4 +1,4 @@
-# Chapitre II : Traitement d'image par filtrage et transformation
+# Chapitre II : Le traitement d'images, l'art du filtrage et de la transformation
 
 Ce chapitre abordera les fondamentaux du traitement d'images numériques.
 Il introduira entre autres les filtres et transformées qui sont à la base des outils "d'apprentissage profond" (ou "Deep Learning" en anglais) utilisés en "vision par ordinateur".
