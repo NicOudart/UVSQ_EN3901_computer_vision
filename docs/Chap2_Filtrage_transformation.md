@@ -5,25 +5,15 @@ Il introduira entre autres les filtres et transformées qui sont à la base des 
 
 ![En-tête chapitre II](img/Chap2_header.png)
 
-_"Vibre la lumière
-Chantez les couleurs
-Il y met sa vie
-Le bruit de son coeur
+_"Vibre la lumière, Chantez les couleurs, Il y met sa vie, Le bruit de son coeur._
 
-Et comme un bateau
-Porté par sa voile
-Doucement le pinceau
-Glisse sur la toile
+_Et comme un bateau, Porté par sa voile, Doucement le pinceau, Glisse sur la toile._
 
-Et voilà l'homme
-Qui croise avec ses yeux
-Le temps d'un éclair
-Le regard des dieux
+_Et voilà l'homme, Qui croise avec ses yeux, Le temps d'un éclair, Le regard des dieux._
 
-Cézanne peint
-Il laisse s'accomplir le prodige de ses mains
-Cézanne peint
-Et il éclaire le monde pour nos yeux qui n'voient rien."_
+_Cézanne peint, Il laisse s'accomplir le prodige de ses mains._
+
+_Cézanne peint, Et il éclaire le monde pour nos yeux qui n'voient rien."_
 
 ** Michel Berger & France Gall, Cézanne peint, 1985**
 
