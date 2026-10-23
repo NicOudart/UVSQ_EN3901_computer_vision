@@ -1795,6 +1795,16 @@ Pour convertir une image sRGB en niveaux de gris, avec **Pillow**, on peut égal
 img_gray = img.convert("L")
 ~~~
 
+Voici le résultat sur notre image exemple d'_Ocypode quadrata_ :
+
+![Exemple de conversion en niveaux de gris](img/Chap1_example_grayscale.png)
+
+|Nota Bene|
+|:-|
+|On parle parfois d'images en "noir et blanc" pour désigner des images en "niveau de gris".|
+|Le terme "noir et blanc" est un abus de langage : une image en "noir et blanc" ne contient pas que du noir et du blanc.|
+||
+
 ## Les histogrammes : étalonner des images
 
 Imaginons que nous ayons capturé des images d'un même type de scène, mais avec des paramètres photographiques et / ou un éclairage différent.

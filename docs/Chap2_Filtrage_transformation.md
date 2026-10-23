@@ -65,13 +65,21 @@ N'hésitez pas à aller regarder les détails de la prise de vue de cette photog
 
 ### Erosion et dilatation
 
+![Exemple d'érosion ou de dilatation d'image](img/Chap2_example_erosion_dilatation.png)
+
 ### Ouverture et fermeture
+
+![Exemple d'ouverture et de fermeture d'image](img/Chap2_example_opening_closing.png)
 
 ## Détection de contours ou de coins
 
 ### Filtre de Sobel
 
+![Exemple de filtrage de Sobel d'une image](img/Chap2_example_Sobel_filter.png)
+
 ### Filtre de Canny
+
+![Exemple de filtrage de Canny d'une image](img/Chap2_example_Canny_filter.png)
 
 ### Filtre de Harris
 
