@@ -63,13 +63,9 @@ N'hésitez pas à aller regarder les détails de la prise de vue de cette photog
 
 ### Filtre médian
 
-### Erosion
+### Erosion et dilatation
 
-### Dilatation
-
-### Ouverture
-
-### Fermeture
+### Ouverture et fermeture
 
 ## Détection de contours ou de coins
 
@@ -77,7 +73,7 @@ N'hésitez pas à aller regarder les détails de la prise de vue de cette photog
 
 ### Filtre de Canny
 
-### 
+### Filtre de Harris
 
 ## Détection de forme
 

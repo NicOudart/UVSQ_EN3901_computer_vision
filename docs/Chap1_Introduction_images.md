@@ -1773,6 +1773,28 @@ img_hsv = img.convert("HSV")
 img_hsl = img.convert("HSL")
 ~~~
 
+### Conversion en niveaux de gris
+
+Pour certaines applications, il peut être utile de convertir une image sRGB en **niveaux de gris**.
+L'idée est de convertir les 3 matrices 2D composant l'image sRGB en **une seule matrice matrice 2D**, de manière à conserver le ressenti de **luminosité** des différents pixels de l'image.
+
+Une approche naïve pourrait être de prendre la **moyenne** des valeurs de chaque pixel pour les 3 composantes sRGB.
+Mais comme nous l'avons vu plut tôt, la vision humaine n'est pas sensible de la même manière au rouge, au vert et au bleu.
+Donc avec cette approche, on risque de **mal reproduire la sensation de luminosité** que l'on a en regardant l'image en couleurs.
+
+Pour éviter ce problème, on va en général **pondérer les 3 composantes**, avec le poids le plus fort pour le vert, et le poids le moins fort pour le bleu.
+
+Il n'existe pas une formule unique pour effectuer cette compensation.
+Voici la formule utilisée par l'implémentation **Pillow** de la conversion en niveaux de gris :
+
+$L = 0.299 R + 0.587 G + 0.114 B$
+
+Pour convertir une image sRGB en niveaux de gris, avec **Pillow**, on peut également utiliser la méthode _convert_ :
+
+~~~
+img_gray = img.convert("L")
+~~~
+
 ## Les histogrammes : étalonner des images
 
 Imaginons que nous ayons capturé des images d'un même type de scène, mais avec des paramètres photographiques et / ou un éclairage différent.
