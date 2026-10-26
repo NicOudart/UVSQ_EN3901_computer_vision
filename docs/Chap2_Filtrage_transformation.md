@@ -39,7 +39,7 @@ N'hésitez pas à aller regarder les détails de la prise de vue de cette photog
 
 ### Rotation / translation
 
-![Exemples de translation et rotation d'image](img/Chap2_example_linear_filtering_kernel.png)
+![Exemples de translation et rotation d'image](img/Chap2_example_translation_rotation.png)
 
 ## Filtrage linéaire
 
