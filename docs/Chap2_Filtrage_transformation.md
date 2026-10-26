@@ -39,17 +39,25 @@ N'hésitez pas à aller regarder les détails de la prise de vue de cette photog
 
 ### Rotation / translation
 
+![Exemples de translation et rotation d'image](img/Chap2_example_linear_filtering_kernel.png)
+
 ## Filtrage linéaire
 
 ### Convolution
 
 ### Choix du kernel
 
+![Exemples de convolution d'une image par différents kernels](img/Chap2_example_linear_filtering_kernel.png)
+
 ## FFT et filtrage fréquentiel
 
 ### Analyse spectrale d'une image
 
 ![Exemple d'application de la FFT à une image](img/Chap2_example_image_FFT.png)
+
+![Exemple d'application de la FFT à une image avec fenêtrage](img/Chap2_example_image_FFT_windowed.png)
+
+![Exemple d'application de la FFT à une image avec des motifs périodiques](img/Chap2_example_image_FFT_cyclic_pattern.png)
 
 ### Filtrage en fréquences d'une image
 
