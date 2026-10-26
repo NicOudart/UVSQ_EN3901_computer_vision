@@ -91,6 +91,8 @@ N'hésitez pas à aller regarder les détails de la prise de vue de cette photog
 
 ### Filtre de Harris
 
+![Exemple de filtrage de Harris et détection de coins d'une image](img/Chap2_example_Harris_filter.png)
+
 ## Détection de forme
 
 ### La transformée de Hough
