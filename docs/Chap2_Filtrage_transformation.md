@@ -21,21 +21,33 @@ _Cézanne peint, Et il éclaire le monde pour nos yeux qui n'voient rien."_
 
 ## Images exemples
 
-Ce chapitre sera illustré par une image exemple.
+Ce chapitre sera illustré par quelques images exemples.
 
-Vous la trouverez [ici](https://github.com/NicOudart/UVSQ_EN3901_computer_vision/blob/master/images/Prairie_dog.jpg).
+Vous trouverez la première [ici](https://github.com/NicOudart/UVSQ_EN3901_computer_vision/blob/master/images/Prairie_dog.jpg).
 
 Il s'agit d'une photographie d'un _Cynomys ludovicianus_, aussi connu sous le nom de "Black-tailed Prairie Dog", prise en 2022 à Boulder (Colorado, USA).
 
 ![Image exemple du Chapitre 2](img/Chap2_example_image_black_tailed_prairie_dog.png)
 
-N'hésitez pas à aller regarder les détails de la prise de vue de cette photographie dans les métadonnées !
+Par défaut, nous utiliserons cette image pour illustrer les différentes méthodes de traitement d'images.
+
+Dans les cas spécifiques où nous avons besoin d'une image contenant des contours ou des coins bien définis, nous utiliserons une seconde image que vous trouverez [ici](https://github.com/NicOudart/UVSQ_EN3901_computer_vision/blob/master/images/Vizcacha.jpg).
+
+Il s'agit d'une photographie d'une mosaïque représentant une _Lagidium peruanum_, aussi connue sous le nom de "Vizcacha del Norte", prise en 2025 à Huancayo (Pérou).
+
+![Image exemple du Chapitre 2](img/Chap2_example_image_vizcacha.png)
+
+N'hésitez pas à aller regarder les détails de la prise de vue des différentes photographies dans les métadonnées des images !
 
 ## Le traitement d'image
 
 ## Transformations géométriques
 
-### Agrandissement / rétrécissement
+### Agrandissement / réduction
+
+![Exemples d'agrandissement avec différentes méthodes](img/Chap2_example_upscaling.png)
+
+![Exemples de réduction avec différentes méthodes](img/Chap2_example_downscaling.png)
 
 ### Rotation / translation
 
@@ -70,6 +82,8 @@ N'hésitez pas à aller regarder les détails de la prise de vue de cette photog
 ### Element structurant
 
 ### Filtre médian
+
+![Exemple d'application d'un filtre médian à une image bruitée "poivre et sel"](img/Chap2_example_median_filter.png)
 
 ### Erosion et dilatation
 
