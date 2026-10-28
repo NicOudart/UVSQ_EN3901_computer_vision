@@ -37,6 +37,12 @@ Il s'agit d'une photographie d'une mosaïque représentant une _Lagidium peruanu
 
 ![Image exemple du Chapitre 2](img/Chap2_example_image_vizcacha.png)
 
+Et dans les cas spécifiques où nous avons besoin d'une image avec des lignes ou des cercles à détecter, nous utiliserons une troisième image que vous trouverez [ici](https://github.com/NicOudart/UVSQ_EN3901_computer_vision/blob/master/images/Pika.jpg).
+
+Il s'agit d'une photographie d'un _Ochotona princeps_, aussi connu sous le nom d' "American Pika", prise en 2022 au Rocky Mountain National Park (Colorado, USA).
+
+![Image exemple du Chapitre 2](img/Chap2_example_image_pika.png)
+
 N'hésitez pas à aller regarder les détails de la prise de vue des différentes photographies dans les métadonnées des images !
 
 ## Le traitement d'image
@@ -111,6 +117,14 @@ N'hésitez pas à aller regarder les détails de la prise de vue des différente
 
 ### La transformée de Hough
 
+![Exemple de détection de lignes par transformée de Hough](img/Chap2_example_hough_transform_lines_detection.png)
+
+![Exemple d'accumulateur de transformée de Hough pour des lignes](img/Chap2_example_hough_transform_lines_detection_accumulator.png)
+
 ### Adaptation aux cercles
+
+![Exemple de détection de cercles par transformée de Hough](img/Chap2_example_hough_transform_circles_detection.png)
+
+![Exemple d'accumulateur de transformée de Hough pour des cercles](img/Chap2_example_hough_transform_circles_detection_accumulator.png)
 
 ### Généralisation
