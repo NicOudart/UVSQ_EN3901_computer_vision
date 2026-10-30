@@ -47,9 +47,45 @@ N'hésitez pas à aller regarder les détails de la prise de vue des différente
 
 ## Le traitement d'image
 
-## Transformations géométriques
+Lors du chapitre précédent, nous avons introduit le concept de "vision". 
+Puis, nous avons parlé des problématiques liées à l'acquisition d'image avec une caméra.
+Ensuite, nous avons parlé des problématiques liées à l'enregistrement d'images sous forme numérique.
+Et enfin, nous avons introduit les concepts de "retouche" et "d'étalonnage" d'images.
+
+La suite logique dans n'importe quel projet de vision par ordinateur est le **traitement d'image**.
+Il s'agit de l'ensemble des **méthodes mathématiques** et **algorithmiques** "classiques" (hors IA) appliquables à des **images numériques** afin de les adapter à une méthode d'analyse, en faisant **ressortir des informations pertinentes**.
+
+L'idée est qu'une image peut être considérée comme un signal discret 2D, et par conséquent on peut lui appliquer :
+
+* Des manipulations **géométriques**, permettant d'adapter l'image selon un besoin spécifique en termes de dimensions, d'orientation, ou de translation spatiale.
+
+* Des **filtres**, qui viennent modifier les valeurs des pixels de l'image pour faire **ressortir certaines propriétes spatiales** de l'image (les petits ou les gros élements, les contours, les coins, etc.).
+
+* Des **transformations**, qui donnent accès à des **espaces de représentation différents** pour un image, permettant ainsi d'en tirer des **caractéristiques spatiales quantitatives** (fréquences horizontales ou verticales, lignes, cercles, etc.).
+
+Ce chapitre vous présentera les outils de base en traitement d'image.
+Il ne s'agira pas ici d'être exhaustif.
+Nous nous attarderons en particulier sur les méthodes qui sont à l'origine de l'analyse d'images par IA, qui sera le sujet des 2 derniers chapitres de ce cours.
+
+## Manipulations géométriques
+
+Certaines applications de vision par ordinateur nécessitent d'adapter la dimension d'une image, de déplacer un objet sur une image, ou de changer son orientation.
+Nous allons voir comment réaliser ces manipulations géométriques de base, et ce qu'elles impliquent en termes de reconstitution du signal contenu dans l'image.
 
 ### Agrandissement / réduction
+
+Comme mentionné plus tôt, on peut considérer une image numérique comme un **signal 2D discret** noté $I[i,j]$ .
+Par conséquent, modifier les dimensions d'une image numérique revient à **rééchantillonner** ce signal.
+
+C'est ce que l'on appelle du "**redimensionnement d'image**".
+Lorsque l'on cherche à augmenter les dimensions d'une image (et donc son nombre d'échantillons), on parle d'un "**agrandissement**".
+Lorsque l'on cherche à diminuer les dimensions d'une image (et donc son nombre d'échantillons), on parle d'une "**réduction**".
+
+La grande problématique du redimensionnement d'image est de respecter le **théorème de Nyquist-Shannon** vu au chapitre précédent : pour représenter discrètement un signal n'ayant pas de composantes fréquentielles supérieures à $f_{max}$, il faut choisir une fréquence d'échantillonnage $f_s$ telle que $f_s > 2 f_{max}$.
+
+Une image étant un signal 2D discret, il faut donc que la fréquence d'échantillonnage respecte ce critère vis-à-vis de la plus grand fréquence spatiale contenue dans l'image, **selon les axes horizontaux et verticaux**.
+
+Pour rappel, si ce critère n'est pas respecté lors du redimensionnement, l'image redimensionnée risque de souffrir d'un phénomène appelé **aliasing**, qui sera visible sous la forme d'artefacts appelé "Moiré".
 
 ![Exemples d'agrandissement avec différentes méthodes](img/Chap2_example_upscaling.png)
 
