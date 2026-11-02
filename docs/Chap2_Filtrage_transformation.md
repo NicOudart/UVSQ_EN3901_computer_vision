@@ -74,7 +74,7 @@ Nous allons voir comment réaliser ces manipulations géométriques de base, et 
 
 ### Agrandissement / réduction
 
-Comme mentionné plus tôt, on peut considérer une image numérique comme un **signal 2D discret** noté $I[i,j]$ .
+Comme mentionné plus tôt, on peut considérer une image numérique comme un **signal 2D discret**.
 Par conséquent, modifier les dimensions d'une image numérique revient à **rééchantillonner** ce signal.
 
 C'est ce que l'on appelle du "**redimensionnement d'image**".
@@ -84,10 +84,67 @@ Lorsque l'on cherche à diminuer les dimensions d'une image (et donc son nombre 
 La grande problématique du redimensionnement d'image est de respecter le **théorème de Nyquist-Shannon** vu au chapitre précédent : pour représenter discrètement un signal n'ayant pas de composantes fréquentielles supérieures à $f_{max}$, il faut choisir une fréquence d'échantillonnage $f_s$ telle que $f_s > 2 f_{max}$.
 
 Une image étant un signal 2D discret, il faut donc que la fréquence d'échantillonnage respecte ce critère vis-à-vis de la plus grand fréquence spatiale contenue dans l'image, **selon les axes horizontaux et verticaux**.
-
 Pour rappel, si ce critère n'est pas respecté lors du redimensionnement, l'image redimensionnée risque de souffrir d'un phénomène appelé **aliasing**, qui sera visible sous la forme d'artefacts appelé "Moiré".
 
+**Agrandir** une image revient à **augmenter sa fréquence d'échantillonnage** horizontale et verticale.
+Il n'y a donc **aucun de risque d'enfreindre le critère de Nyquist-Shannon**.
+
+Pour agrandir une image on va donc simplement appliquer l'algorithme suivant :
+
+|Agrandissement d'une image|
+|:-|
+|- On **étend le maillage** de l'image en augmentant le nombre de lignes et de colonnes de la matrice par l'insertion de zéros avec un pas régulier.|
+|- On **interpole** les valeurs de l'image initiale pour compléter les zéros.|
+
+Voici une illustration de cet algorithme pour une image de $4 \times 4$ pixels agrandie pour faire $8 \times 8$ :
+
+![Agrandissement d'une image](img/Chap2_upscaling.png)
+
+**Réduire** une image revient à **réduire sa fréquence d'échantillonnage** horizontale et verticale.
+Il y a donc un **risque d'enfreindre le critère de Nyquist-Shannon !**
+
+Pour réduire les dimensions d'une image par un facteur entier, on peut appliquer l'algorithme suivant :
+
+|Réduction d'une image|
+|:-|
+|- On applique un **filtre passe-bas** "anti-aliasing" afin de respecter le critère de Nyquist-Shannon.|
+|- On **décime** l'image en enlevant des lignes et des colonnes à la matrice avec un pas régulier.|
+
+Voici une illustration de cet algorithme pour une image de $8 \times 8$ réduite pour faire $4 \times 4$ :
+
+![Réduction d'une image](img/Chap2_downscaling.png)
+
+Dans le cas où les dimensions désirées ne correspondent pas à un facteur de réduction entier, la décimation ne suffit pas : on doit utiliser une méthode d'interpolation.
+
+C'est pourquoi les méthodes de redimensionnement d'image impliquent en général de **choisir une technique d'interpolation 2D**.
+
+Voici 4 techniques classiques :
+
+* **Plus proches voisins**
+
+* **Bi-linéaire**
+
+* **Bi-cubique**
+
+* **Lanczos**
+
+Sous Python, on peut facilement redimensionner une image avec la méthode _resize_ de **Pillow**.
+
+Mettons, que nous ayons importé une image sous la forme d'une variable _img_, et que nous voulons lui donner les dimensions $600 \times 600$.
+Voici comment faire avec les 4 techniques d'interpolation que nous avons présentées :
+
+~~~
+img_resized_nearest = img.resize((600,600),Image.Resampling.NEAREST)
+img_resized_bilinear = img.resize((600,600),Image.Resampling.BILINEAR)
+img_resized_bicubic = img.resize((600,600),Image.Resampling.BICUBIC)
+img_resized_lanczos = img.resize((600,600),Image.Resampling.LANCZOS)
+~~~
+
+Voici l'application de cette méthode avec différentes techniques d'interpolation pour augmenter les dimensions d'une version $100 \times 100$ de notre image d'un _Cynomys ludovicianus_ vers $500 \times 500$ :
+
 ![Exemples d'agrandissement avec différentes méthodes](img/Chap2_example_upscaling.png)
+
+Voici à présent l'application de la même méthode avec différentes techniques d'interpolation pour diminuer les dimensions d'une version $500 \times 500$ de notre image d'un _Cynomys ludovicianus_ vers $100 \times 100$ :
 
 ![Exemples de réduction avec différentes méthodes](img/Chap2_example_downscaling.png)
 
