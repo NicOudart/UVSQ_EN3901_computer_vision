@@ -120,13 +120,13 @@ C'est pourquoi les méthodes de redimensionnement d'image impliquent en généra
 
 Voici 4 techniques classiques :
 
-* **Plus proches voisins**
+* **Plus proches voisins** : le pixel interpolé prend la valeur du pixel le plus proche.
 
-* **Bi-linéaire**
+* **Bi-linéaire** : il s'agit d'une interpolation linéaire 2D à partir des 4 pixels voisins.
 
-* **Bi-cubique**
+* **Bi-cubique** : il s'agit d'une interpolation cubique 2D à partir des 8 pixels voisins.
 
-* **Lanczos**
+* **Lanczos** : le pixel est interpolé à partir des pixels voisins, avec des pondérations déterminées par une "fenêtre de Lanczos". 
 
 Sous Python, on peut facilement redimensionner une image avec la méthode _resize_ de **Pillow**.
 
@@ -144,9 +144,23 @@ Voici l'application de cette méthode avec différentes techniques d'interpolati
 
 ![Exemples d'agrandissement avec différentes méthodes](img/Chap2_example_upscaling.png)
 
-Voici à présent l'application de la même méthode avec différentes techniques d'interpolation pour diminuer les dimensions d'une version $500 \times 500$ de notre image d'un _Cynomys ludovicianus_ vers $100 \times 100$ :
+Et voici à présent l'application de la même méthode avec différentes techniques d'interpolation pour diminuer les dimensions d'une version $500 \times 500$ de notre image d'un _Cynomys ludovicianus_ vers $100 \times 100$ :
 
 ![Exemples de réduction avec différentes méthodes](img/Chap2_example_downscaling.png)
+
+On peut faire les observations suivantes :
+
+* La technique des Plus proches voisins est **la plus rapide**, mais elle donne un aspect "**pixelisé**" à l'image, ce qui en fait la méthode classique pour le "pixel art".
+
+* La technique Lanczos est celle donnant le **meilleur résultat** sur notre exemple, mais elle est **plus coûteuse en calculs** et peut amplifier certains **artéfacts** dans l'image.
+
+* Les techniques bi-linéaire et cubiques sont souvent considérées comme des **bons compromis**, la méthode bi-cubique donnant généralement un meilleur résultat.
+
+|Nota Bene|
+|:-|
+|Lorsque l'on redimensionne une image, il faut bien garder à l'esprit que : |
+|- **La réduction d'une image ne peut se faire sans perte d'information**.|
+|- **L'agrandissement d'une image ne peut pas combler l'information manquante**.|
 
 ### Rotation / translation
 
