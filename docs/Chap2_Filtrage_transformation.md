@@ -164,6 +164,26 @@ On peut faire les observations suivantes :
 
 ### Rotation / translation
 
+Lorsqu'une application nécessite de déplacer un objet à un emplacement donné de l'image, par exemple pour le centrer, on utilise une combinaison de **translations horizontales et verticales**.
+Il s'agit d'une opération très simple : on décale tous les pixels de l'image d'un certain nombre de pas à l'horizontale et d'un certain nombre de pas à la verticale.
+
+Mais il y a tout de même un problème : **que faire des pixels qui sortent de la matrice d'un côté, ou qui se retrouvent sans valeur de l'autre ?**
+
+On utilise classiquement les 2 options suivantes :
+
+* La **complétion par des zéros** : on peut supprimer les pixels qui sortent de la matrice, et compléter ceux qui se retrouvent sans valeur par des zéros.
+
+* La **complétion cyclique** : on peut compléter les pixels sans valeurs et récupérant les pixels sortants, de manière à former un cycle.
+
+Aucune des 2 options n'est idéale, on choisira l'une ou l'autre suivant les contraintes de notre application de vision par ordinateur.
+
+Voici une illustration de ces 2 options pour une image de $8 \times 8$ :
+
+![Translation d'une image](img/Chap2_translation.png)
+
+~~~
+~~~
+
 ![Exemples de translation et rotation d'image](img/Chap2_example_translation_rotation.png)
 
 ## Filtrage linéaire
