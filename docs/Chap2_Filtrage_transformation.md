@@ -150,7 +150,7 @@ Et voici à présent l'application de la même méthode avec différentes techni
 
 On peut faire les observations suivantes :
 
-* La technique des Plus proches voisins est **la plus rapide**, mais elle donne un aspect "**pixelisé**" à l'image, ce qui en fait la méthode classique pour le "pixel art".
+* La technique des "Plus proches voisins" est **la plus rapide**, mais elle donne un aspect "**pixelisé**" à l'image, ce qui en fait la méthode classique pour le "pixel art".
 
 * La technique Lanczos est celle donnant le **meilleur résultat** sur notre exemple, mais elle est **plus coûteuse en calculs** et peut amplifier certains **artéfacts** dans l'image.
 
@@ -164,8 +164,11 @@ On peut faire les observations suivantes :
 
 ### Rotation / translation
 
-Lorsqu'une application nécessite de déplacer un objet à un emplacement donné de l'image, par exemple pour le centrer, on utilise une combinaison de **translations horizontales et verticales**.
-Il s'agit d'une opération très simple : on décale tous les pixels de l'image d'un certain nombre de pas à l'horizontale et d'un certain nombre de pas à la verticale.
+Lorsqu'une application nécessite de **déplacer un objet à un emplacement donné** de l'image, par exemple pour le centrer, on utilise une combinaison de **translations horizontales et verticales**.
+
+Il s'agit d'une opération très simple : on décale tous les pixels de l'image $I[x,y]$ d'un certain nombre de pas $\Delta x$ à l'horizontale et d'un certain nombre de pas $\Delta y$ à la verticale.
+
+$I[x,y] = I[x - \Delta x , y - \Delta y]$
 
 Mais il y a tout de même un problème : **que faire des pixels qui sortent de la matrice d'un côté, ou qui se retrouvent sans valeur de l'autre ?**
 
@@ -181,18 +184,152 @@ Voici une illustration de ces 2 options pour une image de $8 \times 8$ :
 
 ![Translation d'une image](img/Chap2_translation.png)
 
+Sous Python, on peut appliquer à une image importée _img_ une translation de 50 pixels vers la droite et de 100 pixels vers le bas, avec complétion par des zéros, en utilisant la méthode _transform_ :
+
 ~~~
+largeur, hauteur = img.size
+
+img_translation = img.transform((largeur,hauteur),Image.Transform.AFFINE,(1,0,-50,0,1,-100))
 ~~~
+
+Le premier argument de _transform_ permet de conserver les dimensions de l'image.
+
+Le second argument correspond aux paramètres de la transformation affine à réaliser pour notre translation 2D.
+Si on note $x$ et $y$ les positions horizontales et verticales des pixels :
+
+$x = 1x + 0y - 50$
+$y = 0x + 1y - 100$
+
+Pour une translation vers la gauche ou vers le haut, il suffit alors de changer le signe du 50 ou du 100.
+
+Si on veut appliquer la même translation à _img_, mais avec complétion cyclique, il faut utiliser _ImageChops.offset_ :
+
+~~~
+img_translation = ImageChops.offset(img,50,100)
+~~~
+
+Lorsqu'une application nécessite de **modifier l'orientation d'un objet** de l'image, on utilise une opération de **rotation**.
+
+Appliquer une rotation d'un angle $\theta$ aux pixels d'une image $I[x,y]$ autour de son centre $(c_x,c_y)$ revient à :
+
+$I[x,y] = I[c_x + (x-c_x) cos(\theta) + (y-c_y) sin(\theta) , c_y - (x-c_x) sin(\theta) + (y-c_y) cos(\theta)]$
+
+Un premier problème de cette opération est que $x cos(\theta) + y sin(\theta)$ et $-x sin(\theta) + y cos(\theta)$ peuvent donner des valeurs non entières.
+**La rotation d'une image numérique implique donc forcément une interpolation 2D**.
+
+Les 4 mêmes méthodes d'interpolation que pour le redimensionnement d'images peuvent être utilisées ("Plus proches voisins", bi-linéaire, bi-cubique, Lanczos).
+
+Un second problème est que suivant les dimensions de l'image et l'angle de rotation, une partie des pixels peuvent sortir de la matrice.
+Il y a alors 2 options :
+
+* La **découpe** : on ignore simplement les pixels sortant de la matrice.
+
+* L'**expansion** : quitte à interpoler l'image, on la redimensionne pour qu'elle rentre dans la matrice.
+
+En général, les pixels se retrouvant sans valeurs sont complétés par des zéros.
+
+Voici une illustration de ces 2 options pour une image $8 \times 8$ :
+
+![Rotation d'une image](img/Chap2_rotation.png)
+
+Sous Python, on peut appliquer à une image importée _img_ une rotation par un angle de 45° avec interpolation bi-cubique en utilisant la méthode _rotate_:
+
+~~~
+img_rotation = img.rotate(45,resample=Image.Resampling.BICUBIC)
+~~~
+
+Par défaut, il s'agit de l'option avec découpe.
+Si l'on veut en plus utiliser l'option avec expansion, il faut utiliser :
+
+~~~
+img_rotation = img.rotate(45,resample=Image.Resampling.BICUBIC,expand=True)
+~~~
+
+Voici l'application de translations (classique ou cyclique) et de rotations (classique ou avec expansion) à notre image d'un _Cynomys ludovicianus_ :
 
 ![Exemples de translation et rotation d'image](img/Chap2_example_translation_rotation.png)
 
+Un fois encore, pour la translation comme pour la rotation, aucune option n'est pleinement satisfaisante.
+On choisira l'une ou l'autre selon les besoins d'une application de vision par ordinateur.
+
 ## Filtrage linéaire
 
+### Définition
+
+Comme évoqué lors du Chapitre 1, en vision par ordinateur on cherche à reproduire les mécanismes de la vision humaine avec des machines.
+Certains traitements réalisés par le cortex visuel humain peuvent être approchés en traitement d'images numériques par ce que l'on appelle des **filtres linéaires**, et plus particulièrement les filtres linéaires "invariant".
+
+Donc, de nombreux traitements classiques en traitement d'image peuvent être définis comme des filtres linéaire ou des combinaisons de filtres linéaires.
+Il s'agit d'un principe essentiel en vision par ordinateur, nous verrons dans les chapitres qu'ils sont à la base des outils d'IA utilisés pour analyser des images.
+
+En traitement d'image, un filtre linéaire est une fonction $f$ qui prend en entrée une image $I$ et renvoie une nouvelle image $S = f(I)$.
+Elle a les propriétés suivantes :
+
+* **Additivité** :  soit 2 images $I_1$ et $I_2$, alors $f(I_1+I_2) = f(I_1) + f(I_2)$.
+
+* **Homogénéité** : soit $I$ une image et un scalaire $\alpha$, alors $f(\alpha I) = \alpha I$.
+
+Et si le filtre est en plus invariant, il a la propriété suivante :
+
+* **Invariance** : si $S[x,y] = f(I[x,y])$ alors pour toute translation horizontale $\Delta x$ et verticale $\Delta y$ on a $f(I[x - \Delta x , y - \Delta y]) = S[x - \Delta x , y - \Delta y]$.
+
+Un filtre linéaire invariant est entièrement caractérisé par sa **réponse impulsionnelle** $h$, une matrice 2D aussi appellée **noyau de convolution** ou "**kernel**" :
+
+$S[x,y] = \sum_{i=-\infty}^{\infty} \sum_{j=-\infty}^{\infty} h[i,j] I[x-i,y-j]$
+
+C'est pourquoi on définit en général un filtre linéaire invariant par son kernel.
+
 ### Convolution
+
+La formule précédente correspond à la version **discrètre** et 2D d'une opération de **convolution 2D** entre le kernel $h$ et l'image numérique $I$.
+
+Pour simplifier, nous appellerons cette opération "convolution".
+Nous la noterons $\ast$.
+
+Voici quelques propriétés utiles de cette opération :
+
+* **Commutativité** : soit 2 matrices $I$ et $J$, alors $I \ast J = J \ast I$.
+
+* **Associativité** : soit 3 matrices $I$, $J$ et $K$, alors $I \ast (J \ast K) = (I \ast J) \ast K$.
+
+* **Distributivité** : soit 3 matrices $I$, $J$ et $K$, alors $I \ast (J + K) = I \ast J + I \ast K$.
+
+* **Homogénéité** : soit 2 matrices $I$ et $J$, et un scalaire $\alpha$k, alors $I \ast (\alpha J) = \alpha (I \ast J)$.
+
+* **Invariance** (en translation) : soit 2 matrices $I$ et $J$, alors $(I \ast J)[x - \Delta x , y - \Delta y] = I[x - \Delta x , y - \Delta y] \ast J = I \ast J[x - \Delta x , y - \Delta y]$.
+
+L'élément **identité** de la convolution est une **impulsion de Dirac** discrète et 2D :
+
+$\delta[x,y]=
+\begin{cases}
+1 & \text{si } x=0 \text{ et } y=0,\\
+0 & \text{sinon}.
+\end{cases}$
+
+Donc $I \ast \delta = I$, qui revient à dire qu'une convolution par une impulsion de Dirac ne change pas l'image d'origine.
+
+Une autre propriété importante de la convolution est son lien avec la **transformée de Fourier**.
+La transformée de Fourier d'une convolution et le produit des transformées de Fourier :
+
+$\mathcal{F}(I \ast J) = \mathcal{F}(I) \mathcal{F}(J)$
+
+Nous reparlerons de l'analyse spectrale des images par transformée de Fourier dans la suite de ce chapitre.
+
+En pratique, utiliser un kernel de dimensions infinies est impossible.
+C'est pourquoi on approxime la réponse impulsionnelle du filtrage désiré 
+
+
+
+Une des problématiques que l'on rencontre lorsque l'on veut convoluer une image avec un kernel est le fait qu'une image soit une matrice 2D finie.
 
 ### Choix du kernel
 
 ![Exemples de convolution d'une image par différents kernels](img/Chap2_example_linear_filtering_kernel.png)
+
+|Nota Bene|
+|:-|
+|Les manipulations géométriques vues précédemment peuvent être en partie définis par des filtrages linéaires.|
+||
 
 ## FFT et filtrage fréquentiel
 
