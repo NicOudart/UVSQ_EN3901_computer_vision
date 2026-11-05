@@ -214,7 +214,7 @@ Appliquer une rotation d'un angle $\theta$ aux pixels d'une image $I[x,y]$ autou
 
 $I[x,y] = I[c_x + (x-c_x) cos(\theta) + (y-c_y) sin(\theta) , c_y - (x-c_x) sin(\theta) + (y-c_y) cos(\theta)]$
 
-Un premier problème de cette opération est que $c_x + (x-c_x) cos(\theta) + (y-c_y) sin(\theta) $ et $c_y - (x-c_x) sin(\theta) + (y-c_y) cos(\theta)$ peuvent donner des valeurs non entières.
+Un premier problème de cette opération est que $c_x + (x-c_x) cos(\theta) + (y-c_y) sin(\theta)$ et $c_y - (x-c_x) sin(\theta) + (y-c_y) cos(\theta)$ peuvent donner des valeurs non entières.
 **La rotation d'une image numérique implique donc forcément une interpolation 2D**.
 
 Les 4 mêmes méthodes d'interpolation que pour le redimensionnement d'images peuvent être utilisées ("Plus proches voisins", bi-linéaire, bi-cubique, Lanczos).
@@ -343,7 +343,7 @@ On définit même une opération de **convolution circulaire**, notée $\circled
 
 Pour une image $I$ de dimensions $M \times N$, la convolution circulaire par un kernel $h$ de dimensions $(2k+1) \times (2k+1)$ sera définie comme : 
 
-$S[x,y] = \sum_{i=-k}^{k} \sum_{j=-k}^{k} h[i,j] I[x-i \bmod M , y-j \bmod N]$
+$S[x,y] = \sum_{i=-k}^{k} \sum_{j=-k}^{k} h[i,j] I[(x-i) \bmod (M) , (y-j) \bmod (N)]$
 
 Et $S$ aura bien les mêmes dimensions que $I$.
 
