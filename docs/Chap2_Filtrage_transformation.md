@@ -130,7 +130,7 @@ Voici 4 techniques classiques :
 
 Sous Python, on peut facilement redimensionner une image avec la méthode _resize_ de **Pillow**.
 
-Mettons, que nous ayons importé une image sous la forme d'une variable _img_, et que nous voulons lui donner les dimensions $600 \times 600$.
+Mettons, que nous ayons importé une image avec **Pillow** sous la forme d'une variable _img_, et que nous voulons lui donner les dimensions $600 \times 600$.
 Voici comment faire avec les 4 techniques d'interpolation que nous avons présentées :
 
 ~~~
@@ -184,7 +184,7 @@ Voici une illustration de ces 2 options pour une image de $8 \times 8$ :
 
 ![Translation d'une image](img/Chap2_translation.png)
 
-Sous Python, on peut appliquer à une image importée _img_ une translation de 50 pixels vers la droite et de 100 pixels vers le bas, avec complétion par des zéros, en utilisant la méthode _transform_ :
+Sous Python, avec **Pillow**, on peut appliquer à une image importée _img_ une translation de 50 pixels vers la droite et de 100 pixels vers le bas, avec complétion par des zéros, en utilisant la méthode _transform_ :
 
 ~~~
 largeur, hauteur = img.size
@@ -202,7 +202,7 @@ $y = 0x + 1y - 100$
 
 Pour une translation vers la gauche ou vers le haut, il suffit alors de changer le signe du 50 ou du 100.
 
-Si on veut appliquer la même translation à _img_, mais avec complétion cyclique, il faut utiliser _ImageChops.offset_ :
+Si on veut appliquer la même translation à _img_, mais avec complétion cyclique, il faut utiliser _ImageChops.offset_ de **Pillow** :
 
 ~~~
 img_translation = ImageChops.offset(img,50,100)
@@ -232,7 +232,7 @@ Voici une illustration de ces 2 options pour une image $8 \times 8$ :
 
 ![Rotation d'une image](img/Chap2_rotation.png)
 
-Sous Python, on peut appliquer à une image importée _img_ une rotation par un angle de 45° avec interpolation bi-cubique en utilisant la méthode _rotate_:
+Sous Python, on peut appliquer à une image importée avec **Pillow** _img_ une rotation par un angle de 45° avec interpolation bi-cubique en utilisant la méthode _rotate_:
 
 ~~~
 img_rotation = img.rotate(45,resample=Image.Resampling.BICUBIC)
@@ -249,7 +249,7 @@ Voici l'application de translations (classique ou cyclique) et de rotations (cla
 
 ![Exemples de translation et rotation d'image](img/Chap2_example_translation_rotation.png)
 
-Un fois encore, pour la translation comme pour la rotation, aucune option n'est pleinement satisfaisante.
+Une fois encore, pour la translation comme pour la rotation, aucune option n'est pleinement satisfaisante.
 On choisira l'une ou l'autre selon les besoins d'une application de vision par ordinateur.
 
 ## Filtrage linéaire
@@ -414,28 +414,92 @@ En $3 \times 3$, une dérivée horizontale peut être approximée par le kernel 
 
 Voici les 3 principaux types de dérivations utilisées en pratique :
 
-* Les 2 filtres de **Sobel**, avec le kernel $G_x$ combinant une dérivation horizontale et un lissage vertical, et le kernel $G_y$ combinant une dérivation verticale et un lissage horizontal.
+* Les 2 filtres de **Sobel**, avec le kernel $G_x$ combinant une dérivation horizontale et un lissage vertical, et le kernel $G_y$ combinant une dérivation verticale et un lissage horizontal :
 
-$G_x = $
+$G_x = 
+\begin{pmatrix}
+-1 & 0 & 1 \\
+-2 & 0 & 2 \\
+-1 & 0 & 1 \\
+\end{pmatrix}$
 
-$G_y = $
+$G_y = 
+\begin{pmatrix}
+-1 & -2 & -1 \\
+0 & 0 & 0 \\
+1 & 2 & 1 \\
+\end{pmatrix}$
 
 $G_x$ permet de faire ressortir les contours **verticaux**, et $G_y$ les contours **horizontaux**.
 
-* Le filtre "**Laplacien à 4 voisins**",
+* Le filtre "**Laplacien à 4 voisins**", et une approximation de l'opérateur Laplacien en 2D (addition de la dérivée seconde horizontale et de la dérivée seconde verticale) avec 4 pixels voisins :
 
-$$
+$\begin{pmatrix}
+0 & -1 & 0 \\
+-1 & 4 & -1 \\
+0 & -1 & 0 \\
+\end{pmatrix}$
 
-* Le filtre "**Laplacien à 8 voisins**",
+* Le filtre "**Laplacien à 8 voisins**", et également une approximation de l'opérateur Laplacien en 2D, mais avec les 8 pixels voisins :
 
-$$
+$\begin{pmatrix}
+-1 & -1 & -1 \\
+-1 & 8 & -1 \\
+-1 & -1 & -1 \\
+\end{pmatrix}$
 
-
-
-Avec ce type de kernel, nous faisons ressortir les contours, mais nous ne réalisons pas une réellement une "détection" de contours, dans le sens où nous n'extrayons pas les positions des contours.
+Avec ce type de kernels, nous faisons ressortir les contours, mais nous ne réalisons pas une réellement une "détection" de contours, dans le sens où nous n'extrayons pas les positions des contours.
 Nous verrons dans la suite de ce chapitre des méthodes de "détection de contours" à proprement parler.
 
+Enfin, une dernière application typique du filtrage linéaire d'images numériques est l'**amélioration de la netteté**.
 
+Là où le lissage va donner un aspect flou en faisant ressortir les composantes basse fréquence de l'image, un filtre d'amélioration de la netteté va faire **ressortir les composantes haute fréquence**.
+Pour ce faire, une technique possible est de **renforcer les contours** dans l'image, en additionnant l'image originale avec l'image obtenue après filtrage pour de la détection de contours.
+
+La convolution étant distributive :
+
+$I + I \circledast
+\begin{pmatrix}
+0 & -1 & 0 \\
+-1 & 4 & -1 \\
+0 & -1 & 0 \\
+\end{pmatrix}
+= I \circledast
+\left(\begin{pmatrix}
+0 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 0 \\
+\end{pmatrix}
++ \begin{pmatrix}
+0 & -1 & 0 \\
+-1 & 4 & -1 \\
+0 & -1 & 0 \\
+\end{pmatrix}\right)$
+
+D'où le kernel suivant pour améliorer la netteté d'une image numérique :
+
+$\begin{pmatrix}
+0 & -1 & 0 \\
+-1 & 5 & -1 \\
+0 & -1 & 0 \\
+\end{pmatrix}$
+
+Sous Python, avec **Pillow**, on peut appliquer une convolution par un kernel _ker_ à une image _img_ avec _ImageFilter.Kernel_ :
+
+~~~
+filt = ImageFilter.Kernel(size=(3,3),kernel=kernel,scale=1)
+
+img_filtered = img.filter(filt)
+~~~
+
+La première commande définit le filtre linéaire (avec ses dimensions, son kernel, et optionnellement un facteur d'échelle), la seconde l'applique à l'image.
+
+Cette méthode ne fonctionne que pour des kernels $3 \times 3$ et $5 \times 5$, qui sont les dimensions les plus classiques.
+Mais **Pillow** possède aussi de nombreuses implémentations de filtres avec des kernel pré-définis.
+
+**OpenCV** possède une méthode _filter2D_ pour l'application d'un filtre linéaire à partir d'un kernel donné, qui est un peu plus flexible.
+
+Voici quelques exemples d'application de filtre linéaires à notre image d'un _Cynomys ludovicianus_ :
 
 ![Exemples de convolution d'une image par différents kernels](img/Chap2_example_linear_filtering_kernel.png)
 
