@@ -214,7 +214,7 @@ Appliquer une rotation d'un angle $\theta$ aux pixels d'une image $I[x,y]$ autou
 
 $I[x,y] = I[c_x + (x-c_x) cos(\theta) + (y-c_y) sin(\theta) , c_y - (x-c_x) sin(\theta) + (y-c_y) cos(\theta)]$
 
-Un premier problème de cette opération est que $x cos(\theta) + y sin(\theta)$ et $-x sin(\theta) + y cos(\theta)$ peuvent donner des valeurs non entières.
+Un premier problème de cette opération est que $c_x + (x-c_x) cos(\theta) + (y-c_y) sin(\theta) $ et $c_y - (x-c_x) sin(\theta) + (y-c_y) cos(\theta)$ peuvent donner des valeurs non entières.
 **La rotation d'une image numérique implique donc forcément une interpolation 2D**.
 
 Les 4 mêmes méthodes d'interpolation que pour le redimensionnement d'images peuvent être utilisées ("Plus proches voisins", bi-linéaire, bi-cubique, Lanczos).
@@ -277,11 +277,13 @@ Un filtre linéaire invariant est entièrement caractérisé par sa **réponse i
 
 $S[x,y] = \sum_{i=-\infty}^{\infty} \sum_{j=-\infty}^{\infty} h[i,j] I[x-i,y-j]$
 
+Avec cette formulation, on part du principe que le kernel à des **indices centrés** : l'indice correspondant à son centre est (0,0).
+
 C'est pourquoi on définit en général un filtre linéaire invariant par son kernel.
 
 ### Convolution
 
-La formule précédente correspond à la version **discrètre** et 2D d'une opération de **convolution 2D** entre le kernel $h$ et l'image numérique $I$.
+La formule précédente correspond à la version **discrètre** et *2D** d'une opération de **convolution** entre le kernel $h$ et l'image numérique $I$.
 
 Pour simplifier, nous appellerons cette opération "convolution".
 Nous la noterons $\ast$.
@@ -315,12 +317,49 @@ $\mathcal{F}(I \ast J) = \mathcal{F}(I) \mathcal{F}(J)$
 
 Nous reparlerons de l'analyse spectrale des images par transformée de Fourier dans la suite de ce chapitre.
 
-En pratique, utiliser un kernel de dimensions infinies est impossible.
-C'est pourquoi on approxime la réponse impulsionnelle du filtrage désiré 
+En pratique, utiliser un kernel de dimensions infinies est bien entendu impossible.
+C'est pourquoi on approxime la réponse impulsionnelle du filtrage désiré par un **kernel de dimensions finies**.
+
+Par exemple, pour un kernel $h$ de dimensions $(2k+1) \times (2k+1)$, la convolution avec une image $I$ devient :
+
+$S[x,y] = \sum_{i=-k}^{k} \sum_{j=-k}^{k} h[i,j] I[x-i,y-j]$
+
+Une image étant une matrice 2D finie, si nous appliquons cette formule à tous les pixels de l'image, certains pixels $I[x-i,y-j]$ n'existeront pas.
+Alors comment gérer ces **cas sur les bords** ?
+
+Pour permettre à la matrice de sortie $S$ d'avoir les mêmes dimensions que l'image d'origine, on va en général ajouter des lignes et des colonnes à $I$ de manière à ce que la convolution puisse s'appliquer à tous les pixels de l'image.
+Cette extension de $I$ peut se faire différentes façons :
+
+* **Complétion par des zéros** : on met juste les pixels ajoutés à zéro.
+
+* **Complétion par répétition** : on répète les pixels situés sur les bords de l'image.
+
+* **Complétion par symétrie** : on reproduit les pixels de l'image par symétrie sur les bords.
+
+* **Complétion circulaire** : on considère l'image comme étant périodique, et on prolonge donc les pixels au-delà d'un bord par ceux du bord opposé.
+
+Cette dernière option est la plus couramment utilisée.
+On définit même une opération de **convolution circulaire**, notée $\circledast$. 
+
+Pour une image $I$ de dimensions $M \times N$, la convolution circulaire par un kernel $h$ de dimensions $(2k+1) \times (2k+1)$ sera définie comme : 
+
+$S[x,y] = \sum_{i=-k}^{k} \sum_{j=-k}^{k} h[i,j] I[x-i \bmod M , y-j \bmod N]$
+
+Et $S$ aura bien les mêmes dimensions que $I$.
+
+Voici une illustration du fonctionnement de la convolution circulaire d'une image par un kernel :
 
 
 
-Une des problématiques que l'on rencontre lorsque l'on veut convoluer une image avec un kernel est le fait qu'une image soit une matrice 2D finie.
+L'avantage de la convolution circulaire est qu'elle permet de conserver la propriété suivante, vis-à-vis de la **Transformée de Fourier Discrète** (TFD) :
+
+$TFD(I \circledast J) = TFD(I) TFD(J)$
+
+|Nota Bene|
+|:-|
+|On peut aussi choisir d'appliquer la convolution à $I$ sans extansion.|
+|Alors, la matrice $S$ aura des **dimensions plus faibles** que $I$, de $-2k$.|
+|Ce sera le choix des méthodes d'IA que nous verrons aux chapitres suivants.|
 
 ### Choix du kernel
 
