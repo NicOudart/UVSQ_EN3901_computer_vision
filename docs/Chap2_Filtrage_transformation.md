@@ -349,7 +349,7 @@ Et $S$ aura bien les mêmes dimensions que $I$.
 
 Voici une illustration du fonctionnement de la convolution circulaire d'une image par un kernel :
 
-
+![]()
 
 L'avantage de la convolution circulaire est qu'elle permet de conserver la propriété suivante, vis-à-vis de la **Transformée de Fourier Discrète** (TFD) :
 
@@ -363,12 +363,74 @@ $TFD(I \circledast J) = TFD(I) TFD(J)$
 
 ### Choix du kernel
 
+Nous allons voir quelques exemples classiques de kernels $3 \times 3$ en traitement du signal.
+
+Tout d'abord, comme nous l'avions évoqué plus tôt, l'**idendité** pour la convolution est une impulsion de Dirac.
+Pour un kernel $3 \times 3$, ceci revient à une convolution circulaire par la matrice :
+
+$\begin{pmatrix}
+0 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 0 \\
+\end{pmatrix}$
+
+Après application d'une convolution circulaire à une matrice $I$ avec ce kernel, on obtient $S = I$.
+L'identité est donc rarement utilisée seule, mais plutôt combinée avec d'autres filtrages linéaires.
+
+Une application typique du filtrage linéaire d'images numériques est le **floutage**.
+
+Il s'agit de **réduire les composantes haute fréquence** horizontales et verticales de l'image.
+Ce type de filtrage peut avoir différentes utilités : réduire l'impact du bruit, faire ressortir les grands objets plutôt que les petits détails, anti-aliasing, etc.
+
+Ceci peut être fait par convolution avec un kernel remplaçant chaque pixel de l'image par une **moyenne** des pixels dans le voisinage $3 \times 3$.
+Voici les 2 principaux types de moyennes utilisées :
+
+* Le filtre "**box**", qui réalise simplement une moyenne arithmétique des valeurs du pixel et de ses 8 voisins :
+
+$\frac{1}{9} 
+\begin{pmatrix}
+1 & 1 & 1 \\
+1 & 1 & 1 \\
+1 & 1 & 1 \\
+\end{pmatrix}$
+
+* Le filtre "**gaussien**", qui approxime une pondération gaussienne 2D des valeurs du pixel et de ses 8 voisins :
+
+$\frac{1}{16} 
+\begin{pmatrix}
+1 & 2 & 1 \\
+2 & 4 & 2 \\
+1 & 2 & 1 \\
+\end{pmatrix}$
+
+Le filtre "box" est plus simple mais moins efficace que le filtre "gaussien" pour flouter une image.
+
+Une autre application typique du filtrage linéaire d'images numériques est la **détection de contours**.
+
+Il s'agit ici de faire ressortir les transitions entre différentes zones de l'image, en utilisant les **dérivées de l'image** par rapport à l'axe horizontal et l'axe vertical.
+L'idée est qu'à la frontière entre 2 zones de l'image, la dérivée sera élevée, et elle le sera d'autant plus que le contraste entre les 2 zones est grand.
+
+Voici les 3 principaux types de dérivations utilisées :
+
+* Le filtre de **Sobel**,
+
+* Le filtre "**Laplacien à 4 voisins**",
+
+* Le filtre "**Laplacien à 8 voisins**",
+
+
+
+Avec ce type de kernel, nous faisons ressortir les contours, mais nous ne réalisons pas une réellement une "détection" de contours, dans le sens où nous n'extrayons pas les positions des contours.
+Nous verrons dans la suite de ce chapitre des méthodes de "détection de contours" à proprement parler.
+
+
+
 ![Exemples de convolution d'une image par différents kernels](img/Chap2_example_linear_filtering_kernel.png)
 
 |Nota Bene|
 |:-|
-|Les manipulations géométriques vues précédemment peuvent être en partie définis par des filtrages linéaires.|
-||
+|Nous avons vu ici des exemples de kernels $3 \times 3$, mais **plus le kernel choisi est grand, meilleure est l'approximation de la réponse impulsionnelle recherchée**.|
+|Aussi, les manipulations géométriques vues précédemment peuvent être en partie définies par des filtrages linéaires, notamment les étapes de **filtrage anti-aliasing** et d'**interpolation**.|
 
 ## FFT et filtrage fréquentiel
 
