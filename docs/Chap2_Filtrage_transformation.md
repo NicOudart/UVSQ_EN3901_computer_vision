@@ -377,7 +377,7 @@ $\begin{pmatrix}
 Après application d'une convolution circulaire à une matrice $I$ avec ce kernel, on obtient $S = I$.
 L'identité est donc rarement utilisée seule, mais plutôt combinée avec d'autres filtrages linéaires.
 
-Une application typique du filtrage linéaire d'images numériques est le **floutage**.
+Une application typique du filtrage linéaire d'images numériques est le **lissage**.
 
 Il s'agit de **réduire les composantes haute fréquence** horizontales et verticales de l'image.
 Ce type de filtrage peut avoir différentes utilités : réduire l'impact du bruit, faire ressortir les grands objets plutôt que les petits détails, anti-aliasing, etc.
@@ -403,20 +403,32 @@ $\frac{1}{16}
 1 & 2 & 1 \\
 \end{pmatrix}$
 
-Le filtre "box" est plus simple mais moins efficace que le filtre "gaussien" pour flouter une image.
+Le filtre "box" est plus simple mais moins efficace que le filtre "gaussien" pour lisser une image.
 
 Une autre application typique du filtrage linéaire d'images numériques est la **détection de contours**.
 
 Il s'agit ici de faire ressortir les transitions entre différentes zones de l'image, en utilisant les **dérivées de l'image** par rapport à l'axe horizontal et l'axe vertical.
 L'idée est qu'à la frontière entre 2 zones de l'image, la dérivée sera élevée, et elle le sera d'autant plus que le contraste entre les 2 zones est grand.
 
-Voici les 3 principaux types de dérivations utilisées :
+En $3 \times 3$, une dérivée horizontale peut être approximée par le kernel $\begin{pmatrix} -1 & 0 & 1 \end{pmatrix}$, et une dérivée verticale par le kernel $\begin{pmatrix} -1 \\ 0 \\ 1 \end{pmatrix}$.
 
-* Le filtre de **Sobel**,
+Voici les 3 principaux types de dérivations utilisées en pratique :
+
+* Les 2 filtres de **Sobel**, avec le kernel $G_x$ combinant une dérivation horizontale et un lissage vertical, et le kernel $G_y$ combinant une dérivation verticale et un lissage horizontal.
+
+$G_x = $
+
+$G_y = $
+
+$G_x$ permet de faire ressortir les contours **verticaux**, et $G_y$ les contours **horizontaux**.
 
 * Le filtre "**Laplacien à 4 voisins**",
 
+$$
+
 * Le filtre "**Laplacien à 8 voisins**",
+
+$$
 
 
 
