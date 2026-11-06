@@ -349,7 +349,7 @@ Et $S$ aura bien les mêmes dimensions que $I$.
 
 Voici une illustration du fonctionnement de la convolution circulaire d'une image par un kernel :
 
-![]()
+![Animation d'une convolution circulaire 2D](img/Chap2_circular_convolution.gif)
 
 L'avantage de la convolution circulaire est qu'elle permet de conserver la propriété suivante, vis-à-vis de la **Transformée de Fourier Discrète** (TFD) :
 
