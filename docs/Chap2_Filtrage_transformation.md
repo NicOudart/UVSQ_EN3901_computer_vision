@@ -510,7 +510,39 @@ Voici quelques exemples d'application de filtre linéaires à notre image d'un _
 
 ## FFT et filtrage fréquentiel
 
+Comme mentionné plus tôt, une image on peut considérer une image numérique comme un **signal 2D discret**.
+Afin de comprendre la structure d'une image, il peut être intéressant de **discriminer ses différentes composantes fréquentielles horizontales et verticales**.
+
+Les **faibles fréquences** vont caractériser les **grands éléments** de l'image, alors que les **hautes fréquences** vont caractériser les **petits détails**.
+La **moyenne** des valeurs de l'image correspondra à composante de **fréquence nulle**.
+Et si une image présente une forte périodicité horizontale ou verticale, une analyse fréquentielle permettra de la faire ressortir clairement.
+
+Une fois les composantes fréquentielles de l'image caractérisées, on peut lui appliquer différents **filtres dans le domaine fréquentiel**, afin de faire resortir des élements plus ou moins grands.
+
+Nous allons donc voir comme réaliser l'analyse spectrale d'une image, puis lui appliquer un filtrage en fréquences.
+
 ### Analyse spectrale d'une image
+
+En traitement du signal, on utilise la **transformée de Fourier** pour obtenir la représentation d'un signal dans le **domaine fréquentiel**, appelé "**spectre**".
+Lorsque l'on dispose d'un signal discret, on utilise la **transformée de Fourier discrète** (TFD) pour approcher de manière discrète le spectre du signal continu correspondant.
+
+Soit une image numérique $I$ de dimensions $M \times N$.
+Sa TFD sera une matrice 2D $F£, complexe et de mêmes dimensions, définie comme :
+
+$F[u,v] = \sum_{x=0}^{M-1} \sum_{y=0}^{N-1} I[x,y] \exp(-2 \pi j (\frac{u x}{M} + \frac{v y}{N}))$
+
+Mais la complexité de l'algorithme naïf de la TFD est élevée : $\mathcal{O}(N^2 M^2)$ !
+C'est pourquoi on utilise en général l'algorithme de la **FFT** ("Fast Fourier Transform"), qui fait descendre la complexité du calcul de la TFD à $\mathcal{O}(N M (log(M) + log(N)))$.
+
+L'idée est que le calcul naïf de la TFD évalue plusieurs fois les mêmes valeurs, ce que la FFT permet d'éviter.
+
+Le spectre discret $F$ étant complexe, on peut en tirer 2 informations :
+
+* L'**amplitude** à partir du module.
+
+* La **phase** à partir de l'argument.
+
+
 
 ![Exemple d'application de la FFT à une image](img/Chap2_example_image_FFT.png)
 
