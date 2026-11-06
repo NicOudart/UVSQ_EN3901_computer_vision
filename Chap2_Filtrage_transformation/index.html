@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Nicolas OUDART" /><link rel="canonical" href="https://nicoudart.github.io/UVSQ_EN3901_computer_vision/Chap2_Filtrage_transformation/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Chapitre II. Filtrage et transformations - UVSQ_EN3901_computer_vision</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Chapitre II. Filtrage et transformations";
+        var mkdocs_page_input_path = "Chap2_Filtrage_transformation.md";
+        var mkdocs_page_url = "/UVSQ_EN3901_computer_vision/Chap2_Filtrage_transformation/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> UVSQ_EN3901_computer_vision
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Accueil</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Chap1_Introduction_images/">Chapitre I. Introduction aux images</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Chapitre II. Filtrage et transformations</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#images-exemples">Images exemples</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#le-traitement-dimage">Le traitement d'image</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#manipulations-geometriques">Manipulations géométriques</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#agrandissement-reduction">Agrandissement / réduction</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#rotation-translation">Rotation / translation</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#filtrage-lineaire">Filtrage linéaire</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#definition">Définition</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#convolution">Convolution</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#choix-du-kernel">Choix du kernel</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#fft-et-filtrage-frequentiel">FFT et filtrage fréquentiel</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#analyse-spectrale-dune-image">Analyse spectrale d'une image</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#filtrage-en-frequences-dune-image">Filtrage en fréquences d'une image</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#operations-morphologiques">Opérations morphologiques</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#element-structurant">Element structurant</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#filtre-median">Filtre médian</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#erosion-et-dilatation">Erosion et dilatation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ouverture-et-fermeture">Ouverture et fermeture</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#detection-de-contours-ou-de-coins">Détection de contours ou de coins</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#filtre-de-sobel">Filtre de Sobel</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#filtre-de-canny">Filtre de Canny</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#filtre-de-harris">Filtre de Harris</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#detection-de-forme">Détection de forme</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#la-transformee-de-hough">La transformée de Hough</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#adaptation-aux-cercles">Adaptation aux cercles</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#generalisation">Généralisation</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Chap3_Reseaux_convolutifs/">Chapitre III. Réseaux convolutifs</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Chap4_Deep_Learning/">Chapitre IV. Deep Learning</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Ex1_Retouches/">Exercice 1</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Ex2_Traitement/">Exercice 2</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Ex3_Classification/">Exercice 3</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">UVSQ_EN3901_computer_vision</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Chapitre II. Filtrage et transformations</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="chapitre-ii-le-traitement-dimages-lart-du-filtrage-et-de-la-transformation">Chapitre II : Le traitement d'images, l'art du filtrage et de la transformation</h1>
+<p>Ce chapitre abordera les fondamentaux du traitement d'images numériques.
+Il introduira entre autres les filtres et transformées qui sont à la base des outils "d'apprentissage profond" (ou "Deep Learning" en anglais) utilisés en "vision par ordinateur".</p>
+<p><img alt="En-tête chapitre II" src="../img/Chap2_header.png" /></p>
+<p><em>"Vibre la lumière, Chantez les couleurs, Il y met sa vie, Le bruit de son coeur.</em></p>
+<p><em>Et comme un bateau, Porté par sa voile, Doucement le pinceau, Glisse sur la toile.</em></p>
+<p><em>Et voilà l'homme, Qui croise avec ses yeux, Le temps d'un éclair, Le regard des dieux.</em></p>
+<p><em>Cézanne peint, Il laisse s'accomplir le prodige de ses mains.</em></p>
+<p><em>Cézanne peint, Et il éclaire le monde pour nos yeux qui n'voient rien."</em></p>
+<p><strong>Michel Berger &amp; France Gall, Cézanne peint, 1985</strong></p>
+<hr />
+<h2 id="images-exemples">Images exemples</h2>
+<p>Ce chapitre sera illustré par quelques images exemples.</p>
+<p>Vous trouverez la première <a href="https://github.com/NicOudart/UVSQ_EN3901_computer_vision/blob/master/images/Prairie_dog.jpg">ici</a>.</p>
+<p>Il s'agit d'une photographie d'un <em>Cynomys ludovicianus</em>, aussi connu sous le nom de "Black-tailed Prairie Dog", prise en 2022 à Boulder (Colorado, USA).</p>
+<p><img alt="Image exemple du Chapitre 2" src="../img/Chap2_example_image_black_tailed_prairie_dog.png" /></p>
+<p>Par défaut, nous utiliserons cette image pour illustrer les différentes méthodes de traitement d'images.</p>
+<p>Dans les cas spécifiques où nous avons besoin d'une image contenant des contours ou des coins bien définis, nous utiliserons une seconde image que vous trouverez <a href="https://github.com/NicOudart/UVSQ_EN3901_computer_vision/blob/master/images/Vizcacha.jpg">ici</a>.</p>
+<p>Il s'agit d'une photographie d'une mosaïque représentant une <em>Lagidium peruanum</em>, aussi connue sous le nom de "Vizcacha del Norte", prise en 2025 à Huancayo (Pérou).</p>
+<p><img alt="Image exemple du Chapitre 2" src="../img/Chap2_example_image_vizcacha.png" /></p>
+<p>Et dans les cas spécifiques où nous avons besoin d'une image avec des lignes ou des cercles à détecter, nous utiliserons une troisième image que vous trouverez <a href="https://github.com/NicOudart/UVSQ_EN3901_computer_vision/blob/master/images/Pika.jpg">ici</a>.</p>
+<p>Il s'agit d'une photographie d'un <em>Ochotona princeps</em>, aussi connu sous le nom d' "American Pika", prise en 2022 au Rocky Mountain National Park (Colorado, USA).</p>
+<p><img alt="Image exemple du Chapitre 2" src="../img/Chap2_example_image_pika.png" /></p>
+<p>N'hésitez pas à aller regarder les détails de la prise de vue des différentes photographies dans les métadonnées des images !</p>
+<h2 id="le-traitement-dimage">Le traitement d'image</h2>
+<p>Lors du chapitre précédent, nous avons introduit le concept de "vision". 
+Puis, nous avons parlé des problématiques liées à l'acquisition d'image avec une caméra.
+Ensuite, nous avons parlé des problématiques liées à l'enregistrement d'images sous forme numérique.
+Et enfin, nous avons introduit les concepts de "retouche" et "d'étalonnage" d'images.</p>
+<p>La suite logique dans n'importe quel projet de vision par ordinateur est le <strong>traitement d'image</strong>.
+Il s'agit de l'ensemble des <strong>méthodes mathématiques</strong> et <strong>algorithmiques</strong> "classiques" (hors IA) appliquables à des <strong>images numériques</strong> afin de les adapter à une méthode d'analyse, en faisant <strong>ressortir des informations pertinentes</strong>.</p>
+<p>L'idée est qu'une image peut être considérée comme un signal discret 2D, et par conséquent on peut lui appliquer :</p>
+<ul>
+<li>
+<p>Des manipulations <strong>géométriques</strong>, permettant d'adapter l'image selon un besoin spécifique en termes de dimensions, d'orientation, ou de translation spatiale.</p>
+</li>
+<li>
+<p>Des <strong>filtres</strong>, qui viennent modifier les valeurs des pixels de l'image pour faire <strong>ressortir certaines propriétes spatiales</strong> de l'image (les petits ou les gros élements, les contours, les coins, etc.).</p>
+</li>
+<li>
+<p>Des <strong>transformations</strong>, qui donnent accès à des <strong>espaces de représentation différents</strong> pour un image, permettant ainsi d'en tirer des <strong>caractéristiques spatiales quantitatives</strong> (fréquences horizontales ou verticales, lignes, cercles, etc.).</p>
+</li>
+</ul>
+<p>Ce chapitre vous présentera les outils de base en traitement d'image.
+Il ne s'agira pas ici d'être exhaustif.
+Nous nous attarderons en particulier sur les méthodes qui sont à l'origine de l'analyse d'images par IA, qui sera le sujet des 2 derniers chapitres de ce cours.</p>
+<h2 id="manipulations-geometriques">Manipulations géométriques</h2>
+<p>Certaines applications de vision par ordinateur nécessitent d'adapter la dimension d'une image, de déplacer un objet sur une image, ou de changer son orientation.
+Nous allons voir comment réaliser ces manipulations géométriques de base, et ce qu'elles impliquent en termes de reconstitution du signal contenu dans l'image.</p>
+<h3 id="agrandissement-reduction">Agrandissement / réduction</h3>
+<p>Comme mentionné plus tôt, on peut considérer une image numérique comme un <strong>signal 2D discret</strong>.
+Par conséquent, modifier les dimensions d'une image numérique revient à <strong>rééchantillonner</strong> ce signal.</p>
+<p>C'est ce que l'on appelle du "<strong>redimensionnement d'image</strong>".
+Lorsque l'on cherche à augmenter les dimensions d'une image (et donc son nombre d'échantillons), on parle d'un "<strong>agrandissement</strong>".
+Lorsque l'on cherche à diminuer les dimensions d'une image (et donc son nombre d'échantillons), on parle d'une "<strong>réduction</strong>".</p>
+<p>La grande problématique du redimensionnement d'image est de respecter le <strong>théorème de Nyquist-Shannon</strong> vu au chapitre précédent : pour représenter discrètement un signal n'ayant pas de composantes fréquentielles supérieures à <span class="arithmatex">\(f_{max}\)</span>, il faut choisir une fréquence d'échantillonnage <span class="arithmatex">\(f_s\)</span> telle que <span class="arithmatex">\(f_s &gt; 2 f_{max}\)</span>.</p>
+<p>Une image étant un signal 2D discret, il faut donc que la fréquence d'échantillonnage respecte ce critère vis-à-vis de la plus grand fréquence spatiale contenue dans l'image, <strong>selon les axes horizontaux et verticaux</strong>.
+Pour rappel, si ce critère n'est pas respecté lors du redimensionnement, l'image redimensionnée risque de souffrir d'un phénomène appelé <strong>aliasing</strong>, qui sera visible sous la forme d'artefacts appelé "Moiré".</p>
+<p><strong>Agrandir</strong> une image revient à <strong>augmenter sa fréquence d'échantillonnage</strong> horizontale et verticale.
+Il n'y a donc <strong>aucun de risque d'enfreindre le critère de Nyquist-Shannon</strong>.</p>
+<p>Pour agrandir une image on va donc simplement appliquer l'algorithme suivant :</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Agrandissement d'une image</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">- On <strong>étend le maillage</strong> de l'image en augmentant le nombre de lignes et de colonnes de la matrice par l'insertion de zéros avec un pas régulier.</td>
+</tr>
+<tr>
+<td style="text-align: left;">- On <strong>interpole</strong> les valeurs de l'image initiale pour compléter les zéros.</td>
+</tr>
+</tbody>
+</table>
+<p>Voici une illustration de cet algorithme pour une image de <span class="arithmatex">\(4 \times 4\)</span> pixels agrandie pour faire <span class="arithmatex">\(8 \times 8\)</span> :</p>
+<p><img alt="Agrandissement d'une image" src="../img/Chap2_upscaling.png" /></p>
+<p><strong>Réduire</strong> une image revient à <strong>réduire sa fréquence d'échantillonnage</strong> horizontale et verticale.
+Il y a donc un <strong>risque d'enfreindre le critère de Nyquist-Shannon !</strong></p>
+<p>Pour réduire les dimensions d'une image par un facteur entier, on peut appliquer l'algorithme suivant :</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Réduction d'une image</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">- On applique un <strong>filtre passe-bas</strong> "anti-aliasing" afin de respecter le critère de Nyquist-Shannon.</td>
+</tr>
+<tr>
+<td style="text-align: left;">- On <strong>décime</strong> l'image en enlevant des lignes et des colonnes à la matrice avec un pas régulier.</td>
+</tr>
+</tbody>
+</table>
+<p>Voici une illustration de cet algorithme pour une image de <span class="arithmatex">\(8 \times 8\)</span> réduite pour faire <span class="arithmatex">\(4 \times 4\)</span> :</p>
+<p><img alt="Réduction d'une image" src="../img/Chap2_downscaling.png" /></p>
+<p>Dans le cas où les dimensions désirées ne correspondent pas à un facteur de réduction entier, la décimation ne suffit pas : on doit utiliser une méthode d'interpolation.</p>
+<p>C'est pourquoi les méthodes de redimensionnement d'image impliquent en général de <strong>choisir une technique d'interpolation 2D</strong>.</p>
+<p>Voici 4 techniques classiques :</p>
+<ul>
+<li>
+<p><strong>Plus proches voisins</strong> : le pixel interpolé prend la valeur du pixel le plus proche.</p>
+</li>
+<li>
+<p><strong>Bi-linéaire</strong> : il s'agit d'une interpolation linéaire 2D à partir des 4 pixels voisins.</p>
+</li>
+<li>
+<p><strong>Bi-cubique</strong> : il s'agit d'une interpolation cubique 2D à partir des 8 pixels voisins.</p>
+</li>
+<li>
+<p><strong>Lanczos</strong> : le pixel est interpolé à partir des pixels voisins, avec des pondérations déterminées par une "fenêtre de Lanczos". </p>
+</li>
+</ul>
+<p>Sous Python, on peut facilement redimensionner une image avec la méthode <em>resize</em> de <strong>Pillow</strong>.</p>
+<p>Mettons, que nous ayons importé une image avec <strong>Pillow</strong> sous la forme d'une variable <em>img</em>, et que nous voulons lui donner les dimensions <span class="arithmatex">\(600 \times 600\)</span>.
+Voici comment faire avec les 4 techniques d'interpolation que nous avons présentées :</p>
+<pre><code>img_resized_nearest = img.resize((600,600),Image.Resampling.NEAREST)
+img_resized_bilinear = img.resize((600,600),Image.Resampling.BILINEAR)
+img_resized_bicubic = img.resize((600,600),Image.Resampling.BICUBIC)
+img_resized_lanczos = img.resize((600,600),Image.Resampling.LANCZOS)
+</code></pre>
+<p>Voici l'application de cette méthode avec différentes techniques d'interpolation pour augmenter les dimensions d'une version <span class="arithmatex">\(100 \times 100\)</span> de notre image d'un <em>Cynomys ludovicianus</em> vers <span class="arithmatex">\(500 \times 500\)</span> :</p>
+<p><img alt="Exemples d'agrandissement avec différentes méthodes" src="../img/Chap2_example_upscaling.png" /></p>
+<p>Et voici à présent l'application de la même méthode avec différentes techniques d'interpolation pour diminuer les dimensions d'une version <span class="arithmatex">\(500 \times 500\)</span> de notre image d'un <em>Cynomys ludovicianus</em> vers <span class="arithmatex">\(100 \times 100\)</span> :</p>
+<p><img alt="Exemples de réduction avec différentes méthodes" src="../img/Chap2_example_downscaling.png" /></p>
+<p>On peut faire les observations suivantes :</p>
+<ul>
+<li>
+<p>La technique des "Plus proches voisins" est <strong>la plus rapide</strong>, mais elle donne un aspect "<strong>pixelisé</strong>" à l'image, ce qui en fait la méthode classique pour le "pixel art".</p>
+</li>
+<li>
+<p>La technique Lanczos est celle donnant le <strong>meilleur résultat</strong> sur notre exemple, mais elle est <strong>plus coûteuse en calculs</strong> et peut amplifier certains <strong>artéfacts</strong> dans l'image.</p>
+</li>
+<li>
+<p>Les techniques bi-linéaire et cubiques sont souvent considérées comme des <strong>bons compromis</strong>, la méthode bi-cubique donnant généralement un meilleur résultat.</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Nota Bene</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Lorsque l'on redimensionne une image, il faut bien garder à l'esprit que :</td>
+</tr>
+<tr>
+<td style="text-align: left;">- <strong>La réduction d'une image ne peut se faire sans perte d'information</strong>.</td>
+</tr>
+<tr>
+<td style="text-align: left;">- <strong>L'agrandissement d'une image ne peut pas combler l'information manquante</strong>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="rotation-translation">Rotation / translation</h3>
+<p>Lorsqu'une application nécessite de <strong>déplacer un objet à un emplacement donné</strong> de l'image, par exemple pour le centrer, on utilise une combinaison de <strong>translations horizontales et verticales</strong>.</p>
+<p>Il s'agit d'une opération très simple : on décale tous les pixels de l'image <span class="arithmatex">\(I[x,y]\)</span> d'un certain nombre de pas <span class="arithmatex">\(\Delta x\)</span> à l'horizontale et d'un certain nombre de pas <span class="arithmatex">\(\Delta y\)</span> à la verticale.</p>
+<p><span class="arithmatex">\(I[x,y] = I[x - \Delta x , y - \Delta y]\)</span></p>
+<p>Mais il y a tout de même un problème : <strong>que faire des pixels qui sortent de la matrice d'un côté, ou qui se retrouvent sans valeur de l'autre ?</strong></p>
+<p>On utilise classiquement les 2 options suivantes :</p>
+<ul>
+<li>
+<p>La <strong>complétion par des zéros</strong> : on peut supprimer les pixels qui sortent de la matrice, et compléter ceux qui se retrouvent sans valeur par des zéros.</p>
+</li>
+<li>
+<p>La <strong>complétion cyclique</strong> : on peut compléter les pixels sans valeurs et récupérant les pixels sortants, de manière à former un cycle.</p>
+</li>
+</ul>
+<p>Aucune des 2 options n'est idéale, on choisira l'une ou l'autre suivant les contraintes de notre application de vision par ordinateur.</p>
+<p>Voici une illustration de ces 2 options pour une image de <span class="arithmatex">\(8 \times 8\)</span> :</p>
+<p><img alt="Translation d'une image" src="../img/Chap2_translation.png" /></p>
+<p>Sous Python, avec <strong>Pillow</strong>, on peut appliquer à une image importée <em>img</em> une translation de 50 pixels vers la droite et de 100 pixels vers le bas, avec complétion par des zéros, en utilisant la méthode <em>transform</em> :</p>
+<pre><code>largeur, hauteur = img.size
+
+img_translation = img.transform((largeur,hauteur),Image.Transform.AFFINE,(1,0,-50,0,1,-100))
+</code></pre>
+<p>Le premier argument de <em>transform</em> permet de conserver les dimensions de l'image.</p>
+<p>Le second argument correspond aux paramètres de la transformation affine à réaliser pour notre translation 2D.
+Si on note <span class="arithmatex">\(x\)</span> et <span class="arithmatex">\(y\)</span> les positions horizontales et verticales des pixels :</p>
+<p><span class="arithmatex">\(x = 1x + 0y - 50\)</span>
+<span class="arithmatex">\(y = 0x + 1y - 100\)</span></p>
+<p>Pour une translation vers la gauche ou vers le haut, il suffit alors de changer le signe du 50 ou du 100.</p>
+<p>Si on veut appliquer la même translation à <em>img</em>, mais avec complétion cyclique, il faut utiliser <em>ImageChops.offset</em> de <strong>Pillow</strong> :</p>
+<pre><code>img_translation = ImageChops.offset(img,50,100)
+</code></pre>
+<p>Lorsqu'une application nécessite de <strong>modifier l'orientation d'un objet</strong> de l'image, on utilise une opération de <strong>rotation</strong>.</p>
+<p>Appliquer une rotation d'un angle <span class="arithmatex">\(\theta\)</span> aux pixels d'une image <span class="arithmatex">\(I[x,y]\)</span> autour de son centre <span class="arithmatex">\((c_x,c_y)\)</span> revient à :</p>
+<p><span class="arithmatex">\(I[x,y] = I[c_x + (x-c_x) cos(\theta) + (y-c_y) sin(\theta) , c_y - (x-c_x) sin(\theta) + (y-c_y) cos(\theta)]\)</span></p>
+<p>Un premier problème de cette opération est que <span class="arithmatex">\(c_x + (x-c_x) cos(\theta) + (y-c_y) sin(\theta)\)</span> et <span class="arithmatex">\(c_y - (x-c_x) sin(\theta) + (y-c_y) cos(\theta)\)</span> peuvent donner des valeurs non entières.
+<strong>La rotation d'une image numérique implique donc forcément une interpolation 2D</strong>.</p>
+<p>Les 4 mêmes méthodes d'interpolation que pour le redimensionnement d'images peuvent être utilisées ("Plus proches voisins", bi-linéaire, bi-cubique, Lanczos).</p>
+<p>Un second problème est que suivant les dimensions de l'image et l'angle de rotation, une partie des pixels peuvent sortir de la matrice.
+Il y a alors 2 options :</p>
+<ul>
+<li>
+<p>La <strong>découpe</strong> : on ignore simplement les pixels sortant de la matrice.</p>
+</li>
+<li>
+<p>L'<strong>expansion</strong> : quitte à interpoler l'image, on la redimensionne pour qu'elle rentre dans la matrice.</p>
+</li>
+</ul>
+<p>En général, les pixels se retrouvant sans valeurs sont complétés par des zéros.</p>
+<p>Voici une illustration de ces 2 options pour une image <span class="arithmatex">\(8 \times 8\)</span> :</p>
+<p><img alt="Rotation d'une image" src="../img/Chap2_rotation.png" /></p>
+<p>Sous Python, on peut appliquer à une image importée avec <strong>Pillow</strong> <em>img</em> une rotation par un angle de 45° avec interpolation bi-cubique en utilisant la méthode <em>rotate</em>:</p>
+<pre><code>img_rotation = img.rotate(45,resample=Image.Resampling.BICUBIC)
+</code></pre>
+<p>Par défaut, il s'agit de l'option avec découpe.
+Si l'on veut en plus utiliser l'option avec expansion, il faut utiliser :</p>
+<pre><code>img_rotation = img.rotate(45,resample=Image.Resampling.BICUBIC,expand=True)
+</code></pre>
+<p>Voici l'application de translations (classique ou cyclique) et de rotations (classique ou avec expansion) à notre image d'un <em>Cynomys ludovicianus</em> :</p>
+<p><img alt="Exemples de translation et rotation d'image" src="../img/Chap2_example_translation_rotation.png" /></p>
+<p>Une fois encore, pour la translation comme pour la rotation, aucune option n'est pleinement satisfaisante.
+On choisira l'une ou l'autre selon les besoins d'une application de vision par ordinateur.</p>
+<h2 id="filtrage-lineaire">Filtrage linéaire</h2>
+<h3 id="definition">Définition</h3>
+<p>Comme évoqué lors du Chapitre 1, en vision par ordinateur on cherche à reproduire les mécanismes de la vision humaine avec des machines.
+Certains traitements réalisés par le cortex visuel humain peuvent être approchés en traitement d'images numériques par ce que l'on appelle des <strong>filtres linéaires</strong>, et plus particulièrement les filtres linéaires "invariant".</p>
+<p>Donc, de nombreux traitements classiques en traitement d'image peuvent être définis comme des filtres linéaire ou des combinaisons de filtres linéaires.
+Il s'agit d'un principe essentiel en vision par ordinateur, nous verrons dans les chapitres qu'ils sont à la base des outils d'IA utilisés pour analyser des images.</p>
+<p>En traitement d'image, un filtre linéaire est une fonction <span class="arithmatex">\(f\)</span> qui prend en entrée une image <span class="arithmatex">\(I\)</span> et renvoie une nouvelle image <span class="arithmatex">\(S = f(I)\)</span>.
+Elle a les propriétés suivantes :</p>
+<ul>
+<li>
+<p><strong>Additivité</strong> :  soit 2 images <span class="arithmatex">\(I_1\)</span> et <span class="arithmatex">\(I_2\)</span>, alors <span class="arithmatex">\(f(I_1+I_2) = f(I_1) + f(I_2)\)</span>.</p>
+</li>
+<li>
+<p><strong>Homogénéité</strong> : soit <span class="arithmatex">\(I\)</span> une image et un scalaire <span class="arithmatex">\(\alpha\)</span>, alors <span class="arithmatex">\(f(\alpha I) = \alpha I\)</span>.</p>
+</li>
+</ul>
+<p>Et si le filtre est en plus invariant, il a la propriété suivante :</p>
+<ul>
+<li><strong>Invariance</strong> : si <span class="arithmatex">\(S[x,y] = f(I[x,y])\)</span> alors pour toute translation horizontale <span class="arithmatex">\(\Delta x\)</span> et verticale <span class="arithmatex">\(\Delta y\)</span> on a <span class="arithmatex">\(f(I[x - \Delta x , y - \Delta y]) = S[x - \Delta x , y - \Delta y]\)</span>.</li>
+</ul>
+<p>Un filtre linéaire invariant est entièrement caractérisé par sa <strong>réponse impulsionnelle</strong> <span class="arithmatex">\(h\)</span>, une matrice 2D aussi appellée <strong>noyau de convolution</strong> ou "<strong>kernel</strong>" :</p>
+<p><span class="arithmatex">\(S[x,y] = \sum_{i=-\infty}^{\infty} \sum_{j=-\infty}^{\infty} h[i,j] I[x-i,y-j]\)</span></p>
+<p>Avec cette formulation, on part du principe que le kernel à des <strong>indices centrés</strong> : l'indice correspondant à son centre est (0,0).</p>
+<p>C'est pourquoi on définit en général un filtre linéaire invariant par son kernel.</p>
+<h3 id="convolution">Convolution</h3>
+<p>La formule précédente correspond à la version <strong>discrètre</strong> et <em>2D</em>* d'une opération de <strong>convolution</strong> entre le kernel <span class="arithmatex">\(h\)</span> et l'image numérique <span class="arithmatex">\(I\)</span>.</p>
+<p>Pour simplifier, nous appellerons cette opération "convolution".
+Nous la noterons <span class="arithmatex">\(\ast\)</span>.</p>
+<p>Voici quelques propriétés utiles de cette opération :</p>
+<ul>
+<li>
+<p><strong>Commutativité</strong> : soit 2 matrices <span class="arithmatex">\(I\)</span> et <span class="arithmatex">\(J\)</span>, alors <span class="arithmatex">\(I \ast J = J \ast I\)</span>.</p>
+</li>
+<li>
+<p><strong>Associativité</strong> : soit 3 matrices <span class="arithmatex">\(I\)</span>, <span class="arithmatex">\(J\)</span> et <span class="arithmatex">\(K\)</span>, alors <span class="arithmatex">\(I \ast (J \ast K) = (I \ast J) \ast K\)</span>.</p>
+</li>
+<li>
+<p><strong>Distributivité</strong> : soit 3 matrices <span class="arithmatex">\(I\)</span>, <span class="arithmatex">\(J\)</span> et <span class="arithmatex">\(K\)</span>, alors <span class="arithmatex">\(I \ast (J + K) = I \ast J + I \ast K\)</span>.</p>
+</li>
+<li>
+<p><strong>Homogénéité</strong> : soit 2 matrices <span class="arithmatex">\(I\)</span> et <span class="arithmatex">\(J\)</span>, et un scalaire <span class="arithmatex">\(\alpha\)</span>k, alors <span class="arithmatex">\(I \ast (\alpha J) = \alpha (I \ast J)\)</span>.</p>
+</li>
+<li>
+<p><strong>Invariance</strong> (en translation) : soit 2 matrices <span class="arithmatex">\(I\)</span> et <span class="arithmatex">\(J\)</span>, alors <span class="arithmatex">\((I \ast J)[x - \Delta x , y - \Delta y] = I[x - \Delta x , y - \Delta y] \ast J = I \ast J[x - \Delta x , y - \Delta y]\)</span>.</p>
+</li>
+</ul>
+<p>L'élément <strong>identité</strong> de la convolution est une <strong>impulsion de Dirac</strong> discrète et 2D :</p>
+<p><span class="arithmatex">\(\delta[x,y]=
+\begin{cases}
+1 &amp; \text{si } x=0 \text{ et } y=0,\\
+0 &amp; \text{sinon}.
+\end{cases}\)</span></p>
+<p>Donc <span class="arithmatex">\(I \ast \delta = I\)</span>, qui revient à dire qu'une convolution par une impulsion de Dirac ne change pas l'image d'origine.</p>
+<p>Une autre propriété importante de la convolution est son lien avec la <strong>transformée de Fourier</strong>.
+La transformée de Fourier d'une convolution et le produit des transformées de Fourier :</p>
+<p><span class="arithmatex">\(\mathcal{F}(I \ast J) = \mathcal{F}(I) \mathcal{F}(J)\)</span></p>
+<p>Nous reparlerons de l'analyse spectrale des images par transformée de Fourier dans la suite de ce chapitre.</p>
+<p>En pratique, utiliser un kernel de dimensions infinies est bien entendu impossible.
+C'est pourquoi on approxime la réponse impulsionnelle du filtrage désiré par un <strong>kernel de dimensions finies</strong>.</p>
+<p>Par exemple, pour un kernel <span class="arithmatex">\(h\)</span> de dimensions <span class="arithmatex">\((2k+1) \times (2k+1)\)</span>, la convolution avec une image <span class="arithmatex">\(I\)</span> devient :</p>
+<p><span class="arithmatex">\(S[x,y] = \sum_{i=-k}^{k} \sum_{j=-k}^{k} h[i,j] I[x-i,y-j]\)</span></p>
+<p>Une image étant une matrice 2D finie, si nous appliquons cette formule à tous les pixels de l'image, certains pixels <span class="arithmatex">\(I[x-i,y-j]\)</span> n'existeront pas.
+Alors comment gérer ces <strong>cas sur les bords</strong> ?</p>
+<p>Pour permettre à la matrice de sortie <span class="arithmatex">\(S\)</span> d'avoir les mêmes dimensions que l'image d'origine, on va en général ajouter des lignes et des colonnes à <span class="arithmatex">\(I\)</span> de manière à ce que la convolution puisse s'appliquer à tous les pixels de l'image.
+Cette extension de <span class="arithmatex">\(I\)</span> peut se faire différentes façons :</p>
+<ul>
+<li>
+<p><strong>Complétion par des zéros</strong> : on met juste les pixels ajoutés à zéro.</p>
+</li>
+<li>
+<p><strong>Complétion par répétition</strong> : on répète les pixels situés sur les bords de l'image.</p>
+</li>
+<li>
+<p><strong>Complétion par symétrie</strong> : on reproduit les pixels de l'image par symétrie sur les bords.</p>
+</li>
+<li>
+<p><strong>Complétion circulaire</strong> : on considère l'image comme étant périodique, et on prolonge donc les pixels au-delà d'un bord par ceux du bord opposé.</p>
+</li>
+</ul>
+<p>Cette dernière option est la plus couramment utilisée.
+On définit même une opération de <strong>convolution circulaire</strong>, notée <span class="arithmatex">\(\circledast\)</span>. </p>
+<p>Pour une image <span class="arithmatex">\(I\)</span> de dimensions <span class="arithmatex">\(M \times N\)</span>, la convolution circulaire par un kernel <span class="arithmatex">\(h\)</span> de dimensions <span class="arithmatex">\((2k+1) \times (2k+1)\)</span> sera définie comme : </p>
+<p><span class="arithmatex">\(S[x,y] = \sum_{i=-k}^{k} \sum_{j=-k}^{k} h[i,j] I[(x-i) \bmod (M) , (y-j) \bmod (N)]\)</span></p>
+<p>Et <span class="arithmatex">\(S\)</span> aura bien les mêmes dimensions que <span class="arithmatex">\(I\)</span>.</p>
+<p>Voici une illustration du fonctionnement de la convolution circulaire d'une image par un kernel :</p>
+<p><img alt="Animation d'une convolution circulaire 2D" src="../img/Chap2_circular_convolution.gif" /></p>
+<p>L'avantage de la convolution circulaire est qu'elle permet de conserver la propriété suivante, vis-à-vis de la <strong>Transformée de Fourier Discrète</strong> (TFD) :</p>
+<p><span class="arithmatex">\(TFD(I \circledast J) = TFD(I) TFD(J)\)</span></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Nota Bene</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">On peut aussi choisir d'appliquer la convolution à <span class="arithmatex">\(I\)</span> sans extansion.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Alors, la matrice <span class="arithmatex">\(S\)</span> aura des <strong>dimensions plus faibles</strong> que <span class="arithmatex">\(I\)</span>, de <span class="arithmatex">\(-2k\)</span>.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Ce sera le choix des méthodes d'IA que nous verrons aux chapitres suivants.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="choix-du-kernel">Choix du kernel</h3>
+<p>Nous allons voir quelques exemples classiques de kernels <span class="arithmatex">\(3 \times 3\)</span> en traitement du signal.</p>
+<p>Tout d'abord, comme nous l'avions évoqué plus tôt, l'<strong>idendité</strong> pour la convolution est une impulsion de Dirac.
+Pour un kernel <span class="arithmatex">\(3 \times 3\)</span>, ceci revient à une convolution circulaire par la matrice :</p>
+<p><span class="arithmatex">\(\begin{pmatrix}
+0 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 0 \\
+\end{pmatrix}\)</span></p>
+<p>Après application d'une convolution circulaire à une matrice <span class="arithmatex">\(I\)</span> avec ce kernel, on obtient <span class="arithmatex">\(S = I\)</span>.
+L'identité est donc rarement utilisée seule, mais plutôt combinée avec d'autres filtrages linéaires.</p>
+<p>Une application typique du filtrage linéaire d'images numériques est le <strong>lissage</strong>.</p>
+<p>Il s'agit de <strong>réduire les composantes haute fréquence</strong> horizontales et verticales de l'image.
+Ce type de filtrage peut avoir différentes utilités : réduire l'impact du bruit, faire ressortir les grands objets plutôt que les petits détails, anti-aliasing, etc.</p>
+<p>Ceci peut être fait par convolution avec un kernel remplaçant chaque pixel de l'image par une <strong>moyenne</strong> des pixels dans le voisinage <span class="arithmatex">\(3 \times 3\)</span>.
+Voici les 2 principaux types de moyennes utilisées :</p>
+<ul>
+<li>Le filtre "<strong>box</strong>", qui réalise simplement une moyenne arithmétique des valeurs du pixel et de ses 8 voisins :</li>
+</ul>
+<p><span class="arithmatex">\(\frac{1}{9} 
+\begin{pmatrix}
+1 &amp; 1 &amp; 1 \\
+1 &amp; 1 &amp; 1 \\
+1 &amp; 1 &amp; 1 \\
+\end{pmatrix}\)</span></p>
+<ul>
+<li>Le filtre "<strong>gaussien</strong>", qui approxime une pondération gaussienne 2D des valeurs du pixel et de ses 8 voisins :</li>
+</ul>
+<p><span class="arithmatex">\(\frac{1}{16} 
+\begin{pmatrix}
+1 &amp; 2 &amp; 1 \\
+2 &amp; 4 &amp; 2 \\
+1 &amp; 2 &amp; 1 \\
+\end{pmatrix}\)</span></p>
+<p>Le filtre "box" est plus simple mais moins efficace que le filtre "gaussien" pour lisser une image.</p>
+<p>Une autre application typique du filtrage linéaire d'images numériques est la <strong>détection de contours</strong>.</p>
+<p>Il s'agit ici de faire ressortir les transitions entre différentes zones de l'image, en utilisant les <strong>dérivées de l'image</strong> par rapport à l'axe horizontal et l'axe vertical.
+L'idée est qu'à la frontière entre 2 zones de l'image, la dérivée sera élevée, et elle le sera d'autant plus que le contraste entre les 2 zones est grand.</p>
+<p>En <span class="arithmatex">\(3 \times 3\)</span>, une dérivée horizontale peut être approximée par le kernel <span class="arithmatex">\(\begin{pmatrix} -1 &amp; 0 &amp; 1 \end{pmatrix}\)</span>, et une dérivée verticale par le kernel <span class="arithmatex">\(\begin{pmatrix} -1 \\ 0 \\ 1 \end{pmatrix}\)</span>.</p>
+<p>Voici les 3 principaux types de dérivations utilisées en pratique :</p>
+<ul>
+<li>Les 2 filtres de <strong>Sobel</strong>, avec le kernel <span class="arithmatex">\(G_x\)</span> combinant une dérivation horizontale et un lissage vertical, et le kernel <span class="arithmatex">\(G_y\)</span> combinant une dérivation verticale et un lissage horizontal :</li>
+</ul>
+<p><span class="arithmatex">\(G_x = 
+\begin{pmatrix}
+-1 &amp; 0 &amp; 1 \\
+-2 &amp; 0 &amp; 2 \\
+-1 &amp; 0 &amp; 1 \\
+\end{pmatrix}\)</span></p>
+<p><span class="arithmatex">\(G_y = 
+\begin{pmatrix}
+-1 &amp; -2 &amp; -1 \\
+0 &amp; 0 &amp; 0 \\
+1 &amp; 2 &amp; 1 \\
+\end{pmatrix}\)</span></p>
+<p><span class="arithmatex">\(G_x\)</span> permet de faire ressortir les contours <strong>verticaux</strong>, et <span class="arithmatex">\(G_y\)</span> les contours <strong>horizontaux</strong>.</p>
+<ul>
+<li>Le filtre "<strong>Laplacien à 4 voisins</strong>", et une approximation de l'opérateur Laplacien en 2D (addition de la dérivée seconde horizontale et de la dérivée seconde verticale) avec 4 pixels voisins :</li>
+</ul>
+<p><span class="arithmatex">\(\begin{pmatrix}
+0 &amp; -1 &amp; 0 \\
+-1 &amp; 4 &amp; -1 \\
+0 &amp; -1 &amp; 0 \\
+\end{pmatrix}\)</span></p>
+<ul>
+<li>Le filtre "<strong>Laplacien à 8 voisins</strong>", et également une approximation de l'opérateur Laplacien en 2D, mais avec les 8 pixels voisins :</li>
+</ul>
+<p><span class="arithmatex">\(\begin{pmatrix}
+-1 &amp; -1 &amp; -1 \\
+-1 &amp; 8 &amp; -1 \\
+-1 &amp; -1 &amp; -1 \\
+\end{pmatrix}\)</span></p>
+<p>Avec ce type de kernels, nous faisons ressortir les contours, mais nous ne réalisons pas une réellement une "détection" de contours, dans le sens où nous n'extrayons pas les positions des contours.
+Nous verrons dans la suite de ce chapitre des méthodes de "détection de contours" à proprement parler.</p>
+<p>Enfin, une dernière application typique du filtrage linéaire d'images numériques est l'<strong>amélioration de la netteté</strong>.</p>
+<p>Là où le lissage va donner un aspect flou en faisant ressortir les composantes basse fréquence de l'image, un filtre d'amélioration de la netteté va faire <strong>ressortir les composantes haute fréquence</strong>.
+Pour ce faire, une technique possible est de <strong>renforcer les contours</strong> dans l'image, en additionnant l'image originale avec l'image obtenue après filtrage pour de la détection de contours.</p>
+<p>La convolution étant distributive :</p>
+<p><span class="arithmatex">\(I + I \circledast
+\begin{pmatrix}
+0 &amp; -1 &amp; 0 \\
+-1 &amp; 4 &amp; -1 \\
+0 &amp; -1 &amp; 0 \\
+\end{pmatrix}
+= I \circledast
+\left(\begin{pmatrix}
+0 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 0 \\
+\end{pmatrix}
++ \begin{pmatrix}
+0 &amp; -1 &amp; 0 \\
+-1 &amp; 4 &amp; -1 \\
+0 &amp; -1 &amp; 0 \\
+\end{pmatrix}\right)\)</span></p>
+<p>D'où le kernel suivant pour améliorer la netteté d'une image numérique :</p>
+<p><span class="arithmatex">\(\begin{pmatrix}
+0 &amp; -1 &amp; 0 \\
+-1 &amp; 5 &amp; -1 \\
+0 &amp; -1 &amp; 0 \\
+\end{pmatrix}\)</span></p>
+<p>Sous Python, avec <strong>Pillow</strong>, on peut appliquer une convolution par un kernel <em>ker</em> à une image <em>img</em> avec <em>ImageFilter.Kernel</em> :</p>
+<pre><code>filt = ImageFilter.Kernel(size=(3,3),kernel=kernel,scale=1)
+
+img_filtered = img.filter(filt)
+</code></pre>
+<p>La première commande définit le filtre linéaire (avec ses dimensions, son kernel, et optionnellement un facteur d'échelle), la seconde l'applique à l'image.</p>
+<p>Cette méthode ne fonctionne que pour des kernels <span class="arithmatex">\(3 \times 3\)</span> et <span class="arithmatex">\(5 \times 5\)</span>, qui sont les dimensions les plus classiques.
+Mais <strong>Pillow</strong> possède aussi de nombreuses implémentations de filtres avec des kernel pré-définis.</p>
+<p><strong>OpenCV</strong> possède une méthode <em>filter2D</em> pour l'application d'un filtre linéaire à partir d'un kernel donné, qui est un peu plus flexible.</p>
+<p>Voici quelques exemples d'application de filtre linéaires à notre image d'un <em>Cynomys ludovicianus</em> :</p>
+<p><img alt="Exemples de convolution d'une image par différents kernels" src="../img/Chap2_example_linear_filtering_kernel.png" /></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Nota Bene</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Nous avons vu ici des exemples de kernels <span class="arithmatex">\(3 \times 3\)</span>, mais <strong>plus le kernel choisi est grand, meilleure est l'approximation de la réponse impulsionnelle recherchée</strong>.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Aussi, les manipulations géométriques vues précédemment peuvent être en partie définies par des filtrages linéaires, notamment les étapes de <strong>filtrage anti-aliasing</strong> et d'<strong>interpolation</strong>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fft-et-filtrage-frequentiel">FFT et filtrage fréquentiel</h2>
+<p>Comme mentionné plus tôt, une image on peut considérer une image numérique comme un <strong>signal 2D discret</strong>.
+Afin de comprendre la structure d'une image, il peut être intéressant de <strong>discriminer ses différentes composantes fréquentielles horizontales et verticales</strong>.</p>
+<p>Les <strong>faibles fréquences</strong> vont caractériser les <strong>grands éléments</strong> de l'image, alors que les <strong>hautes fréquences</strong> vont caractériser les <strong>petits détails</strong>.
+La <strong>moyenne</strong> des valeurs de l'image correspondra à composante de <strong>fréquence nulle</strong>.
+Et si une image présente une forte périodicité horizontale ou verticale, une analyse fréquentielle permettra de la faire ressortir clairement.</p>
+<p>Une fois les composantes fréquentielles de l'image caractérisées, on peut lui appliquer différents <strong>filtres dans le domaine fréquentiel</strong>, afin de faire resortir des élements plus ou moins grands.</p>
+<p>Nous allons donc voir comme réaliser l'analyse spectrale d'une image, puis lui appliquer un filtrage en fréquences.</p>
+<h3 id="analyse-spectrale-dune-image">Analyse spectrale d'une image</h3>
+<p>En traitement du signal, on utilise la <strong>transformée de Fourier</strong> pour obtenir la représentation d'un signal dans le <strong>domaine fréquentiel</strong>, appelé "<strong>spectre</strong>".
+Lorsque l'on dispose d'un signal discret, on utilise la <strong>transformée de Fourier discrète</strong> (TFD) pour approcher de manière discrète le spectre du signal continu correspondant.</p>
+<p>Soit une image numérique <span class="arithmatex">\(I\)</span> de dimensions <span class="arithmatex">\(M \times N\)</span>.
+Sa TFD sera une matrice 2D $F£, complexe et de mêmes dimensions, définie comme :</p>
+<p><span class="arithmatex">\(F[u,v] = \sum_{x=0}^{M-1} \sum_{y=0}^{N-1} I[x,y] \exp(-2 \pi j (\frac{u x}{M} + \frac{v y}{N}))\)</span></p>
+<p>Mais la complexité de l'algorithme naïf de la TFD est élevée : <span class="arithmatex">\(\mathcal{O}(N^2 M^2)\)</span> !
+C'est pourquoi on utilise en général l'algorithme de la <strong>FFT</strong> ("Fast Fourier Transform"), qui fait descendre la complexité du calcul de la TFD à <span class="arithmatex">\(\mathcal{O}(N M (log(M) + log(N)))\)</span>.</p>
+<p>L'idée est que le calcul naïf de la TFD évalue plusieurs fois les mêmes valeurs, ce que la FFT permet d'éviter.</p>
+<p>Le spectre discret <span class="arithmatex">\(F\)</span> étant complexe, on peut en tirer 2 informations :</p>
+<ul>
+<li>
+<p>L'<strong>amplitude</strong> à partir du module.</p>
+</li>
+<li>
+<p>La <strong>phase</strong> à partir de l'argument.</p>
+</li>
+</ul>
+<p><img alt="Exemple d'application de la FFT à une image" src="../img/Chap2_example_image_FFT.png" /></p>
+<p><img alt="Exemple d'application de la FFT à une image avec fenêtrage" src="../img/Chap2_example_image_FFT_windowed.png" /></p>
+<p><img alt="Exemple d'application de la FFT à une image avec des motifs périodiques" src="../img/Chap2_example_image_FFT_cyclic_pattern.png" /></p>
+<h3 id="filtrage-en-frequences-dune-image">Filtrage en fréquences d'une image</h3>
+<p><img alt="Exemple d'application d'un filtre passe-bas à une image" src="../img/Chap2_example_lowpass_filtering.png" /></p>
+<p><img alt="Exemple d'application d'un filtre passe-haut à une image" src="../img/Chap2_example_highpass_filtering.png" /></p>
+<h2 id="operations-morphologiques">Opérations morphologiques</h2>
+<h3 id="element-structurant">Element structurant</h3>
+<h3 id="filtre-median">Filtre médian</h3>
+<p><img alt="Exemple d'application d'un filtre médian à une image bruitée &quot;poivre et sel&quot;" src="../img/Chap2_example_median_filter.png" /></p>
+<h3 id="erosion-et-dilatation">Erosion et dilatation</h3>
+<p><img alt="Exemple d'érosion ou de dilatation d'image" src="../img/Chap2_example_erosion_dilatation.png" /></p>
+<h3 id="ouverture-et-fermeture">Ouverture et fermeture</h3>
+<p><img alt="Exemple d'ouverture et de fermeture d'image" src="../img/Chap2_example_opening_closing.png" /></p>
+<h2 id="detection-de-contours-ou-de-coins">Détection de contours ou de coins</h2>
+<h3 id="filtre-de-sobel">Filtre de Sobel</h3>
+<p><img alt="Exemple de filtrage de Sobel d'une image" src="../img/Chap2_example_Sobel_filter.png" /></p>
+<h3 id="filtre-de-canny">Filtre de Canny</h3>
+<p><img alt="Exemple de filtrage de Canny d'une image" src="../img/Chap2_example_Canny_filter.png" /></p>
+<h3 id="filtre-de-harris">Filtre de Harris</h3>
+<p><img alt="Exemple de filtrage de Harris et détection de coins d'une image" src="../img/Chap2_example_Harris_filter.png" /></p>
+<h2 id="detection-de-forme">Détection de forme</h2>
+<h3 id="la-transformee-de-hough">La transformée de Hough</h3>
+<p><img alt="Exemple de détection de lignes par transformée de Hough" src="../img/Chap2_example_hough_transform_lines_detection.png" /></p>
+<p><img alt="Exemple d'accumulateur de transformée de Hough pour des lignes" src="../img/Chap2_example_hough_transform_lines_detection_accumulator.png" /></p>
+<h3 id="adaptation-aux-cercles">Adaptation aux cercles</h3>
+<p><img alt="Exemple de détection de cercles par transformée de Hough" src="../img/Chap2_example_hough_transform_circles_detection.png" /></p>
+<p><img alt="Exemple d'accumulateur de transformée de Hough pour des cercles" src="../img/Chap2_example_hough_transform_circles_detection_accumulator.png" /></p>
+<h3 id="generalisation">Généralisation</h3>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Chap1_Introduction_images/" class="btn btn-neutral float-left" title="Chapitre I. Introduction aux images"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Chap3_Reseaux_convolutifs/" class="btn btn-neutral float-right" title="Chapitre III. Réseaux convolutifs">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../Chap1_Introduction_images/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Chap3_Reseaux_convolutifs/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../javascripts/mathjax.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
