@@ -539,12 +539,63 @@ L'idée est que le calcul naïf de la TFD évalue plusieurs fois les mêmes vale
 Le spectre discret $F$ étant complexe, on peut en tirer 2 informations :
 
 * L'**amplitude** à partir du module.
+Elle donne l'information sur l'amplitude de chacune des composantes fréquentielles de l'image.
+On l'affiche en général en décibels (dB).
 
 * La **phase** à partir de l'argument.
+Elle donne l'information du décalage spatial des composantes fréquentielles de l'image.
+On l'affiche en général en radians.
 
+Pour afficher le module ou la phase de la FFT d'une image, on utilise en général la représentation "**FFTshift**" :
 
+![Représentation FFTshift](img/Chap2_fftshift.png)
+
+* Cette matrice 2D a les **mêmes dimensions que l'image**.
+
+* La **fréquence nulle** est au **centre** de la matrice, et plus on s'en éloigne et plus la fréquence est élevée.
+
+* Une composante sur l'axe horizontal correspond à une **fréquence horizontale**, une composante sur l'axe vertical correspond à une **fréquence verticale**.
+
+Sous Python, on peut utiliser la méthode **Numpy** _fft.fft2_ qui est une implémentation de la FFT en 2D, puis la méthode **Numpy** _fft.fftshift_ qui permet mettre le résultat en représentation FFTshift.
+Voici comment appliquer ces méthodes à une image convertie en Numpy array nommée _img array_, en supposant que l'on ait importé **Numpy** sous le nom _np_ :
+
+~~~
+F = np.fft.fft2(img_array)
+F_shift = np.fft.fftshift(F)
+~~~
+
+Le Numpy array obtenu peut être converti en module puis dB avec :
+
+~~~
+F_db = 20*np.log10(np.abs(F_shift)+1e-16)
+~~~
+
+Il peut également être converti en phase (radians) avec :
+
+~~~
+F_phase = np.angle(F_shift)
+~~~
+
+Enfin les axes horizontaux et verticaux de nos représentations peuvent s'obtenir de la manière suivante :
+
+~~~
+fx = np.fft.fftshift(np.fft.fftfreq(img_array.shape[1]))
+fy = np.fft.fftshift(np.fft.fftfreq(img_array.shape[0]))
+~~~
+
+L'unité des axes est le **nombre de cycles par pixel**.
+
+Voici l'application de ces méthodes à notre image d'un _Cynomys ludovicianus_ :
 
 ![Exemple d'application de la FFT à une image](img/Chap2_example_image_FFT.png)
+
+On observe que la fréquence nulle est très intense, ce qui est classique pour une image non-traitée.
+En effet, une fréquence de 0 correspond à l'intensité moyenne des pixels de l'image, qui est en général plus intense que ses autres composantes fréquentielles.
+
+On voit aussi des lignes apparaitre que ce soit sur le module ou sur la phase.
+Mais correspondent-elles à des vraies composantes fréquentielles de l'image ?
+
+
 
 ![Exemple d'application de la FFT à une image avec fenêtrage](img/Chap2_example_image_FFT_windowed.png)
 
