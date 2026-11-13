@@ -595,7 +595,14 @@ En effet, une fréquence de 0 correspond à l'intensité moyenne des pixels de l
 On voit aussi des lignes apparaitre que ce soit sur le module ou sur la phase.
 Mais correspondent-elles à des vraies composantes fréquentielles de l'image ?
 
+Non, il s'agit d'artefacts appelés "**lobes secondaires**".
 
+Une image numérique n'est jamais infinie, elle a donc des bords.
+En traitement du signal, ceci revient à multiplier une image infinie par une fenêtre rectangulaire 2D.
+Or, nous avons vu plus tôt que multiplier 2 signaux dans le domaine "image" revient à une convolution de leurs spectres dans le domaine fréquentiel.
+La transformée de Fourier d'une fenêtre rectangulaire étant un sinus cardinal, 
+
+![Lobes secondaires après FFT](img/Chap2_fft_sidelobes.png)
 
 ![Exemple d'application de la FFT à une image avec fenêtrage](img/Chap2_example_image_FFT_windowed.png)
 
