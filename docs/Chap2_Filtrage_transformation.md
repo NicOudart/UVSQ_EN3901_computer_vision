@@ -597,12 +597,20 @@ Mais correspondent-elles à des vraies composantes fréquentielles de l'image ?
 
 Non, il s'agit d'artefacts appelés "**lobes secondaires**".
 
-Une image numérique n'est jamais infinie, elle a donc des bords.
+Une image numérique n'est jamais infinie, **elle a donc des bords**.
 En traitement du signal, ceci revient à multiplier une image infinie par une fenêtre rectangulaire 2D.
 Or, nous avons vu plus tôt que multiplier 2 signaux dans le domaine "image" revient à une convolution de leurs spectres dans le domaine fréquentiel.
-La transformée de Fourier d'une fenêtre rectangulaire étant un sinus cardinal, 
+La transformée de Fourier d'une fenêtre rectangulaire étant un sinus cardinal, **multiplier par une fenêtre rectangulaire 2D dans le domaine "image" revient à un convolution par un sinus cardinal 2D dans le domaine fréquentiel** :
 
 ![Lobes secondaires après FFT](img/Chap2_fft_sidelobes.png)
+
+Là où on attendrait une impulsion de Dirac en domaine fréquentiel pour un motif périodique en domaine image, on aura donc un sinus cardinal.
+Le lobe principal du sinus cardinal sera bien centré sur la fréquence horizontale/verticale attendue, mais il aura aussi des **lobes secondaire** qui ne correspondent pas à des motifs périodiques existant réellement dans l'image. 
+
+Les "lignes" que nous voyons apparaitre dans le spectre de notre image de _Cynomys ludovicianus_ sont probablement des lobes secondaires du pic central (fréquence 0).
+Comment réduire cet artefact pour améliorer la lisibilité du spectre ?
+
+
 
 ![Exemple d'application de la FFT à une image avec fenêtrage](img/Chap2_example_image_FFT_windowed.png)
 
