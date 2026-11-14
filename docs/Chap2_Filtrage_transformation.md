@@ -605,7 +605,9 @@ La transformée de Fourier d'une fenêtre rectangulaire étant un sinus cardinal
 ![Lobes secondaires après FFT](img/Chap2_fft_sidelobes.png)
 
 Là où on attendrait une impulsion de Dirac en domaine fréquentiel pour un motif périodique en domaine image, on aura donc un sinus cardinal.
-Le lobe principal du sinus cardinal sera bien centré sur la fréquence horizontale/verticale attendue, mais il aura aussi des **lobes secondaire** qui ne correspondent pas à des motifs périodiques existant réellement dans l'image. 
+Le lobe principal du sinus cardinal sera bien centré sur la fréquence horizontale/verticale attendue, mais il aura aussi des **lobes secondaires** qui ne correspondent pas à des motifs périodiques existant réellement dans l'image.
+
+Ce sont les sortes d'oscillations en forme de croix que vous voyez représentées sur l'illustration ci-dessus.
 
 Les "lignes" que nous voyons apparaitre dans le spectre de notre image de _Cynomys ludovicianus_ sont probablement des lobes secondaires du pic central (fréquence 0).
 Comment réduire cet artefact pour améliorer la lisibilité du spectre ?
