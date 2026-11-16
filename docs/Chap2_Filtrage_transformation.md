@@ -661,9 +661,10 @@ Le module du spectre fait à présent ressortir le pic principal au centre de l'
 La phase est tout aussi difficile à interpréter.
 
 C'est souvent le cas pour une photographie non-traitée.
-Mais il y a des exceptions : si une image présente des motifs périodiques, on  
+Mais il y a des exceptions : si une image présente des motifs périodiques d'amplitude élevée, des composantes fréquentielles claires vont apparaitre dans le spectre.
 
-
+Par exemple, voyons le spectre de l'image de la Stavkirke de Hopperstad (Norvège) vue a chapitre précédent.
+Les tuiles du toit du monument forment des motifs périodiques selon l'axe horizontal et l'axe vertical, ce qui fait clairement apparaitre des composantes dans le spectre :
 
 ![Exemple d'application de la FFT à une image avec des motifs périodiques](img/Chap2_example_image_FFT_cyclic_pattern.png)
 
@@ -674,9 +675,18 @@ Enfin, même si le spectre d'une image est difficilement interprétable par un h
 
 ### Filtrage en fréquences d'une image
 
+Un fois que l'on a obtenu le spectre complexe d'une image numérique, on peut lui appliquer différents **filtrages** pour faire ressortir certains motifs de l'image ou en faire disparaitre d'autres.
+Les plus classiques sont les suivants :
+
+* Un **filtre passe-bas**
+
 ![Exemple d'application d'un filtre passe-bas à une image](img/Chap2_example_lowpass_filtering.png)
 
+* Un **filtre passe-haut**
+
 ![Exemple d'application d'un filtre passe-haut à une image](img/Chap2_example_highpass_filtering.png)
+
+* Les filtres **passe-bande** ou **coupe-bande**
 
 ## Opérations morphologiques
 

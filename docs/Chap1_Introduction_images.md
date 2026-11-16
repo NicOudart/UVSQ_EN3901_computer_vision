@@ -1104,7 +1104,7 @@ Voici un exemple sur une photographie de la Stavkirke de Hopperstad, en Norvège
 
 ![Aliasing par décimation d'une image](img/Chap1_aliasing.png)
 
-Les tuiles du toit du monument forment un motif périodique selon l'axe horizontal et l'axe vertical.
+Les tuiles du toit du monument forment des motifs périodiques selon l'axe horizontal et l'axe vertical.
 Si on diminue petit à petit la résolution de l'image jusqu'à ne plus respecter le critère de Nyquist-Shannon, on voit apparaitre un artefact classique que l'on appelle "**Moiré**".
 Des rayures claires-foncées apparaissent sur le toit.
 
