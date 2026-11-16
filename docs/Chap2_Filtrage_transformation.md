@@ -603,7 +603,7 @@ En traitement du signal, ceci revient à multiplier une image infinie par une fe
 |Rappels sur la fenêtre rectangulaire|
 |:-|
 |En 1D, une **fenêtre rectangulaire** de largeur unitaire est définie comme :|
-|$\operatorname{rect}(x)=\begin{cases} 1 & \text{si } |x| \leq \dfrac{1}{2},\\0 & \text{si } |x| > \dfrac{1}{2}. \end{cases}$|
+|$\operatorname{rect}(x)=\begin{cases} 1 & \text{si } \mid x \mid \leq \dfrac{1}{2},\\0 & \text{si } \mid x \mid > \dfrac{1}{2}. \end{cases}$|
 |Pour obtenir une fenêtre de largeur $L$, il suffit d'utiliser $rect(x/L)$.|
 |Et pour obtenir une fenêtre rectangulaire 2D de largeur horizontale $L_x$ et de largeur verticale $L_y$ : $rect(x/L_x) \times rect(y/L_y)$.|
 
@@ -687,11 +687,49 @@ Voici les 2 types de filtres les plus classiques :
 
 L'idée est de venir couper les hautes fréquences, afin de faire **disparaitre les petits motifs** de l'image.
 
+~~~
+h, w = img_array.shape
+y, x = np.ogrid[:h,:w]
+cy, cx = h//2, w//2
+
+D2 = (x - cx)**2 + (y - cy)**2
+
+sigma = 16
+
+mask = np.exp(-D2/(2*sigma**2))
+~~~
+
+~~~
+F_filtered = F_shift*mask
+
+img_filtered_array = np.fft.ifft2(np.fft.ifftshift(F_filtered))
+img_filtered_array = np.real(img_filtered_array)
+~~~
+
 ![Exemple d'application d'un filtre passe-bas à une image](img/Chap2_example_lowpass_filtering.png)
 
 * Le **filtre passe-haut** :
 
 L'idée est de venir couper les basses fréquences, afin de faire **disparaitre les grands motifs** de l'image.
+
+~~~
+h, w = img_array.shape
+y, x = np.ogrid[:h,:w]
+cy, cx = h//2, w//2
+
+D2 = (x - cx)**2 + (y - cy)**2
+
+sigma = 16
+
+mask = 1-np.exp(-D2/(2*sigma**2))
+~~~
+
+~~~
+F_filtered = F_shift*mask
+
+img_filtered_array = np.fft.ifft2(np.fft.ifftshift(F_filtered))
+img_filtered_array = np.real(img_filtered_array)
+~~~
 
 ![Exemple d'application d'un filtre passe-haut à une image](img/Chap2_example_highpass_filtering.png)
 
