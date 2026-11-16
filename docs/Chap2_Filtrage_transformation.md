@@ -599,6 +599,14 @@ Non, il s'agit d'artefacts appelés "**lobes secondaires**".
 
 Une image numérique n'est jamais infinie, **elle a donc des bords**.
 En traitement du signal, ceci revient à multiplier une image infinie par une fenêtre rectangulaire 2D.
+
+|Rappels sur la fenêtre rectangulaire|
+|:-|
+|En 1D, une **fenêtre rectangulaire** de largeur unitaire est définie comme :|
+|$\operatorname{rect}(x)= \begin{cases} 1, & |x|\leq \dfrac{1}{2},\\ 0, & |x|>\dfrac{1}{2}. \end{cases}$|
+|Pour obtenir une fenêtre de largeur $L$, il suffit d'utiliser $rect(x/L)$.|
+|Et pour obtenir une fenêtre rectangulaire 2D de largeur horizontale $L_x$ et de largeur verticale $L_y$ : $rect(x/L_x) \times rect(y/L_y)$.|
+
 Or, nous avons vu plus tôt que multiplier 2 signaux dans le domaine "image" revient à une convolution de leurs spectres dans le domaine fréquentiel.
 La transformée de Fourier d'une fenêtre rectangulaire étant un sinus cardinal, **multiplier par une fenêtre rectangulaire 2D dans le domaine "image" revient à un convolution par un sinus cardinal 2D dans le domaine fréquentiel** :
 
@@ -607,16 +615,62 @@ La transformée de Fourier d'une fenêtre rectangulaire étant un sinus cardinal
 Là où on attendrait une impulsion de Dirac en domaine fréquentiel pour un motif périodique en domaine image, on aura donc un sinus cardinal.
 Le lobe principal du sinus cardinal sera bien centré sur la fréquence horizontale/verticale attendue, mais il aura aussi des **lobes secondaires** qui ne correspondent pas à des motifs périodiques existant réellement dans l'image.
 
-Ce sont les sortes d'oscillations en forme de croix que vous voyez représentées sur l'illustration ci-dessus.
+Ce sont les sortes de motifs en forme de croix que vous voyez autour du lobe principal sur l'illustration ci-dessus.
+
+|Rappels sur le sinus cardinal|
+|:-|
+|On définit la fonction **sinus cardinal** normalisée comme :|
+|$\operatorname{sinc}(x)=\begin{cases}\dfrac{\sin(\pi x)}{\pi x} & \text{si } x\neq 0,\\1 &\text{si } x=0.\end{cases}$|
+|Voici la forme de cette fonction en 1D :|
+|![Fonction sinus cardinal](img/Chap2_sinc.png)|
+|En traitement du signal, cette fonction est connue pour être liée au spectre d'une fenêtre rectangulaire :|
+|Soit une fenêtre rectangulaire de largeur $L$, sa transformée de Fourier sera $F(x) = L sinc(L x)$.|
+|En 2D, la transformée de Fourier d'une fenêtre rectangulaire de largeurs $L_x \times L_y$ est $F(x,y) = L_x L_y sinc(L_x x) sinc(L_y y)$.|
 
 Les "lignes" que nous voyons apparaitre dans le spectre de notre image de _Cynomys ludovicianus_ sont probablement des lobes secondaires du pic central (fréquence 0).
 Comment réduire cet artefact pour améliorer la lisibilité du spectre ?
 
+La méthode classique en traitement du signal est l'application d'une **fenêtre d'apodisation** : on multiplie le signal par une fenêtre qui donnera des **lobes secondaires plus faibles** dans le domaine fréquentiel que la fenêtre rectangulaire.
 
+Attention toutefois, cette réduction des lobes secondaires se fait toujours au prix d'un **élargissement du lobe principal**, qui peut aussi rendre le spectre plus difficile à lire.
+C'est pourquoi le choix d'une fenêtre d'apodisation est toujours un **compromis**.
+
+Un compromis classique est la **fenêtre de Hann** : $\operatorname{hann}(x)= \begin{cases} \displaystyle \frac{1}{2}\left[1+\cos\left(\frac{2\pi x}{L}\right)\right], & |x|\leq \frac{L}{2}\\ 0, & |x|>\frac{L}{2} \end{cases}$.
+En 2D, cette formule devient : $\operatorname{hann}(x) \times \operatorname{hann}(y)$.
+
+Sous Python, on peut définir une fenêtre de Hann 2D de dimensions _lx_ et _ly_ avec **Numpy** de la manière suivante :
+
+~~~
+hann_x = np.hanning(lx)
+hann_y = np.hanning(ly)
+
+hann_2d = np.outer(hann_y, hann_x)
+~~~
+
+On peut ensuite appliquer la fenêtre à une image **avant FFT** :
+
+~~~
+img_array = img_array * hann_2d
+~~~
+
+Voici l'analyse spectrale de notre image d'un _Cynomys ludovicianus_ avec fenêtrage de Hann :
 
 ![Exemple d'application de la FFT à une image avec fenêtrage](img/Chap2_example_image_FFT_windowed.png)
 
+Le module du spectre fait à présent ressortir le pic principal au centre de l'image (qui correspond à la moyenne de l'image), mais il est difficile de distinguer clairement d'autres composantes fréquentielles.
+La phase est tout aussi difficile à interpréter.
+
+C'est souvent le cas pour une photographie non-traitée.
+Mais il y a des exceptions : si une image présente des motifs périodiques, on  
+
+
+
 ![Exemple d'application de la FFT à une image avec des motifs périodiques](img/Chap2_example_image_FFT_cyclic_pattern.png)
+
+Une image traitée ou retouchée pourra également présenter des composantes identifiables dans son spectre.
+C'est d'ailleurs une méthode assez classique de détection de retouches.
+
+Enfin, même si le spectre d'une image est difficilement interprétable par un humain, il peut servir à réaliser des **filtres dans le domaine fréquentiel**.
 
 ### Filtrage en fréquences d'une image
 
