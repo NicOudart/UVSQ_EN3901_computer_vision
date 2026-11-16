@@ -603,7 +603,7 @@ En traitement du signal, ceci revient à multiplier une image infinie par une fe
 |Rappels sur la fenêtre rectangulaire|
 |:-|
 |En 1D, une **fenêtre rectangulaire** de largeur unitaire est définie comme :|
-|$\operatorname{rect}(x)= \begin{cases} 1, & |x|\leq \dfrac{1}{2},\\ 0, & |x|>\dfrac{1}{2}. \end{cases}$|
+|$\operatorname{rect}(x)=\begin{cases} 1 & \text{si } |x| \leq \dfrac{1}{2},\\0 & \text{si } |x| > \dfrac{1}{2}. \end{cases}$|
 |Pour obtenir une fenêtre de largeur $L$, il suffit d'utiliser $rect(x/L)$.|
 |Et pour obtenir une fenêtre rectangulaire 2D de largeur horizontale $L_x$ et de largeur verticale $L_y$ : $rect(x/L_x) \times rect(y/L_y)$.|
 
@@ -675,18 +675,28 @@ Enfin, même si le spectre d'une image est difficilement interprétable par un h
 
 ### Filtrage en fréquences d'une image
 
-Un fois que l'on a obtenu le spectre complexe d'une image numérique, on peut lui appliquer différents **filtrages** pour faire ressortir certains motifs de l'image ou en faire disparaitre d'autres.
-Les plus classiques sont les suivants :
+Un fois que l'on a obtenu le spectre d'une image numérique, on peut lui appliquer différents **filtrages** pour faire **ressortir certains motifs** de l'image ou en faire **disparaitre d'autres**.
 
-* Un **filtre passe-bas**
+L'idée est toujours la suivante : **appliquer un masque** à la matrice complexe obtenue après FFT afin de diminuer la contribution de certaines composantes fréquentielles, puis lui appliquer une **transformée de Fourier inverse** (IFFT) afin d'obtenir à nouveau une image.
+
+En traitement d'image, on définit souvent un masque grâce à une **fonction gaussienne 2D**, ou une combinaison de plusieurs de ces fonctions.
+
+Voici les 2 types de filtres les plus classiques :
+
+* Le **filtre passe-bas** :
+
+L'idée est de venir couper les hautes fréquences, afin de faire **disparaitre les petits motifs** de l'image.
 
 ![Exemple d'application d'un filtre passe-bas à une image](img/Chap2_example_lowpass_filtering.png)
 
-* Un **filtre passe-haut**
+* Le **filtre passe-haut** :
+
+L'idée est de venir couper les basses fréquences, afin de faire **disparaitre les grands motifs** de l'image.
 
 ![Exemple d'application d'un filtre passe-haut à une image](img/Chap2_example_highpass_filtering.png)
 
-* Les filtres **passe-bande** ou **coupe-bande**
+On peut également définir des filtres "passe-bande" ou "coupe-bande" si on veut faire ressortir ou disparaitre une taille de motif précise de l'image.
+On les fabrique en général en combinant 2 fonctions gaussiennes 2D.
 
 ## Opérations morphologiques
 
