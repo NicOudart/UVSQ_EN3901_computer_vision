@@ -605,7 +605,7 @@ En traitement du signal, ceci revient à multiplier une image infinie par une fe
 |En 1D, une **fenêtre rectangulaire** de largeur unitaire est définie comme :|
 |$\operatorname{rect}(x)=\begin{cases} 1 & \text{si } \mid x \mid \leq \dfrac{1}{2},\\0 & \text{si } \mid x \mid > \dfrac{1}{2}. \end{cases}$|
 |Pour obtenir une fenêtre de largeur $L$, il suffit d'utiliser $rect(x/L)$.|
-|Et pour obtenir une fenêtre rectangulaire 2D de largeur horizontale $L_x$ et de largeur verticale $L_y$ : $rect(x/L_x) \times rect(y/L_y)$.|
+|Et pour obtenir une fenêtre rectangulaire 2D $\operatorname{rect2D}$ de largeur horizontale $L_x$ et de largeur verticale $L_y$ : $\operatorname{rect2D}(x,y) = \operatorname{rect}(x/L_x) \times \operatorname{rect}(y/L_y)$.|
 
 Or, nous avons vu plus tôt que multiplier 2 signaux dans le domaine "image" revient à une convolution de leurs spectres dans le domaine fréquentiel.
 La transformée de Fourier d'une fenêtre rectangulaire étant un sinus cardinal, **multiplier par une fenêtre rectangulaire 2D dans le domaine "image" revient à un convolution par un sinus cardinal 2D dans le domaine fréquentiel** :
@@ -687,6 +687,10 @@ Voici les 2 types de filtres les plus classiques :
 
 L'idée est de venir couper les hautes fréquences, afin de faire **disparaitre les petits motifs** de l'image.
 
+Pour ce faire, on peut appliquer un masque gaussien en utilisant la formule suivante :
+
+
+
 ~~~
 h, w = img_array.shape
 y, x = np.ogrid[:h,:w]
@@ -698,6 +702,8 @@ sigma = 16
 
 mask = np.exp(-D2/(2*sigma**2))
 ~~~
+
+Ensuite, pour appliquer ce masque au spectre complexe, puis le re-transformer en image :
 
 ~~~
 F_filtered = F_shift*mask
@@ -712,6 +718,10 @@ img_filtered_array = np.real(img_filtered_array)
 
 L'idée est de venir couper les basses fréquences, afin de faire **disparaitre les grands motifs** de l'image.
 
+Pour se faire, on peut appliquer un masque gaussien en utilisant la formule suivantes :
+
+Sous Python, pour définir un tel masque adapté à une image _img array_ avec un écart-type de 16 pixels, on peut utiliser **Numpy** de la manière suivantes :
+
 ~~~
 h, w = img_array.shape
 y, x = np.ogrid[:h,:w]
@@ -723,6 +733,8 @@ sigma = 16
 
 mask = 1-np.exp(-D2/(2*sigma**2))
 ~~~
+
+Ensuite, pour appliquer ce masque au spectre complexe, puis le re-transformer en image :
 
 ~~~
 F_filtered = F_shift*mask
