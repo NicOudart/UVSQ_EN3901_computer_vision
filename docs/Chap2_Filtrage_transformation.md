@@ -836,7 +836,7 @@ Pour chacune de ces méthodes, nous commencerons par donner leur définition dan
 
 Partons du principe que la position $(x,y)$ de chaque pixel appartient à $\mathbb{Z}^2$.
 Une image numérique **binaire** $I_b$ peut être vue comme **l'ensemble des positions des pixels ayant la valeur 1**, en considérant alors 0 comme une valeur par défaut.
-Donc $I_b^$ peut être vue comme **un sous-ensemble de $\mathbb{Z}^2$**, soit : $I_b \subset \mathbb{Z}^2$.
+Donc $I_b$ peut être vue comme **un sous-ensemble de $\mathbb{Z}^2$**, soit : $I_b \subset \mathbb{Z}^2$.
 
 On appelle cette manière de modéliser mathématiquement une image numérique binaire "**l'approche ensembliste**".
 
