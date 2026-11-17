@@ -804,14 +804,20 @@ Il s'agit d'un filtre non-linéaire, qui s'applique de la manière suivante :
 
 * Chaque pixel est remplacé par la médiane des valeurs des pixels de la fenêtre centrée sur lui.
 
-![]()
+* Les effets de bords peuvent être réglés de la même façon que pour la convolution (complétion par des zéros, répétition, symétrie, circulaire).
 
-Sous Python, il existe une implémentation **Open-CV** du filtre médian, que l'on peut appliquer à une image _img_ préalablement importée avec la même bibliothèque.
+Voici une illustration du fonctionnement du filtre médian $3 \times 3$ avec gestion des bords circulaire :
+
+![Animation d'un filtrage médian](img/Chap2_median_filtering.gif)
+
+Sous Python, il existe une implémentation **Open-CV** du filtre médian, sous la forme d'une méthode _medianBlur_, que l'on peut appliquer à une image _img_ préalablement importée avec la même bibliothèque.
 Voici la commande pour une fenêtre de dimensions $3 \times 3$ :
 
 ~~~
 img_filtered = cv.medianBlur(img,3)
 ~~~
+
+Il est possible d'indiquer la convention de gestion des bords désirée dans les paramètres d'entrée de la méthode.
 
 Voici un exemple d'application de ce filtrage médian à notre image d'un _Cynomys ludovicianus_, à laquelle nous avons ajouté artificiellement un "bruit poivre et sel" :
 
@@ -822,6 +828,8 @@ Si la **réduction du bruit** est d'autant plus forte que **la fenêtre est gran
 C'est pourquoi on limite en général la taille de la fenêtre à 7 pixels grand maximum.
 
 ### Opérations morphologiques
+
+
 
 ### Erosion et dilatation
 
