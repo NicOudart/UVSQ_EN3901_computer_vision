@@ -829,7 +829,29 @@ C'est pourquoi on limite en général la taille de la fenêtre à 7 pixels grand
 
 ### Opérations morphologiques
 
+Le second type de filtrage non-linéaire que nous allons traiter sont les **opérateurs morphologiques**.
+Il s'agit d'une application aux images numériques de la théorie de la morphologie en mathématiques.
 
+Pour chacune de ces méthodes, nous commencerons par donner leur définition dans le cas simple d'une image numérique **binaire** (ne contenant que 2 valeurs possibles 0 ou 1), puis nous les généraliserons à une image en **niveaux de gris**.
+
+Partons du principe que la position $(x,y)$ de chaque pixel appartient à $\mathbb{Z}^2$.
+Une image numérique **binaire** $I_b$ peut être vue comme **l'ensemble des positions des pixels ayant la valeur 1**, en considérant alors 0 comme une valeur par défaut.
+Donc $I_b^$ peut être vue comme **un sous-ensemble de $\mathbb{Z}^2$**, soit : $I_b \subset \mathbb{Z}^2$.
+
+On appelle cette manière de modéliser mathématiquement une image numérique binaire "**l'approche ensembliste**".
+
+Le principe des opérations morphologiques est de définir un autre sous-ensemble $E \subset \mathbb{Z}^2$ appelé "**élément structurant**", qui va servir de masque que l'on va déplacer sur l'image pour modifier les valeurs des pixels en fonction de leur voisinage.
+Les filtres que nous allons voir dans la suite sont donc toujours définis comme une opération de $I_b$ par $E$.
+
+Les éléments structurants classiques en traitement d'images sont les suivants :
+
+* Le **carré** :
+
+* La **croix** :
+
+* Le **disque** :
+
+Pour généraliser les opération morphologiques à des images en **niveaux de gris**,  
 
 ### Erosion et dilatation
 
