@@ -510,7 +510,7 @@ Voici quelques exemples d'application de filtre linéaires à notre image d'un _
 
 ## FFT et filtrage fréquentiel
 
-Comme mentionné plus tôt, une image on peut considérer une image numérique comme un **signal 2D discret**.
+Comme mentionné plus tôt, on peut considérer une image numérique comme un **signal 2D discret**.
 Afin de comprendre la structure d'une image, il peut être intéressant de **discriminer ses différentes composantes fréquentielles horizontales et verticales**.
 
 Les **faibles fréquences** vont caractériser les **grands éléments** de l'image, alors que les **hautes fréquences** vont caractériser les **petits détails**.
@@ -687,9 +687,14 @@ Voici les 2 types de filtres les plus classiques :
 
 L'idée est de venir couper les hautes fréquences, afin de faire **disparaitre les petits motifs** de l'image.
 
-Pour ce faire, on peut appliquer un masque gaussien en utilisant la formule suivante :
+Pour ce faire, on peut appliquer un masque gaussien $G$ en utilisant la formule suivante :
 
+$G(u,v)=\exp\left(-\frac{(u-u_0)^2+(v-v_0)^2}{2\sigma^2}\right)$
 
+avec $(u_0,v_0)$ les coordonnées de la fréquence zéro sur la matrice 2D du spectre (en convention fftshift), et $sigma$ l'écart-type (en cycles/pixels).
+Ce dernier paramètre nous permet de définir la taille du masque : ici plus $sigma$ est grand et moins de fréquences sont filtrées.
+
+Sous Python, pour définir un tel masque adapté à une image _img array_ avec un écart-type de 16 cycles/pixels, on peut utiliser **Numpy** de la manière suivantes :
 
 ~~~
 h, w = img_array.shape
@@ -712,15 +717,32 @@ img_filtered_array = np.fft.ifft2(np.fft.ifftshift(F_filtered))
 img_filtered_array = np.real(img_filtered_array)
 ~~~
 
+Voici le résultat sur notre image d'un _Cynomys ludovicianus_ :
+
 ![Exemple d'application d'un filtre passe-bas à une image](img/Chap2_example_lowpass_filtering.png)
+
+On voit bien ici que l'application d'un filtre passe-bas réduit la contribution des petits motifs.
+Il s'agit donc d'un filtre de **lissage**.
+
+|Nota Bene|
+|:-|
+|Ce résultat était attendu !|
+|En effet, nous avons vu qu'appliquer à une image un produit de convolution avec un kernel gaussien permettait de lisser une image.|
+|Or, une convolution dans le domaine "image" revenait à un produit dans le domaine fréquentiel, ce qui est exactement ce que nous faisons ici.|
+|Par conséquent, les 2 méthodes sont équivalentes.|
 
 * Le **filtre passe-haut** :
 
 L'idée est de venir couper les basses fréquences, afin de faire **disparaitre les grands motifs** de l'image.
 
-Pour se faire, on peut appliquer un masque gaussien en utilisant la formule suivantes :
+Pour se faire, on peut appliquer un masque gaussien en utilisant la formule suivante :
 
-Sous Python, pour définir un tel masque adapté à une image _img array_ avec un écart-type de 16 pixels, on peut utiliser **Numpy** de la manière suivantes :
+$G(u,v)=1-\exp\left(-\frac{(u-u_0)^2+(v-v_0)^2}{2\sigma^2}\right)$
+
+avec $(u_0,v_0)$ les coordonnées de la fréquence zéro sur la matrice 2D du spectre (en convention fftshift), et $sigma$ l'écart-type (en cycles/pixels).
+Ce dernier paramètre nous permet une fois de plus de définir la taille du masque : ici plus $sigma$ est grand et plus de fréquences sont filtrées.
+
+Sous Python, pour définir un tel masque adapté à une image _img array_ avec un écart-type de 16 cycles/pixels, on peut utiliser **Numpy** de la manière suivantes :
 
 ~~~
 h, w = img_array.shape
@@ -743,18 +765,63 @@ img_filtered_array = np.fft.ifft2(np.fft.ifftshift(F_filtered))
 img_filtered_array = np.real(img_filtered_array)
 ~~~
 
+Voici le résultat sur notre image d'un _Cynomys ludovicianus_ :
+
 ![Exemple d'application d'un filtre passe-haut à une image](img/Chap2_example_highpass_filtering.png)
 
-On peut également définir des filtres "passe-bande" ou "coupe-bande" si on veut faire ressortir ou disparaitre une taille de motif précise de l'image.
-On les fabrique en général en combinant 2 fonctions gaussiennes 2D.
+Attention, lorsque nous appliquons un filtre passe-haut à une image, nous faisons disparaitre sa fréquence 0, c'est-à-dire sa moyenne.
+Il est donc possible d'obtenir des valeurs de pixels négatives après IFFT, ce qui va contre les conventions d'encodage des images numériques.
+C'est pourquoi nous avons ici ajouté 127 à tous les pixels de l'image filtrée (soit la moitié de 255, l'image étant encodée sur 8 bits).
 
-## Opérations morphologiques
+On voit que ce type de filtre fait ressortir les contours (qui sont des variations de cycles/pixel élevées), mais pas uniquement.
+Tous les motifs de petite taille ressortent de l'image.
+Il ne s'agit donc pas à proprement parler d'un filtre de détection de contours. 
 
-### Element structurant
+* Pour aller plus loin :
+
+On peut également définir des filtres "**passe-bande**" ou "**coupe-bande**" si on veut faire ressortir ou disparaitre une taille de motif précise de l'image.
+On les fabrique en général en combinant 2 fonctions gaussiennes 2D de **sigmas différents**.
+
+## Filtrage non-linéaire
+
+Nous avons vu précédemment des méthodes de filtrage linéaires pour préparer des images à des applications de vision par ordinateur.
+Il existe également des **filtrages non-linéaires** très utiles pour améliorer l'interprétabilité d'une image, ou en extraire des informations.
+
+Dans cette section, nous allons aborder le **filtre médian** ainsi que les **opérations morphologiques**, qui sont les 2 types de filtrages non-linéaires les plus classiques en traitement d'image.
 
 ### Filtre médian
 
+Lorsque certains photosites d'un capteur photographique sont défectueux, ou lorsque l'encodage / l'enregistrement / la transmission d'une image manque des pixels, il arrive qu'une image numérique souffre de ce que l'on appelle un **bruit poivre et sel**.
+
+On appelle "bruit poivre et sel" l'apparition aléatoire de pixels noirs et blancs (les 3 primaires à 0 ou les 3 primaires à 255 pour 8 bits) sur une image numérique.
+D'où son nom.
+
+La méthode classique pour réduire l'impact d'un tel bruit est le **filtrage médian**.
+
+Il s'agit d'un filtre non-linéaire, qui s'applique de la manière suivante : 
+
+* On fait passer une fenêtre glissante carrée de dimension impaire (en général 3, 5 ou 7) sur l'image.
+
+* Chaque pixel est remplacé par la médiane des valeurs des pixels de la fenêtre centrée sur lui.
+
+![]()
+
+Sous Python, il existe une implémentation **Open-CV** du filtre médian, que l'on peut appliquer à une image _img_ préalablement importée avec la même bibliothèque.
+Voici la commande pour une fenêtre de dimensions $3 \times 3$ :
+
+~~~
+img_filtered = cv.medianBlur(img,3)
+~~~
+
+Voici un exemple d'application de ce filtrage médian à notre image d'un _Cynomys ludovicianus_, à laquelle nous avons ajouté artificiellement un "bruit poivre et sel" :
+
 ![Exemple d'application d'un filtre médian à une image bruitée "poivre et sel"](img/Chap2_example_median_filter.png)
+
+On voit que le filtre médian a efficacement réduit le "bruit poivre et sel", mais au pris d'un **lissage non désiré** de l'image.
+Si la **réduction du bruit** est d'autant plus forte que **la fenêtre est grande**, le **lissage** sera aussi d'autant plus fort.
+C'est pourquoi on limite en général la taille de la fenêtre à 7 pixels grand maximum.
+
+### Opérations morphologiques
 
 ### Erosion et dilatation
 
